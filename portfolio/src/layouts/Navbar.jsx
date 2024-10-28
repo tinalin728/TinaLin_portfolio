@@ -37,12 +37,16 @@ function Navbar() {
                             <nav>
                                 <ul className='flex flex-col items-center justify-center gap-10 lg:h-auto lg:flex-row'>
                                     <li>
-                                        <Link to="/about" className='font-roundo text-3xl lg:text-base'>Crafts</Link>
+                                        <Link to="/crafts" className='font-roundo text-3xl lg:tracking-[2px] lg:text-base'>Crafts</Link>
                                     </li>
                                     <li>
-                                        <Link to="/about" className='font-roundo text-3xl lg:text-base'>About</Link>
+                                        <Link to="/about" className='font-roundo text-3xl lg:tracking-[2px] lg:text-base'>About</Link>
                                     </li>
-                                    <a href="#contact" className='font-roundo text-3xl lg:text-base'> Contact</a>
+
+                                    <div className='relative inline-flex'>
+                                        <a href="#contact" className='font-roundo text-3xl uppercase lg:tracking-[2px] lg:text-base border border-black rounded-md px-4 py-2 bg-yellow z-10'> Contact</a>
+                                        <div className='absolute w-full h-full top-[2px] left-[2px] border-4 border-black rounded-md'> </div>
+                                    </div>
                                 </ul>
                             </nav>
                             <div className='lg:hidden'>

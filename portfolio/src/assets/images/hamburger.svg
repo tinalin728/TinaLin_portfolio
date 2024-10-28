@@ -1,5 +1,0 @@
-<svg className="hamburger w-[3.2rem] bg-white rounded-full" viewBox="0, 0, 100, 100">
-    <rect className="line top w-2/3 h-[.6rem] fill-[#6D6950]" x="16" y="25" rx="4"></rect>
-    <rect className="line middle w-2/3 h-[.6rem] fill-[#6D6950]" x="16" y="45" rx="4"></rect>
-    <rect className="line bottom w-2/3 h-[.6rem] fill-[#6D6950]" x="16" y="65" rx="4"></rect>
-</svg>
