@@ -10,7 +10,7 @@ function Layout() {
         <>
             <Navbar />
 
-            <main>
+            <main className='overflow-x-hidden'>
                 <Outlet />
             </main>
 

@@ -62,20 +62,20 @@ export default {
         'light-grey': '#B3B3B3'
       },
 
-      container: {
-        center: true,
-        padding: {
-          DEFAULT: '2rem',
-          sm: '2rem',
-          md: '3rem',
-          // lg: '4rem',
-          xl: '5rem',
-          '2xl': '6rem',
-        },
-      },
+      boxShadow: {
+        'inner': 'inset 0 2px 4px 0 rgb(0 0 0 / 0.2)'
+      }
 
     },
   },
-  plugins: [],
-}
+  plugins: [
 
+    function ({ addUtilities }) {
+      addUtilities({
+        '.text-stroke': {
+          '-webkit-text-stroke': '2px #717171'
+        }
+      })
+    }
+  ]
+}

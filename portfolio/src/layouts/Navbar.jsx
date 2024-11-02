@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import logo from '../assets/images/logo.svg'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLinkedinIn } from "@fortawesome/free-brands-svg-icons"
+import PrimaryBtn from '../components/buttons/PrimaryBtn'
 
 function Navbar() {
 
@@ -10,7 +11,7 @@ function Navbar() {
     const toggleMenu = () => {
         setIsOpen(!isOpen);
     }
-    // Inline styles for the hamburger icon 
+    // animation styles for the hamburger icon 
     const topStyle = isOpen
         ? { transform: 'translateX(-20px) rotate(45deg)', transition: 'transform 0.5s', transformOrigin: 'center' }
         : { transform: 'none', transition: 'transform 0.5s', transformOrigin: 'center' };
@@ -26,10 +27,10 @@ function Navbar() {
 
     return (
         <header className='bg-light-yellow-bg'>
-            <div className='container py-6 relative'>
+            <div className='max-w-container py-6 relative'>
                 <div className='flex items-center'>
                     <Link to="/" className='flex-1 z-10'>
-                        <img src={logo} alt="logo" width={60} />
+                        <img src={logo} alt="logo" className='w-[50px] md:w-[60px]' />
                     </Link>
 
                     <div className={`${isOpen ? 'fixed inset-0 h-screen bg-light-grey-bg lg:relative lg:h-auto' : 'hidden'} lg:block`}>
@@ -43,10 +44,10 @@ function Navbar() {
                                         <Link to="/about" className='font-roundo text-3xl lg:tracking-[2px] lg:text-base'>About</Link>
                                     </li>
 
-                                    <div className='relative inline-flex'>
-                                        <a href="#contact" className='font-roundo text-3xl uppercase lg:tracking-[2px] lg:text-base border border-black rounded-md px-4 py-2 bg-yellow z-10'> Contact</a>
-                                        <div className='absolute w-full h-full top-[2px] left-[2px] border-4 border-black rounded-md'> </div>
-                                    </div>
+                                    <PrimaryBtn
+                                        text='contact'
+                                        href='#contact'
+                                    />
                                 </ul>
                             </nav>
                             <div className='lg:hidden'>
@@ -60,7 +61,7 @@ function Navbar() {
                     {/* hamburger icon */}
                     <button className="hamburger z-10 cursor-pointer lg:hidden" aria-controls="primary-nav"
                         aria-expanded={isOpen} onClick={toggleMenu}>
-                        <svg className="hamburger w-[3.2rem]" viewBox="0, 0, 100, 100">
+                        <svg className="hamburger w-[2.5rem]" viewBox="0, 0, 100, 100">
 
                             <rect className="top w-2/3 h-[.2rem] fill-black" x="40" y="25" rx="4" style={topStyle}></rect>
 

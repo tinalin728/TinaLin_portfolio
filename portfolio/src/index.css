@@ -1,5 +1,4 @@
-/* fonts */
-@import url('https://fonts.googleapis.com/css2?family=Aleo:wght@400;500;600;700&display=swap');
+/* font */
 @import url('./assets/fonts.css');
 
 @tailwind base;
@@ -8,12 +7,27 @@
 
 
 @layer base {
+
+
     h1 {
-        @apply text-heading
+        font-size: clamp(6.25rem, 3.5663rem + 11.4504vw, 9.0625rem);
+        line-height: clamp(9.375rem, 5.35rem + 17.1756vw, 13.59375rem);
+        @apply font-craftwork font-extrabold tracking-[5px] lg:tracking-[15px] text-nowrap
     }
 
+    @media (min-width: 768px) {
+        h1 {
+            font-size: clamp(9.0625rem, 1.5625rem + 15.625vw, 15.625rem);
+            line-height: clamp(12.6875rem, 2.34375rem + 23.4375vw, 21.875rem);
+        }
+    }
+
+
     h2 {
-        @apply text-4xl
+        font-size: clamp(2.375rem, 1.0106rem + 5.8216vw, 6.25rem);
+        line-height: clamp(3.5625rem, 1.5 * (1.0106rem + 5.8216vw), 9.375rem);
+
+        @apply tracking-[1.9px] lg:tracking-[3px] font-roundo font-roundo-bold
     }
 
     h3 {
@@ -21,7 +35,7 @@
     }
 
     h4 {
-        @apply text-4xl
+        @apply text-xl font-roundo md:text-2xl
     }
 
     p {
@@ -30,5 +44,11 @@
 
     a {
         @apply text-xl tracking-[3px]
+    }
+
+    .max-w-container {
+        max-width: 85rem;
+        margin: 0 auto;
+        padding: 0 2rem;
     }
 }
