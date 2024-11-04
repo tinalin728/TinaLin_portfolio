@@ -18,15 +18,16 @@
     ],
     "crafts": [
         {
-            "index": 1,
+            "id": 1,
             "title": "Tim Horton's App Redesign",
+            "path": "/craft",
             "img": "../../src/assets/images/mockup-Tim_Hortons.png",
             "skills": [
                 "UXUI"
             ]
         },
         {
-            "index": 2,
+            "id": 2,
             "title": "Basics. - E-commerce Retailer",
             "img": "../../src/assets/images/mockup-basics.png",
             "skills": [
@@ -35,7 +36,7 @@
             ]
         },
         {
-            "index": 3,
+            "id": 3,
             "title": "My Personalized Model Plugin",
             "img": "../../src/assets/images/mockup-basics.png",
             "skills": [
@@ -43,7 +44,7 @@
             ]
         },
         {
-            "index": 4,
+            "id": 4,
             "title": "Zen Matcha",
             "img": "../../src/assets/images/mockup-basics.png",
             "skills": [

@@ -49,8 +49,9 @@ export default {
 
       animation: {
         'morph': 'morph 2s ease-in-out infinite',
-        'text-animation-lg': 'text-animation-lg 8s ease-in infinite',
         'text-animation': 'text-animation 8s ease-in infinite',
+        'text-animation-md': 'text-animation-md 8s ease-in infinite',
+        'text-animation-lg': 'text-animation-lg 8s ease-in infinite',
       },
 
       keyframes: {
@@ -60,17 +61,6 @@ export default {
           '50%': { 'border-radius': '60% 40% 60% 40% / 50% 40% 50% 40%' },
 
           '100%': { 'border-radius': '50% 40% 50% 40% / 50% 50% 50% 50%' },
-        },
-
-        'text-animation-lg': {
-          '0%, 100%': { top: '0' },
-          '20%': { top: '0' },
-          '25%': { top: '-90px' },
-          '45%': { top: '-90px' },
-          '50%': { top: '-180px' },
-          '70%': { top: '-180px' },
-          '75%': { top: '-270px' },
-          '95%': { top: '-270px' },
         },
 
         'text-animation': {
@@ -83,8 +73,29 @@ export default {
           '75%': { top: '-180px' },
           '95%': { top: '-180px' },
         },
-      }
 
+        'text-animation-md': {
+          '0%, 100%': { top: '0' },
+          '20%': { top: '0' },
+          '25%': { top: '-90px' },
+          '45%': { top: '-90px' },
+          '50%': { top: '-180px' },
+          '70%': { top: '-180px' },
+          '75%': { top: '-270px' },
+          '95%': { top: '-270px' },
+        },
+
+        'text-animation-lg': {
+          '0%, 100%': { top: '0' },
+          '20%': { top: '0' },
+          '25%': { top: '-110px' },
+          '45%': { top: '-110px' },
+          '50%': { top: '-220px' },
+          '70%': { top: '-220px' },
+          '75%': { top: '-330px' },
+          '95%': { top: '-330px' },
+        },
+      }
     },
   },
   plugins: [

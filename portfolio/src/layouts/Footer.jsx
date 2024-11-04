@@ -12,14 +12,14 @@ function Footer() {
     return (
         <footer className='pt-[6rem]'>
             <div className='max-w-container relative'>
-                <div className='absolute top-0 right-[10%]'>
+                {/* <div className='absolute top-0 right-[10%]'>
                     <img src={smile} alt="" width={90} />
-                </div>
+                </div> */}
                 <h2 className='font-craftwork font-extrabold text-orange '> Let's talk about</h2>
 
                 <h2>
-                    <div className='relative overflow-hidden h-[60px] leading-[60px] md:h-[90px] md:leading-[90px]'>
-                        <span className='relative animation-text md:animation-text-lg text-orange'>
+                    <div className='relative overflow-hidden h-[60px] leading-[60px] md:h-[90px] md:leading-[90px] lg:h-[110px] lg:leading-[110px]'>
+                        <span className='relative animation-text md:animation-text-md lg:animation-text-lg text-orange'>
                             Design <br />
                             Code <br />
                             Ideas <br />

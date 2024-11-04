@@ -150,10 +150,11 @@ function Home() {
                     </div>
 
                     <div className='grid grid-col-1 lg:grid-cols-2 gap-[4rem] md:gap-4 lg:gap-10'>
-                        {crafts.slice(0, 2).map((craft, index) => (
+                        {crafts.slice(0, 2).map((craft) => (
 
                             <CraftCard
-                                key={index}
+                                key={craft.id}
+                                id={craft.id}
                                 title={craft.title}
                                 img={craft.img}
                                 skills={craft.skills}
