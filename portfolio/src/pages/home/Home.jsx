@@ -8,8 +8,10 @@ import './HomeAnimation.css'
 import mockup from '../../assets/images/mockup-Tim_Hortons.png'
 import mockup2 from '../../assets/images/mockup-basics.png'
 import AboutCard from '../../components/AboutCard';
+import SectionContainer from '../../components/SectionContainer';
 import CraftCard from '../../components/CraftCard';
 import arrow from '../../assets/images/arrow.svg';
+import CraftGrid from '../../components/CraftGrid';
 
 function Home() {
 
@@ -64,9 +66,8 @@ function Home() {
 
     return (
         <>
-            <section className='overflow-hidden'>
-                <div className="max-w-container  min-h-[85vh] flex flex-col justify-between">
-
+            <section className='pb-0'>
+                <div className="max-w-container min-h-[85vh] flex flex-col justify-between">
                     <div className='flex flex-col justify-center items-center md:items-end py-[5rem] pr-4'>
                         <div className='relative'>
                             <p className='text-center font-aleo'>Based in <span className='block'>Vancouver</span> </p>
@@ -108,15 +109,11 @@ function Home() {
                 </div>
             </section>
 
-            <section className='bg-light-grey-bg h-full rounded-t-2xl lg:rounded-t-[8%] shadow-[0_-10px_14px_-15px_rgba(0,0,0,0.3)] -mt-2 md:-mt-4 pb-16'>
-                <div className='w-full inline-flex justify-center items-center'>
-                    <div className='bg-light-grey w-[150px] h-[6px] md:w-[180px] lg:w-[250px] rounded-full mt-4'> </div>
-                </div>
-
-                <div className="max-w-container">
-                    <div className='text-center py-[5rem]'>
+            <SectionContainer>
+                <section>
+                    <div className='text-center pb-[5rem]'>
                         <div className='inline-block'>
-                            <span className='font-roundo font-roundo-semibold tracking-[2px] text-orange uppercase'>Lin's Toolkit</span>
+                            <span className='font-roundo-semibold tracking-[2px] text-orange uppercase'>Lin's Toolkit</span>
                         </div>
                         <h3>What I Do.</h3>
                     </div>
@@ -135,32 +132,18 @@ function Home() {
                     <div className='text-center mt-10 w-full border border-dark-grey py-4 rounded-xl lg:mt-16'>
                         <Link to="/about" className='font-roundo text-base lg:tracking-[2px]'>More About Me</Link>
                     </div>
+                </section>
 
-                </div>
-            </section >
 
-            <section className='bg-light-grey-bg pb-16 rounded-b-2xl lg:rounded-b-[8%] shadow-[0_10px_14px_-15px_rgba(0,0,0,0.3)]'>
-                <div className="max-w-container">
-
-                    <div className='text-center pt-16 pb-8 md:pb-14 lg:pb-16'>
+                <section>
+                    <div className='text-center pb-8 md:pb-14 lg:pb-16'>
                         <div className='inline-block'>
-                            <span className='font-roundo font-roundo-semibold tracking-[2px] text-orange uppercase'>Linspired</span>
+                            <span className='font-roundo-semibold tracking-[2px] text-orange uppercase'>Linspired</span>
                         </div>
                         <h3>Featured Crafts.</h3>
                     </div>
 
-                    <div className='grid grid-col-1 lg:grid-cols-2 gap-[4rem] md:gap-4 lg:gap-10'>
-                        {crafts.slice(0, 2).map((craft) => (
-
-                            <CraftCard
-                                key={craft.id}
-                                id={craft.id}
-                                title={craft.title}
-                                img={craft.img}
-                                skills={craft.skills}
-                            />
-                        ))}
-                    </div>
+                    <CraftGrid crafts={crafts.slice(0, 2)} />
 
                     <div className="flex justify-center">
                         <div className='inline-flex gap-4 justify-center items-center mx-auto mt-10 border border-black py-3 px-8 rounded-full  lg:mt-16 group'>
@@ -170,8 +153,10 @@ function Home() {
                             </div>
                         </div>
                     </div>
-                </div>
-            </section>
+                </section>
+
+
+            </SectionContainer>
 
         </>
     )

@@ -5,8 +5,8 @@ function CraftCard({ title, img, skills, id }) {
 
     return (
         <>
-            <Link to={`/crafts/${id}`} className='groups'>
-                <div className='flex flex-col gap-1 mb-2 md:flex-row md:items-center md:justify-between md:mb-4'>
+            <Link to={`/crafts/${id}`} className='group'>
+                <div className='flex flex-col gap-1 mb-2 md:flex-row md:items-start md:justify-between md:mb-4'>
                     <h5 className='group-hover:text-orange transition-all duration-300 ease-in'>{title}</h5>
                     <div className='flex gap-2 mb-2 lg:mb-0'>
                         {skills.map((skill, index) => (
