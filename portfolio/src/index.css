@@ -11,44 +11,71 @@
 
     h1 {
         font-size: clamp(6.25rem, 3.5663rem + 11.4504vw, 9.0625rem);
-        line-height: clamp(9.375rem, 5.35rem + 17.1756vw, 13.59375rem);
-        @apply font-craftwork font-extrabold tracking-[5px] lg:tracking-[15px] text-nowrap
+        /* line-height: clamp(9.375rem, 5.35rem + 17.1756vw, 13.59375rem); */
+        @apply font-craftwork font-extrabold tracking-[5px] lg:tracking-[15px] text-nowrap leading-none
     }
 
     @media (min-width: 768px) {
         h1 {
             font-size: clamp(9.0625rem, 1.5625rem + 15.625vw, 15.625rem);
-            line-height: clamp(12.6875rem, 2.34375rem + 23.4375vw, 21.875rem);
+            /* line-height: clamp(12.6875rem, 2.34375rem + 23.4375vw, 21.875rem); */
         }
     }
 
 
     h2 {
-        font-size: clamp(2.375rem, 1.0106rem + 5.8216vw, 6.25rem);
+
+        /* font-size: clamp(2.375rem, 1.0106rem + 5.8216vw, 6.25rem);
+        line-height: clamp(3.5625rem, 1.5 * (1.0106rem + 5.8216vw), 9.375rem); */
+        font-size: clamp(3.375rem, 1.0106rem + 5.8216vw, 8.25rem);
         line-height: clamp(3.5625rem, 1.5 * (1.0106rem + 5.8216vw), 9.375rem);
 
         @apply tracking-[1.9px] lg:tracking-[3px] font-roundo font-roundo-bold
     }
 
     h3 {
-        @apply text-3xl
+        @apply text-2xl md:text-3xl font-craftwork font-extrabold
     }
 
     h4 {
         @apply text-xl font-roundo md:text-2xl
     }
 
+    h5 {
+        @apply text-md font-aleo md:text-lg lg:text-xl
+    }
+
+
+
     p {
-        @apply text-base
+        @apply text-base font-roundo md:text-md
     }
 
     a {
-        @apply text-xl tracking-[3px]
+        @apply text-lg tracking-[3px]
+    }
+
+    body {
+        @apply bg-light-yellow-bg
     }
 
     .max-w-container {
         max-width: 85rem;
         margin: 0 auto;
         padding: 0 2rem;
+    }
+}
+
+@layer utilities {
+    .animation-morph {
+        @apply animate-morph;
+    }
+
+    .animation-text {
+        @apply animate-text-animation;
+    }
+
+    .animation-text-lg {
+        @apply animate-text-animation-lg;
     }
 }

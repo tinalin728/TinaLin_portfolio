@@ -1,0 +1,19 @@
+{
+    "about": [
+        {
+            "title": "I Create",
+            "description": "From UXUI to branding, I design experiences that are both user-friendly and memorable.",
+            "icon": "../../src/assets/images/icon_create.svg"
+        },
+        {
+            "title": "I Design",
+            "description": "I create visual assets and content that capture attention and tell a story.",
+            "icon": "../../src/assets/images/icon_design.svg"
+        },
+        {
+            "title": "I Code",
+            "description": "I bring designs to life with my coding skills in HTML, CSS, JS, and React.js.",
+            "icon": "../../src/assets/images/icon_code.svg"
+        }
+    ]
+}

@@ -29,19 +29,19 @@ function Navbar() {
         <header className='bg-light-yellow-bg'>
             <div className='max-w-container py-6 relative'>
                 <div className='flex items-center'>
-                    <Link to="/" className='flex-1 z-10'>
+                    <Link to="/" className='flex-1 z-[100]'>
                         <img src={logo} alt="logo" className='w-[50px] md:w-[60px]' />
                     </Link>
 
-                    <div className={`${isOpen ? 'fixed inset-0 h-screen bg-light-grey-bg lg:relative lg:h-auto' : 'hidden'} lg:block`}>
+                    <div className={`${isOpen ? 'fixed inset-0 h-screen bg-light-grey-bg lg:relative lg:h-auto' : 'hidden'} lg:block z-[99]`}>
                         <div className='flex flex-col gap-[5rem] items-center justify-center h-full'>
                             <nav>
                                 <ul className='flex flex-col items-center justify-center gap-10 lg:h-auto lg:flex-row'>
                                     <li>
-                                        <Link to="/crafts" className='font-roundo text-3xl lg:tracking-[2px] lg:text-base'>Crafts</Link>
+                                        <Link to="/crafts" className='font-roundo text-xl lg:tracking-[2px] lg:text-base'>Crafts</Link>
                                     </li>
                                     <li>
-                                        <Link to="/about" className='font-roundo text-3xl lg:tracking-[2px] lg:text-base'>About</Link>
+                                        <Link to="/about" className='font-roundo text-xl lg:tracking-[2px] lg:text-base'>About</Link>
                                     </li>
 
                                     <PrimaryBtn
@@ -59,7 +59,7 @@ function Navbar() {
                     </div>
 
                     {/* hamburger icon */}
-                    <button className="hamburger z-10 cursor-pointer lg:hidden" aria-controls="primary-nav"
+                    <button className="hamburger z-[100] cursor-pointer lg:hidden" aria-controls="primary-nav"
                         aria-expanded={isOpen} onClick={toggleMenu}>
                         <svg className="hamburger w-[2.5rem]" viewBox="0, 0, 100, 100">
 
