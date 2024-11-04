@@ -1,9 +1,7 @@
-import React, { useState, useEffect } from 'react'
 import tape from '../assets/images/tape.svg'
 
 function AboutCard({ header, icon, content }) {
 
-    console.log("AboutCard Props:", { header, icon, content });
 
     return (
         <div className='relative flex flex-col gap-4 justify-center items-center p-8 bg-white rounded-xl shadow-md border-2 border-black'>
@@ -12,7 +10,7 @@ function AboutCard({ header, icon, content }) {
                 <img src={icon} alt="" width={150} />
             </div>
 
-            <h4 className=''>{header}</h4>
+            <h5 className=''>{header}</h5>
             <p className='text-center pb-6'>{content}</p>
         </div>
     )

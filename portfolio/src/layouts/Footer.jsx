@@ -3,13 +3,18 @@ import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLinkedinIn, faGithub } from "@fortawesome/free-brands-svg-icons"
 
+import SocialMediaBtn from '../components/buttons/SocialMediaBtn'
 import coffee from '../assets/images/coffee.png'
+import smile from '../assets/images/smile-face.svg'
 
 
 function Footer() {
     return (
-        <footer className='pt-16'>
-            <div className='max-w-container'>
+        <footer className='pt-[6rem]'>
+            <div className='max-w-container relative'>
+                <div className='absolute top-0 right-[10%]'>
+                    <img src={smile} alt="" width={90} />
+                </div>
                 <h2 className='font-craftwork font-extrabold text-orange '> Let's talk about</h2>
 
                 <h2>
@@ -23,44 +28,22 @@ function Footer() {
                     </div>
                 </h2>
 
-                <h5 className='mt-6 max-w-[65rem] font-roundo'> I would love to hear from you! Feel free to reach out to me about anything and let’s get creative together!</h5>
+                <h5 className='mt-12 max-w-[65rem] font-roundo'> I would love to hear from you! Feel free to reach out to me about anything and let’s get creative together!</h5>
 
                 <div className='text-xl flex gap-4 my-16 flex-wrap'>
-                    <div className='relative group transition-all duration-100 ease-in cursor-pointer'>
-                        <a
-                            href="https://www.linkedin.com/in/tina-lin-000613b5/"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="border h-[3rem] w-[3rem] inline-flex justify-center items-center rounded-lg border-black bg-light-yellow-bg relative z-10 hover:shadow-inner group-hover:text-orange transition-all duration-100 ease-in"
-                        >
-                            <FontAwesomeIcon icon={faLinkedinIn} className='cursor-pointer ' />
-                        </a>
-                        <div className='absolute w-full h-full top-[1px] left-[1px] border-2 border-black rounded-lg group-hover:top-0 group-hover:left-0 transition-all duration-100 ease-in'> </div>
-                    </div>
-                    <div className='relative group transition-all duration-100 ease-in cursor-pointer'>
-                        <a
-                            href="https://github.com/tinalin728"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="border h-[3rem] w-[3rem] inline-flex justify-center items-center rounded-lg border-black bg-light-yellow-bg relative z-10 hover:shadow-inner group-hover:text-orange transition-all duration-100 ease-in"
-                        >
-                            <FontAwesomeIcon icon={faGithub} className='cursor-pointer text-[2rem]' />
-                        </a>
-                        <div className='absolute w-full h-full top-[1px] left-[1px] border-2 border-black rounded-lg group-hover:top-0 group-hover:left-0 transition-all duration-100 ease-in'> </div>
-                    </div>
-
-                    <div className='relative group transition-all duration-100 ease-in cursor-pointer'>
-                        <a
-                            href="mailto:yuting.lin728@gmail.com"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="h-[3rem] px-4 inline-flex justify-center items-center rounded-lg bg-light-yellow-bg border border-black text-md tracking-[.8px] font-roundo-medium relative z-10 hover:shadow-inner transition-all duration-100 ease-in group-hover:text-orange"
-                        >
-                            yuting.lin728@gmail.com
-                        </a>
-                        <div className='absolute w-full h-full top-[1px] left-[1px] border-2 border-black rounded-lg group-hover:top-0 group-hover:left-0 transition-all duration-100 ease-in'> </div>
-                    </div>
-
+                    <SocialMediaBtn
+                        href='https://www.linkedin.com/in/tina-lin-000613b5/'
+                        icon={faLinkedinIn}
+                    />
+                    <SocialMediaBtn
+                        href='https://github.com/tinalin728'
+                        icon={faGithub}
+                    />
+                    <SocialMediaBtn
+                        href='mailto:yuting.lin728@gmail.com'
+                        type='text'
+                        text='yuting.lin728@gmail.com'
+                    />
 
                 </div>
 

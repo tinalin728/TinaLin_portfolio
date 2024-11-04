@@ -15,5 +15,41 @@
             "description": "I bring designs to life with my coding skills in HTML, CSS, JS, and React.js.",
             "icon": "../../src/assets/images/icon_code.svg"
         }
+    ],
+    "crafts": [
+        {
+            "index": 1,
+            "title": "Tim Horton's App Redesign",
+            "img": "../../src/assets/images/mockup-Tim_Hortons.png",
+            "skills": [
+                "UXUI"
+            ]
+        },
+        {
+            "index": 2,
+            "title": "Basics. - E-commerce Retailer",
+            "img": "../../src/assets/images/mockup-basics.png",
+            "skills": [
+                "Front-End",
+                "PM"
+            ]
+        },
+        {
+            "index": 3,
+            "title": "My Personalized Model Plugin",
+            "img": "../../src/assets/images/mockup-basics.png",
+            "skills": [
+                "UXUI"
+            ]
+        },
+        {
+            "index": 4,
+            "title": "Zen Matcha",
+            "img": "../../src/assets/images/mockup-basics.png",
+            "skills": [
+                "Branding",
+                "Graphic Design"
+            ]
+        }
     ]
 }
