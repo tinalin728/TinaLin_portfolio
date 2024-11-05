@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import logo from '../assets/images/logo.svg'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLinkedinIn } from "@fortawesome/free-brands-svg-icons"
@@ -11,6 +11,7 @@ function Navbar() {
     const toggleMenu = () => {
         setIsOpen(!isOpen);
     }
+
     // animation styles for the hamburger icon 
     const topStyle = isOpen
         ? { transform: 'translateX(-20px) rotate(45deg)', transition: 'transform 0.5s', transformOrigin: 'center' }
@@ -26,31 +27,40 @@ function Navbar() {
 
 
     return (
-        <header className='bg-light-yellow-bg'>
-            <div className='max-w-container py-6 relative'>
+        <header className=''>
+            <div className='max-w-container py-4 md:py-6 relative'>
                 <div className='flex items-center'>
-                    <Link to="/" className='flex-1 z-[100]'>
+                    <NavLink to="/" className='flex-1 z-[100]'>
                         <img src={logo} alt="logo" className='w-[50px] md:w-[60px]' />
-                    </Link>
+                    </NavLink>
 
-                    <div className={`${isOpen ? 'fixed inset-0 h-screen bg-light-grey-bg lg:relative lg:h-auto' : 'hidden'} lg:block z-[99]`}>
+                    <div className={`${isOpen ? 'fixed inset-0 h-screen bg-light-grey-bg md:relative md:h-auto' : 'hidden'} md:block z-[99]`}>
                         <div className='flex flex-col gap-[5rem] items-center justify-center h-full'>
                             <nav>
-                                <ul className='flex flex-col items-center justify-center gap-10 lg:h-auto lg:flex-row'>
-                                    <li>
-                                        <Link to="/crafts" className='font-roundo text-xl lg:tracking-[2px] lg:text-base'>Crafts</Link>
-                                    </li>
-                                    <li>
-                                        <Link to="/about" className='font-roundo text-xl lg:tracking-[2px] lg:text-base'>About</Link>
-                                    </li>
+                                <ul className='flex flex-col items-center justify-center gap-8 md:h-auto md:flex-row'>
+                                    <PrimaryBtn
+                                        text='Crafts'
+                                        to='/crafts'
+                                        onClick={toggleMenu}
+
+                                    />
 
                                     <PrimaryBtn
-                                        text='contact'
-                                        href='#contact'
+                                        text='About'
+                                        to='/about'
+                                        onClick={toggleMenu}
                                     />
+                                    <PrimaryBtn
+                                        text='Resume'
+                                        href='/'
+                                        bgColor='bg-yellow'
+                                        onClick={toggleMenu}
+
+                                    />
+
                                 </ul>
                             </nav>
-                            <div className='lg:hidden'>
+                            <div className='md:hidden'>
                                 <a href="https://www.linkedin.com/in/tina-lin-000613b5/" className='text-2xl'>
                                     <FontAwesomeIcon icon={faLinkedinIn} />
                                 </a>
@@ -59,7 +69,7 @@ function Navbar() {
                     </div>
 
                     {/* hamburger icon */}
-                    <button className="hamburger z-[100] cursor-pointer lg:hidden" aria-controls="primary-nav"
+                    <button className="hamburger z-[100] cursor-pointer md:hidden" aria-controls="primary-nav"
                         aria-expanded={isOpen} onClick={toggleMenu}>
                         <svg className="hamburger w-[2.5rem]" viewBox="0, 0, 100, 100">
 

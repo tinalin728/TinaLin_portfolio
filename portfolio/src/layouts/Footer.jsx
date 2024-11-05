@@ -15,10 +15,10 @@ function Footer() {
                 {/* <div className='absolute top-0 right-[10%]'>
                     <img src={smile} alt="" width={90} />
                 </div> */}
-                <h2 className='font-craftwork font-extrabold text-orange '> Let's talk about</h2>
+                <span className='footer-header '> Let's talk about
 
-                <h2>
-                    <div className='relative overflow-hidden h-[60px] leading-[60px] md:h-[90px] md:leading-[90px] lg:h-[110px] lg:leading-[110px]'>
+
+                    <div className='relative overflow-hidden h-[65px] leading-[65px] md:h-[95px] md:leading-[95px] lg:h-[112px] lg:leading-[112px]'>
                         <span className='relative animation-text md:animation-text-md lg:animation-text-lg text-orange'>
                             Design <br />
                             Code <br />
@@ -26,7 +26,8 @@ function Footer() {
                             Collabs <br />
                         </span>
                     </div>
-                </h2>
+
+                </span>
 
                 <h5 className='mt-12 max-w-[65rem] font-roundo'> I would love to hear from you! Feel free to reach out to me about anything and let’s get creative together!</h5>
 

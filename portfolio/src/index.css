@@ -27,7 +27,7 @@
 
         /* font-size: clamp(2.375rem, 1.0106rem + 5.8216vw, 6.25rem);
         line-height: clamp(3.5625rem, 1.5 * (1.0106rem + 5.8216vw), 9.375rem); */
-        font-size: clamp(3.375rem, 1.0106rem + 5.8216vw, 8.25rem);
+        font-size: clamp(4rem, -2.8571rem + 14.2857vw, 9.5rem);
         line-height: clamp(3.5625rem, 1.5 * (1.0106rem + 5.8216vw), 9.375rem);
 
         @apply tracking-[1.9px] lg:tracking-[3px] font-roundo font-roundo-bold
@@ -59,7 +59,7 @@
     }
 
     section {
-        @apply py-14
+        @apply py-14 lg:py-[5rem]
     }
 
     .max-w-container {
@@ -72,6 +72,11 @@
         .max-w-container {
             padding: 0 4rem;
         }
+    }
+
+    .footer-header {
+        font-size: clamp(2.375rem, 1.0106rem + 5.8216vw, 6.25rem);
+        @apply font-craftwork font-extrabold text-orange;
     }
 }
 
@@ -90,5 +95,9 @@
 
     .animation-text-lg {
         @apply animate-text-animation-lg;
+    }
+
+    .animation-typing {
+        @apply animate-typingCursor;
     }
 }

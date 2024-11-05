@@ -1,5 +1,22 @@
-@media (max-width: 768px) {
+.custom-text::before {
+    content: attr(data-text);
+    position: absolute;
 
+    top: 54%;
+    left: 50.7%;
+    transform: translate(-50%, -50%);
+
+    width: 100%;
+    -webkit-text-stroke: 0px;
+    color: #FEE6BD;
+    z-index: -1;
+}
+
+.custom-text.second::before {
+    color: #dbc8ac;
+}
+
+@media (max-width: 768px) {
     .scroller {
         max-width: 700px;
         overflow: hidden;
@@ -18,12 +35,12 @@
     .scroller[data-animated="true"] .scroller__inner {
         width: max-content;
         flex-wrap: nowrap;
-        animation: scroll var(--_animation-duration, 20s) linear infinite;
+        animation: scroll var(--_animation-duration, 8s) linear infinite;
 
     }
 
     .scroller[data-speed="fast"] {
-        --_animation-duration: 20s;
+        --_animation-duration: 8s;
     }
 
     @keyframes scroll {

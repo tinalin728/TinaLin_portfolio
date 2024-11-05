@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import SectionContainer from '../components/SectionContainer'
 import CraftGrid from '../components/CraftGrid'
 import PageHero from '../components/PageHero'
+import DivContainer from '../components/DivContainer'
 
 function Crafts() {
     const [crafts, setCrafts] = useState([])
@@ -21,9 +21,11 @@ function Crafts() {
                 tagline='Pieces Woven With Love and Purpose'
             />
 
-            <SectionContainer>
-                <CraftGrid crafts={crafts} />
-            </SectionContainer>
+            <DivContainer>
+                <section>
+                    <CraftGrid crafts={crafts} />
+                </section>
+            </DivContainer>
         </>
     )
 }
