@@ -23,7 +23,7 @@ export function removeAnimation() {
 
 export function typingAnimation() {
     const typingText = document.querySelector('.text-swap');
-    const textArray = ["Front-End Developer", "UXUI Designer"];
+    const textArray = ["Code", "Ideas", "Collabs"];
 
     let arrayIndex = 1;
 

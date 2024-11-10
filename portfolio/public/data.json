@@ -1,19 +1,25 @@
 {
     "about": [
         {
+            "id": 1,
             "title": "I Create",
             "description": "From UXUI to branding, I design experiences that are both user-friendly and memorable.",
-            "icon": "../../src/assets/images/icon_create.svg"
+            "icon": "../src/assets/images/homepage/create.svg",
+            "width": 140
         },
         {
+            "id": 2,
             "title": "I Design",
             "description": "I create visual assets and content that capture attention and tell a story.",
-            "icon": "../../src/assets/images/icon_design.svg"
+            "icon": "../src/assets/images/homepage/design.svg",
+            "width": 130
         },
         {
+            "id": 3,
             "title": "I Code",
             "description": "I bring designs to life with my coding skills in HTML, CSS, JS, and React.js.",
-            "icon": "../../src/assets/images/icon_code.svg"
+            "icon": "../src/assets/images/homepage/code.svg",
+            "width": 130
         }
     ],
     "crafts": [
@@ -21,24 +27,28 @@
             "id": 1,
             "title": "Tim Horton's App Redesign",
             "path": "/craft",
-            "img": "../../src/assets/images/mockup-Tim_Hortons.png",
+            "img": "../../src/assets/images/crafts/tims/cover.png",
             "skills": [
-                "UXUI"
+                "UXUI",
+                "Prototyping",
+                "User Testing"
             ]
         },
         {
             "id": 2,
             "title": "Basics. - E-commerce Retailer",
-            "img": "../../src/assets/images/mockup-basics.png",
+            "img": "../../src/assets/images/crafts/basics/cover.png",
             "skills": [
-                "HTML Tailwind JS",
-                "PM"
+                "HTML",
+                "Tailwind",
+                "JS",
+                "Project Management"
             ]
         },
         {
             "id": 3,
             "title": "My Personalized Model Plugin",
-            "img": "../../src/assets/images/mockup-basics.png",
+            "img": "../../src/assets/images/crafts/basics/cover.png",
             "skills": [
                 "UXUI"
             ]

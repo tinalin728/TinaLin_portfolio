@@ -5,12 +5,14 @@ import About from './pages/About'
 import Crafts from './pages/Crafts'
 import Layout from './layouts/Layout'
 import CraftDetail from './pages/CraftDetail'
+import ScrollToTop from './hooks/ScrollToTop'
 
 
 function App() {
 
   return (
     <Router>
+      <ScrollToTop />
       <Routes>
         <Route element={<Layout />}>
           <Route path='/' element={<Home />} />

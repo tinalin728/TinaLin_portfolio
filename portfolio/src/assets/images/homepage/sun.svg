@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 349.75 347.98" style="overflow: visible;">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #222831;
+      }
+
+      .cls-2 {
+        fill: #fbf8f0;
+        stroke-linejoin: round;
+        stroke-width: 3px;
+      }
+
+      .cls-2, .cls-3 {
+        stroke: #222831;
+        stroke-linecap: round;
+      }
+
+      .cls-4 {
+        fill: #ffc7c7;
+      }
+
+      .cls-5 {
+        fill: #fee6bd;
+        animation: scaleRay 1s infinite;
+        transform-origin: center;
+      }
+
+      .cls-3 {
+        fill: none;
+        stroke-miterlimit: 10;
+        stroke-width: 4px;
+      }
+
+      .smile{
+        animation: rotate 2s infinite;
+        transform-origin:center;
+      }
+
+      @keyframes scaleRay {
+        0%,100% {
+          transform:scale(.98) ;
+          
+        }
+        50% {transform:scale(1);
+        }
+      }
+      
+      @keyframes rotate {
+        0%,100% {
+          transform:rotate(0) ;
+          
+        }
+        50% {transform:rotate(15deg);
+        }
+      }
+      
+            
+    </style>
+  </defs>
+  <g id="Layer_2-2" data-name="Layer 2">
+    <path class="cls-5" d="M264.35,312.21h0c-26.68-27.32-73.12-11.95-78.23,25.89h0c-1.02,7.57-11.84,7.94-13.37.46h0c-7.67-37.41-55.05-49.59-79.81-20.51h0c-4.95,5.82-14.25.28-11.5-6.85h0c13.77-35.62-19.5-71.47-56.05-60.4h0c-7.31,2.22-12.14-7.47-5.97-11.98h0c30.84-22.52,22.24-70.67-14.49-81.11h0c-7.35-2.09-6.17-12.85,1.45-13.3h0c38.12-2.27,56.92-47.43,31.66-76.07h0c-5.05-5.73,1.75-14.15,8.41-10.4h0c33.3,18.7,73.52-9.13,67.76-46.88h0c-1.15-7.55,9.12-10.95,12.7-4.2h0c17.9,33.73,66.79,32.07,82.35-2.8h0c3.11-6.98,13.6-4.28,12.96,3.33h0c-3.18,38.06,38.85,63.09,70.79,42.16h0c6.39-4.19,13.75,3.75,9.1,9.81h0c-23.25,30.3-1.43,74.07,36.76,73.75h0c7.64-.07,9.54,10.59,2.35,13.17h0c-35.94,12.92-41.25,61.54-8.95,81.91h0c6.46,4.08,2.31,14.07-5.14,12.35h0c-37.22-8.56-67.97,29.47-51.81,64.07h0c3.23,6.92-5.67,13.08-11,7.61Z"/>
+
+    
+    <g class="smile"> 
+      <circle class="cls-2" cx="172.8" cy="166.92" r="118"/>
+      <circle class="cls-1" cx="222.67" cy="123.69" r="4.5"/>
+      <circle class="cls-1" cx="150.57" cy="112.27" r="4.5"/>
+      <path class="cls-3" d="M221.56,159.45s-16.87,18.28-41.29,13.72c-24.42-4.57-35.22-25.84-35.22-25.84"/>
+      <ellipse class="cls-4" cx="113.47" cy="129.17" rx="6" ry="16.5" transform="translate(-31.86 221.04) rotate(-81)"/>
+      <ellipse class="cls-4" cx="252.06" cy="149.1" rx="6" ry="16.5" transform="translate(65.37 374.73) rotate(-81)"/>
+    </g>
+  </g>
+</svg>

@@ -10,27 +10,13 @@
 
 
     h1 {
-        font-size: clamp(6.25rem, 3.5663rem + 11.4504vw, 9.0625rem);
-        /* line-height: clamp(9.375rem, 5.35rem + 17.1756vw, 13.59375rem); */
-        @apply font-craftwork font-extrabold tracking-[5px] lg:tracking-[15px] text-nowrap leading-none
+        font-size: clamp(6.875rem, 4.8944rem + 8.4507vw, 12.5rem);
+        @apply font-craftwork font-extrabold tracking-[10px] text-nowrap leading-none
     }
-
-    @media (min-width: 768px) {
-        h1 {
-            font-size: clamp(9.0625rem, 1.5625rem + 15.625vw, 15.625rem);
-            /* line-height: clamp(12.6875rem, 2.34375rem + 23.4375vw, 21.875rem); */
-        }
-    }
-
 
     h2 {
-
-        /* font-size: clamp(2.375rem, 1.0106rem + 5.8216vw, 6.25rem);
-        line-height: clamp(3.5625rem, 1.5 * (1.0106rem + 5.8216vw), 9.375rem); */
-        font-size: clamp(4rem, -2.8571rem + 14.2857vw, 9.5rem);
-        line-height: clamp(3.5625rem, 1.5 * (1.0106rem + 5.8216vw), 9.375rem);
-
-        @apply tracking-[1.9px] lg:tracking-[3px] font-roundo font-roundo-bold
+        font-size: clamp(3.4375rem, 2.3371rem + 4.6948vw, 6.5625rem);
+        @apply tracking-[1.9px] lg:tracking-[3px] font-roundo-bold text-orange
     }
 
     h3 {
@@ -38,20 +24,20 @@
     }
 
     h4 {
-        @apply text-xl font-roundo md:text-2xl
+        @apply text-xl font-aleo font-bold
     }
 
     h5 {
-        @apply text-md font-aleo md:text-lg lg:text-xl
+        @apply text-lg font-aleo
     }
 
 
     p {
-        @apply text-base font-roundo md:text-md
+        @apply text-base font-roundo md:text-[18px]
     }
 
     a {
-        @apply text-lg tracking-[3px]
+        @apply text-base tracking-[3px] font-roundo uppercase
     }
 
     body {
@@ -59,7 +45,7 @@
     }
 
     section {
-        @apply py-14 lg:py-[5rem]
+        @apply py-[5rem] lg:py-[10rem]
     }
 
     .max-w-container {
@@ -76,7 +62,7 @@
 
     .footer-header {
         font-size: clamp(2.375rem, 1.0106rem + 5.8216vw, 6.25rem);
-        @apply font-craftwork font-extrabold text-orange;
+        @apply font-craftwork font-extrabold text-orange
     }
 }
 
@@ -85,19 +71,7 @@
         @apply animate-morph;
     }
 
-    .animation-text {
-        @apply animate-text-animation;
-    }
-
-    .animation-text-md {
-        @apply animate-text-animation-md;
-    }
-
-    .animation-text-lg {
-        @apply animate-text-animation-lg;
-    }
-
-    .animation-typing {
-        @apply animate-typingCursor;
+    .animation-waves {
+        @apply animate-waves;
     }
 }

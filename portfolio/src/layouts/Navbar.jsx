@@ -3,13 +3,19 @@ import { NavLink } from 'react-router-dom'
 import logo from '../assets/images/logo.svg'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLinkedinIn } from "@fortawesome/free-brands-svg-icons"
-import PrimaryBtn from '../components/buttons/PrimaryBtn'
+import NavLinkBtn from '../components/buttons/NavLinkBtn'
 
 function Navbar() {
 
     const [isOpen, setIsOpen] = useState(false);
     const toggleMenu = () => {
         setIsOpen(!isOpen);
+    }
+
+    const handleMenuToggle = () => {
+        if (window.innerWidth < 768) {
+            toggleMenu();
+        }
     }
 
     // animation styles for the hamburger icon 
@@ -38,23 +44,23 @@ function Navbar() {
                         <div className='flex flex-col gap-[5rem] items-center justify-center h-full'>
                             <nav>
                                 <ul className='flex flex-col items-center justify-center gap-8 md:h-auto md:flex-row'>
-                                    <PrimaryBtn
+                                    <NavLinkBtn
                                         text='Crafts'
                                         to='/crafts'
-                                        onClick={toggleMenu}
+                                        onClick={handleMenuToggle}
 
                                     />
 
-                                    <PrimaryBtn
+                                    <NavLinkBtn
                                         text='About'
                                         to='/about'
-                                        onClick={toggleMenu}
+                                        onClick={handleMenuToggle}
                                     />
-                                    <PrimaryBtn
+                                    <NavLinkBtn
                                         text='Resume'
                                         href='/'
                                         bgColor='bg-yellow'
-                                        onClick={toggleMenu}
+                                        onClick={handleMenuToggle}
 
                                     />
 

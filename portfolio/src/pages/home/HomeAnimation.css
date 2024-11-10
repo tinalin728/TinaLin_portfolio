@@ -12,9 +12,12 @@
     z-index: -1;
 }
 
-.custom-text.second::before {
-    color: #dbc8ac;
+.custom-text.dot::before {
+    top: 53%;
+    left: 60%;
 }
+
+
 
 @media (max-width: 768px) {
     .scroller {

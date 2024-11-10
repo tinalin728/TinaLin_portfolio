@@ -1,18 +1,95 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons"
+import { faX } from "@fortawesome/free-solid-svg-icons"
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+gsap.registerPlugin(useGSAP);
 
-import { addAnimation, removeAnimation, typingAnimation } from './HomeAnimation';
 import './HomeAnimation.css'
 
 import AboutCard from '../../components/AboutCard';
-import DivContainer from '../../components/DivContainer';
 import CraftGrid from '../../components/CraftGrid';
+import PrimaryBtn from '../../components/buttons/PrimaryBtn';
+import WindowWidth from '../../hooks/WindowWidth';
+import HorizontalScroll from '../../components/HorizontalScroll';
+import AirplaneTest from './AirplaneTest';
+
+import cloud from '../../assets/images/cloud.svg'
+import airplaneBg from '../../assets/images/homepage/airplane.svg'
 import arrow from '../../assets/images/arrow.svg';
-import grid from '../../assets/images/grid.svg'
+import arrowDown from '../../assets/images/homepage/arrowDown.svg'
+import sun from "../../assets/images/homepage/sun.svg"
+import sunglasses from "../../assets/images/homepage/emoji-sunglasses.png"
+import pBorder from '../../assets/images/homepage/pixelated-border.svg'
 
 function Home() {
+
+    const cloudStyle = {
+        backgroundImage: `url(${cloud})`,
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+    }
+
+    const airplaneContainer = useRef(null);
+    const cloudContainer1 = useRef(null);
+    const cloudContainer2 = useRef(null);
+    const scrollContainer = useRef(null);
+    const emojiContainer = useRef(null);
+
+    useGSAP(() => {
+        gsap.fromTo(
+            airplaneContainer.current,
+            { x: '-100%' },
+            {
+                x: '0%',
+                duration: 2,
+                ease: 'power2.out',
+            }),
+
+            gsap.fromTo(
+                cloudContainer2.current, // Target the cloud container
+                {
+                    x: '-5vw',
+                },
+                {
+                    x: '100vw', // Move to off-screen on the right
+                    duration: 25, // Animation duration (10 seconds for a smooth floating effect)
+                    ease: 'linear', // Use linear easing for constant speed (floating effect)
+                    repeat: -1, // Infinite repeat
+                    repeatDelay: 0, // No delay between repetitions
+                });
+
+        gsap.fromTo(cloudContainer1.current,
+            {
+                x: 0,
+                y: 0,
+            },
+            {
+                x: 8,
+                y: 10,
+                yoyo: true,
+                repeat: -1,
+                duration: 1.5,
+                ease: 'sine.inOut'
+            });
+
+        // scroll container
+        gsap.fromTo(scrollContainer.current,
+            {
+                y: 150,
+                scale: .2,
+                opacity: .5,
+            },
+            {
+                y: 0,
+                scale: 1,
+                opacity: 1,
+                duration: .5,
+                ease: 'back.out(1.7)',
+            })
+    }, []);
+
 
     const [about, setAbout] = useState([]);
     const [crafts, setCrafts] = useState([])
@@ -26,183 +103,161 @@ function Home() {
             });
     }, [])
 
-    // inline constant for styling
-    const eyeSize = {
-        width: 'clamp(30px, 4.5vw, 60px)',
-        height: 'clamp(35px, 5.5vw, 65px)'
-    }
-
-    const pupilSize = {
-        width: 'clamp(15px, 2.5vw, 25px)',
-        height: 'clamp(15px, 2.5vw, 25px)'
-    }
-
-    const testStroke = {
-        WebkitTextStroke: '2px #FBF8F0'
-    }
-    const backgroundImage = {
-        backgroundImage: `url(${grid})`,
-        backgroundSize: 'contain',
-        backgroundPosition: 'center'
-    }
-
-
-    useEffect(() => {
-
-        const handleResize = () => {
-            if (window.innerWidth <= 768) {
-                addAnimation();
-            } else {
-                removeAnimation();
-            };
-        }
-
-        handleResize();
-
-        typingAnimation();
-
-
-        window.addEventListener('resize', handleResize);
-        return () => {
-            window.addEventListener('resize', handleResize)
-        }
-
-    }, []);
-
-
-
     return (
         <>
-            {/* <section className='pb-0'>
-                <div className="max-w-container min-h-[85vh] flex flex-col justify-between">
-                    <div className='border-2 px-[2rem]'>
-                        <div className='flex flex-col justify-center items-center md:items-end pr-4'>
-                            <div className='relative'>
-                                <p className='text-center font-aleo'>Based in <span className='block'>Vancouver</span> </p>
-                                <span className='animation-morph absolute top-1/2 left-1/2 min-h-[80px] min-w-[120px] border border-yellow -translate-x-1/2 -translate-y-1/2 rounded-[50%] -rotate-12'></span>
+            <section
+                className='relative bg-light-yellow-bg p-0 h-[calc(100vh-80px)]'>
+
+                <div ref={airplaneContainer} className='absolute top-1/2 bottom-0 left-0 w-[112%] -translate-y-1/2'><img src={airplaneBg} alt="bg airplane" className='w-full object-cover' /></div>
+
+                <div ref={cloudContainer1}
+                    className='absolute top-[10%] left-[25%] -translate-x-1/2 '> <img src={cloud} alt="cloud" className='cloud w-[50%] md:w-[60%] lg:w-[65%]' /></div>
+                <div ref={cloudContainer2} className='absolute bottom-[30%] left-0 -translate-x-1/2 '> <img src={cloud} alt="cloud" className='w-[50%] md:w-[60%] lg:w-[65%]' /></div>
+
+                {/* Content */}
+                <div className='h-full' >
+                    <div className="max-w-container h-full grid place-items-center relative">
+                        <div className='absolute top-20 left-[5%] md:-bottom-8 md:-right-8 lg:-bottom-10 lg:-right-10'>
+                            <img src={sun} alt="" className='md:w-[150px] lg:w-[160px]' />
+                        </div>
+                        <div className='flex flex-col items-center relative'>
+                            <div className='flex flex-col gap-4 md:flex-row lg:gap-10 items-center mb-6'>
+                                <div className="px-4 py bg-white border border-black rounded-full lg:px-8">
+                                    <p className="font-craftwork font-medium text-sm md:text-base md:tracking-[1px] lg:leading-none lg:py-2">Front-End Developer</p>
+                                </div>
+                                <FontAwesomeIcon icon={faX} className='hidden md:block' />
+
+                                <div className="px-4 bg-charcoal border border-charcoal rounded-full  lg:px-6">
+                                    <p className="font-craftwork font-medium text-white text-sm md:text-base md:tracking-[1px] lg:leading-none lg:py-2">Product Designer</p>
+                                </div>
+                            </div>
+                            <div className="relative text-center flex flex-col lg:flex-row mb-[2rem]">
+                                <h1 className="relative text-orange">
+                                    Tina
+                                </h1>
+                                <h1 className='relative text-orange lg:px-10'>
+                                    Lin
+                                </h1>
                             </div>
                         </div>
+                    </div>
 
-                        <div>
-                            <div className='flex flex-col items-center md:flex-row md:items-end md:justify-start'>
-                                <h2 className='text-light-yellow-bg text-stroke order-last text-center mb-8 md:text-left'>Into the
-                                    <div className=' ml-[.8rem] md:ml-4 lg:ml-6 inline-block relative border'>
-                                        <span className='md:tracking-[5px]'> <span style={testStroke}>e</span>y<span style={testStroke}>e</span></span>
+                    {/* scroll element */}
+                    <div ref={scrollContainer} className="absolute bottom-0 left-1/2 -translate-x-1/2">
+                        <div className="relative inline-flex flex-col items-center justify-center">
+                            <div className="inline-block relative">
+                                <div className="absolute inset-0 w-full h-full bg-light-grey border border-black translate-y-[.2rem] rotate-[5deg] -z-10"></div>
 
-                                        <div className='absolute top-1/2 left-0 -translate-y-1/2 flex items-center justify-center bg-light-yellow-bg rounded-[50%] border border-dark-grey overflow-hidden' style={eyeSize}>
-                                            <div className='pupil bg-black rounded-full translate-y-[10px] md:translate-y-[15px] lg:translate-y-[20px]' style={pupilSize}></div>
-                                        </div>
-                                        <div className='absolute top-1/2 right-0 -translate-y-1/2 flex items-center justify-center bg-light-yellow-bg rounded-[50%] border border-dark-grey overflow-hidden' style={eyeSize}>
-                                            <div className='pupil bg-black rounded-full translate-y-[10px] md:translate-y-[15px] lg:translate-y-[20px]' style={pupilSize}></div>
-                                        </div>
-                                    </div>
-
-                                    <span className='block'>& mind of</span>
-                                </h2>
-
-                                <div className='pb-4 md:pb-4 md:order-last lg:pb-14' >
-                                    <h5 className=''>A Product Designer  & <br /> Front-End Developer </h5>
+                                <div className="p-[.8rem] bg-off-white border-2 border-black z-10 inline-flex gap-4 items-center">
+                                    <img src={arrowDown} alt="location" className="w-[32px]" />
+                                    <p className="text-sm md:text-base text-nowrap tracking-[1px]">SCROLL</p>
                                 </div>
                             </div>
-
-                            <div className="text-center md:text-left scroller" data-speed="fast" data-direction="left">
-                                <div className='scroller__inner'>
-                                    <h1 className='text-orange'>
-                                        Tina Lin
-                                    </h1>
-                                </div>
-                            </div>
-
+                            <div className='h-[60px] w-2 border-x-2 border-black bg-white'></div>
                         </div>
                     </div>
                 </div>
-            </section> */}
+            </section >
 
-            <section className='h-[calc(100vh-105px)] lg:h-[calc(100vh-120px)] bg-light-yellow-bg pb-0'>
-                <div className='max-w-container h-full'>
-                    <div className='flex flex-col justify-between h-full'>
+            <HorizontalScroll speed={.1} bgColor='bg-yellow'>
+                <img src={sunglasses} alt="emoji" width={25} className="h-[25px]" />
+                <p >A designer who can code</p>
+                <img src={sunglasses} alt="emoji" width={25} className="h-[25px]" />
+                <p >A developer who can design</p>
+                <img src={sunglasses} alt="emoji" width={25} className="h-[25px]" />
+                <p >Based in Vancouver</p>
+            </HorizontalScroll>
 
-                        <div className='mx-auto mt-[8rem]'>
-                            <div className='inline-block h-full relative '>
-                                <div className='relative z-10 inline-flex items-center w-[300px] md:w-[350px] border border-black px-6 py-2 bg-white rounded-full overflow-hidden md:px-10'>
-                                    <div className='mr-6 text-md'>
-                                        <FontAwesomeIcon icon={faMagnifyingGlass} />
-                                    </div>
-                                    <p className='relative'> A </p>
-                                    <p className='text-swap ml-2 relative text-orange before:content-[""] before:absolute before:w-full before:h-[80%] before:top-1/2 before:left-0 before:-translate-y-1/2 before:bg-white before:animation-typing before:border-l before:border-l-dark-grey'>Front-End Developer </p>
-                                </div>
-                                <div className='w-full h-full top-[4px] left-[4px] absolute bg-red-300 rounded-full border-2 border-black z-0'></div>
-                            </div>
-                        </div>
-
-                        <div>
-                            <h2 className='relative text-light-yellow-bg text-stroke z-[1] custom-text mb-6 text-center md:text-left' data-text="Hello! I'm">
-                                Hello! I'm
-                            </h2>
-
-                            <div className="text-center scroller" data-speed="fast" data-direction="left">
-                                <div className='scroller__inner'>
-                                    <h1 className='text-orange'>
-                                        Tina Lin
-                                    </h1>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <DivContainer>
-                <section className=''>
-                    <div className='text-center pb-[5rem]'>
-                        <div className='inline-block'>
-                            <span className='font-roundo-semibold tracking-[2px] text-orange uppercase'>Lin's Toolkit</span>
-                        </div>
-                        <h3>What I Do.</h3>
+            {/* about me */}
+            <section className='grid place-items-center bg-light-grey-bg'>
+                <div className="max-w-container text-center">
+                    <div className='text-center pb-10 lg:pb-12'>
+                        <span className='font-roundo-semibold tracking-[2px] text-orange uppercase'>Lin's Toolkit</span>
+                        <h3 className='mt-2' >What I Do<span className='dot custom-text text-stroke text-transparent relative z-10' data-text=".">.</span></h3>
                     </div>
 
-                    <div className="grid grid-col-1 md:grid-cols-3 gap-[4rem] md:gap-4 lg:gap-10">
+                    <div className="flex flex-wrap items-center justify-center gap-8 mb-10 md:mb-14 lg:mb-20">
                         {about.map((item) => (
                             <AboutCard
-                                key={item.title}
+                                key={item.id}
                                 header={item.title}
                                 icon={item.icon}
                                 content={item.description}
+                                width={item}
+                                translate={item.id === 2 ? 'lg:translate-y-4' : ''}
                             />
                         ))}
                     </div>
 
-                    <div className='text-center mt-10 w-full border border-dark-grey py-4 rounded-xl lg:mt-16'>
-                        <Link to="/about" className='font-roundo text-base lg:tracking-[2px]'>More About Me</Link>
+                    <PrimaryBtn
+                        to='/about'
+                        text='More About Me'
+                        icon={arrow}
+                    />
+                </div>
+            </section>
+
+            {/* divider */}
+            <div className='bg-light-grey-bg flex flex-col justify-center'>
+                <div ref={emojiContainer} className="max-w-container w-full origin-center	">
+                    <img className='origin-center' src={sunglasses} alt="" width={30} />
+                </div>
+                <div className="max-w-container w-full">
+                    <div className="max-w-container h-2"
+                        style={{
+                            backgroundImage: `url(${pBorder})`,
+                            backgroundRepeat: 'repeat-x',
+                            backgroundSize: 'auto 100%'
+                        }}>
+
                     </div>
-                </section>
+                </div>
+            </div>
 
-
-                <section className=''>
-                    <div className='text-center pb-8 md:pb-14 lg:pb-16'>
+            {/* featured crafts */}
+            <section className='bg-light-grey-bg  pb-[8rem] rounded-b-[50px] lg:rounded-b-[70px]'>
+                <div className="max-w-container text-center">
+                    <div className='text-center pb-10 lg:pb-12'>
                         <div className='inline-block'>
                             <span className='font-roundo-semibold tracking-[2px] text-orange uppercase'>Linspired</span>
                         </div>
-                        <h3>Featured Crafts.</h3>
+                        <h3 className='text-wrap'>Featured Crafts.</h3>
                     </div>
 
-                    <CraftGrid crafts={crafts.slice(0, 2)} />
-
-                    <div className="flex justify-center">
-                        <div className='inline-flex gap-4 justify-center items-center mx-auto mt-10 border border-black py-3 px-8 rounded-full  lg:mt-16 group'>
-                            <Link to="/crafts" className='font-roundo text-base lg:tracking-[2px]'>More Crafts</Link>
-                            <div>
-                                <img src={arrow} alt="" width={35} className='group-hover:-rotate-[15deg] transition duration-300 ease-in' />
-                            </div>
-                        </div>
+                    <div className='mb-10 lg:mb-16 flex flex-col'>
+                        <CraftGrid crafts={crafts.slice(0, 2)} />
                     </div>
-                </section>
-            </DivContainer>
 
-
-
+                    <PrimaryBtn
+                        to='/crafts'
+                        text='More Crafts'
+                        icon={arrow}
+                    />
+                </div>
+            </section>
         </>
     )
 }
 
 export default Home
+
+
+// const dashlineStyle = {
+//     backgroundImage: `url(${dashline})`,
+//     backgroundPosition: 'left center',
+//     backgroundRepeat: 'no-repeat',
+//     backgroundSize: '112%'
+// }
+
+// const airplaneRef = useRef(null);
+// useGSAP(() => {
+//     gsap.fromTo(
+//         airplaneRef.current,
+//         { x: '-100%' },
+//         {
+//             x: '0%',
+//             duration: 2,
+//             ease: 'power2.out',
+//         }
+//     )
+// }, { scope: airplaneRef })

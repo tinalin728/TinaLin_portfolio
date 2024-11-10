@@ -37,25 +37,28 @@ export default {
       colors: {
         orange: '#F64117',
         yellow: '#FEE6BD',
+        'yellow-light': '#fff5e4',
         'light-yellow-bg': '#FBF8F0',
         'light-grey-bg': '#F2F1EC',
         'dark-grey': '#717171',
         'light-grey': '#B3B3B3',
+        'charcoal': '#303030',
         'off-white': '#FAF9F6'
       },
 
       boxShadow: {
-        'inner': 'inset 0 2px 4px 0 rgb(0 0 0 / 0.2)'
+        'inner': 'inset -1px -1px 3px -1px rgb(0 0 0 / 0.1)',
+
+        'black': '3px 3px 0 black',
+        'grey': '2px 4px 0 #717171',
+        'card': '6px 8px 0 #303030',
+        'black-hover': '1.5px 1.5px 0 black',
+
       },
 
       animation: {
         'morph': 'morph 2s ease-in-out infinite',
-        'text-animation': 'text-animation 8s ease-in infinite',
-        'text-animation-md': 'text-animation-md 8s ease-in infinite',
-        'text-animation-lg': 'text-animation-lg 8s ease-in infinite',
-        // 'typing': 'typing 5s steps(16) infinite',
-        // 'cursor': 'cursor 5s infinite'
-        'typingCursor': 'typingCursor 4s steps(16) infinite',
+        'waves': 'waves 2s linear infinite',
 
       },
 
@@ -68,49 +71,11 @@ export default {
           '100%': { 'border-radius': '50% 40% 50% 40% / 50% 50% 50% 50%' },
         },
 
-        'text-animation': {
-          '0%, 100%': { top: '0' },
-          '20%': { top: '0' },
-          '25%': { top: '-65px' },
-          '45%': { top: '-65px' },
-          '50%': { top: '-125px' },
-          '70%': { top: '-125px' },
-          '75%': { top: '-185px' },
-          '95%': { top: '-185px' },
-        },
 
-        'text-animation-md': {
-          '0%, 100%': { top: '0' },
-          '20%': { top: '0' },
-          '25%': { top: '-95px' },
-          '45%': { top: '-95px' },
-          '50%': { top: '-185px' },
-          '70%': { top: '-185px' },
-          '75%': { top: '-275px' },
-          '95%': { top: '-275px' },
-        },
-
-        'text-animation-lg': {
-          '0%, 100%': { top: '0' },
-          '20%': { top: '0' },
-          '25%': { top: '-112px' },
-          '45%': { top: '-112px' },
-          '50%': { top: '-224px' },
-          '70%': { top: '-224px' },
-          '75%': { top: '-336px' },
-          '95%': { top: '-336px' },
-        },
-        typingCursor: {
-          '3%': { left: '0%' },
-          '30%': { left: '102%', borderLeft: '2px solid black' },
-          '38%': { left: '102%', borderLeft: '2px solid white' },
-          '46%': { left: '102%', borderLeft: '2px solid black' },
-          '54%': { left: '102%', borderLeft: '2px solid white' },
-          '62%': { left: '102%', borderLeft: '2px solid black' },
-          '70%': { left: '102%' },
-          '80%': { left: '102%', borderLeft: '2px solid black' },
-          '100%': { left: '0%' },
-        },
+        waves: {
+          '0%': { backgroundPositionX: '0' },
+          '100%': { backgroundPositionX: '200%' },
+        }
       }
     },
   },

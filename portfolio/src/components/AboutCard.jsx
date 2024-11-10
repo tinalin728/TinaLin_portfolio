@@ -1,18 +1,16 @@
-import tape from '../assets/images/tape.svg'
-
-function AboutCard({ header, icon, content }) {
+function AboutCard({ header, icon, content, width, translate }) {
 
 
     return (
-        <div className='relative flex flex-col gap-4 justify-center items-center p-8 bg-white rounded-xl shadow-md border-2 border-black'>
-            <div><img src={tape} alt="" className='w-[125px] absolute -top-[8%] left-1/2 -translate-x-1/2 rotate-[10deg]' /></div>
-            <div className='p-6'>
-                <img src={icon} alt="" width={150} />
+        <div className={`relative flex flex-col gap-8 justify-center p-6 bg-white rounded-xl border-2 border-black max-w-[330px] h-[400px] hover:scale-[1.01] transition-all duration-500 shadow-card ${translate}`}>
+            <div className='mx-auto py-2'>
+                <img src={icon} alt="" width={width} />
             </div>
-
-            <h5 className=''>{header}</h5>
-            <p className='text-center pb-6'>{content}</p>
-        </div>
+            <div className='text-center'>
+                <h4 className="pb-2">{header}</h4>
+                <p>{content}</p>
+            </div>
+        </div >
     )
 }
 

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384.57 351.12" width='140'>
+  <defs>
+    <style>
+      .cls-1 {
+        stroke: #222831;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 10px;
+      }
+
+      .cls-1, .cls-2, .cls-3 {
+        fill: none;
+      }
+
+      .cls-4 {
+        fill: #f64117;
+        animation: scaleStar 3s linear infinite;
+transform-origin: center; 
+      }
+
+      .cls-2 {
+        stroke: #ddd;
+        stroke-width: 4px;
+      }
+
+      .cls-2, .cls-3 {
+        stroke-miterlimit: 10;
+      }
+
+      .cls-5 {
+        fill: #fff5e4;
+        animation
+      }
+
+      .cls-3 {
+        stroke: #fee6bd;
+        stroke-width: 5px;
+      }
+
+      .pencil{
+        animation: animatePencil 2.5s ease-in-out infinite;
+        transform-origin: center;
+      }
+
+      .cls-4, .big-star {
+        animation: animateStar 1s infinite;
+        transform-origin: 50% 50%;
+      }
+
+      @keyframes animateStar {
+        0%, 100% {
+          transform: scale(.98) rotate(0deg); 
+        }
+        50% {
+          transform: scale(1) rotate(1deg);  
+        }
+      }
+
+      @keyframes animatePencil {
+        0% {
+          transform: translateX(0); /* Start at the initial position */
+        }
+        25% {
+          transform: translateX(5px); /* Small right movement */
+        }
+        50% {
+          transform: translateX(-5px); /* Small left movement */
+        }
+        75% {
+          transform: translateX(5px); /* Small right movement again */
+        }
+        100% {
+          transform: translateX(0); /* Return to initial position */
+        }
+      }
+
+    </style>
+  </defs>
+  <g id="Layer_4" data-name="Layer 4">
+  
+    <circle class="cls-5" cx="296.59" cy="103.18" r="65"/>
+
+    <!-- grid lines -->
+    <g>
+      <line class="cls-2" x1="68.78" y1="126.12" x2="68.78" y2="351.12"/>
+      <line class="cls-2" x1="125.9" y1="126.12" x2="125.9" y2="351.12"/>
+      <line class="cls-2" x1="183.02" y1="126.12" x2="183.02" y2="351.12"/>
+      <line class="cls-2" x1="250.9" y1="178.9" y2="178.9"/>
+      <line class="cls-2" x1="250.9" y1="232.01" y2="232.01"/>
+      <line class="cls-2" x1="250.9" y1="285.13" y2="285.13"/>
+    </g>
+
+    <!-- pencil -->
+    <g class="pencil">
+      <path class="cls-1" d="M223.23,200.68l-88.34,81.78c-1.9,1.76-4.09,3.14-6.52,4.09l-56.8,24.76c-8.82,3.48-17.58-5.99-13.44-14.52l29.06-54.72c1.14-2.35,2.68-4.43,4.58-6.19l70.87-65.61,17.47-16.17"/>
+      <path class="cls-1" d="M233.5,176.75l1.8,1.94c4.96,5.36,4.64,13.73-.72,18.69h0c-5.36,4.96-13.72,4.64-18.69-.72l-32.34-34.93c-4.96-5.36-4.64-13.73.72-18.69h0c5.36-4.96,13.72-4.64,18.69.72l1.8,1.94"/>
+      <path class="cls-1" d="M204.76,145.7l-5.39-5.82c-4.96-5.36-4.64-13.73.72-18.69h0c5.36-4.96,13.72-4.64,18.69.72l39.53,42.7c4.96,5.36,4.64,13.73-.72,18.69h0c-5.36,4.96-13.72,4.64-18.69-.72l-5.39-5.82"/>
+      <polyline class="cls-1" points="95.97 300.68 83.29 286.98 70.6 273.28"/>
+      <path class="cls-1" d="M216.98,119.97l10.19-9.44c6.99-6.48,12.02-15.02,13.26-24.48,1.85-14.11,9.37-27.57,22.42-36.67,19.46-13.57,46.36-12.16,64.35,3.32,24.41,21,24.55,57.83,1.61,79.07-9.43,8.73-21.18,13.37-33.08,14-9.42.5-18.26,4.69-25.18,11.1l-10.45,9.68"/>
+      <polyline class="cls-1" points="270.45 92.09 265.71 118.11 292.01 115.38"/>
+      <line class="cls-1" x1="265.71" y1="118.11" x2="254.06" y2="128.88"/>
+      <line class="cls-1" x1="347.21" y1="42.65" x2="354.98" y2="35.46"/>
+      <line class="cls-1" x1="224.03" y1="34.16" x2="231.21" y2="41.92"/>
+      <line class="cls-1" x1="339.01" y1="158.36" x2="346.2" y2="166.12"/>
+      <line class="cls-1" x1="369.47" y1="109.51" x2="379.57" y2="112.64"/>
+      <line class="cls-1" x1="279.92" y1="5" x2="282.27" y2="15.32"/>
+      <path class="cls-1" d="M199.73,179.19l-85.39,79.05c-4.27,3.95-12.58,1.99-18.54-4.46-5.96-6.44-7.29-14.88-3.02-18.83l85.39-79.05,21.56,23.29Z"/>
+      <path class="cls-1" d="M221.28,202.48l-85.39,79.05c-4.27,3.95-12.58,1.99-18.54-4.46-5.96-6.44-7.29-14.88-3.02-18.83l85.39-79.05,21.56,23.29Z"/>
+    </g>
+
+    <!-- big star -->
+    <polygon class="cls-4 big-star" points="60.08 41.18 90.02 62.93 119.96 41.18 108.52 76.37 138.46 98.12 101.46 98.12 90.02 133.32 78.59 98.12 41.58 98.12 71.52 76.37 60.08 41.18"/>
+    <!-- small star -->
+    <polygon class="cls-4" points="172.24 65.85 174.7 81.35 190.2 83.81 176.21 90.93 178.67 106.43 167.57 95.34 153.59 102.46 160.71 88.48 149.61 77.38 165.12 79.83 172.24 65.85"/>
+    
+    <path class="cls-3" d="M10.96,337.62s7-10,19-11,17.98,13,29.99,11,10.01-8,26.01-9,17,11,28,7,16-13,26-15"/>
+  </g>
+</svg>

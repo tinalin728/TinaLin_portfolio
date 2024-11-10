@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 538.02 388" width='150'>
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #f64117;
+      }
+
+      .cls-2 {
+        stroke-dasharray: 12.13 12.13;
+        stroke-width: 7px;
+        animation: movingBorder 4s linear infinite
+      }
+
+      .cls-2, .cls-3 {
+        fill: none;
+        stroke: #000;
+        stroke-miterlimit: 10;
+      }
+
+      .cls-4 {
+        fill: #fff5e4;
+        animation: moveYellow 1s linear infinite;
+      }
+
+      .cls-3 {
+        stroke-width: 10px;
+      }
+
+      .cls-5 {
+        fill: #fee6bd;
+      }
+
+      .cls-6 {
+        fill: #1a1a1a;
+      }
+
+      @keyframes movingBorder {
+        0% {
+          stroke-dashoffset: 0; 
+        }
+        100% {
+          stroke-dashoffset: -50; 
+        }
+      }
+
+      @keyframes moveYellow {
+        0%, 100% {
+          transform: translateX(0);
+        }
+        50% {
+          transform: translateX(10px);
+        }
+      }
+    </style>
+  </defs>
+  <g id="Layer_1-2" data-name="Layer 1">
+    <ellipse class="cls-1" cx="48.2" cy="43.81" rx="9.74" ry="10.81"/>
+    <ellipse class="cls-5" cx="80.81" cy="43.81" rx="9.74" ry="10.81"/>
+    <ellipse class="cls-6" cx="113.42" cy="43.81" rx="9.74" ry="10.81"/>
+  </g>
+
+<!-- outline -->
+  <g id="Layer_2-2" data-name="Layer 2">
+    <rect class="cls-3" x="5" y="5" width="528.02" height="378" rx="43.24" ry="43.24"/>
+    <line class="cls-3" x1="5.12" y1="80" x2="533.14" y2="80"/>
+  </g>
+
+  <g id="Layer_5" data-name="Layer 5">
+
+  <!-- yellow bg -->
+    <rect class="cls-4" x="134.14" y="163" width="310" height="171" rx="18.17" ry="18.17"/>
+
+    <g>
+      <g>
+        <path class="cls-1" d="M202.51,270.35v-10.42h-9.96v-10.42h-9.84v-10.17h-9.84v-10.54h9.84v-10.42h9.84v-10.29h9.96v-10.29h10.07v10.54h-9.96v10.29h-9.84v10.29h-9.84v10.17h9.84v10.17h9.84v10.54h9.96v10.54h-10.07Z"/>
+        <path d="M279.35,208.23v20.58h-9.96v20.71h-9.72v20.83h-10.07v-21.08h9.84v-20.58h9.72v-20.71h10.07v-20.58h10.07v20.83h-9.96Z"/>
+        <path class="cls-1" d="M356.08,239.35v10.29h-9.84v10.29h-9.84v10.42h-10.07v-10.54h9.84v-10.42h9.84v-10.29h9.96v-10.17h-9.96v-10.29h-9.84v-10.29h-9.84v-10.54h10.07v10.29h9.84v10.29h9.84v10.42h9.96v10.54h-9.96Z"/>
+      </g>
+
+<!-- border -->
+      <rect class="cls-2" x="114.03" y="148.75" width="309.96" height="160.25" rx="24.83" ry="24.83"/>
+    </g>
+  </g>
+</svg>
