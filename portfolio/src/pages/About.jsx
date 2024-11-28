@@ -96,7 +96,7 @@ function About() {
                             <div className='py-2 mb-2 text-orange border-b border-black border-dashed'>
                                 <h4>Peek Into My Life</h4>
                             </div>
-                            <p className='indent-4 mb-2 font-roundo-medium text-[20px]'>Hi I'm Tina!!</p>
+                            <p className='indent-4 mb-2 font-roundo-medium text-[20px]'>Hi I'm Tina</p>
                             <p className='indent-4 mb-2'>
                                 With a background in Linguistics and Education, I’ve always tried to find ways to bring creativity into my professional life, whether through creating interactive curriculums to meet the diverse needs of children or designing engaging materials using everyday items.
                             </p>
