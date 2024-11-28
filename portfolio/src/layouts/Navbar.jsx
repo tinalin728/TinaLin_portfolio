@@ -3,13 +3,18 @@ import { NavLink } from 'react-router-dom'
 import logo from '../assets/images/logo.svg'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLinkedinIn } from "@fortawesome/free-brands-svg-icons"
-import NavLinkBtn from '../components/buttons/NavLinkBtn'
 
 function Navbar() {
 
     const [isOpen, setIsOpen] = useState(false);
     const toggleMenu = () => {
         setIsOpen(!isOpen);
+
+        if (!isOpen) {
+            document.body.classList.add('overflow-hidden');
+        } else {
+            document.body.classList.remove('overflow-hidden');
+        }
     }
 
     const handleMenuToggle = () => {
@@ -33,44 +38,29 @@ function Navbar() {
 
 
     return (
-        <header className=''>
+        <header className='overflow-hidden'>
             <div className='max-w-container py-4 md:py-6 relative'>
-                <div className='flex items-center'>
+                <div className='flex justify-between items-center'>
                     <NavLink to="/" className='flex-1 z-[100]'>
-                        <img src={logo} alt="logo" className='w-[50px] md:w-[60px]' />
+                        <img src={logo} alt="logo" width={40} />
                     </NavLink>
 
                     <div className={`${isOpen ? 'fixed inset-0 h-screen bg-light-grey-bg md:relative md:h-auto' : 'hidden'} md:block z-[99]`}>
-                        <div className='flex flex-col gap-[5rem] items-center justify-center h-full'>
+                        <div className='flex flex-col justify-center h-full'>
                             <nav>
                                 <ul className='flex flex-col items-center justify-center gap-8 md:h-auto md:flex-row'>
-                                    <NavLinkBtn
-                                        text='Crafts'
-                                        to='/crafts'
-                                        onClick={handleMenuToggle}
+                                    <NavLink to="/crafts" onClick={handleMenuToggle} className="font-roundo-medium">
+                                        Crafts
+                                    </NavLink>
+                                    <NavLink to="/about" onClick={handleMenuToggle} className="font-roundo-medium">
+                                        About
+                                    </NavLink>
 
-                                    />
-
-                                    <NavLinkBtn
-                                        text='About'
-                                        to='/about'
-                                        onClick={handleMenuToggle}
-                                    />
-                                    <NavLinkBtn
-                                        text='Resume'
-                                        href='/'
-                                        bgColor='bg-yellow'
-                                        onClick={handleMenuToggle}
-
-                                    />
-
+                                    <div className='py-2 px-4 rounded-full bg-orange shadow-charcoal border-2 hover:shadow-charcoal-hover transition duration-300'>
+                                        <a href="mailto:yuting.lin728@gmail.com" className="font-roundo-medium text-white">Contact</a>
+                                    </div>
                                 </ul>
                             </nav>
-                            <div className='md:hidden'>
-                                <a href="https://www.linkedin.com/in/tina-lin-000613b5/" className='text-2xl'>
-                                    <FontAwesomeIcon icon={faLinkedinIn} />
-                                </a>
-                            </div>
                         </div>
                     </div>
 
@@ -89,7 +79,7 @@ function Navbar() {
                     </button>
                 </div>
             </div>
-        </header>
+        </header >
     )
 }
 

@@ -1,5 +1,7 @@
 /* font */
 @import url('./assets/fonts.css');
+@import url('https://fonts.cdnfonts.com/css/necosmic-2');
+
 
 @tailwind base;
 @tailwind components;
@@ -10,43 +12,42 @@
 
 
     h1 {
-        font-size: clamp(6.875rem, 4.8944rem + 8.4507vw, 12.5rem);
-        @apply font-craftwork font-extrabold tracking-[10px] text-nowrap leading-none
+        @apply text-[2.2rem] md:text-2xl font-craftwork font-extrabold text-orange capitalize
     }
 
     h2 {
-        font-size: clamp(3.4375rem, 2.3371rem + 4.6948vw, 6.5625rem);
-        @apply tracking-[1.9px] lg:tracking-[3px] font-roundo-bold text-orange
+        @apply text-xl font-craftwork font-bold capitalize tracking-[1px] mb-2
     }
 
     h3 {
-        @apply text-2xl md:text-3xl font-craftwork font-extrabold
+        @apply text-lg font-craftwork font-bold tracking-[1px] mb-2 capitalize
     }
 
     h4 {
-        @apply text-xl font-aleo font-bold
+        @apply text-[20px] tracking-wider md:tracking-wider md:text-lg font-craftwork font-bold
     }
 
     h5 {
-        @apply text-lg font-aleo
+        @apply text-[20px] md:text-lg
     }
 
 
     p {
-        @apply text-base font-roundo md:text-[18px]
+        @apply text-base font-roundo
     }
 
     a {
         @apply text-base tracking-[3px] font-roundo uppercase
     }
 
-    body {
-        @apply bg-light-yellow-bg
+    main {
+        @apply bg-[#FBF8F0] overflow-hidden
     }
 
-    section {
-        @apply py-[5rem] lg:py-[10rem]
+    body {
+        @apply overflow-x-hidden bg-[#FBF8F0]
     }
+
 
     .max-w-container {
         max-width: 85rem;
@@ -60,11 +61,143 @@
         }
     }
 
+    .content-gap {
+        margin: 6.5rem 0;
+    }
+
+    .content-w {
+        max-width: 85rem;
+        margin: 0 auto;
+        padding: 0 10rem;
+    }
+
+    @media (max-width: 973px) {
+        .content-w {
+            padding: 0 6rem;
+        }
+    }
+
+    @media (max-width: 773px) {
+        .content-w {
+            padding: 0 4rem;
+        }
+    }
+
+    @media (max-width: 573px) {
+        .content-w {
+            padding: 0 2rem;
+        }
+    }
+
+    span {
+        @apply font-roundo-medium
+    }
+
+    .big-header {
+        /* font-size: clamp(6.875rem, 4.8944rem + 8.4507vw, 12.5rem); */
+
+        /* new */
+        /* font-size: clamp(3.75rem, 1.7694rem + 8.4507vw, 9.375rem); */
+        font-size: clamp(1.75rem, 0.9213rem + 3.5359vw, 3.75rem);
+        @apply font-craftwork font-extrabold
+        /* @apply font-craftwork font-extrabold tracking-[10px] text-nowrap text-orange leading-none font-size: clamp(4.1875rem, -47.1549rem + 219.061vw, 150rem); */
+
+    }
+
+    .sub-header {
+        font-size: clamp(3.125rem, 2.607rem + 2.2099vw, 4.375rem);
+        @apply font-craftwork font-extrabold capitalize
+    }
+
+    .section-header {
+        font-size: clamp(3.625rem, 3.1408rem + 2.0657vw, 5rem);
+        line-height: 1;
+    }
+
+    .dotted-header {
+        font-size: clamp(2.3rem, 1.4373rem + 3.6808vw, 4.75rem);
+    }
+
     .footer-header {
-        font-size: clamp(2.375rem, 1.0106rem + 5.8216vw, 6.25rem);
-        @apply font-craftwork font-extrabold text-orange
+        font-size: clamp(3.4375rem, 2.3371rem + 4.6948vw, 6.5625rem);
+        @apply tracking-[1.9px] lg:tracking-[3px] font-roundo-bold text-orange leading-tight
+    }
+
+    .quote {
+        font-size: clamp(1.875rem, 1.2148rem + 2.8169vw, 3.2rem);
+    }
+
+    .highlight {
+        @apply font-roundo-semibold
+    }
+
+
+    .text-shadow {
+        text-shadow:
+            .5px .5px 0 #1e1e1e,
+            1px 1px 0 #1e1e1e,
+            1.5px 1.5px 0 #1e1e1e,
+            2px 2px 0 #1e1e1e,
+            2.5px 2.5px 0 #1e1e1e,
+            3px 3px 0 #1e1e1e,
+            3.5px 3.5px 0 #1e1e1e,
+            4px 4px 0 #1e1e1e,
+            4.5px 4.5px 0 #1e1e1e,
+            5px 5px 0 #1e1e1e,
+            5.5px 5.5px 0 #1e1e1e,
+            6px 6px 0 #1e1e1e;
+    }
+
+    .text-shadow-md {
+        text-shadow:
+            .5px .5px 0 #1e1e1e,
+            1px 1px 0 #1e1e1e,
+            1.5px 1.5px 0 #1e1e1e,
+            2px 2px 0 #1e1e1e,
+            2.5px 2.5px 0 #1e1e1e,
+            3px 3px 0 #1e1e1e,
+            3.5px 3.5px 0 #1e1e1e,
+            4px 4px 0 #1e1e1e,
+            4.5px 4.5px 0 #1e1e1e,
+            5px 5px 0 #1e1e1e,
+            5.5px 5.5px 0 #1e1e1e,
+            6px 6px 0 #1e1e1e;
+    }
+    .btn-text-shadow {
+        text-shadow:
+        .5px -.5px 0 #1e1e1e,
+        1px -1px 0 #1e1e1e,
+        1.5px -1.5px 0 #1e1e1e,
+        2px -2px 0 #1e1e1e,
+        2.5px -2.5px 0 #1e1e1e,
+        3px -3px 0 #1e1e1e,
+        3.5px -3.5px 0 #1e1e1e,
+        4px -4px 0 #1e1e1e,
+        4.5px -4.5px 0 #1e1e1e,
+        5px -5px 0 #1e1e1e,
+        5.5px -5.5px 0 #1e1e1e,
+        6px -6px 0 #1e1e1e;
+    }
+    
+    .btn-text-shadow-r {
+        text-shadow:
+        -0.5px -0.5px 0 #1e1e1e,
+        -1px -1px 0 #1e1e1e,
+        -1.5px -1.5px 0 #1e1e1e,
+        -2px -2px 0 #1e1e1e,
+        -2.5px -2.5px 0 #1e1e1e,
+        -3px -3px 0 #1e1e1e,
+        -3.5px -3.5px 0 #1e1e1e,
+        -4px -4px 0 #1e1e1e,
+        -4.5px -4.5px 0 #1e1e1e,
+        -5px -5px 0 #1e1e1e,
+        -5.5px -5.5px 0 #1e1e1e,
+        -6px -6px 0 #1e1e1e;
     }
 }
+
+
+
 
 @layer utilities {
     .animation-morph {
@@ -74,4 +207,13 @@
     .animation-waves {
         @apply animate-waves;
     }
+
+    .animation-zoom {
+        @apply animate-zoom
+    }
+
+    .animation-border {
+        @apply animate-border
+    }
+
 }

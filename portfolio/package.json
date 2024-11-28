@@ -10,20 +10,27 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@designbycode/tailwindcss-text-shadow": "^2.1.6",
     "@fortawesome/fontawesome-svg-core": "^6.6.0",
     "@fortawesome/free-brands-svg-icons": "^6.6.0",
     "@fortawesome/free-regular-svg-icons": "^6.6.0",
     "@fortawesome/free-solid-svg-icons": "^6.6.0",
     "@fortawesome/react-fontawesome": "^0.2.2",
     "@gsap/react": "^2.1.1",
+    "@material-tailwind/react": "^2.1.10",
     "autoprefixer": "^10.4.20",
     "gsap": "^3.12.5",
+    "lenis": "^1.1.16",
+    "matter-js": "^0.20.0",
     "postcss": "^8.4.47",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.27.0",
+    "react-scroll-parallax": "^3.4.5",
     "react-typed": "^2.0.12",
-    "tailwindcss": "^3.4.14"
+    "split-type": "^0.3.4",
+    "tailwindcss": "^3.4.14",
+    "webrouk-back-top-scroll-indicator": "^1.0.2"
   },
   "devDependencies": {
     "@eslint/js": "^9.13.0",

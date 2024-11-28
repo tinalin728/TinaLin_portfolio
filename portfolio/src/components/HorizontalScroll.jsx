@@ -1,28 +1,24 @@
 import { useEffect, useRef } from 'react';
+import sunglasses from "../assets/images/homepage/emoji-sunglasses.png"
 
-function HorizontalScroll({ children, speed = 1, bgColor = 'bg-off-white' }) {
+
+
+// props children, speed = 1, bgColor = 'bg-light-grey-bg', currentImage 
+
+function HorizontalScroll({ children, speed = 1, bgColor = 'bg-charcoal' }) {
     const scrollContainerRef = useRef(null);
-    const innerContainerRef = useRef(null);
 
     useEffect(() => {
         const scrollContainer = scrollContainerRef.current;
-        const innerContainer = innerContainerRef.current;
-
-        // Clone content
-        innerContainer.innerHTML += innerContainer.innerHTML;
 
         let scrollPosition = 0;
 
-        // Scroll function
         const animateScroll = () => {
             scrollPosition += speed;
-            //checks if it reaches halfway, reset position
-            if (scrollPosition >= innerContainer.scrollWidth / 2) {
-                scrollPosition = 0;
+            if (scrollContainer.scrollWidth > 0 && scrollPosition >= scrollContainer.scrollWidth / 2) {
+                scrollPosition = 0; // Reset position when halfway
             }
             scrollContainer.scrollLeft = scrollPosition;
-
-            //pause when the browser is inactive
             requestAnimationFrame(animateScroll);
         };
 
@@ -31,19 +27,23 @@ function HorizontalScroll({ children, speed = 1, bgColor = 'bg-off-white' }) {
         return () => cancelAnimationFrame(animateScroll);
     }, [speed]);
 
-    return (
-        <div className={`border-y-2 border-black py-4 ${bgColor}`}>
 
-            <div className="overflow-hidden border-y border-dashed lg:border-white">
+    // ref={innerContainerRef}
+
+    return (
+        <div className={`border-y-2 border-charcoal py-4 ${bgColor}`}>
+
+            <div className="border-y-2 border-dashed lg:border-dark-grey">
                 {/* Scrolling content */}
                 <div ref={scrollContainerRef} className="overflow-hidden whitespace-nowrap">
-                    <div ref={innerContainerRef} className="inline-flex gap-10 items-center">
+                    <div className="inline-flex gap-10 justify-center items-center py-2">
+                        {children}
+                        {children}
                         {children}
                     </div>
                 </div>
             </div>
         </div>
-
     );
 }
 

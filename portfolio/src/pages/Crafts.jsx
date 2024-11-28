@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import CraftGrid from '../components/CraftGrid'
 import PageHero from '../components/PageHero'
 import HorizontalScroll from '../components/HorizontalScroll'
+import CraftCard from '../components/CraftCard'
 
 function Crafts() {
     const [crafts, setCrafts] = useState([])
@@ -18,13 +18,23 @@ function Crafts() {
         <>
             <PageHero
                 header='Crafts'
-                tagline='Pieces Woven With Love and Purpose'
+                tagline='Made With Love & Purpose'
             />
-            <section className='bg-light-grey-bg rounded-[50px] lg:rounded-[70px] shadow-sm'>
-                <div className="max-w-container">
-                    <CraftGrid crafts={crafts} />
-                </div >
-            </section>
+
+            <section className=' py-10 border-y border-black'>
+                <div className='grid grid-cols-1 md:grid-cols-2 border-t border-black bg-light-grey-bg'>
+                    {crafts.map((craft) => (
+                        <CraftCard
+                            key={craft.id}
+                            id={craft.id}
+                            title={craft.title}
+                            img={craft.img}
+                            skills={craft.skills}
+                            border={`${craft.id === 1 || craft.id === 3 ? 'md:border-r' : ''}`}
+                        />
+                    ))}
+                </div>
+            </section >
 
         </>
     )

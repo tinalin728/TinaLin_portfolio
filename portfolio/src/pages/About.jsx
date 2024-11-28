@@ -1,35 +1,83 @@
 import React from 'react'
 import PageHero from '../components/PageHero'
-import DivContainer from '../components/DivContainer'
-import test from '../assets/images/about/tina.jpg'
+import profilePic from '../assets/images/about/tina.jpg'
 import PrimaryBtn from '../components/buttons/PrimaryBtn'
 import iconHeart from '../assets/images/about/icon-heart.svg'
 import iconSave from '../assets/images/about/icon-save.svg'
 import iconShare from '../assets/images/about/icon-share.svg'
 import iconComment from '../assets/images/about/icon-comment.svg'
 import iconDownload from '../assets/images/about/icon-download.svg'
+import hobbies from '../assets/images/about/hobbies.png'
+import beading from '../assets/images/about/beading.png'
+import doodle from '../assets/images/about/doodle.png'
+
+import ps from '../assets/images/about/ps.svg'
+import ai from '../assets/images/about/ai.svg'
+import id from '../assets/images/about/id.svg'
+import ae from '../assets/images/about/ae.svg'
+import dn from '../assets/images/about/dn.svg'
+import figma from '../assets/images/about/figma.svg'
+import wordpress from '../assets/images/about/wordpress.svg'
+import checker from '../assets/images/about/checker.svg'
+import orangeChecker from '../assets/images/about/orangeChecker.svg'
+import greyChecker from '../assets/images/about/greyChecker.svg'
+
 
 
 function About() {
+
+    const coding = ["HTML", "CSS", "JS", "REACT", "TAILWINDCSS", "JQUERY"];
+    const design = [ps, ai, id, ae, dn, figma, wordpress]
+    const ux = ['User Centered Design', 'Wireframing', 'Interactive Prototyping', 'Usability Testing', 'Responsive Design']
+    const softSkills = ['Communication', 'Critical Thinking', 'Problem Solving', 'Flexibility', 'Empathy']
+
+    const checkerBg = {
+        backgroundImage: `url(${checker})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        backgroundOpacity: '.1'
+    }
+    const greyCheckerBg = {
+        backgroundImage: `url(${greyChecker})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        backgroundOpacity: '.1'
+    }
+    const orangeCheckerBg = {
+        backgroundImage: `url(${orangeChecker})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        backgroundOpacity: '.1'
+    }
 
 
     return (
         <>
             <PageHero
                 header='About'
-                tagline='From Education to Tech Industry'
+                tagline='From Education to Tech'
             />
 
 
-            <div className=' bg-light-grey-bg rounded-[50px] lg:rounded-[70px] shadow-sm'>
-                <div className='max-w-container flex flex-col md:flex-row md:gap-6'>
+            <div className='bg-light-grey-bg border-2 py-[10rem]'>
+                <div className='max-w-container'>
                     {/* image */}
-                    <section className='basis-[38%]'>
-                        <div className='flex flex-col items-center gap-[6rem]'>
-                            <div className='relative pt-14 w-[380px]'>
-                                <div className='relative z-10 mx-auto translate-y-1 before:content-[""] before:w-[101%] before:h-[140%] before:absolute before:top-[55%] before:left-1/2 before:-translate-x-1/2 before:-translate-y-1/2 before:bg-white before:-z-[1] before:rounded-lg before:border-2 before:border-black'>
-                                    <img src={test} alt="" className='object-cover w-[90%] mx-auto border-2 border-black rounded-lg -translate-y-4' />
+                    <section className='flex flex-col lg:flex-row gap-[5rem] items-center justify-center'>
+                        <div className='flex flex-col items-center gap-[6rem] -mt-20 mb-10'>
+                            <div className='relative pt-14 w-[360px]'>
+                                <div className="absolute top-[62%] left-[54%] -translate-x-1/2 -translate-y-1/2 w-[101%] h-[115%] bg-light-yellow-bg border-2 rounded-xl z-[1]"></div>
+                                <div className="absolute top-[60%] left-[52%] -translate-x-1/2 -translate-y-1/2 w-[101%] h-[115%] bg-light-yellow-bg border-2 rounded-xl z-[1]"></div>
+
+                                <div className="absolute top-[58%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[101%] h-[115%] bg-white border-2 rounded-xl z-[1]"></div>
+
+
+                                <div className='relative z-10 mx-auto mb-4'>
+                                    <img src={profilePic} alt="" className='object-cover w-[90%] mx-auto border-2 rounded-md' />
                                 </div>
+
                                 <div className='flex justify-between items-center px-6'>
                                     <div className='flex gap-6 z-20 relative w-[28px]'>
                                         <img src={iconHeart} alt="like icon" />
@@ -42,8 +90,23 @@ function About() {
                                     </div>
                                 </div>
                             </div>
+                        </div>
 
-                            <div className=''>
+                        <div className=''>
+                            <div className='py-2 mb-2 text-orange border-b border-black border-dashed'>
+                                <h4>Peek Into My Life</h4>
+                            </div>
+                            <p className='indent-4 mb-2 font-roundo-medium text-[20px]'>Hi I'm Tina!</p>
+                            <p className='indent-4 mb-2'>
+                                With a background in Linguistics and Education, I’ve always tried to find ways to bring creativity into my professional life, whether through creating interactive curriculums to meet the diverse needs of children or designing engaging materials using everyday items.
+                            </p>
+                            <p className='indent-4'>
+                                What really drew me into the design and tech industry was when I was introduced to
+                                <a href="https://lingraphica.com/aac-devices/what-is-an-aac-device/" target='_blank' className='text-base font-roundo tracking-normal md:text-[18px] capitalize text-orange mx-2'>AAC devices</a>
+
+                                as a communication aid for autistic children at work. It showed me how thoughtful design and technology can bridge communication gaps and improve lives, which then led me to pursue the New Media Design and Development program at BCIT. Nevertheless, I continue to carry the same values as I’ve held as a teacher- empathy, inclusivity, and connection.
+                            </p>
+                            <div className='mt-10'>
                                 <PrimaryBtn
                                     text='resume'
                                     href='#'
@@ -55,57 +118,129 @@ function About() {
                         </div>
                     </section>
 
-                    <section className='flex-1'>
-                        <div className='mb-12'>
+                    <section className='py-[10rem] flex flex-col items-center justify-center lg:flex-row gap-10 relative'>
+                        <div className='lg:flex-1 w-full'>
                             <div className='py-2 mb-2 border-b border-black border-dashed'>
-                                <h4>Peek Into My Life</h4>
+                                <h4 className='text-orange'>Skills</h4>
                             </div>
-                            <p>
-                                With a background in Linguistics and Education, I’ve always tried to find ways to bring creativity into my professional life, whether through creating interactive curriculums to meet the diverse needs of children or designing engaging materials using natural or recyclable items.
-                                What really drew me into the design and tech industry was when I was introduced to
-                                <a href="https://lingraphica.com/aac-devices/what-is-an-aac-device/" target='_blank' className='text-base font-roundo tracking-normal md:text-[18px] capitalize text-blue-700 mx-2'>AAC devices</a>
 
-                                as a communication aid for autistic children at work. It showed me how thoughtful design and technology can bridge communication gaps and improve lives, leading me to pursue the New Media Design and Development program at BCIT.
-                                Now, as I pursue my path in the design industry, I continue to carry the same values as I’ve held as a teacher- empathy, inclusivity, and connection .
-                            </p>
+                            <div className='grid gap-10'>
+                                <div>
+                                    <p className='font-roundo-medium text-md'>UX Skillsets</p>
+                                    <ul className='grid md:grid-cols-2 gap-x-6 px-4 py-2'>
+                                        {ux.map((item, index) => (
+                                            <li key={index} className='font-roundo tracking-[.8px] list-disc'> {item}</li>
+                                        ))}
+                                    </ul>
+                                    <p className=''></p>
+                                </div>
+                                <div>
+                                    <p className='font-roundo-medium text-md'>Soft Skills</p>
+                                    <ul className='grid md:grid-cols-2 gap-x-6 px-4 py-2'>
+                                        {softSkills.map((item, index) => (
+                                            <li key={index} className='font-roundo tracking-[.8px] list-disc'> {item}</li>
+                                        ))}
+                                    </ul>
+                                </div>
+                                <div>
+                                    <p className='font-roundo-medium pb-2 text-md'>Programming Language & Library</p>
+                                    <div className='flex gap-2 flex-wrap '>
+                                        {coding.map((item, index) => (
+                                            <div key={index} className='px-4 bg-charcoal rounded-full'><p className='text-white'>{item}</p></div>
+                                        ))}
+                                    </div>
+                                </div>
+                                <div>
+                                    <p className='font-roundo-medium pb-2 text-md'>Design Software</p>
+                                    <div className='flex flex-wrap gap-4'>
+                                        {design.map((item, index) => (
+                                            <div key={index} className=''>
+                                                <img src={item} alt="" width={55} />
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
-                        <div className='mb-12'>
-                            <div className='py-2 mb-2 border-b border-black border-dashed'>
-                                <h4>Skills</h4>
-                            </div>
+                        <div className="relative flex-1">
+                            <div className="relative flex flex-col justify-center items-end cursor-pointer">
+                                <div
+                                    className="card bg-white w-[300px] h-[400px] p-4 rounded-xl border-2 relative overflow-hidden hover:z-10 hover:scale-105 hover:translate-y-2 transition-transform duration-300 ease-in">
+                                    <div className="absolute top-0 left-0 w-full px-4 py-2 bg-charcoal border-b-2">
+                                        <div className="flex justify-between items-center">
+                                            <p className="font-roundo-medium mt-1 text-white"> Hidden Talent </p>
+                                            <div className='h-3 w-3 border-2 border-dark-grey rounded-full bg-light-yellow-bg'></div>
+                                        </div>
+                                    </div>
 
-                            <div className='grid gap-8'>
-                                <div>
-                                    <p className='font-roundo-medium'>Programming Language & Library</p>
-                                    <p className='tracking-[.8px]'>HTML, CSS, JavaScript, React.js, TailwindCSS</p>
+                                    <p className="italic leading-normal text-lg bg-light-yellow-bg py-8 px-10 border-2 rounded-md mt-14" style={greyCheckerBg}>
+                                        I can manage a group of 3-5 years old, turning chaos and tantrums into giggles and fun <span className='not-italic'>&#128520; &#128520; &#128520; </span>
+                                    </p>
                                 </div>
-                                <div>
-                                    <p className='font-roundo-medium'>Design Software</p>
-                                    <p className='tracking-[.8px]'>Photoshop, Illustrator, InDesign, AfterEffects, Figma, Procreate, Wordpress</p>
+
+                                <div
+                                    className="card bg-white  flex flex-col justify-center items-center p-4 w-[300px] h-[400px] rounded-xl border-2 relative overflow-hidden mr-0 md:mr-[6rem] -mt-[20rem] hover:z-10 hover:scale-105 hover:translate-y-2 transition-transform duration-300 ease-in"
+                                >
+                                    <div className="absolute top-0 left-0 w-full px-4 py-2 bg-yellow border-b-2">
+                                        <div className='flex justify-between items-center'>
+                                            <p className="font-roundo-medium mt-1">My Value</p>
+                                            <div className='h-3 w-3 border-2 rounded-full bg-orange'></div>
+                                        </div>
+                                    </div>
+
+                                    <p className="italic leading-normal text-lg bg-light-yellow-bg p-8 border-2 rounded-md mt-10" style={orangeCheckerBg}>
+                                        I value creating inclusive spaces where everyone feels heard and connected, with a touch of warmth and creativity
+                                    </p>
                                 </div>
-                                <div>
-                                    <p className='font-roundo-medium'>UX Skillsets</p>
-                                    <p className='tracking-[.8px]'>User Centered Design, Wireframing,  Interactive Prototyping, Usability Testing, Responsive Design</p>
-                                </div>
-                                <div>
-                                    <p className='font-roundo-medium'>Soft Skills</p>
-                                    <p className='tracking-[.8px]'>Communication, Critical Thinking, Problem Solving, Flexibility</p>
+
+                                <div
+                                    className="card bg-white flex flex-col justify-center items-center p-4 w-[300px] h-[400px] rounded-xl border-2 relative overflow-hidden mr-0 md:mr-[12rem] -mt-[20rem] hover:z-10 hover:scale-105 hover:translate-y-2 transition-transform duration-300 ease-in"
+                                >
+                                    <div className="absolute top-0 left-0 w-full px-4 py-2 bg-orange border-b-2">
+                                        <div className='flex justify-between items-center'>
+                                            <p className="font-roundo-medium mt-1">Fun Fact About Me</p>
+
+                                            <div className='h-3 w-3 border-2 rounded-full bg-yellow'></div>
+                                        </div>
+                                    </div>
+                                    <p className="italic leading-normal text-lg bg-light-yellow-bg p-8 mt-10 border-2 rounded-md" style={checkerBg}>
+                                        I spent a year in Korea teaching little kiddos while immersing myself in K-pop, kimchi, and karaoke adventures.
+                                    </p>
+
                                 </div>
                             </div>
                         </div>
-                        <div>
-                            <div className='py-2 mb-2 border-b border-black border-dashed'>
-                                <h4>Me Outside of Work</h4>
+
+
+                    </section >
+
+                    <section className=''>
+                        <div className='flex flex-col-reverse md:flex-row gap-10 relative'>
+                            <div className='basis-[40%] relative overflow-hidden  w-[80%] border-2 rounded-xl'>
+                                <div className='h-10 w-full absolute top-0 border-b-2 bg-white rounded-t-xl z-10'> </div>
+                                <div className='pt-14 pb-4 px-8 relative bg-white z-0'>
+                                    <img src={hobbies} alt="hobbies" className='border-2 rounded-md bg-white mx-auto' />
+                                </div>
                             </div>
 
-                            <div>
+                            <div className='basis-[60%] w-full'>
+                                <div className='py-2 mb-8 border-b border-black border-dashed text-orange'>
+                                    <h4>I Also Like</h4>
+                                </div>
+                                <div className='basis-[60%]'>
+                                    <ul className='font-roundo list-disc px-4 leading-[30px]'>
+                                        <li>I love hanging out with my 3-year-old niece. She's my doodle inspiration. We spend hours building epic block towers (that she loves to knock down, of course) and laughing along to Peppa Pig episodes. Honestly, she keeps me young and creative </li>
 
+                                        <li>I'm working hard to stay healthy by making yoga and Pilates a regular habit. I've been practicing the crow pose for months. I will nail it eventually. </li>
+                                        <li>Yes, I bead. I love hands-on crafts. There’s something so satisfying about turning tiny, colorful beads into something beautiful and unique. It’s my go-to when I need to unplug and create with my hands </li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </section>
-                </div>
-            </div>
+                </div >
+            </div >
 
         </>
     )

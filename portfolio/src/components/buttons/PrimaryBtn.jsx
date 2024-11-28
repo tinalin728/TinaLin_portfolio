@@ -1,16 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-import waves from '../../assets/images/waves.svg'
 
 function PrimaryBtn({ to, text, icon, href, reverseOrder = false }) {
 
     const isExternal = href && !to;
-    const waveBg = {
-        background: `url(${waves})`,
-        backgroundSize: '200% 100%',
-    }
 
-    const commonClasses = 'group relative inline-flex items-center justify-center   border-2 border-black  rounded-xl shadow-grey overflow-hidden group'
+
+    const commonClasses = 'group relative inline-flex items-center justify-center border-2 border rounded-full shadow-charcoal overflow-hidden hover:shadow-charcoal-hover hover:translate-x-[.5%] transition-all duration-500'
 
     const btnContent = (
         <div className='relative inline-flex items-center gap-4 px-6 py-4 transition duration-300 ease-in z-10'>{
@@ -33,15 +29,15 @@ function PrimaryBtn({ to, text, icon, href, reverseOrder = false }) {
             )
         }
         </div>
-
     )
 
-    const hoverEffect = (
-        <div
-            className='absolute w-full h-full top-full left-0 group-hover:top-1/2 animation-waves transition-all duration-300 ease-in'
-            style={waveBg}
-        ></div>
-    )
+
+    // const hoverEffect = (
+    //     <div
+    //         className='absolute w-full h-full top-full left-0 group-hover:top-1/2 animation-waves transition-all duration-300 ease-in'
+    //         style={waveBg}
+    //     ></div>
+    // )
     return (
         isExternal ? (
             <a
@@ -50,13 +46,13 @@ function PrimaryBtn({ to, text, icon, href, reverseOrder = false }) {
                 className={commonClasses}
             >
                 {btnContent}
-                {hoverEffect}
+                {/* {hoverEffect} */}
             </a>)
             :
             (
                 <Link to={to} className={commonClasses}>
                     {btnContent}
-                    {hoverEffect}
+                    {/* {hoverEffect} */}
                 </Link>
             )
     )

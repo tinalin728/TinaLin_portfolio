@@ -6,22 +6,25 @@ import Crafts from './pages/Crafts'
 import Layout from './layouts/Layout'
 import CraftDetail from './pages/CraftDetail'
 import ScrollToTop from './hooks/ScrollToTop'
+import SmoothScrolling from './components/SmoothScrolling'
 
 
 function App() {
 
   return (
-    <Router>
-      <ScrollToTop />
-      <Routes>
-        <Route element={<Layout />}>
-          <Route path='/' element={<Home />} />
-          <Route path='/about' element={<About />} />
-          <Route path='/crafts' element={<Crafts />} />
-          <Route path='/crafts/:id' element={<CraftDetail />} />
-        </Route>
-      </Routes>
-    </Router>
+    <SmoothScrolling>
+      <Router>
+        <ScrollToTop />
+        <Routes>
+          <Route element={<Layout />}>
+            <Route path='/' element={<Home />} />
+            <Route path='/about' element={<About />} />
+            <Route path='/crafts' element={<Crafts />} />
+            <Route path='/crafts/:id' element={<CraftDetail />} />
+          </Route>
+        </Routes>
+      </Router>
+    </SmoothScrolling>
   )
 }
 

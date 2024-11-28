@@ -46,12 +46,12 @@
       }
 
       .cls-1 {
-        fill: #f64117;
+        fill: #E36A46;
         animation: moveOrange 2s ease-in-out infinite; 
       }
 
       .cls-2 {
-        fill: #b7b7b7;
+        fill: #FCC764;
         animation: moveGrey 2s ease-in-out infinite;
         animation-delay:.5s;
       }

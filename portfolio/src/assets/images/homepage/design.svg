@@ -14,7 +14,7 @@
       }
 
       .cls-4 {
-        fill: #f64117;
+        fill: #E36A46;
         animation: scaleStar 3s linear infinite;
 transform-origin: center; 
       }
@@ -29,12 +29,12 @@ transform-origin: center;
       }
 
       .cls-5 {
-        fill: #fff5e4;
+        fill: #FCC764;
         animation
       }
 
       .cls-3 {
-        stroke: #fee6bd;
+        stroke: #FCC764;
         stroke-width: 5px;
       }
 
