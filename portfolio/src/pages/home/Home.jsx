@@ -246,7 +246,7 @@ function Home() {
         const tl = gsap.timeline({
             scrollTrigger: {
                 trigger: aboutRef.current,
-                start: 'top 60%',
+                start: 'top 30%',
                 toggleActions: 'play none none reverse',
                 //markers: true,
             }
@@ -392,7 +392,7 @@ function Home() {
                     <span className='font-roundo-medium uppercase tracking-wide text-white'>Based in Vancouver</span>
                 </HorizontalScroll>
 
-                <section className="about-container pb-2 h-full py-[10rem]">
+                <section ref={aboutRef} className="about-container pb-2 h-full py-[10rem]">
                     <div className='max-w-container'>
                         <div className='mb-6 lg:mb-12'>
                             <div ref={exploreRef} className='inline-block w-fit bg-charcoal px-4 py-2 -rotate-12'>
