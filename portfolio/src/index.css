@@ -94,11 +94,8 @@
     }
 
     .big-header {
-        /* font-size: clamp(6.875rem, 4.8944rem + 8.4507vw, 12.5rem); */
 
-        /* new */
-        /* font-size: clamp(3.75rem, 1.7694rem + 8.4507vw, 9.375rem); */
-        font-size: clamp(1.75rem, 0.9213rem + 3.5359vw, 3.75rem);
+        font-size: clamp(1.5rem, 0.5677rem + 3.9779vw, 3.75rem);
         @apply font-craftwork font-extrabold
         /* @apply font-craftwork font-extrabold tracking-[10px] text-nowrap text-orange leading-none font-size: clamp(4.1875rem, -47.1549rem + 219.061vw, 150rem); */
 
