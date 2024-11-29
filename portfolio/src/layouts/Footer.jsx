@@ -91,17 +91,36 @@ function Footer() {
 
         // Create pills
         const textures = [
-            '/public/assets/pills/french.svg',
-            '/public/assets/pills/japanese.svg',
-            '/public/assets/pills/korean.svg',
-            '/public/assets/pills/Icelandic.svg',
-            '/public/assets/pills/italian.svg',
-            '/public/assets/pills/english.svg',
-            '/public/assets/pills/chinese.svg',
-            '/public/assets/pills/thai.svg',
-            '/public/assets/pills/viet.svg',
-            '/public/assets/pills/hindi.svg',
+            '/assets/pills/french.svg',
+            '/assets/pills/japanese.svg',
+            '/assets/pills/korean.svg',
+            '/assets/pills/Icelandic.svg',
+            '/assets/pills/italian.svg',
+            '/assets/pills/english.svg',
+            '/assets/pills/chinese.svg',
+            '/assets/pills/thai.svg',
+            '/assets/pills/viet.svg',
+            '/assets/pills/hindi.svg',
         ];
+
+        const preloadImages = (textures, callback) => {
+            let loadedCount = 0;
+            const total = textures.length;
+
+            textures.forEach((texture, index) => {
+                const img = new Image();
+                img.src = texture;
+                img.onload = () => {
+                    loadedCount++;
+                    if (loadedCount === total) {
+                        callback(); // All images loaded
+                    }
+                };
+                img.onerror = () => {
+                    console.error(`Failed to load image: ${texture}`);
+                };
+            });
+        };
 
 
         const createPills = (textures, canvasWidth) => {
@@ -199,8 +218,10 @@ function Footer() {
                 }
             });
             // Recreate dynamic bodies (e.g., pills)
-            const pillBodies = createPills(textures, width); // Recreate pills with updated dimensions
-            pillBodies.forEach((pill) => Composite.add(world, pill));
+            preloadImages(textures, (loadedTextures) => {
+                const pillBodies = createPills(loadedTextures, width);
+                pillBodies.forEach((pill) => Composite.add(world, pill));
+            });
 
 
             // Update walls and ground

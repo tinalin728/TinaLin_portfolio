@@ -14,7 +14,7 @@ import PrimaryBtn from '../../components/buttons/PrimaryBtn';
 import HorizontalScroll from '../../components/HorizontalScroll';
 import WindowWidth from '../../hooks/WindowWidth';
 
-import sunglasses from "/../../assets/images/homepage/emoji-sunglasses.png"
+import sunglasses from "../../assets/images/homepage/emoji-sunglasses.png"
 import rainbow from '../../assets/images/homepage/rainbow.svg'
 import thunder from '../../assets/images/homepage/thunder.svg'
 import rose from '../../assets/images/homepage/rose.svg'
