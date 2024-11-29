@@ -23,6 +23,8 @@ import arrow from '../../assets/images/arrow.svg';
 import outline from '../../assets/images/homepage/outlineLogo.svg'
 
 
+import data from './data.json';
+
 function Home() {
 
     const aboutRef = useRef(null);
@@ -41,23 +43,12 @@ function Home() {
 
     const [about, setAbout] = useState([]);
     const [crafts, setCrafts] = useState([])
-    useEffect(() => {
-        fetch('/data.json')
-            .then((response) => {
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                return response.json();
-            }).then(data => {
-                const { about, crafts } = data;
-                setAbout(about);
-                setCrafts(crafts);
-            })
-            .catch((error) => {
-                console.error('Error fetching data:', error);
-            })
-    }, [])
 
+    useEffect(() => {
+        const { about, crafts } = data;
+        setAbout(about);
+        setCrafts(crafts);
+    }, []);
 
 
     //const windowWidth = WindowWidth();
