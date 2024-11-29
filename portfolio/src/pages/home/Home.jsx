@@ -43,12 +43,19 @@ function Home() {
     const [crafts, setCrafts] = useState([])
     useEffect(() => {
         fetch('/data.json')
-            .then(response => response.json())
-            .then(data => {
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.json();
+            }).then(data => {
                 const { about, crafts } = data;
                 setAbout(about);
                 setCrafts(crafts);
-            });
+            })
+            .catch((error) => {
+                console.error('Error fetching data:', error);
+            })
     }, [])
 
 
