@@ -150,7 +150,7 @@ function Home() {
     const heroRef = useRef(null);
     const glitchRefs = useRef([]);
     const positions = [
-        { top: "53%", left: "53%" },
+        // { top: "53%", left: "53%" },
         { top: "52%", left: "52%" },
         { top: "51%", left: "51%" },
         { top: "50%", left: "50%" },
@@ -232,10 +232,15 @@ function Home() {
                     duration: 0.5,
                     ease: "power2.out",
                     delay: index * 0.1,
+                    onUpdate: function () {
+                        glitch.style.transform = `translate(-50%, -50%) translate(${constrainedX}px, ${constrainedY}px)`;
+                    },
                 });
             }
         });
     }, [mousePosition, animationComplete]);
+
+
 
 
     // gsap for about section
@@ -327,16 +332,18 @@ function Home() {
         <>
             <div id='main-content'>
                 <section ref={heroRef} className='p-0 relative h-[calc(100vh-70px)] w-full'>
-                    {positions.map((pos, index) => (
-                        <div
-                            key={index}
-                            ref={(el) => (glitchRefs.current[index] = el)}
-                            className="absolute -translate-x-1/2 -translate-y-1/2"
-                            style={{ top: pos.top, left: pos.left }}
-                        >
-                            <img src={outline} alt="" className="w-full scale-150 md:scale-110 lg:scale-100" />
-                        </div>
-                    ))}
+                    {positions.map((pos, index) => {
+                        return (
+                            <div
+                                key={index}
+                                ref={(el) => (glitchRefs.current[index] = el)}
+                                className="absolute -translate-x-1/2 -translate-y-1/2 origin-center"
+                                style={{ top: pos.top, left: pos.left }}
+                            >
+                                <img src={outline} alt="" className="w-full scale-150 md:scale-110 lg:scale-100" />
+                            </div>
+                        );
+                    })}
 
 
                     <div className='relative max-w-container w-full h-full flex flex-col justify-center items-center gap-4'>

@@ -89,7 +89,7 @@ function Footer() {
 
         Composite.add(world, [ground, wallLeft, wallRight, roof])
 
-        // Create pills
+        // store images
         const textures = [
             '/assets/pills/french.svg',
             '/assets/pills/japanese.svg',
@@ -103,27 +103,46 @@ function Footer() {
             '/assets/pills/hindi.svg',
         ];
 
+        //preload images
         const preloadImages = (textures, callback) => {
             let loadedCount = 0;
             const total = textures.length;
 
-            textures.forEach((texture, index) => {
+            if (!Array.isArray(textures) || total === 0) {
+                console.error("No textures to preload.");
+                callback(); // Trigger the callback even if there are no textures
+                return;
+            }
+
+            textures.forEach((texture) => {
                 const img = new Image();
                 img.src = texture;
                 img.onload = () => {
                     loadedCount++;
+                    console.log(`Loaded image: ${texture} (${loadedCount}/${total})`);
                     if (loadedCount === total) {
-                        callback(); // All images loaded
+                        callback(); // All images are loaded
                     }
                 };
                 img.onerror = () => {
                     console.error(`Failed to load image: ${texture}`);
+                    loadedCount++; // Increment even if an image fails
+                    if (loadedCount === total) {
+                        callback(); // Proceed when all attempts are done
+                    }
                 };
             });
         };
 
 
-        const createPills = (textures, canvasWidth) => {
+
+        const createPills = (texture, canvasWidth) => {
+
+            if (!Array.isArray(textures) || textures.length === 0) {
+                console.error("Invalid or empty textures:", textures);
+                return []; // Return an empty array to avoid errors
+            }
+
             const screenWidth = window.innerWidth;
 
             const pillWidth = screenWidth < 768 ? 60 : 100;
@@ -156,7 +175,15 @@ function Footer() {
 
         //Create pills using all textures
         const handlePillsDrop = () => {
+
+
             if (!pillsDropped) {
+
+                if (!Array.isArray(textures) || textures.length === 0) {
+                    console.error("Textures are not valid or ready:", textures);
+                    return; // Exit the function early if textures is invalid
+                }
+
                 const pillBodies = createPills(textures, width);
                 pillBodies.forEach((pill) => Composite.add(world, pill));
                 pillsDropped = true;
@@ -200,6 +227,23 @@ function Footer() {
                 window.scrollBy(0, event.deltaY);
             }
         };
+
+        const touchStartRef = { current: 0 };
+
+
+        const handleTouchMove = (event) => {
+            if (!mouseConstraint.body) {
+                const touch = event.touches[0];
+                const deltaY = touch.clientY - touchStartRef.current;
+                window.scrollBy(0, -deltaY);
+                touchStartRef.current = touch.clientY;
+            }
+        };
+
+        const handleTouchStart = (event) => {
+            touchStartRef.current = event.touches[0].clientY;
+        }
+
         if (canvasRef.current) {
             canvasRef.current.addEventListener('wheel', handleWheel);
         }
@@ -242,6 +286,12 @@ function Footer() {
         window.addEventListener("resize", handleResize);
         handleResize();
 
+        // Add event listeners
+        canvas.addEventListener("wheel", handleWheel); // For desktop
+        canvas.addEventListener("touchstart", handleTouchStart); // Track initial touch
+        canvas.addEventListener("touchmove", handleTouchMove); // Handle scrolling on touch
+
+
         // Engine.run(engine);
         Render.run(render);
 
@@ -250,8 +300,9 @@ function Footer() {
             Matter.Render.stop(render);
             Matter.Engine.clear(engine);
             //Composite.remove(world, body);
-
-            //canvasRef.current.removeEventListener('wheel', handleWheel);
+            canvas.removeEventListener("wheel", handleWheel);
+            canvas.removeEventListener("touchstart", handleTouchStart);
+            canvas.removeEventListener("touchmove", handleTouchMove);
             ScrollTrigger.killAll();
         };
     }, [pillsDropped]);
