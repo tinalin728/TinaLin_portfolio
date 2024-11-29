@@ -50,8 +50,9 @@ function Home() {
         setCrafts(crafts);
     }, []);
 
-
-    //const windowWidth = WindowWidth();
+    //for parallax speed
+    const windowWidth = WindowWidth();
+    const isMobile = windowWidth < 768;
 
     const Card = forwardRef(({ item }, ref) => (
         <div ref={ref} className={`about-card min-w-[300px] h-[400px] col-span-1 lg:col-span-4 relative z-10  hover:scale-[1.01] transition-all duration-500`}>
@@ -68,7 +69,7 @@ function Home() {
                         <p className='text-[18px]'>{item.content}</p>
                     </div>
 
-                    <div className="flex justify-center py-4">
+                    <div className="flex justify-center py-0 md:py-4">
                         <img src={item.icon} alt="h-full w-full" />
                     </div>
 
@@ -211,7 +212,7 @@ function Home() {
 
         const containerBounds = container.getBoundingClientRect(); // Get hero section bounds
 
-        glitchRefs.current.forEach((glitch, index) => {
+        glitchRefs.current.slice().reverse().forEach((glitch, index) => {
             if (glitch) {
                 const relativeMouseX = Math.min(
                     Math.max(mousePosition.x - containerBounds.left, 0),
@@ -250,27 +251,10 @@ function Home() {
             scrollTrigger: {
                 trigger: aboutRef.current,
                 start: 'top 30%',
-                toggleActions: 'play none none reverse',
+                toggleActions: "play none none reverse",
                 //markers: true,
             }
         })
-
-        tl.fromTo(
-            exploreRef.current, {
-            width: '0', opacity: 0
-        },
-            {
-                width: 'auto',
-                opacity: 1,
-                duration: .8,
-                ease: 'power4.out',
-                scrollTrigger: {
-                    trigger: aboutRef.current,
-                    start: 'top 80%',
-                    toggleActions: 'play none none reverse',
-                }
-            }
-        );
 
         tl.fromTo(
             "#aboutHeader",
@@ -305,8 +289,7 @@ function Home() {
                 duration: 1,
                 ease: "power3.out",
                 stagger: 0.2, // Stagger animation for cards
-            },
-            "+=0.2"
+            }
         );
 
         // Button animation (AFTER cards finish)
@@ -326,7 +309,44 @@ function Home() {
     }, [])
 
 
+    const craftRef = useRef(null);
 
+    useEffect(() => {
+        const tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: craftRef.current,
+                start: 'top 20%',
+                toggleActions: "play reverse play reverse",
+                markers: true,
+            }
+        })
+
+        tl.fromTo(
+            "#craftHeader", {
+            textShadow: "none",
+        },
+            {
+                textShadow: `
+                0.5px 0.5px 0 #1e1e1e,
+                1px 1px 0 #1e1e1e,
+                1.5px 1.5px 0 #1e1e1e,
+                2px 2px 0 #1e1e1e,
+                2.5px 2.5px 0 #1e1e1e,
+                3px 3px 0 #1e1e1e,
+                3.5px 3.5px 0 #1e1e1e,
+                4px 4px 0 #1e1e1e,
+                4.5px 4.5px 0 #1e1e1e,
+                5px 5px 0 #1e1e1e,
+                5.5px 5.5px 0 #1e1e1e,
+                6px 6px 0 #1e1e1e`,
+                duration: .8,
+                ease: "power3.out",
+
+                onStart: () => console.log("Animation started"),
+                onComplete: () => console.log("Animation completed"),
+            }
+        );
+    }, [])
 
     return (
         <>
@@ -340,7 +360,7 @@ function Home() {
                                 className="absolute -translate-x-1/2 -translate-y-1/2 origin-center"
                                 style={{ top: pos.top, left: pos.left }}
                             >
-                                <img src={outline} alt="" className="w-full scale-150 md:scale-110 lg:scale-100" />
+                                <img src={outline} alt="" className="w-full scale-[1.7] md:scale-110 lg:scale-100" />
                             </div>
                         );
                     })}
@@ -348,23 +368,23 @@ function Home() {
 
                     <div className='relative max-w-container w-full h-full flex flex-col justify-center items-center gap-4'>
                         <div className='inline-flex flex-col items-center gap-2 text-center '>
-                            <Parallax speed={-1}>
+                            <Parallax speed={isMobile ? -.5 : -1}>
                                 <div ref={refs.line1} className='inline-block px-4 py-2 md:px-6 lg:px-8 lg:py-4 bg-charcoal w-fit rotate-3 -translate-x-10'>
                                     <h1 className='text-white font-normal big-header uppercase'>I Create</h1>
                                 </div>
                             </Parallax>
-                            <Parallax speed={-2}>
+                            <Parallax speed={isMobile ? -1 : -2}>
                                 <div ref={refs.line2} className='inline-block px-4 py-2 md:px-6 lg:px-8 lg:py-4 bg-charcoal w-fit -rotate-3 translate-x-10'>
                                     <h1 className='text-white font-normal big-header uppercase'>Meaningful</h1>
                                 </div>
                             </Parallax>
 
-                            <Parallax speed={-3}>
+                            <Parallax speed={isMobile ? -1.5 : -3}>
                                 <div ref={refs.line3} className='inline-block px-4 py-2 md:px-6 lg:px-8 lg:py-4 bg-charcoal w-fit rotate-6 -translate-x-[30%]'>
                                     <h1 className='text-white font-normal big-header uppercase'>Digital</h1>
                                 </div>
                             </Parallax>
-                            <Parallax speed={-4}>
+                            <Parallax speed={isMobile ? -1 : -4}>
                                 <div ref={refs.line4} className='inline-block px-4 py-2 md:px-6 lg:px-8 lg:py-4 bg-charcoal w-fit -rotate-6 translate-x-10'>
                                     <h1 className='text-white font-normal big-header uppercase'>Experiences</h1>
                                 </div>
@@ -400,7 +420,7 @@ function Home() {
                 <section ref={aboutRef} className="about-container pb-2 h-full py-[10rem]">
                     <div className='max-w-container'>
                         <div className='mb-6 lg:mb-12'>
-                            <div ref={exploreRef} className='inline-block w-fit bg-charcoal px-4 py-2 -rotate-12'>
+                            <div className='inline-block w-fit bg-charcoal px-4 py-2 -rotate-12'>
                                 <p className="text-lg tracking-[3px] md:tracking-[5px] md:text-xl font-roundo-semibold uppercase text-white">Explore</p>
                             </div>
 
@@ -423,7 +443,7 @@ function Home() {
                         <div ref={aboutCtaRef} className='flex justify-center items-center'>
                             <PrimaryBtn
                                 to="/about"
-                                text="More About Me"
+                                text="About Me"
                                 icon={arrow}
                                 className='about-btn'
                             />
@@ -431,14 +451,14 @@ function Home() {
                     </div>
                 </section>
 
-                <section className="relative h-full py-[10rem]">
+                <section ref={craftRef} className="relative h-full py-[10rem]">
                     <div className=' max-w-container w-full flex justify-end'>
                         <div className='inline-block w-fit bg-charcoal px-4 py-2 rotate-12'>
                             <p className="text-lg tracking-[3px] md:tracking-[5px] md:text-xl font-roundo-semibold uppercase text-white">Linspired</p >
                         </div >
                     </div >
                     <div className="text-center mb-6 lg:mb-12">
-                        <h3 id="craftHeader" className="text-center sub-header font-craftwork font-extrabold mt-2 tracking-[2px] text-light-yellow-bg text-stroke text-shadow uppercase leading-normal">Feat. Crafts</h3>
+                        <h3 id="craftHeader" className="text-center sub-header font-craftwork font-extrabold mt-2 tracking-[2px] text-light-yellow-bg text-stroke uppercase leading-normal">Feat. Crafts</h3>
                     </div>
 
                     <div className='grid grid-cols-1 md:grid-cols-2 border-t-2 border-black mb-10'>
@@ -451,7 +471,6 @@ function Home() {
                                 skills={craft.skills}
                                 border={`${craft.id === 1 || craft.id === 3 ? 'md:border-r-2' : ''}`}
                             />
-
                         ))}
                     </div>
 
@@ -479,7 +498,7 @@ function Home() {
                     <span className='font-roundo-medium uppercase tracking-wide '>Based in Vancouver</span>
                 </HorizontalScroll>
 
-            </div>
+            </div >
         </>
     )
 }

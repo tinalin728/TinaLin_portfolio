@@ -27,7 +27,7 @@ function CraftCard({ title, img, skills, id, border }) {
                 <span className="absolute block bg-black transform duration-500 ease-in-out bottom-0 right-0 w-full h-[2.2px] origin-right scale-x-0 group-hover:scale-x-100 "></span>
                 <span className="absolute block bg-black transform duration-500 ease-in-out left-0 top-0 w-[2.2px] h-full origin-bottom scale-y-0 group-hover:scale-y-100 "></span>
 
-                <div className="p-[2rem] lg:p-[3rem] z-10 relative" >
+                <div className="p-[1.5rem] lg:p-[3rem] z-10 relative" >
                     <div className='overflow-hidden' >
                         <img src={img} alt="" className='relative self-stretch shrink-0 h-auto object-cover max-w-full transition duration-500 ease-in-out'
                             style={{ transform: `scale(${scale}) translate(-${position.x}%, -${position.y}%)` }}

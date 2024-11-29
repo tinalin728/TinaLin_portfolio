@@ -48,7 +48,7 @@ function Footer() {
         Runner.run(runner, engine);
 
         // Ensure canvas size is set to full screen
-        const container = containerRef.current;
+        const container = wrapperRef.current;
         const canvas = canvasRef.current;
 
         const { width, height } = container.getBoundingClientRect();
@@ -77,14 +77,14 @@ function Footer() {
         setScene(render);
 
         // Create ground and walls for collisions
-        const ground = Bodies.rectangle((width / 2) + 160, height - 80, width + 320, 160, {
+        const ground = Bodies.rectangle((width / 2) + 160, height - 5, width + 320, 160, {
             isStatic: true,
             render: {
                 fillStyle: "transparent",
             }
         });
-        const wallLeft = Bodies.rectangle(-80, height / 2, 160, height, { isStatic: true });
-        const wallRight = Bodies.rectangle(width + 80, height / 2, 160, height, { isStatic: true });
+        const wallLeft = Bodies.rectangle(-100, height / 2, 160, height, { isStatic: true });
+        const wallRight = Bodies.rectangle(width + 100, height / 2, 160, height, { isStatic: true });
         const roof = Bodies.rectangle((width / 2) + 160, -80, width + 320, 160, { isStatic: true })
 
         Composite.add(world, [ground, wallLeft, wallRight, roof])
@@ -244,9 +244,9 @@ function Footer() {
             touchStartRef.current = event.touches[0].clientY;
         }
 
-        if (canvasRef.current) {
-            canvasRef.current.addEventListener('wheel', handleWheel);
-        }
+        // if (canvasRef.current) {
+        //     canvasRef.current.addEventListener('wheel', handleWheel);
+        // }
 
 
         const handleResize = () => {
@@ -269,7 +269,7 @@ function Footer() {
 
 
             // Update walls and ground
-            Matter.Body.setPosition(ground, { x: width / 2, y: height - 70 });
+            Matter.Body.setPosition(ground, { x: width / 2, y: height - 5 });
             Matter.Body.setVertices(ground, [
                 { x: 0, y: height - 30 },
                 { x: width, y: height - 30 },
@@ -277,9 +277,10 @@ function Footer() {
                 { x: 0, y: height },
             ]);
 
-            Matter.Body.setPosition(wallLeft, { x: -80, y: height / 2 });
-            Matter.Body.setPosition(wallRight, { x: width + 80, y: height / 2 });
+            Matter.Body.setPosition(wallLeft, { x: -100, y: height / 2 });
+            Matter.Body.setPosition(wallRight, { x: width + 100, y: height / 2 });
             Matter.Body.setPosition(roof, { x: width / 2, y: -80 });
+            console.log("Right Wall:", wallRight.position, wallRight.vertices);
 
         };
 
@@ -310,12 +311,12 @@ function Footer() {
 
     return (
         <footer ref={containerRef} className='relative h-full bg-charcoal overflow-hidden'>
-            <div >
+            <div ref={wrapperRef} className='relative w-full'>
+
                 <div className="absolute top-0 left-0 w-full h-full z-10">
                     <canvas ref={canvasRef} className="w-full h-full" />
                 </div>
-
-                <div ref={wrapperRef} className='h-[90vh] relative max-w-container py-14 lg:py-[5rem]'>
+                <div className='h-[90vh] relative max-w-container py-14 lg:py-[5rem]'>
                     <div className='flex flex-col justify-center items-center gap-8'>
                         <h2 className='font-craftwork font-extrabold text-light-yellow-bg text-shadow text-stroke text-center footer-header tracking-[5px]'>
                             Say Hello
@@ -341,14 +342,15 @@ function Footer() {
                     </div>
                 </div>
             </div>
+
             <div className='border-t border-black bg-light-grey-bg'>
                 <div className='max-w-container flex flex-col items-center justify-center md:flex-row md:justify-between py-2'>
                     <div className='flex items-center gap-4'>
                         <div><img src={coffee} alt="" width={40} /></div>
-                        <span>Made with shots of expresso</span>
+                        <span className=''>Made with shots of expresso</span>
                     </div>
                     <div>
-                        <span> 2024 Tina Lin</span>
+                        <span className=''> 2024 Tina Lin</span>
                     </div>
                 </div>
             </div>
