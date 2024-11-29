@@ -27,7 +27,7 @@
             "id": 1,
             "title": "Tim Horton's App Redesign",
             "path": "/craft",
-            "img": "../../src/assets/images/crafts/tims/cover.jpg",
+            "img": "/../../src/assets/images/crafts/tims/cover.jpg",
             "skills": [
                 "UXUI",
                 "Prototyping",
@@ -37,7 +37,7 @@
         {
             "id": 2,
             "title": "Basics. - E-commerce Retailer",
-            "img": "../../src/assets/images/crafts/basics/cover.jpg",
+            "img": "/../../src/assets/images/crafts/basics/cover.jpg",
             "skills": [
                 "HTML",
                 "Tailwind",
