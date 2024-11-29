@@ -4,7 +4,7 @@
             "id": 1,
             "title": "I Create",
             "content": "From UXUI to branding, I craft ideas and solutions to bridge people and purpose.",
-            "icon": "../src/assets/images/homepage/create.svg",
+            "icon": "/../src/assets/images/homepage/create.svg",
             "width": 130
         },
         {
