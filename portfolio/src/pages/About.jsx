@@ -65,34 +65,36 @@ function About() {
             <div className='bg-light-grey-bg border-2 py-[10rem]'>
                 <div className='max-w-container'>
                     {/* image */}
-                    <section className='flex flex-col lg:flex-row gap-[5rem] items-center justify-center'>
-                        <div className='flex flex-col items-center gap-[6rem] -mt-20 mb-10'>
-                            <div className='relative pt-14 w-[360px]'>
-                                <div className="absolute top-[62%] left-[54%] -translate-x-1/2 -translate-y-1/2 w-[101%] h-[115%] bg-light-yellow-bg border-2 rounded-xl z-[1]"></div>
-                                <div className="absolute top-[60%] left-[52%] -translate-x-1/2 -translate-y-1/2 w-[101%] h-[115%] bg-light-yellow-bg border-2 rounded-xl z-[1]"></div>
+                    <section className='flex flex-col lg:flex-row gap-16 items-center justify-center'>
+                        <div className='basis-[30%]'>
+                            <div className='flex flex-col items-center gap-[6rem] -mt-20 mb-10'>
+                                <div className='relative pt-14 max-w-[350px]'>
+                                    <div className="absolute top-[62%] left-[54%] -translate-x-1/2 -translate-y-1/2 w-[101%] h-[115%] bg-light-yellow-bg border-2 rounded-xl z-[1]"></div>
+                                    <div className="absolute top-[60%] left-[52%] -translate-x-1/2 -translate-y-1/2 w-[101%] h-[115%] bg-light-yellow-bg border-2 rounded-xl z-[1]"></div>
 
-                                <div className="absolute top-[58%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[101%] h-[115%] bg-white border-2 rounded-xl z-[1]"></div>
+                                    <div className="absolute top-[58%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[101%] h-[115%] bg-white border-2 rounded-xl z-[1]"></div>
 
 
-                                <div className='relative z-10 mx-auto mb-4'>
-                                    <img src={profilePic} alt="" className='object-cover w-[90%] mx-auto border-2 rounded-md' />
-                                </div>
-
-                                <div className='flex justify-between items-center px-6'>
-                                    <div className='flex gap-6 z-20 relative w-[28px]'>
-                                        <img src={iconHeart} alt="like icon" />
-                                        <img src={iconComment} alt="comment icon" />
-                                        <img src={iconShare} alt="share icon" />
+                                    <div className='relative z-10 mx-auto mb-4'>
+                                        <img src={profilePic} alt="" className='object-cover w-[90%] mx-auto border-2 rounded-md' />
                                     </div>
 
-                                    <div className='relative z-20 w-[25px]'>
-                                        <img src={iconSave} alt="save icon" />
+                                    <div className='flex justify-between items-center px-6'>
+                                        <div className='flex gap-6 z-20 relative w-[28px]'>
+                                            <img src={iconHeart} alt="like icon" />
+                                            <img src={iconComment} alt="comment icon" />
+                                            <img src={iconShare} alt="share icon" />
+                                        </div>
+
+                                        <div className='relative z-20 w-[25px]'>
+                                            <img src={iconSave} alt="save icon" />
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <div className=''>
+                        <div className='basis-[70%]'>
                             <div className='py-2 mb-2 text-orange border-b border-black border-dashed'>
                                 <h4>Peek Into My Life</h4>
                             </div>
@@ -216,11 +218,11 @@ function About() {
                     </section >
 
                     <section className=''>
-                        <div className='flex flex-col-reverse md:flex-row gap-10 relative'>
-                            <div className='basis-[40%] relative overflow-hidden  w-[80%] border-2 rounded-xl'>
-                                <div className='h-10 w-full absolute top-0 border-b-2 bg-white rounded-t-xl z-10'> </div>
-                                <div className='pt-14 pb-4 px-8 relative bg-white z-0'>
-                                    <img src={hobbies} alt="hobbies" className='border-2 rounded-md bg-white mx-auto' />
+                        <div className='flex flex-col-reverse md:flex-row gap-16 relative'>
+                            <div className='basis-[40%] relative overflow-hidden w-full md:w-[80%] '>
+                                <div className='h-14 w-full absolute top-0 border-2 bg-charcoal rounded-t-xl z-10'> </div>
+                                <div className='pt-14 pb-4 px-8 relative bg-light-yellow-bg border-2 rounded-xl'>
+                                    <img src={hobbies} alt="hobbies" />
                                 </div>
                             </div>
 

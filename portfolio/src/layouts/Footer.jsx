@@ -346,11 +346,11 @@ function Footer() {
             <div className='border-t border-black bg-light-grey-bg'>
                 <div className='max-w-container flex flex-col items-center justify-center md:flex-row md:justify-between py-2'>
                     <div className='flex items-center gap-4'>
-                        <div><img src={coffee} alt="" width={40} /></div>
-                        <span className=''>Made with shots of expresso</span>
+                        <div><img src={coffee} alt="" className='w-[35px] md:w-[40px]' /></div>
+                        <span className='text-sm md:text-base'>Made with shots of expresso</span>
                     </div>
                     <div>
-                        <span className=''> 2024 Tina Lin</span>
+                        <span className='text-sm md:text-base'> 2024 Tina Lin</span>
                     </div>
                 </div>
             </div>
