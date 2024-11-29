@@ -5,13 +5,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleDown, faAngleUp } from "@fortawesome/free-solid-svg-icons"
 import bulletPoint from '../../assets/images/crafts/icons/bulletP.svg'
 
-import mockup from '../../../public/assets/tims/mockup/1.png'
-
-import {
-    Accordion,
-    AccordionHeader,
-    AccordionBody,
-} from "@material-tailwind/react";
 
 const CUSTOM_ANIMATION = {
     mount: { scale: 1 },
