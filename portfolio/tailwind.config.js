@@ -117,14 +117,6 @@ module.exports = withMT({
     },
   },
   plugins: [
-    // require("@designbycode/tailwindcss-text-shadow")
-    //   ({
-    //     shadowColor: 'black',
-    //     shadowOffsetX: '10px',
-    //     shadowOffsetY: '10px',
-    //     blurSize: '0',
-    //   }),
-
 
     function ({ addUtilities }) {
       addUtilities({

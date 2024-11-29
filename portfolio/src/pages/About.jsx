@@ -98,7 +98,7 @@ function About() {
                             <div className='py-2 mb-2 text-orange border-b border-black border-dashed'>
                                 <h4>Peek Into My Life</h4>
                             </div>
-                            <p className='indent-4 mb-2 font-roundo-medium text-[20px]'>Hi I'm Tina</p>
+                            <p className='indent-4 mb-2 font-roundo-medium text-[20px]'>Hi I'm Tina!</p>
                             <p className='indent-4 mb-2'>
                                 With a background in Linguistics and Education, I’ve always tried to find ways to bring creativity into my professional life, whether through creating interactive curriculums to meet the diverse needs of children or designing engaging materials using everyday items.
                             </p>
@@ -219,9 +219,18 @@ function About() {
 
                     <section className=''>
                         <div className='flex flex-col-reverse md:flex-row gap-16 relative'>
-                            <div className='basis-[40%] relative overflow-hidden w-full md:w-[80%] '>
-                                <div className='h-14 w-full absolute top-0 border-2 bg-charcoal rounded-t-xl z-10'> </div>
-                                <div className='pt-14 pb-4 px-8 relative bg-light-yellow-bg border-2 rounded-xl'>
+                            <div className='basis-[40%] relative overflow-hidden w-full md:w-[80%]'>
+                                <div className='h-14 w-full absolute top-0 border-2 bg-charcoal rounded-t-xl z-10 text-white flex items-center justify-between px-6'>
+                                    <p className=''>
+                                        My Currents
+                                    </p>
+                                    <div className='flex gap-4 items-center'>
+                                        <div className='w-4 h-[2px]  bg-light-yellow-bg'></div>
+                                        <div className='h-4 w-4 rounded-full bg-yellow'></div>
+                                        <div className='h-4 w-4 bg-orange'></div>
+                                    </div>
+                                </div>
+                                <div className='pt-14 pb-4 px-8 relative bg-white border-2 rounded-xl'>
                                     <img src={hobbies} alt="hobbies" />
                                 </div>
                             </div>

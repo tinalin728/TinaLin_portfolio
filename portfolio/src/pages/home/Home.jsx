@@ -391,12 +391,11 @@ function Home() {
                                 </div>
                             </Parallax>
                         </div>
-                        <div className='absolute left-10 md:left-14 bottom-14'>
-
+                        <div className='absolute left-10 md:left-14 bottom-[10%]'>
                             <p className='text-lg'>Hi I'm Tina,<br />
                                 a product designer <br /> who loves coding	&#x2661;</p>
                         </div>
-                        <div className='absolute bottom-10 right-14 hidden md:block'>
+                        <div className='absolute bottom-14 right-14 hidden md:block'>
                             <img ref={cursorRef} src={cursor} alt="" className='w-[8rem] md:w-[10rem]' />
                         </div>
                     </div>
