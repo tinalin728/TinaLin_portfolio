@@ -5,7 +5,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleDown, faAngleUp } from "@fortawesome/free-solid-svg-icons"
 import bulletPoint from '../../assets/images/crafts/icons/bulletP.svg'
 
-
 const CUSTOM_ANIMATION = {
     mount: { scale: 1 },
     unmount: { scale: .9 },
