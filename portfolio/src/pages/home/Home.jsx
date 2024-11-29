@@ -54,22 +54,23 @@ function Home() {
     const windowWidth = WindowWidth();
     const isMobile = windowWidth < 768;
 
+
     const Card = forwardRef(({ item }, ref) => (
-        <div ref={ref} className={`about-card min-w-[300px] h-[400px] col-span-1 lg:col-span-4 relative z-10  hover:scale-[1.01] transition-all duration-500`}>
+        <div ref={ref} className={`about-card h-[400px] col-span-1 lg:col-span-4 relative z-10  hover:scale-[1.01] transition-all duration-500`}>
             <div className='absolute inset-0 '>
-                <div className='absolute w-full h-full top-4 left-4 bg-[#EBE1D8] border-charcoal border-2 rounded-xl '> </div>
-                <div className='absolute w-full h-full top-2 left-2 bg-[#EBE1D8] border-charcoal border-2 rounded-xl'> </div>
+                <div className='absolute w-full h-full top-2 left-2 md:top-4 md:left-4 bg-[#EBE1D8] border-charcoal border-2 rounded-xl '> </div>
+                <div className='absolute w-full h-full top-1 left-1 md:top-2 md:left-2 bg-[#EBE1D8] border-charcoal border-2 rounded-xl'> </div>
             </div>
 
             <div
-                className='relative z-10 p-6 bg-light-yellow-bg border-2 border-black h-full   rounded-xl overflow-hidden'>
+                className='relative z-10 p-4 bg-light-yellow-bg border-2 border-black h-full rounded-xl overflow-hidden'>
                 <div className='flex flex-col gap-8 justify-center rounded-xl h-full p-6 relative'>
                     <div className="">
                         <h4 className="pb-2 font-craftwork">{item.title}</h4>
                         <p className='text-[18px]'>{item.content}</p>
                     </div>
 
-                    <div className="flex justify-center py-0 md:py-4">
+                    <div className="flex justify-center py-0 scale-[.85] md:scale-100 md:py-4">
                         <img src={item.icon} alt="h-full w-full" />
                     </div>
 
@@ -311,13 +312,13 @@ function Home() {
 
     const craftRef = useRef(null);
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         const tl = gsap.timeline({
             scrollTrigger: {
                 trigger: craftRef.current,
                 start: 'top 20%',
                 toggleActions: "play reverse play reverse",
-                markers: true,
+                // markers: true,
             }
         })
 
@@ -421,7 +422,7 @@ function Home() {
                     <div className='max-w-container'>
                         <div className='mb-6 lg:mb-12'>
                             <div className='inline-block w-fit bg-charcoal px-4 py-2 -rotate-12'>
-                                <p className="text-lg tracking-[3px] md:tracking-[5px] md:text-xl font-roundo-semibold uppercase text-white">Explore</p>
+                                <p className="text-base tracking-[3px] md:tracking-[5px] md:text-xl font-roundo-semibold uppercase text-white">Explore</p>
                             </div>
 
                             <div>
@@ -454,7 +455,7 @@ function Home() {
                 <section ref={craftRef} className="relative h-full py-[10rem]">
                     <div className=' max-w-container w-full flex justify-end'>
                         <div className='inline-block w-fit bg-charcoal px-4 py-2 rotate-12'>
-                            <p className="text-lg tracking-[3px] md:tracking-[5px] md:text-xl font-roundo-semibold uppercase text-white">Linspired</p >
+                            <p className="text-base tracking-[3px] md:tracking-[5px] md:text-xl font-roundo-semibold uppercase text-white">Linspired</p >
                         </div >
                     </div >
                     <div className="text-center mb-6 lg:mb-12">
