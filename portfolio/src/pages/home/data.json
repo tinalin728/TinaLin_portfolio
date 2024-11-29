@@ -4,21 +4,21 @@
             "id": 1,
             "title": "I Create",
             "content": "From UXUI to branding, I craft ideas and solutions to bridge people and purpose.",
-            "icon": "/../src/assets/images/homepage/create.svg",
+            "icon": "/assets/homepage/create.svg",
             "width": 130
         },
         {
             "id": 2,
             "title": "I Design",
             "content": "I design visual assets and user-friendly UI elements that bring ideas to life.",
-            "icon": "../src/assets/images/homepage/design.svg",
+            "icon": "/assets/homepage/design.svg",
             "width": 120
         },
         {
             "id": 3,
             "title": "I Code",
             "content": "I transform ideas into functional and engaging experiences using my coding skills.",
-            "icon": "../src/assets/images/homepage/code.svg",
+            "icon": "/assets/homepage/code.svg",
             "width": 120
         }
     ],
@@ -27,7 +27,7 @@
             "id": 1,
             "title": "Tim Horton's App Redesign",
             "path": "/craft",
-            "img": "../../src/assets/images/crafts/tims/cover.jpg",
+            "img": "/assets/homepage/tims/cover.jpg",
             "skills": [
                 "UXUI",
                 "Prototyping",
@@ -37,7 +37,7 @@
         {
             "id": 2,
             "title": "Basics. - E-commerce Retailer",
-            "img": "../../src/assets/images/crafts/basics/cover.jpg",
+            "img": "/assets/homepage/basics/cover.jpg",
             "skills": [
                 "HTML",
                 "Tailwind",
@@ -48,7 +48,7 @@
         {
             "id": 3,
             "title": "My Personalized Model Plugin",
-            "img": "../../src/assets/images/crafts/pm/cover.jpg",
+            "img": "/assets/homepage/pm/cover.jpg",
             "skills": [
                 "UXUI"
             ]
@@ -56,7 +56,7 @@
         {
             "id": 4,
             "title": "Zen Matcha",
-            "img": "../../src/assets/images/crafts/zenmatcha/cover.jpg",
+            "img": "/assets/homepage/zenmatcha/cover.jpg",
             "skills": [
                 "Branding",
                 "Graphic Design"
