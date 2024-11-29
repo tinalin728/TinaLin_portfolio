@@ -12,8 +12,8 @@ import SmoothScrolling from './components/SmoothScrolling'
 function App() {
 
   return (
-    <SmoothScrolling>
-      <Router>
+    <Router>
+      <SmoothScrolling>
         <ScrollToTop />
         <Routes>
           <Route element={<Layout />}>
@@ -23,8 +23,8 @@ function App() {
             <Route path='/crafts/:id' element={<CraftDetail />} />
           </Route>
         </Routes>
-      </Router>
-    </SmoothScrolling>
+      </SmoothScrolling>
+    </Router>
   )
 }
 
