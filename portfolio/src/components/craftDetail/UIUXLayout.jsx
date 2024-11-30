@@ -4,6 +4,8 @@ import ImageModal from '../ImageModal'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import bulletPoint from '../../../public/assets/icons/bulletP.svg'
 
+import { useLenis } from "lenis/react";
+
 const CUSTOM_ANIMATION = {
     mount: { scale: 1 },
     unmount: { scale: .9 },
@@ -28,10 +30,6 @@ function UIUXLayout({ craft }) {
     const closeModal = () => {
         setModalData({ isOpen: false, src: '', alt: '' })
     }
-    useEffect(() => {
-        console.log('Webrouk Scroll Indicator loaded');
-    }, []);
-
 
 
     return (
@@ -71,7 +69,6 @@ function UIUXLayout({ craft }) {
                         <span className='text-dark-grey uppercase font-roundo tracking-wider'>Understanding Users</span>
                         <h1>Research</h1>
                     </div>
-
 
                     <div className='content-gap'>
                         <h3>Research Goals</h3>
@@ -139,7 +136,8 @@ function UIUXLayout({ craft }) {
                             </div>
 
                             <div className='flex-1 cursor-pointer p-6 border border-black rounded-xl bg-off-white'>
-                                <div className='w-auto h-[400px] mx-auto overflow-hidden border rounded-md'>
+                                <div className={`w-auto mx-auto h-[400px] border rounded-md ${modalData.isOpen ? "overflow-auto" : "overflow-hidden"
+                                    }`}>
                                     <img src={craft.research.flowAnalysis.image.src}
                                         alt={craft.research.flowAnalysis.image.altText}
                                         className='w-full h-auto object-contain object-center'
@@ -391,7 +389,7 @@ function UIUXLayout({ craft }) {
                             <div className='h-[90%] overflow-hidden mx-auto border rounded-md'>
                                 <img src={craft.design.sketch.image.src}
                                     alt={craft.design.sketch.image.altText}
-                                    className='w-auto h-full object-cover'
+                                    className='w-full h-full object-cover'
                                     onClick={() => handleImgClick({
                                         src: craft.design.sketch.image.src,
                                         alt: craft.design.sketch.image.altText

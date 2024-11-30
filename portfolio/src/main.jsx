@@ -6,10 +6,8 @@ import { ParallaxProvider } from "react-scroll-parallax";
 
 
 createRoot(document.getElementById('root')).render(
-  <ParallaxProvider>
-    <StrictMode>
-      <App />
-    </StrictMode>
-  </ParallaxProvider>
+  <StrictMode>
+    <App />
+  </StrictMode>
 
 )

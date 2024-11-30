@@ -116,25 +116,25 @@ function CraftDetail() {
             </div>
 
             <div className='border-y border-black pt-14 overflow-hidden'>
-                <div className='max-w-container flex justify-between translate-y-6'>
+                <div className='max-w-container flex justify-between translate-y-2 md:translate-y-4 lg:translate-y-6'>
                     {prev ?
                         (<button
                             onClick={() => navigate(`/crafts/${prev.id}`)}
-                            className='font-craftwork text-light-yellow-bg text-stroke text-xl md:text-3xl lg:text-4xl font-extrabold uppercase hover:btn-text-shadow transition duration-500'>
+                            className='font-craftwork text-light-yellow-bg text-stroke text-2xl md:text-3xl lg:text-4xl font-extrabold uppercase hover:btn-text-shadow transition duration-500'>
                             Prev
                         </button>) :
-                        (<span className='font-craftwork text-transparent text-stroke text-xl md:text-3xl lg:text-4xl  font-extrabold uppercase cursor-not-allowed'>Prev </span>)
+                        (<span className='font-craftwork text-transparent text-stroke text-2xl md:text-3xl lg:text-4xl  font-extrabold uppercase cursor-not-allowed'>Prev </span>)
 
                     }
 
                     {next ? (
                         <button
                             onClick={() => navigate(`/crafts/${next.id}`)}
-                            className='font-craftwork font-extrabold text-light-yellow-bg text-xl md:text-3xl lg:text-4xl text-stroke uppercase hover:btn-text-shadow-r'>
+                            className='font-craftwork font-extrabold text-light-yellow-bg text-2xl md:text-3xl lg:text-4xl text-stroke uppercase hover:btn-text-shadow-r'>
                             Next
                         </button>
                     ) : (
-                        <span className='font-craftwork text-transparent text-stroke text-xl md:text-3xl lg:text-4xl font-extrabold uppercase cursor-not-allowed'>Next </span>
+                        <span className='font-craftwork text-transparent text-stroke text-2xl md:text-3xl lg:text-4xl font-extrabold uppercase cursor-not-allowed'>Next </span>
                     )}
                 </div>
             </div>
