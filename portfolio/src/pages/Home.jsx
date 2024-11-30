@@ -468,10 +468,18 @@ function Home() {
                         <h3 id="craftHeader" className="text-center sub-header font-craftwork font-extrabold mt-2 tracking-[2px] text-light-yellow-bg text-stroke uppercase leading-normal">Feat. Crafts</h3>
                     </div>
 
-                    <div className='grid grid-cols-1 md:grid-cols-2 border-y-2  mb-10'>
+                    <div className="grid grid-cols-1 md:grid-cols-2 border-y-2 mb-10">
                         {crafts.slice(0, 4).map((craft, index) => {
                             const columns = 2;
-                            const isLastRow = index >= crafts.length - (crafts.length % columns || columns);
+                            const isSingleColumn = windowWidth < 768;
+                            const isLastRow = isSingleColumn
+                                // For single-column layout, last item is the last row
+                                ? index === crafts.length - 1
+                                : index >= crafts.length - (crafts.length % columns || columns);
+                            // For multi-column layout, check the last row
+
+                            const bottomBorder = !isLastRow ? "border-b-2" : ""; // Add bottom border unless it's the last row
+                            const rightBorder = !isSingleColumn && index % columns === 0 ? "md:border-r-2" : ""; // Add right border only on larger screens for left column
 
                             return (
                                 <CraftCard
@@ -480,13 +488,12 @@ function Home() {
                                     title={craft.title}
                                     img={craft.img}
                                     skills={craft.skills}
-                                    border={`${!isLastRow ? 'border-b-2' : ''
-                                        } ${index % columns === 0 ? 'md:border-r-2' : ''}`}
+                                    border={`${bottomBorder} ${rightBorder}`}
                                 />
                             );
-                        }
-                        )}
+                        })}
                     </div>
+
 
                     <div className='flex justify-center items-center'>
                         <PrimaryBtn
