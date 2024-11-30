@@ -20,17 +20,12 @@
     }
 
     h3 {
-        @apply text-lg font-craftwork font-bold tracking-[1px] mb-2 capitalize
+        @apply text-md md:text-lg font-craftwork font-bold tracking-[1px] mb-2 capitalize
     }
 
     h4 {
-        @apply text-[20px] tracking-wider md:tracking-wider md:text-lg font-craftwork font-bold
+        @apply text-base tracking-wider md:tracking-wider md:text-md lg:text-lg font-craftwork font-bold
     }
-
-    h5 {
-        @apply text-[20px] md:text-lg
-    }
-
 
     p {
         @apply text-base font-roundo
