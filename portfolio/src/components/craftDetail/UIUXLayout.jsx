@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import BackToTop from '../buttons/BackToTop'
 import ImageModal from '../ImageModal'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import bulletPoint from '../../assets/images/crafts/bulletP.svg'
+import bulletPoint from '../../../public/assets/icons/bulletP.svg'
 
 const CUSTOM_ANIMATION = {
     mount: { scale: 1 },

@@ -1,5 +1,4 @@
 import { useEffect, useRef } from 'react';
-import sunglasses from "../assets/images/homepage/emoji-sunglasses.png"
 
 
 

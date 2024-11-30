@@ -19,7 +19,7 @@ function CraftCard({ title, img, skills, id, border }) {
     return (
         <>
             <Link to={`/crafts/${id} `}
-                className={`relative font-bold leading-normal capitalize cursor-pointer border-b-2 border-black ${border} w-full h-full inline-block overflow-hidden group`}
+                className={`relative font-bold leading-normal capitalize cursor-pointer ${border} w-full h-full inline-block overflow-hidden group`}
                 onMouseMove={handleMouseMove} onMouseOut={handleMouseOut}>
 
                 <span className="absolute block bg-black transform duration-500 ease-in-out top-0 left-0 w-full h-[2.2px] origin-left scale-x-0 group-hover:scale-x-100 "></span>
