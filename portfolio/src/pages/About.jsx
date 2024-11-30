@@ -223,10 +223,10 @@ function About() {
                                     <p className=''>
                                         My Currents
                                     </p>
-                                    <div className='flex gap-4 items-center'>
-                                        <div className='w-4 h-[2px]  bg-light-yellow-bg'></div>
-                                        <div className='h-4 w-4 rounded-full bg-yellow'></div>
-                                        <div className='h-4 w-4 bg-orange'></div>
+                                    <div className='flex gap-3 items-center md:gap-4 '>
+                                        <div className='w-3 md:w-4 h-[2px] bg-light-yellow-bg'></div>
+                                        <div className='h-3 w-3 md:h-4 md:w-4 rounded-full bg-yellow'></div>
+                                        <div className='h-3 w-3 md:h-4 md:w-4  bg-orange'></div>
                                     </div>
                                 </div>
                                 <div className='pt-14 pb-4 px-8 relative bg-white border-2 rounded-xl'>

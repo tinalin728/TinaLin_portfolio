@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import PageHero from '../components/PageHero'
-import HorizontalScroll from '../components/HorizontalScroll'
+import WindowWidth from '../hooks/WindowWidth';
 import CraftCard from '../components/CraftCard'
 
 import data from '../data/generalData.json';
 
 function Crafts() {
+
+    const windowWidth = WindowWidth();
+
     const [crafts, setCrafts] = useState([])
     useEffect(() => {
         const { crafts } = data;
@@ -54,11 +57,16 @@ function Crafts() {
                     </div>
                 </div>
 
-                <div className='grid grid-cols-1 md:grid-cols-2 border-y-2 border-black bg-light-grey-bg mb-8'>
-                    {filteredCrafts.map((craft, index) => {
+                <div className="grid grid-cols-1 md:grid-cols-2 border-y-2 mb-10">
+                    {crafts.slice(0, 4).map((craft, index) => {
                         const columns = 2;
-                        const isLastRow = index >= filteredCrafts.length - (filteredCrafts.length % columns || columns);
+                        const isSingleColumn = windowWidth < 768;
+                        const isLastRow = isSingleColumn
+                            ? index === crafts.length - 1
+                            : index >= crafts.length - (crafts.length % columns || columns);
 
+                        const bottomBorder = !isLastRow ? "border-b-2" : "";
+                        const rightBorder = !isSingleColumn && index % columns === 0 ? "md:border-r-2" : "";
                         return (
                             <CraftCard
                                 key={craft.id}
@@ -66,13 +74,12 @@ function Crafts() {
                                 title={craft.title}
                                 img={craft.img}
                                 skills={craft.skills}
-                                border={`${!isLastRow ? 'border-b-2' : ''
-                                    } ${index % columns === 0 ? 'md:border-r-2' : ''}`}
+                                border={`${bottomBorder} ${rightBorder}`}
                             />
                         );
-                    }
-                    )}
+                    })}
                 </div>
+
             </section >
 
         </>
