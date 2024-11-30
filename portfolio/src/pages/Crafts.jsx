@@ -3,7 +3,7 @@ import PageHero from '../components/PageHero'
 import HorizontalScroll from '../components/HorizontalScroll'
 import CraftCard from '../components/CraftCard'
 
-import data from './home/data.json';
+import data from '../data/generalData.json';
 
 function Crafts() {
     const [crafts, setCrafts] = useState([])
@@ -25,6 +25,8 @@ function Crafts() {
     const filterClasses = (isActive) =>
         `py-1 px-4 rounded-full shadow-charcoal border-2 hover:shadow-charcoal-hover transition duration-300 ${isActive ? 'bg-charcoal shadow-none text-white' : 'bg-white text-charcoal'
         }`
+
+
     return (
         <>
             <PageHero
@@ -52,17 +54,24 @@ function Crafts() {
                     </div>
                 </div>
 
-                <div className='grid grid-cols-1 md:grid-cols-2 border-t-2 border-black bg-light-grey-bg mb-8'>
-                    {filteredCrafts.map((craft, index) => (
-                        <CraftCard
-                            key={craft.id}
-                            id={craft.id}
-                            title={craft.title}
-                            img={craft.img}
-                            skills={craft.skills}
-                            border={index % 2 === 0 ? 'md:border-r-2' : ''}
-                        />
-                    ))}
+                <div className='grid grid-cols-1 md:grid-cols-2 border-y-2 border-black bg-light-grey-bg mb-8'>
+                    {filteredCrafts.map((craft, index) => {
+                        const columns = 2;
+                        const isLastRow = index >= filteredCrafts.length - (filteredCrafts.length % columns || columns);
+
+                        return (
+                            <CraftCard
+                                key={craft.id}
+                                id={craft.id}
+                                title={craft.title}
+                                img={craft.img}
+                                skills={craft.skills}
+                                border={`${!isLastRow ? 'border-b-2' : ''
+                                    } ${index % columns === 0 ? 'md:border-r-2' : ''}`}
+                            />
+                        );
+                    }
+                    )}
                 </div>
             </section >
 

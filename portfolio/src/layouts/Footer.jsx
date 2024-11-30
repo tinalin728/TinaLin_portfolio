@@ -10,7 +10,7 @@ import { faEnvelope } from "@fortawesome/free-regular-svg-icons"
 
 import WindowWidth from '../hooks/WindowWidth';
 
-import coffee from '../assets/images/footer/coffee.png'
+import coffee from '../../public/assets/icons/coffee.png'
 
 
 
