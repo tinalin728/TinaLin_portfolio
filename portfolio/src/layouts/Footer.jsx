@@ -105,12 +105,15 @@ function Footer() {
 
         //preload images
         const preloadImages = (textures, callback) => {
+            //console.log("Textures after preloading:", textures);
+
             let loadedCount = 0;
             const total = textures.length;
+            const loadedTextures = [];
 
             if (!Array.isArray(textures) || total === 0) {
                 console.error("No textures to preload.");
-                callback(); // Trigger the callback even if there are no textures
+                callback([]); // Trigger the callback even if there are no textures
                 return;
             }
 
@@ -118,90 +121,132 @@ function Footer() {
                 const img = new Image();
                 img.src = texture;
                 img.onload = () => {
+                    loadedTextures.push(texture); // Add successfully loaded texture
                     loadedCount++;
-                    console.log(`Loaded image: ${texture} (${loadedCount}/${total})`);
                     if (loadedCount === total) {
-                        callback(); // All images are loaded
+                        console.log("Preloading complete:", loadedTextures);
+                        callback(loadedTextures); // Pass the loaded textures
                     }
                 };
+
                 img.onerror = () => {
                     console.error(`Failed to load image: ${texture}`);
-                    loadedCount++; // Increment even if an image fails
+                    loadedCount++;
                     if (loadedCount === total) {
-                        callback(); // Proceed when all attempts are done
+                        console.log("Preloading complete with errors:", loadedTextures);
+                        callback(loadedTextures); // Pass the loaded textures, even if some failed
                     }
                 };
             });
         };
 
-
-
-        const createPills = (texture, canvasWidth) => {
+        // create pills
+        const createPills = (textures, canvasWidth) => {
+            console.log("createPills invoked");
+            console.log("Textures passed:", textures);
+            console.log("Canvas width:", canvasWidth);
 
             if (!Array.isArray(textures) || textures.length === 0) {
                 console.error("Invalid or empty textures:", textures);
-                return []; // Return an empty array to avoid errors
+                return []; // Prevent errors by returning an empty array
             }
 
             const screenWidth = window.innerWidth;
-
             const pillWidth = screenWidth < 768 ? 60 : 100;
             const pillHeight = screenWidth < 768 ? 20 : 30;
-
             const spread = screenWidth < 768 ? 20 : 40;
             const startX = canvasWidth / 2;
 
-            return textures.map((texture, index) => {
+            const pills = textures.map((texture, index) => {
                 const offset = (index - textures.length / 2) * spread;
                 const x = startX + offset;
-                const y = 60 - Math.abs(offset) * 0.3;;
-                const width = 100; // Fixed width for pills
-                const height = 30; // Fixed height for pills
+                const y = 60 - Math.abs(offset) * 0.3;
 
-                return Bodies.rectangle(x, y, width, height, {
+                return Bodies.rectangle(x, y, pillWidth, pillHeight, {
                     restitution: 1,
                     friction: 0.2,
                     label: "pill",
                     render: {
                         sprite: {
                             texture: texture,
-                            xScale: screenWidth < 768 ? .8 : 1,
-                            yScale: screenWidth < 768 ? .8 : 1,
+                            xScale: screenWidth < 768 ? 0.8 : 1,
+                            yScale: screenWidth < 768 ? 0.8 : 1,
                         },
                     },
                 });
             });
+
+            console.log("Created pills:", pills);
+            return pills;
         };
+
 
         //Create pills using all textures
         const handlePillsDrop = () => {
-
+            const clearDynamicBodies = (world) => {
+                Composite.allBodies(world).forEach((body) => {
+                    if (!body.isStatic) {
+                        Composite.remove(world, body);
+                    }
+                });
+                console.log("Cleared dynamic bodies");
+            };
+            clearDynamicBodies(world);
 
             if (!pillsDropped) {
-
                 if (!Array.isArray(textures) || textures.length === 0) {
                     console.error("Textures are not valid or ready:", textures);
-                    return; // Exit the function early if textures is invalid
+                    return;
                 }
 
                 const pillBodies = createPills(textures, width);
                 pillBodies.forEach((pill) => Composite.add(world, pill));
                 pillsDropped = true;
+                console.log("Pills dropped successfully");
+            } else {
+                console.log("Pills already dropped, skipping");
             }
         };
 
-
-        ScrollTrigger.create({
-            trigger: containerRef.current,
-            start: "top+=80% bottom",
-            onEnter: () => {
-                if (!triggered) {
-                    setTriggered(true);
-                    handlePillsDrop();
+        //since using Lenis can be in conflict with scroll trigger, using scrollProxy tells scrolltrigger to correctly tract the scroll position
+        //connects scrolltrigger to Lenis by overriding how scrolltrigger calculates
+        ScrollTrigger.scrollerProxy(containerRef.current, {
+            //Lenis's scrollTop value is used instead of the browser's default.
+            scrollTop(value) {
+                if (arguments.length) {
+                    containerRef.current.scrollTop = value;
                 }
+                //Returns the custom scroll container's dimensions and position relative to the viewport.
+                return containerRef.current.scrollTop;
             },
-            //markers: true
+            getBoundingClientRect() {
+                return {
+                    top: 0,
+                    left: 0,
+                    width: window.innerWidth,
+                    height: window.innerHeight,
+                };
+            },
+            //Specifies whether the container uses transform or fixed positioning for smooth scrolling.
+            pinType: containerRef.current.style.transform ? "transform" : "fixed",
         });
+
+        //delay scrolltrigger.create()
+        setTimeout(() => {
+            ScrollTrigger.create({
+                trigger: containerRef.current,
+                start: "top+=80% bottom",
+                onEnter: () => {
+                    console.log("ScrollTrigger fired: onEnter");
+                    if (!triggered) {
+                        setTriggered(true);
+                        handlePillsDrop();
+                    }
+                },
+                // markers: true,
+            });
+        }, 100);
+
 
         // add mouse control
         const mouse = Mouse.create(render.canvas);
@@ -216,10 +261,9 @@ function Footer() {
         });
         Composite.add(world, mouseConstraint)
 
-        console.log("Bodies before cleanup:", Composite.allBodies(world).length);
-
 
         render.mouse = mouse
+
         //allows mouse to scroll while being on canvas
         const handleWheel = (event) => {
             event.preventDefault();
@@ -229,40 +273,40 @@ function Footer() {
         };
 
         const touchStartRef = { current: 0 };
+        const handleTouchStart = (event) => {
+            touchStartRef.current = event.touches[0].clientY;
+        };
 
-
+        // Handle touch move for mobile scrolling
         const handleTouchMove = (event) => {
             if (!mouseConstraint.body) {
                 const touch = event.touches[0];
                 const deltaY = touch.clientY - touchStartRef.current;
-                window.scrollBy(0, -deltaY);
-                touchStartRef.current = touch.clientY;
+                window.scrollBy(0, -deltaY); // Adjust scroll position
+                touchStartRef.current = touch.clientY; // Update reference
             }
         };
 
-        const handleTouchStart = (event) => {
-            touchStartRef.current = event.touches[0].clientY;
-        }
-
-        // if (canvasRef.current) {
-        //     canvasRef.current.addEventListener('wheel', handleWheel);
-        // }
-
-
+        // handle resize
         const handleResize = () => {
             const { width, height } = container.getBoundingClientRect();
+
+            // adjust canvas size
             canvas.width = width * render.options.pixelRatio;
             canvas.height = height * render.options.pixelRatio;
-
             Render.setSize(render, width, height);
+
             // Remove non-static bodies (e.g., pills)
             Composite.allBodies(world).forEach((body) => {
                 if (!body.isStatic) {
                     Composite.remove(world, body);
                 }
             });
-            // Recreate dynamic bodies (e.g., pills)
+
+            // Recreate dynamic bodies 
             preloadImages(textures, (loadedTextures) => {
+                console.log("Preload complete. Recreating pills...");
+
                 const pillBodies = createPills(loadedTextures, width);
                 pillBodies.forEach((pill) => Composite.add(world, pill));
             });
@@ -281,17 +325,15 @@ function Footer() {
             Matter.Body.setPosition(wallRight, { x: width + 100, y: height / 2 });
             Matter.Body.setPosition(roof, { x: width / 2, y: -80 });
             console.log("Right Wall:", wallRight.position, wallRight.vertices);
-
         };
 
         window.addEventListener("resize", handleResize);
         handleResize();
 
-        // Add event listeners
-        canvas.addEventListener("wheel", handleWheel); // For desktop
-        canvas.addEventListener("touchstart", handleTouchStart); // Track initial touch
-        canvas.addEventListener("touchmove", handleTouchMove); // Handle scrolling on touch
 
+        canvas.addEventListener("wheel", handleWheel); // For desktop
+        canvas.addEventListener("touchstart", handleTouchStart);
+        canvas.addEventListener("touchmove", handleTouchMove);
 
         // Engine.run(engine);
         Render.run(render);
@@ -306,13 +348,12 @@ function Footer() {
             canvas.removeEventListener("touchmove", handleTouchMove);
             ScrollTrigger.killAll();
         };
-    }, [pillsDropped]);
+    }, [triggered]);
 
 
     return (
         <footer ref={containerRef} className='relative h-full bg-charcoal overflow-hidden'>
             <div ref={wrapperRef} className='relative w-full'>
-
                 <div className="absolute top-0 left-0 w-full h-full z-10">
                     <canvas ref={canvasRef} className="w-full h-full" />
                 </div>
