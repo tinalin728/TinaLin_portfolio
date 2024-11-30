@@ -28,7 +28,6 @@ import data from '../data/generalData.json';
 function Home() {
 
     const aboutRef = useRef(null);
-    const exploreRef = useRef(null);
     const cardRef = useRef(null);
     const cardRefs = useRef([]);
     const aboutCtaRef = useRef(null);
@@ -50,11 +49,11 @@ function Home() {
         setCrafts(crafts);
     }, []);
 
-    //for parallax speed
+    //adjust parallax speed in different window screen size
     const windowWidth = WindowWidth();
     const isMobile = windowWidth < 768;
 
-
+    //card component
     const Card = forwardRef(({ item }, ref) => (
         <div ref={ref} className={`about-card h-[400px] col-span-1 lg:col-span-4 relative z-10  hover:scale-[1.01] transition-all duration-500`}>
             <div className='absolute inset-0 '>
@@ -80,28 +79,24 @@ function Home() {
     ));
 
 
-    // horizontal scroll image swapping
+    // horizontal scroll, image swapping
     const images = [sunglasses, rainbow, thunder, rose];
-
-    const [currentImage, setCurrentImage] = useState(0)
-    const currentImageRef = useRef(currentImage)
-    useEffect(() => {
-        currentImageRef.current = currentImage;
-    }, [currentImage]);
+    const [currentImage, setCurrentImage] = useState(0);
 
     useEffect(() => {
         const imageInterval = setInterval(() => {
             setCurrentImage((prevImage) => (prevImage + 1) % images.length);
         }, 1500);
-        return () => clearInterval(imageInterval)
-    }, [])
+
+        return () => clearInterval(imageInterval);
+    }, []);
 
 
-    const [animationComplete, setAnimationComplete] = useState(false);
-
-    // gsap for hero
+    // animation for hero section
     useEffect(() => {
+        // headline animation
         const elements = [refs.line1.current, refs.line2.current, refs.line3.current, refs.line4.current];
+        //each line has unique rotation
         const rotations = [6, -3, 6, -6];
 
         const timeline = gsap.timeline({
@@ -111,26 +106,28 @@ function Home() {
             timeline.fromTo(
                 element,
                 {
-                    rotate: 0, // Start with no rotation
+                    rotate: 0,
                 },
                 {
                     opacity: 1,
-                    rotate: rotations[index], // Apply unique rotation
+                    // Apply unique rotation
+                    rotate: rotations[index],
                     duration: 1,
                     ease: "bounce.out",
-                    delay: index * 0.1, // Stagger animations manually,
+                    delay: index * 0.1,
+                    //when animation completes, allow background mouse interaction
                     onComplete: () => setAnimationComplete(true)
                 },
                 "<"
             );
         });
-
+        //cursor animation
         timeline.fromTo(
             cursorRef.current, {
-            //x: "100%",
+            x: "100%",
             opacity: 0,
         }, {
-            // x: '0%',
+            x: '0%',
             opacity: 1,
             duration: 1,
             ease: 'power2.out'
@@ -145,14 +142,15 @@ function Home() {
             ease: 'power1.inOut'
         }, '+=.2'
         );
-
     }, [])
 
+    const [animationComplete, setAnimationComplete] = useState(false);
     const [isMouseInside, setIsMouseInside] = useState(false);
     const heroRef = useRef(null);
     const glitchRefs = useRef([]);
+    //position for the background image
     const positions = [
-        // { top: "53%", left: "53%" },
+        { top: "53%", left: "53%" },
         { top: "52%", left: "52%" },
         { top: "51%", left: "51%" },
         { top: "50%", left: "50%" },
@@ -162,12 +160,12 @@ function Home() {
 
     //hook responsible for tracking mouse position
     const useMousePosition = (enabled) => {
+        //mousePosition holds the current mouse position as an object with x and y coordinates.
+        const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
-        const [mousePosition, setMousePosition] = React.useState({ x: 0, y: 0 });
-
-        React.useEffect(() => {
+        //enabled dependency: determines whether the mouse position tracking is active. If enabled is false, the hook does nothing.
+        useEffect(() => {
             if (!enabled) return;
-
             const updateMousePosition = (ev) => {
                 setMousePosition({ x: ev.clientX, y: ev.clientY });
             };
@@ -178,10 +176,10 @@ function Home() {
                 window.removeEventListener("mousemove", updateMousePosition);
             };
         }, [enabled]);
-
         return mousePosition;
     };
 
+    //useMousePosition hook only tracks the mouse position when animationComplete is true (headline animation)
     const mousePosition = useMousePosition(animationComplete);
 
     // Attach mouse event listeners to the hero section
@@ -204,30 +202,40 @@ function Home() {
 
     // Limit movement within the hero section
     useEffect(() => {
-        if (!animationComplete || !isMouseInside) return; // Only run when animation is done and mouse is inside
 
-        if (!animationComplete) return;
+        // Only run when animation is done and mouse is inside
+        if (!animationComplete || !isMouseInside) return;
 
         const container = heroRef.current;
+        //ensures that code only executes further if the container reference is valid
         if (!container) return;
+        // Get hero section bounds
+        const containerBounds = container.getBoundingClientRect();
 
-        const containerBounds = container.getBoundingClientRect(); // Get hero section bounds
-
+        //array is reversed (slice().reverse()) to apply animation in reverse order
         glitchRefs.current.slice().reverse().forEach((glitch, index) => {
+            //condition ensures that the code inside the block is only executed if glitch is truthy
             if (glitch) {
+                //relativeMouseX and Y are calculated based on the mouse's position within the container (containerBounds)
                 const relativeMouseX = Math.min(
+                    //mouse x position relative to container's left edge
                     Math.max(mousePosition.x - containerBounds.left, 0),
                     containerBounds.width
                 );
                 const relativeMouseY = Math.min(
+                    //mouse y position relative to container's top edge
                     Math.max(mousePosition.y - containerBounds.top, 0),
                     containerBounds.height
                 );
 
-                const movementFactor = 25; // Adjust for sensitivity
+                //// Adjust for sensitivity, determines how much each element moves relative to mouse position
+                const movementFactor = 20;
+                // Centers movement around the middle of the container by subtracting half the container's dimensions.
+                // Scales the movement proportionally to the container's width and height.
                 const constrainedX = ((relativeMouseX - containerBounds.width / 2) / containerBounds.width) * movementFactor;
                 const constrainedY = ((relativeMouseY - containerBounds.height / 2) / containerBounds.height) * movementFactor;
 
+                // Animates the glitch element to the calculated x and y positions.
                 gsap.to(glitch, {
                     x: constrainedX,
                     y: constrainedY,
@@ -235,17 +243,19 @@ function Home() {
                     ease: "power2.out",
                     delay: index * 0.1,
                     onUpdate: function () {
+                        //ensures that the elements are always transform from the center.
                         glitch.style.transform = `translate(-50%, -50%) translate(${constrainedX}px, ${constrainedY}px)`;
                     },
                 });
             }
         });
+        //dependencies required to reruns the effect and that animations only start when the initial animation finishes.
     }, [mousePosition, animationComplete]);
 
 
 
 
-    // gsap for about section
+    // animation for about section
     useLayoutEffect(() => {
 
         const tl = gsap.timeline({
@@ -289,11 +299,10 @@ function Home() {
                 opacity: 1,
                 duration: 1,
                 ease: "power3.out",
-                stagger: 0.2, // Stagger animation for cards
             }
         );
 
-        // Button animation (AFTER cards finish)
+        // Button animation
         tl.fromTo(
             aboutCtaRef.current,
             { x: 200, opacity: 0 },
@@ -305,8 +314,6 @@ function Home() {
             },
             "-=1"
         );
-
-
     }, [])
 
 
