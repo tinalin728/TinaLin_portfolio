@@ -35,21 +35,17 @@ function CraftCard({ title, img, skills, id, border }) {
                     </div>
 
                     <div className='text-end mt-4'>
-                        <h4 className='transition-all duration-300 ease-in'>{title}</h4>
+                        <h3 className='transition-all duration-300 ease-in'>{title}</h3>
 
                         <div className='flex flex-wrap justify-end gap-2 py-2'>
                             {skills.map((skill, index) => (
                                 <div className='inline-block' key={index}>
-                                    <span className='font-roundo tracking-[1.5px] text-dark-grey px-2 py-1 border border-dark-grey rounded-full text-sm text-nowrap group-hover:border-orange group-hover:text-orange'>{skill}</span>
+                                    <span className='font-roundo tracking-[.8px] md:tracking-[1.5px] text-dark-grey px-2 py-1 border border-dark-grey rounded-full text-sm text-nowrap group-hover:border-orange group-hover:text-orange'>{skill}</span>
                                 </div>
                             ))}
-
                         </div>
                     </div>
                 </div>
-
-                {/* 736 */}
-
             </Link>
 
         </>
