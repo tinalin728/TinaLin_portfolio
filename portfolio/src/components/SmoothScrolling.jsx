@@ -1,6 +1,13 @@
 import { ReactLenis, useLenis } from 'lenis/react'
+import { useLocation } from 'react-router-dom';
 
-function SmoothScrolling({ children }) {
+function SmoothScrolling({ children, disable }) {
+
+    const location = useLocation();
+
+    const isCraftDetail = /^\/crafts\/[^/]+$/.test(location.pathname);
+
+
     const lenisOptions = {
         lerp: 0.1,         // Controls how smooth the scrolling is
         duration: 1,     // Slows down or speeds up the scrolling
@@ -9,9 +16,13 @@ function SmoothScrolling({ children }) {
     };
 
     return (
-        <ReactLenis root options={lenisOptions}>
-            {children}
-        </ReactLenis>
+        <>
+            {!isCraftDetail ? (
+                <ReactLenis root options={lenisOptions}>
+                    {children}
+                </ReactLenis>
+            ) : (children)}
+        </>
     );
 }
 

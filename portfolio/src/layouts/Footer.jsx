@@ -101,6 +101,12 @@ function Footer() {
             '/assets/pills/thai.svg',
             '/assets/pills/viet.svg',
             '/assets/pills/hindi.svg',
+            '/assets/pills/danish.svg',
+            '/assets/pills/malay.svg',
+            '/assets/pills/latin.svg',
+            '/assets/pills/react.svg',
+            '/assets/pills/tailwind.svg',
+
         ];
 
         //preload images

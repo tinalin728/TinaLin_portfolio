@@ -58,11 +58,11 @@ function CraftDetail() {
             </section>
 
             {/* overview */}
-            <section className='overview  border-t'>
-                <div className=' content-w  border-x pt-[10rem] pb-4 '>
+            <section className='overview  border-t '>
+                <div className=' content-w  border-x pt-[10rem] pb-4 bg-light-grey-bg'>
                     <div className='max-w-[35rem]'>
                         <p className='text-dark-grey'> {craft.overview.tagline} </p>
-                        <h2>{craft.title}</h2>
+                        <h2 className='text-orange'>{craft.title}</h2>
                         <p>{craft.overview.companyOverview}</p>
                     </div>
 
@@ -102,8 +102,8 @@ function CraftDetail() {
                 </div>
             </section>
 
-            <div className='relative h-full border-black'>
-                <div className='h-full content-w border-x'>
+            <div className='relative h-full border-black '>
+                <div className='h-full content-w border-x bg-light-grey-bg'>
                     {/* render uiux or coding project */}
 
                     {craft.type === 'UXUI' ?
@@ -119,7 +119,13 @@ function CraftDetail() {
                 <div className='max-w-container flex justify-between translate-y-2 md:translate-y-4 lg:translate-y-6'>
                     {prev ?
                         (<button
-                            onClick={() => navigate(`/crafts/${prev.id}`)}
+                            onClick={() => {
+                                window.scrollTo({
+                                    top: 0,
+                                    left: 0,
+                                    behavior: 'auto',
+                                }); navigate(`/crafts/${prev.id}`);
+                            }}
                             className='font-craftwork text-light-yellow-bg text-stroke text-2xl md:text-3xl lg:text-4xl font-extrabold uppercase hover:btn-text-shadow transition duration-500'>
                             Prev
                         </button>) :
@@ -129,7 +135,14 @@ function CraftDetail() {
 
                     {next ? (
                         <button
-                            onClick={() => navigate(`/crafts/${next.id}`)}
+                            onClick={() => {
+                                window.scrollTo({
+                                    top: 0,
+                                    left: 0,
+                                    behavior: 'auto',
+                                });
+                                navigate(`/crafts/${next.id}`);
+                            }}
                             className='font-craftwork font-extrabold text-light-yellow-bg text-2xl md:text-3xl lg:text-4xl text-stroke uppercase hover:btn-text-shadow-r'>
                             Next
                         </button>

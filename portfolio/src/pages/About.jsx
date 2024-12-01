@@ -185,7 +185,7 @@ function About() {
                                 >
                                     <div className="absolute top-0 left-0 w-full px-4 py-2 bg-yellow border-b-2">
                                         <div className='flex justify-between items-center'>
-                                            <p className="font-roundo-medium mt-1">My Value</p>
+                                            <p className="font-roundo-medium mt-1">Core Value</p>
                                             <div className='h-3 w-3 border-2 rounded-full bg-orange'></div>
                                         </div>
                                     </div>
@@ -239,7 +239,7 @@ function About() {
                                     <h4>I Also Like</h4>
                                 </div>
                                 <div className='basis-[60%]'>
-                                    <ul className='font-roundo list-disc px-4 leading-[30px]'>
+                                    <ul className='list-disc px-4 '>
                                         <li>I love hanging out with my 3-year-old niece. She's my doodle inspiration. We spend hours building epic block towers (that she loves to knock down, of course) and laughing along to Peppa Pig episodes. Honestly, she keeps me young and creative </li>
 
                                         <li>I'm working hard to stay healthy by making yoga and Pilates a regular habit. I've been practicing the crow pose for months. I will nail it eventually. </li>

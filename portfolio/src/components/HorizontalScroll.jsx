@@ -32,7 +32,7 @@ function HorizontalScroll({ children, speed = 1, bgColor = 'bg-charcoal' }) {
     return (
         <div className={`border-y-2 border-charcoal py-4 ${bgColor}`}>
 
-            <div className="border-y-2 border-dashed border-white">
+            <div className="border-y-2 border-dashed border-light-grey">
                 {/* Scrolling content */}
                 <div ref={scrollContainerRef} className="overflow-hidden whitespace-nowrap">
                     <div className="inline-flex gap-10 justify-center items-center py-2">
