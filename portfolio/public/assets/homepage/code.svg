@@ -20,7 +20,7 @@
 
       .cls-4 {
         fill: #fff5e4;
-        animation: moveYellow 1s linear infinite;
+        animation: moveBg 1s linear infinite;
       }
 
       .cls-3 {
@@ -28,7 +28,7 @@
       }
 
       .cls-5 {
-        fill: #fee6bd;
+        fill: #FCC764;
       }
 
       .cls-6 {
@@ -44,7 +44,7 @@
         }
       }
 
-      @keyframes moveYellow {
+      @keyframes moveBg {
         0%, 100% {
           transform: translateX(0);
         }

@@ -38,6 +38,7 @@ function UIUXLayout({ craft }) {
 
             <BackToTop />
 
+            {/* sticky nav */}
             <div className='mb-10'>
                 <img src={craft.process.image.src} alt={craft.process.image.altText} className='design process' />
             </div>
@@ -74,20 +75,21 @@ function UIUXLayout({ craft }) {
                         <h3>Research Goals</h3>
                         <p className='mb-2'>{craft.research.description}
                         </p>
-
-                        {craft.research.goals.map((goal, index) => (
-                            <div key={index} className='flex items-center gap-2'>
-                                <img src={bulletPoint} alt="" width={18} />
-                                <p className='font-roundo-medium'>{goal}</p>
-                            </div>
-                        ))}
+                        <ul>
+                            {craft.research.goals.map((goal, index) => (
+                                <li key={index} className='ml-4 list-decimal font-roundo-medium'>
+                                    {goal}
+                                </li>
+                            ))}
+                        </ul>
                     </div>
 
                     {craft.research.quoteImg && (
-                        <div className='w-1/3 mx-auto'>
+                        <div className='w-full lg:w-1/2 mx-auto'>
                             <img src={craft.research.quoteImg.src} alt={craft.research.quoteImg.altText} />
                         </div>
                     )}
+
                     <div className='content-gap'>
                         <div className='flex gap-10 flex-col md:flex-row mb-10'>
                             <div className='flex-1'>
@@ -168,7 +170,7 @@ function UIUXLayout({ craft }) {
                             </div>
 
                             <div className='flex-1 cursor-pointer p-6 border border-black rounded-xl bg-off-white'>
-                                <div className='w-auto h-[80%] mx-auto overflow-hidden border rounded-md'>
+                                <div className='w-auto mx-auto overflow-hidden border rounded-md'>
                                     <img src={craft.research.competitor.image.src}
                                         alt={craft.research.competitor.image.altText}
                                         className='w-full h-auto object-cover'

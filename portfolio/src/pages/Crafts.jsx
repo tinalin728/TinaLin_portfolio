@@ -57,7 +57,7 @@ function Crafts() {
                     </div>
                 </div>
                 <div className='py-10 border-2  bg-light-grey-bg'>
-                    <div className="grid grid-cols-1 md:grid-cols-2 border-2 ">
+                    <div className="grid grid-cols-1 md:grid-cols-2 border-y-2 bg-light-yellow-bg">
                         {filteredCrafts.slice(0, 4).map((craft, index) => {
                             const columns = 2;
                             const isSingleColumn = windowWidth < 768;

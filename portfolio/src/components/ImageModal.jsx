@@ -1,41 +1,36 @@
 import React, { useEffect } from 'react';
-import { useLenis } from 'lenis/react';
 
 function ImageModal({ isOpen, src, alt, onClose }) {
-    const lenis = useLenis();
 
     useEffect(() => {
 
         if (isOpen) {
-            // Disable body scroll
-            lenis?.stop();
-            document.body.style.overflow = 'auto';
-            document.querySelector('#modal-container').style.overflow = 'auto'; // Enable modal scroll
+
+            document.body.style.overflow = 'hidden';
 
 
         } else {
-            // Re-enable body scroll
-            lenis?.start();
+
             document.body.style.overflow = '';
         }
 
         // Cleanup when the component unmounts
         return () => {
-            lenis?.start();
+
             document.body.style.overflow = '';
         };
-    }, [isOpen, lenis]);
+    }, [isOpen]);
 
     if (!isOpen) return null;
 
     return (
-        <div data-scroll
-            id='modal-container'
-            className="fixed inset-0 z-50 w-full h-auto bg-black bg-opacity-80"
+        <div
+            className="fixed inset-0 z-50 w-full h-screen overflow-scroll bg-black "
             onClick={onClose}
         >
+
             <div
-                className="relative max-w-[85rem] mx-auto h-auto overflow-auto py-4 px-12"
+                className="relative max-w-[85rem] mx-auto h-auto pt-[6rem] pb-12 px-12"
                 onClick={(e) => e.stopPropagation()} // Prevent click from closing modal
             >
                 <img
@@ -51,6 +46,7 @@ function ImageModal({ isOpen, src, alt, onClose }) {
                 &times;
             </button>
         </div>
+
     );
 }
 

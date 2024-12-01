@@ -43,6 +43,9 @@
         @apply overflow-x-hidden bg-[#FBF8F0]
     }
 
+    li {
+        @apply font-roundo text-base
+    }
 
     .max-w-container {
         max-width: 85rem;
@@ -155,36 +158,37 @@
             5.5px 5.5px 0 #1e1e1e,
             6px 6px 0 #1e1e1e;
     }
+
     .btn-text-shadow {
         text-shadow:
-        .5px -.5px 0 #1e1e1e,
-        1px -1px 0 #1e1e1e,
-        1.5px -1.5px 0 #1e1e1e,
-        2px -2px 0 #1e1e1e,
-        2.5px -2.5px 0 #1e1e1e,
-        3px -3px 0 #1e1e1e,
-        3.5px -3.5px 0 #1e1e1e,
-        4px -4px 0 #1e1e1e,
-        4.5px -4.5px 0 #1e1e1e,
-        5px -5px 0 #1e1e1e,
-        5.5px -5.5px 0 #1e1e1e,
-        6px -6px 0 #1e1e1e;
+            .5px -.5px 0 #1e1e1e,
+            1px -1px 0 #1e1e1e,
+            1.5px -1.5px 0 #1e1e1e,
+            2px -2px 0 #1e1e1e,
+            2.5px -2.5px 0 #1e1e1e,
+            3px -3px 0 #1e1e1e,
+            3.5px -3.5px 0 #1e1e1e,
+            4px -4px 0 #1e1e1e,
+            4.5px -4.5px 0 #1e1e1e,
+            5px -5px 0 #1e1e1e,
+            5.5px -5.5px 0 #1e1e1e,
+            6px -6px 0 #1e1e1e;
     }
-    
+
     .btn-text-shadow-r {
         text-shadow:
-        -0.5px -0.5px 0 #1e1e1e,
-        -1px -1px 0 #1e1e1e,
-        -1.5px -1.5px 0 #1e1e1e,
-        -2px -2px 0 #1e1e1e,
-        -2.5px -2.5px 0 #1e1e1e,
-        -3px -3px 0 #1e1e1e,
-        -3.5px -3.5px 0 #1e1e1e,
-        -4px -4px 0 #1e1e1e,
-        -4.5px -4.5px 0 #1e1e1e,
-        -5px -5px 0 #1e1e1e,
-        -5.5px -5.5px 0 #1e1e1e,
-        -6px -6px 0 #1e1e1e;
+            -0.5px -0.5px 0 #1e1e1e,
+            -1px -1px 0 #1e1e1e,
+            -1.5px -1.5px 0 #1e1e1e,
+            -2px -2px 0 #1e1e1e,
+            -2.5px -2.5px 0 #1e1e1e,
+            -3px -3px 0 #1e1e1e,
+            -3.5px -3.5px 0 #1e1e1e,
+            -4px -4px 0 #1e1e1e,
+            -4.5px -4.5px 0 #1e1e1e,
+            -5px -5px 0 #1e1e1e,
+            -5.5px -5.5px 0 #1e1e1e,
+            -6px -6px 0 #1e1e1e;
     }
 }
 

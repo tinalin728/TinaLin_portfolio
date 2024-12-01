@@ -197,7 +197,7 @@ function Home() {
             container.removeEventListener("mouseenter", handleMouseEnter);
             container.removeEventListener("mouseleave", handleMouseLeave);
         };
-    }, []);
+    }, [heroRef.current]);
 
 
     // Limit movement within the hero section
@@ -314,7 +314,7 @@ function Home() {
             },
             "-=1"
         );
-    }, [])
+    }, [aboutRef.current])
 
 
     const craftRef = useRef(null);
@@ -323,9 +323,9 @@ function Home() {
         const tl = gsap.timeline({
             scrollTrigger: {
                 trigger: craftRef.current,
-                start: 'top 20%',
+                start: 'top 30%',
                 toggleActions: "play reverse play reverse",
-                // markers: true,
+                //markers: true,
             }
         })
 
@@ -354,11 +354,11 @@ function Home() {
                 onComplete: () => console.log("Animation completed"),
             }
         );
-    }, [])
+    }, [craftRef.current])
 
     return (
         <>
-            <div id='main-content'>
+            <div>
                 <section ref={heroRef} className='p-0 relative h-[calc(100vh-70px)] w-full'>
                     {positions.map((pos, index) => {
                         return (
