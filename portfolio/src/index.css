@@ -1,7 +1,5 @@
 /* font */
 @import url('./assets/fonts.css');
-@import url('https://fonts.cdnfonts.com/css/necosmic-2');
-
 
 @tailwind base;
 @tailwind components;
@@ -109,10 +107,6 @@
         line-height: 1;
     }
 
-    .dotted-header {
-        font-size: clamp(2.3rem, 1.4373rem + 3.6808vw, 4.75rem);
-    }
-
     .footer-header {
         font-size: clamp(3.4375rem, 2.3371rem + 4.6948vw, 6.5625rem);
         @apply tracking-[1.9px] lg:tracking-[3px] font-roundo-bold text-orange leading-tight
@@ -125,7 +119,6 @@
     .highlight {
         @apply font-roundo-semibold
     }
-
 
     .text-shadow {
         text-shadow:
