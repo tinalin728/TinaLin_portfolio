@@ -19,8 +19,6 @@ module.exports = withMT({
         'roundo-bold': ['Roundo-Bold', 'sans-serif'],
 
         craftwork: ['Craftwork Grotesk', 'sans-serif'],
-
-        necosmic: ['Necosmic', 'sans-serif']
       },
 
       fontSize: {

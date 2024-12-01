@@ -262,7 +262,7 @@ function Home() {
             scrollTrigger: {
                 trigger: aboutRef.current,
                 start: 'top 30%',
-                toggleActions: "play none none reverse",
+                toggleActions: "play none none none",
                 //markers: true,
             }
         })
@@ -299,7 +299,7 @@ function Home() {
                 opacity: 1,
                 duration: 1,
                 ease: "power3.out",
-            }
+            }, "-=0.5"
         );
 
         // Button animation
@@ -318,13 +318,16 @@ function Home() {
 
 
     const craftRef = useRef(null);
+    const craftHeaderRef = useRef([]);
+    const gridRef = useRef(null);
 
     useLayoutEffect(() => {
+
         const tl = gsap.timeline({
             scrollTrigger: {
                 trigger: craftRef.current,
                 start: 'top 30%',
-                toggleActions: "play reverse play reverse",
+                toggleActions: "play none none none",
                 //markers: true,
             }
         })
@@ -349,12 +352,34 @@ function Home() {
                 6px 6px 0 #1e1e1e`,
                 duration: .8,
                 ease: "power3.out",
-
-                onStart: () => console.log("Animation started"),
-                onComplete: () => console.log("Animation completed"),
             }
         );
+
+
+
     }, [craftRef.current])
+
+    useLayoutEffect(() => {
+        craftHeaderRef.current.forEach((img, index) => {
+            if (!img) return;
+
+            gsap.fromTo(
+                img, { opacity: 0 },
+                {
+                    opacity: 1,
+                    duration: .8,
+                    ease: 'power3.out',
+                    scrollTrigger: {
+                        trigger: gridRef.current,
+                        start: 'top 20%',
+                        toggleActions: 'play none none reverse'
+                    }
+                }
+            )
+        })
+
+    }, [gridRef.current])
+
 
     return (
         <>
@@ -468,19 +493,14 @@ function Home() {
                         <h3 id="craftHeader" className="text-center sub-header font-craftwork font-extrabold mt-2 tracking-[2px] text-light-yellow-bg text-stroke uppercase leading-normal">Feat. Crafts</h3>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 border-y-2 mb-10">
+                    <div ref={gridRef} className="relative grid grid-cols-1 md:grid-cols-2 mb-10 overflow-hidden">
+                        {/* border in desktop */}
+                        <div className='hidden md:block md:absolute md:w-full md:h-[2px] md:bg-charcoal md:top-0 z-0'></div>
+                        <div className='hidden md:block md:absolute md:w-full md:h-[2px] md:bg-charcoal md:bottom-0 z-0'></div>
+                        <div className='hidden md:block md:absolute md:w-full md:h-[2px] md:bg-charcoal md:top-1/2 z-0 md:-translate-y-1/2'></div>
+                        <div className='hidden md:block md:absolute md:h-full md:w-[2px] md:bg-charcoal md:top-0 md:left-1/2 md:transform md:-translate-x-1/2 z-0'></div>
+
                         {crafts.slice(0, 4).map((craft, index) => {
-                            const columns = 2;
-                            const isSingleColumn = windowWidth < 768;
-                            const isLastRow = isSingleColumn
-                                // For single-column layout, last item is the last row
-                                ? index === crafts.length - 1
-                                : index >= crafts.length - (crafts.length % columns || columns);
-                            // For multi-column layout, check the last row
-
-                            const bottomBorder = !isLastRow ? "border-b-2" : ""; // Add bottom border unless it's the last row
-                            const rightBorder = !isSingleColumn && index % columns === 0 ? "md:border-r-2" : ""; // Add right border only on larger screens for left column
-
                             return (
                                 <CraftCard
                                     key={craft.id}
@@ -488,7 +508,7 @@ function Home() {
                                     title={craft.title}
                                     img={craft.img}
                                     skills={craft.skills}
-                                    border={`${bottomBorder} ${rightBorder}`}
+                                // craftHeaderRef={(el) => (craftHeaderRef.current[index] = el)}
                                 />
                             );
                         })}

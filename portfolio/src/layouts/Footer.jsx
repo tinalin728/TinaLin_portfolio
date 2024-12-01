@@ -33,11 +33,9 @@ function Footer() {
         const Engine = Matter.Engine,
             Render = Matter.Render,
             Runner = Matter.Runner,
-            Events = Matter.Events,
             MouseConstraint = Matter.MouseConstraint,
             Composite = Matter.Composite,
             Mouse = Matter.Mouse,
-            World = Matter.World,
             Bodies = Matter.Bodies;
 
 
@@ -139,7 +137,7 @@ function Footer() {
                     console.error(`Failed to load image: ${texture}`);
                     loadedCount++;
                     if (loadedCount === total) {
-                        console.log("Preloading complete with errors:", loadedTextures);
+                        //console.log("Preloading complete with errors:", loadedTextures);
                         callback(loadedTextures); // Pass the loaded textures, even if some failed
                     }
                 };
@@ -148,9 +146,9 @@ function Footer() {
 
         // create pills
         const createPills = (textures, canvasWidth) => {
-            console.log("createPills invoked");
-            console.log("Textures passed:", textures);
-            console.log("Canvas width:", canvasWidth);
+            // console.log("createPills invoked");
+            // console.log("Textures passed:", textures);
+            // console.log("Canvas width:", canvasWidth);
 
             if (!Array.isArray(textures) || textures.length === 0) {
                 console.error("Invalid or empty textures:", textures);
@@ -195,7 +193,7 @@ function Footer() {
                         Composite.remove(world, body);
                     }
                 });
-                console.log("Cleared dynamic bodies");
+                //console.log("Cleared dynamic bodies");
             };
             clearDynamicBodies(world);
 

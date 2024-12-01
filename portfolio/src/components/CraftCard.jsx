@@ -1,7 +1,7 @@
-import { useState } from "react"
+import { useState, useRef } from "react"
 import { Link } from "react-router-dom"
 
-function CraftCard({ title, img, skills, id, border }) {
+function CraftCard({ title, img, skills, id, craftHeaderRef }) {
 
     const [scale, setScale] = useState(1);
     const [position, setPosition] = useState({ x: 0, y: 0 })
@@ -15,21 +15,24 @@ function CraftCard({ title, img, skills, id, border }) {
         setScale(1)
     }
 
+    // self-stretch shrink-0 h-auto (img)
+
 
     return (
         <>
             <Link to={`/crafts/${id} `}
-                className={`relative font-bold leading-normal capitalize cursor-pointer ${border} w-full h-full inline-block overflow-hidden group`}
+                className={`relative font-bold leading-normal capitalize cursor-pointer w-full h-full box overflow-hidden group border md:border-transparent`}
                 onMouseMove={handleMouseMove} onMouseOut={handleMouseOut}>
 
-                <span className="absolute block bg-black transform duration-500 ease-in-out top-0 left-0 w-full h-[2.2px] origin-left scale-x-0 group-hover:scale-x-100 "></span>
+                <span className="absolute block bg-black transform duration-500 ease-in-out top-0 left-0 w-full h-[2.2px] origin-left scale-x-0 group-hover:scale-x-100 z-10 "></span>
                 <span className="absolute block bg-black transform duration-500 ease-in-out top-0 right-0 w-[2.2px] h-full origin-top scale-y-0 group-hover:scale-y-100 "></span>
                 <span className="absolute block bg-black transform duration-500 ease-in-out bottom-0 right-0 w-full h-[2.2px] origin-right scale-x-0 group-hover:scale-x-100 "></span>
                 <span className="absolute block bg-black transform duration-500 ease-in-out left-0 top-0 w-[2.2px] h-full origin-bottom scale-y-0 group-hover:scale-y-100 "></span>
 
-                <div className="p-[1.5rem] lg:p-[3rem] z-10 relative" >
+                <div className="p-[1.5rem] lg:p-[2.5rem] z-10 relative" >
                     <div className='overflow-hidden' >
-                        <img src={img} alt="" className='relative self-stretch shrink-0 h-auto object-cover max-w-full transition duration-500 ease-in-out'
+                        <img src={img} alt=""
+                            className='relative object-cover max-w-full transition duration-500 ease-in-out'
                             style={{ transform: `scale(${scale}) translate(-${position.x}%, -${position.y}%)` }}
                         />
                     </div>
