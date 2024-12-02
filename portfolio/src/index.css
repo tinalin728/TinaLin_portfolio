@@ -185,17 +185,10 @@
     }
 }
 
-
+@layer components {}
 
 
 @layer utilities {
-    .animation-morph {
-        @apply animate-morph;
-    }
-
-    .animation-waves {
-        @apply animate-waves;
-    }
 
     .animation-zoom {
         @apply animate-zoom
@@ -204,5 +197,4 @@
     .animation-border {
         @apply animate-border
     }
-
 }

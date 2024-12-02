@@ -28,7 +28,8 @@ function Crafts() {
     const filterClasses = (isActive) =>
         `font-roundo-medium text-base py-1 px-8 rounded-t-xl border-t-2 border-x-2 transition duration-300 ${isActive ? 'bg-charcoal text-white' : 'bg-light-yellow-bg text-charcoal'
         }`
-
+    const columns = windowWidth < 768 ? 1 : 2;
+    const rows = Math.ceil(filteredCrafts.length / columns);
 
     return (
         <>
@@ -57,16 +58,19 @@ function Crafts() {
                     </div>
                 </div>
                 <div className='py-10 border-2  bg-light-grey-bg'>
-                    <div className="grid grid-cols-1 md:grid-cols-2 border-y-2 bg-light-yellow-bg">
-                        {filteredCrafts.slice(0, 4).map((craft, index) => {
-                            const columns = 2;
-                            const isSingleColumn = windowWidth < 768;
-                            const isLastRow = isSingleColumn
-                                ? index === crafts.length - 1
-                                : index >= crafts.length - (crafts.length % columns || columns);
+                    <div className="relative grid grid-cols-1 md:grid-cols-2 bg-light-yellow-bg">
+                        {/* top bottom border */}
+                        <div className='hidden md:block md:absolute md:w-full md:h-[2px] md:bg-charcoal md:top-0 z-0'></div>
+                        <div className='hidden md:block md:absolute md:w-full md:h-[2px] md:bg-charcoal md:bottom-0 z-0'></div>
 
-                            const bottomBorder = !isLastRow ? "border-b-2" : "";
-                            const rightBorder = !isSingleColumn && index % columns === 0 ? "md:border-r-2" : "";
+                        {/* horizontal middle border */}
+                        {rows > 1 && (
+                            <div className="hidden md:block md:absolute md:w-full md:h-[2px] md:bg-charcoal md:top-1/2 z-0 md:-translate-y-1/2"></div>
+                        )}
+                        {/* vertical border */}
+                        <div className='hidden md:block md:absolute md:h-full md:w-[2px] md:bg-charcoal md:top-0 md:left-1/2 md:transform md:-translate-x-1/2 z-0'></div>
+
+                        {filteredCrafts.map((craft, index) => {
                             return (
                                 <CraftCard
                                     key={craft.id}
@@ -74,7 +78,6 @@ function Crafts() {
                                     title={craft.title}
                                     img={craft.img}
                                     skills={craft.skills}
-                                    border={`${bottomBorder} ${rightBorder}`}
                                 />
                             );
                         })}
