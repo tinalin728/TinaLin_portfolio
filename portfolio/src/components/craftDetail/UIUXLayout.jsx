@@ -34,8 +34,6 @@ function UIUXLayout({ craft }) {
 
     return (
         <>
-
-
             <BackToTop />
 
             {/* sticky nav */}
@@ -45,19 +43,19 @@ function UIUXLayout({ craft }) {
 
             <div className='sticky-nav hidden md:block md:sticky md:top-6 z-50'>
                 <div className='border px-10 py-4 border-black bg-off-white rounded-full flex items-center justify-center md:gap-8 lg:gap-12 shadow-sm w-fit mx-auto'>
-                    <a href="#research" className='cursor-pointer text-base capitalize tracking-normal'>
+                    <a href="#research" className='text-base capitalize tracking-normal'>
                         <p><span className='mr-2 font-bold text-orange'>01</span>Research</p>
                     </a>
-                    <a href="#define" className='cursor-pointer text-base capitalize tracking-normal'>
+                    <a href="#define" className='text-base capitalize tracking-normal'>
                         <p><span className='mr-2 font-bold text-orange'>02</span>Define</p>
                     </a>
-                    <a href="#design" className='cursor-pointer text-base capitalize tracking-normal'>
+                    <a href="#design" className='text-base capitalize tracking-normal'>
                         <p><span className='mr-2 font-bold text-orange'>03</span>Design</p>
                     </a>
-                    <a href="#testing" className='cursor-pointer text-base capitalize tracking-normal'>
+                    <a href="#testing" className='text-base capitalize tracking-normal'>
                         <p><span className='mr-2 font-bold text-orange'>05</span>Testing</p>
                     </a>
-                    <a href="#reflection" className='cursor-pointer text-base capitalize tracking-normal'>
+                    <a href="#reflection" className='text-base capitalize tracking-normal'>
                         <p><span className='mr-2 font-bold text-orange'>06</span>Reflection</p>
                     </a>
                 </div>
@@ -137,7 +135,7 @@ function UIUXLayout({ craft }) {
                                 </ul>
                             </div>
 
-                            <div className='flex-1 cursor-pointer p-6 border border-black rounded-xl bg-off-white'>
+                            <div className='flex-1 p-6 border border-black rounded-xl bg-off-white'>
                                 <div className={`w-auto mx-auto h-[400px] border rounded-md ${modalData.isOpen ? "overflow-auto" : "overflow-hidden"
                                     }`}>
                                     <img src={craft.research.flowAnalysis.image.src}
@@ -169,7 +167,7 @@ function UIUXLayout({ craft }) {
                                 <p dangerouslySetInnerHTML={{ __html: craft.research.competitor.description }} />
                             </div>
 
-                            <div className='flex-1 cursor-pointer p-6 border border-black rounded-xl bg-off-white'>
+                            <div className='flex-1  p-6 border border-black rounded-xl bg-off-white'>
                                 <div className='w-auto mx-auto overflow-hidden border rounded-md'>
                                     <img src={craft.research.competitor.image.src}
                                         alt={craft.research.competitor.image.altText}
@@ -208,7 +206,7 @@ function UIUXLayout({ craft }) {
                                 <h3>Putting Insights Together</h3>
                                 <p> {craft.define.em.content}</p>
                             </div>
-                            <div className='flex-1 cursor-pointer p-6 border border-black rounded-xl bg-off-white'>
+                            <div className='flex-1  p-6 border border-black rounded-xl bg-off-white'>
                                 <div className='w-auto mx-auto overflow-hidden border rounded-md'>
                                     <img src={craft.define.em.image.src}
                                         alt={craft.define.em.image.altText}
@@ -308,7 +306,7 @@ function UIUXLayout({ craft }) {
 
                         {craft.define.insights && (
                             <>
-                                <div className='flex flex-col items-start md:flex-row gap-8 cursor-pointer content-gap'>
+                                <div className='flex flex-col items-start md:flex-row gap-8  content-gap'>
                                     {craft.define.insights.image.map((img, index) => (
                                         <div key={index} className='p-6 bg-light-grey'>
                                             <img src={img.src} alt={img.altText} onClick={() => handleImgClick({
@@ -387,7 +385,7 @@ function UIUXLayout({ craft }) {
                             <p className='mb-4'>{craft.design.sketch.description}</p>
                         </div>
 
-                        <div className='flex-1 h-[400px] cursor-pointer p-6 border border-black rounded-xl overflow-hidden bg-off-white'>
+                        <div className='flex-1 h-[400px] p-6 border border-black rounded-xl overflow-hidden bg-off-white'>
                             <div className='h-[90%] overflow-hidden mx-auto border rounded-md'>
                                 <img src={craft.design.sketch.image.src}
                                     alt={craft.design.sketch.image.altText}
@@ -415,7 +413,7 @@ function UIUXLayout({ craft }) {
                             <p>{craft.design.flow.description}</p>
                         </div>
 
-                        <div className='flex-1 h-[400px] cursor-pointer p-6 border border-black rounded-xl overflow-hidden bg-off-white'>
+                        <div className='flex-1 h-[400px] p-6 border border-black rounded-xl overflow-hidden bg-off-white'>
                             <div className='h-[90%] overflow-hidden mx-auto border rounded-md'>
                                 <img src={craft.design.flow.image.src}
                                     alt={craft.design.flow.image.altText}

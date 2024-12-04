@@ -32,7 +32,7 @@ function BackToTop() {
                 transform: showBtn ? 'scale(1)' : 'scale(0.9)',
             }}
 
-            className='fixed flex bottom-10 right-10 items-center h-[50px] w-[50px] rounded-full justify-center z-[50] cursor-pointer  bg-orange border shadow-md'
+            className='fixed flex bottom-10 right-14 items-center h-[50px] w-[50px] rounded-full justify-center z-[50] bg-orange border shadow-md'
             onClick={scrollToTop}
         >
             <svg

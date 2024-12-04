@@ -1,24 +1,24 @@
 {
     "about": [
         {
-            "id": 2,
-            "title": "Web Design",
-            "content": "I I craft ideas and solutions to bridge people and purpose..",
-            "icon": "/assets/homepage/web-design.svg",
-            "width": 100
+            "id": 1,
+            "title": "Branding",
+            "content": "From UXUI to branding, I craft ideas and solutions to bridge people and purpose.",
+            "icon": "/assets/homepage/create.svg",
+            "width": 130
         },
         {
-            "id": 3,
-            "title": "UX/UI Design",
-            "content": "I build user-friendly and visually appealing interfaces for intuitive digital experiences.",
-            "icon": "/assets/homepage/uxui.svg",
+            "id": 2,
+            "title": "I Design",
+            "content": "I design visual assets and user-friendly UI elements that bring ideas to life.",
+            "icon": "/assets/homepage/design.svg",
             "width": 120
         },
         {
-            "id": 4,
-            "title": "Front-End Development",
-            "content": "I bring designs to life by coding responsive, functional, and engaging web interfaces.",
-            "icon": "/assets/homepage/front-end.svg",
+            "id": 3,
+            "title": "I Code",
+            "content": "I transform ideas into functional and engaging experiences using my coding skills.",
+            "icon": "/assets/homepage/code.svg",
             "width": 120
         }
     ],

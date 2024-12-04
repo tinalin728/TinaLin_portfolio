@@ -8,7 +8,7 @@ import CraftDetail from './pages/CraftDetail'
 import ScrollToTop from './hooks/ScrollToTop'
 import SmoothScrolling from './components/SmoothScrolling'
 import { ParallaxProvider } from "react-scroll-parallax";
-
+import Cursor from './components/Cursor'
 
 
 function App() {
@@ -17,8 +17,8 @@ function App() {
     <Router>
       <SmoothScrolling>
         <ParallaxProvider>
-
           <ScrollToTop />
+          <Cursor />
           <Routes>
             <Route element={<Layout />}>
               <Route path='/' element={<Home />} />

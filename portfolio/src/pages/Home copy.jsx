@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef, useLayoutEffect, forwardRef } from 'react'
-import { Link } from 'react-router-dom';
+
 import { Parallax } from 'react-scroll-parallax';
-import Marquee from "react-fast-marquee";
 
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
@@ -19,11 +18,6 @@ import sunglasses from "../../public/assets/homepage/emoji-sunglasses.png"
 import rainbow from '../../public/assets/homepage/rainbow.svg'
 import thunder from '../../public/assets/homepage/thunder.svg'
 import rose from '../../public/assets/homepage/rose.svg'
-import icon1 from '../../public/assets/homepage/marquee/icon1.svg'
-import icon2 from '../../public/assets/homepage/marquee/icon2.svg'
-import icon3 from '../../public/assets/homepage/marquee/icon3.svg'
-import icon4 from '../../public/assets/homepage/marquee/icon4.svg'
-import icon5 from '../../public/assets/homepage/marquee/icon5.svg'
 import cursor from '../../public/assets/homepage/cursor.png'
 import arrow from '../../public/assets/icons/arrow.svg';
 import outline from '../../public/assets/homepage/outlineLogo.svg'
@@ -33,8 +27,21 @@ import uxui from "../../public/assets/homepage/uxui.svg"
 import coding from "../../public/assets/homepage/front-end.svg"
 import data from '../data/generalData.json';
 
-
 function Home() {
+
+    const aboutRef = useRef(null);
+    const cardRef = useRef(null);
+    const cardRefs = useRef([]);
+    const aboutCtaRef = useRef(null);
+    const refs = {
+        line1: useRef(null),
+        line2: useRef(null),
+        line3: useRef(null),
+        line4: useRef(null),
+    }
+    const cursorRef = useRef(null);
+
+
     const [about, setAbout] = useState([]);
     const [crafts, setCrafts] = useState([])
 
@@ -48,10 +55,55 @@ function Home() {
     const windowWidth = WindowWidth();
     const isMobile = windowWidth < 768;
 
+    //card component
+    const translateValues = ['translate-y-0', 'translate-y-8', 'translate-y-10', '-translate-y-2'];
+
+    const Card = ({ title, content, icon, width }) => (
+        <div className={` about-card min-h-[400px] relative z-10 transition-all duration-500 group cursor-pointer`}>
+            <div className='relative z-10 p-4 bg-light-yellow-bg border h-full overflow-hidden rounded-xl'>
+                <div className='flex flex-col gap-8 justify-center h-full p-6 relative group-hover:rounded-xl group-hover:bg-charcoal transition-all duration-300'>
+                    <div className="">
+                        <h4 className="pb-2 font-craftwork">{title}</h4>
+                        <p className='text-[18px]'>{content}</p>
+                    </div>
+
+                    <div className="flex justify-center py-0 scale-[.85]">
+                        <img src={icon} alt="icon" width={width} />
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+
+    // const Card = forwardRef(({ item }, ref) => (
+    //     <div ref={ref} className={`about-card h-[400px] col-span-1 lg:col-span-4 relative z-10  hover:scale-[1.01] transition-all duration-500`}>
+    //         <div className='absolute inset-0 '>
+    //             <div className='absolute w-full h-full top-2 left-2 md:top-4 md:left-4 bg-[#EBE1D8] border-charcoal border-2 rounded-xl '> </div>
+    //             <div className='absolute w-full h-full top-1 left-1 md:top-2 md:left-2 bg-[#EBE1D8] border-charcoal border-2 rounded-xl'> </div>
+    //         </div>
+
+    //         <div
+    //             className='relative z-10 p-4 bg-light-yellow-bg border-2 border-black h-full rounded-xl overflow-hidden'>
+    //             <div className='flex flex-col gap-8 justify-center rounded-xl h-full p-6 relative'>
+    //                 <div className="">
+    //                     <h4 className="pb-2 font-craftwork">{item.title}</h4>
+    //                     <p className='text-[18px]'>{item.content}</p>
+    //                 </div>
+
+    //                 <div className="flex justify-center py-0 scale-[.85] md:scale-100 md:py-4">
+    //                     <img src={item.icon} alt="h-full w-full" />
+    //                 </div>
+
+    //             </div>
+    //         </div>
+    //     </div >
+    // ));
+
 
     // horizontal scroll, image swapping
     const images = [sunglasses, rainbow, thunder, rose];
     const [currentImage, setCurrentImage] = useState(0);
+
     useEffect(() => {
         const imageInterval = setInterval(() => {
             setCurrentImage((prevImage) => (prevImage + 1) % images.length);
@@ -60,17 +112,9 @@ function Home() {
         return () => clearInterval(imageInterval);
     }, []);
 
-    const refs = {
-        line1: useRef(null),
-        line2: useRef(null),
-        line3: useRef(null),
-        line4: useRef(null),
-    }
-    const cursorRef = useRef(null);
-
 
     // animation for hero section
-    useGSAP(() => {
+    useEffect(() => {
         // headline animation
         const elements = [refs.line1.current, refs.line2.current, refs.line3.current, refs.line4.current];
         //each line has unique rotation
@@ -98,6 +142,27 @@ function Home() {
                 "<"
             );
         });
+        //cursor animation
+        timeline.fromTo(
+            cursorRef.current, {
+            x: "100%",
+            opacity: 0,
+        }, {
+            x: '0%',
+            opacity: 1,
+            duration: 1,
+            ease: 'power2.out'
+        });
+        timeline.to(
+            cursorRef.current, {
+            y: '+=8',
+            x: '-=5',
+            repeat: -1,
+            yoyo: true,
+            duration: 1,
+            ease: 'power1.inOut'
+        }, '+=.2'
+        );
     }, [])
 
     const [animationComplete, setAnimationComplete] = useState(false);
@@ -138,6 +203,7 @@ function Home() {
     //useMousePosition hook only tracks the mouse position when animationComplete is true (headline animation)
     const mousePosition = useMousePosition(animationComplete);
 
+    // Attach mouse event listeners to the hero section
     useEffect(() => {
         const container = heroRef.current;
         if (!container) return;
@@ -155,6 +221,7 @@ function Home() {
     }, [heroRef.current]);
 
 
+    // Limit movement within the hero section
     useEffect(() => {
 
         // Only run when animation is done and mouse is inside
@@ -207,72 +274,67 @@ function Home() {
     }, [mousePosition, animationComplete]);
 
 
-    const aboutRef = useRef(null);
-    const aboutCtaRef = useRef(null);
 
 
     // animation for about section
-    useGSAP(() => {
-        const baseScrollTriggerConfig = {
-            trigger: aboutRef.current,
-            start: 'top 10%',
-            toggleActions: "play none none none",
-            //markers: true,
-        }
+    useLayoutEffect(() => {
 
-        gsap.fromTo(
-            '.explore', {
-            y: -50,
-            rotate: 0
-        },
-            {
-                y: 0,
-                rotate: 6,
-                duration: .5,
-                ease: "bounce.out",
-                scrollTrigger: { ...baseScrollTriggerConfig }
+        const tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: aboutRef.current,
+                start: 'top 30%',
+                toggleActions: "play none none none",
+                //markers: true,
             }
-        )
+        })
 
-        gsap.fromTo(
-            ".aboutHeader",
-            { textShadow: "none" },
+        tl.fromTo(
+            "#aboutHeader",
+            {
+                textShadow: "none",
+            },
             {
                 textShadow: `
-                -0.5px 0.5px 0 #1e1e1e,
-                -1px 1px 0 #1e1e1e,
-                -1.5px 1.5px 0 #1e1e1e,
-                -2px 2px 0 #1e1e1e,
-                -2.5px 2.5px 0 #1e1e1e,
-                -3px 3px 0 #1e1e1e,
-                -3.5px 3.5px 0 #1e1e1e,
-                -4px 4px 0 #1e1e1e,
-                -4.5px 4.5px 0 #1e1e1e,
-                -5px 5px 0 #1e1e1e,
-                -5.5px 5.5px 0 #1e1e1e,
-                -6px 6px 0 #1e1e1e`,
+                0.5px 0.5px 0 #1e1e1e,
+                1px 1px 0 #1e1e1e,
+                1.5px 1.5px 0 #1e1e1e,
+                2px 2px 0 #1e1e1e,
+                2.5px 2.5px 0 #1e1e1e,
+                3px 3px 0 #1e1e1e,
+                3.5px 3.5px 0 #1e1e1e,
+                4px 4px 0 #1e1e1e,
+                4.5px 4.5px 0 #1e1e1e,
+                5px 5px 0 #1e1e1e,
+                5.5px 5.5px 0 #1e1e1e,
+                6px 6px 0 #1e1e1e`,
                 duration: 1,
                 ease: "power3.out",
-                scrollTrigger: { ...baseScrollTriggerConfig }
-            });
+            }
+        );
 
-        gsap.fromTo(
-            '.card', { x: 200 },
+        tl.fromTo(
+            cardRef.current,
+            { x: 200, opacity: 0 },
             {
                 x: 0,
-                duration: 1.5,
-                ease: "power3.out",
-                scrollTrigger: { ...baseScrollTriggerConfig }
-            });
-        gsap.fromTo(
-            '.card-2', { opacity: 0, y: 200 },
-            {
                 opacity: 1,
-                y: 0,
-                duration: 1.5,
+                duration: 1,
                 ease: "power3.out",
-                scrollTrigger: { ...baseScrollTriggerConfig }
-            });
+            }, "-=0.5"
+        );
+
+        // Button animation
+        tl.fromTo(
+            aboutCtaRef.current,
+            { x: 200, opacity: 0 },
+            {
+                x: 0,
+                opacity: 1,
+                duration: 0.8,
+                ease: "power3.out",
+            },
+            "-=1"
+        );
     }, [aboutRef.current])
 
 
@@ -280,43 +342,37 @@ function Home() {
     const craftHeaderRef = useRef([]);
     const gridRef = useRef(null);
 
-    useGSAP(() => {
+    useLayoutEffect(() => {
 
-        const scrollTriggerConfig = {
-            trigger: craftRef.current,
-            start: 'top 10%',
-            toggleActions: "play reverse play reverse"
-            //markers: true,
-        }
-        gsap.fromTo('.recent', { y: -50, rotate: 0 },
-            {
-                y: 0, rotate: -6,
-                duration: .5,
-                ease: "bounce.out",
-                scrollTrigger: { ...scrollTriggerConfig }
+        const tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: craftRef.current,
+                start: 'top 30%',
+                toggleActions: "play none none none",
+                //markers: true,
             }
-        )
-        gsap.fromTo(
-            ".craftHeader", {
+        })
+
+        tl.fromTo(
+            "#craftHeader", {
             textShadow: "none",
         },
             {
                 textShadow: `
-                -0.5px 0.5px 0 #1e1e1e,
-                -1px 1px 0 #1e1e1e,
-                -1.5px 1.5px 0 #1e1e1e,
-                -2px 2px 0 #1e1e1e,
-                -2.5px 2.5px 0 #1e1e1e,
-                -3px 3px 0 #1e1e1e,
-                -3.5px 3.5px 0 #1e1e1e,
-                -4px 4px 0 #1e1e1e,
-                -4.5px 4.5px 0 #1e1e1e,
-                -5px 5px 0 #1e1e1e,
-                -5.5px 5.5px 0 #1e1e1e,
-                -6px 6px 0 #1e1e1e`,
+                0.5px 0.5px 0 #1e1e1e,
+                1px 1px 0 #1e1e1e,
+                1.5px 1.5px 0 #1e1e1e,
+                2px 2px 0 #1e1e1e,
+                2.5px 2.5px 0 #1e1e1e,
+                3px 3px 0 #1e1e1e,
+                3.5px 3.5px 0 #1e1e1e,
+                4px 4px 0 #1e1e1e,
+                4.5px 4.5px 0 #1e1e1e,
+                5px 5px 0 #1e1e1e,
+                5.5px 5.5px 0 #1e1e1e,
+                6px 6px 0 #1e1e1e`,
                 duration: .8,
                 ease: "power3.out",
-                scrollTrigger: { ...scrollTriggerConfig }
             }
         );
 
@@ -324,14 +380,33 @@ function Home() {
 
     }, [craftRef.current])
 
+    useLayoutEffect(() => {
+        craftHeaderRef.current.forEach((img, index) => {
+            if (!img) return;
 
+            gsap.fromTo(
+                img, { opacity: 0 },
+                {
+                    opacity: 1,
+                    duration: .8,
+                    ease: 'power3.out',
+                    scrollTrigger: {
+                        trigger: gridRef.current,
+                        start: 'top 20%',
+                        toggleActions: 'play none none reverse'
+                    }
+                }
+            )
+        })
 
-    const firstCraft = crafts[0]
+    }, [gridRef.current])
+
 
     return (
         <>
             <div className='h-full relative'>
                 <section ref={heroRef} className='relative h-[calc(100vh-70px)] w-full outer-container'>
+
                     {positions.map((pos, index) => {
                         return (
                             <div
@@ -340,7 +415,7 @@ function Home() {
                                 className="absolute -translate-x-1/2 -translate-y-1/2 origin-center"
                                 style={{ top: pos.top, left: pos.left }}
                             >
-                                <img src={outline} alt="" className="w-full scale-[1.5] md:scale-110 lg:scale-100" />
+                                <img src={outline} alt="" className="w-full scale-[1.7] md:scale-110 lg:scale-100" />
                             </div>
                         );
                     })}
@@ -369,7 +444,7 @@ function Home() {
                                 </div>
                             </Parallax>
                         </div>
-                        <div className='absolute left-8 md:left-14 bottom-8 md:bottom-[10%]'>
+                        <div className='absolute left-10 md:left-14 bottom-[10%]'>
                             <p className='text-lg'>Hi I'm Tina,<br />
                                 a product designer <br /> who loves coding	&#x2661;</p>
                         </div>
@@ -395,119 +470,103 @@ function Home() {
                     <span className='font-roundo-medium uppercase tracking-wide text-white'>Based in Vancouver</span>
                 </HorizontalScroll>
 
-                <section ref={aboutRef} className="relative py-[10rem] bg-darker-bg">
-                    <div className="max-w-container">
-                        <div className="relative z-10">
-                            <div className="mb-6 lg:mb-12">
-                                <div className="explore flex w-fit mx-auto bg-charcoal rounded-md px-4 py-2 -rotate-6">
+                <section ref={aboutRef} className="about-container h-full relative">
+                    <div className='max-w-container py-[10rem] relative'>
+                        <div className='border relative rounded-xl'>
+                            {/* <div className='hidden md:block md:absolute md:h-full md:w-[.5px] md:bg-gray-400 md:top-0 md:left-1/4 md:transform md:-translate-x-1/2 -z-1'></div>
+                            <div className='hidden md:block md:absolute md:h-full md:w-[.5px] md:bg-gray-400 md:top-0 md:left-2/4 md:transform md:-translate-x-1/2 -z-1'></div>
+                            <div className='hidden md:block md:absolute md:h-full md:w-[.5px] md:bg-gray-400 md:top-0 md:left-3/4 md:transform md:-translate-x-1/2 -z-1'></div> */}
+
+                            <div className='mb-6 lg:mb-12'>
+                                <div className='flex w-fit mx-auto bg-charcoal rounded-md px-4 py-2 -rotate-6 -translate-y-6'>
                                     <p className="text-base text-center tracking-[3px] md:tracking-[5px] md:text-xl font-roundo-semibold uppercase text-white">Explore</p>
                                 </div>
 
-                                <div className="relative z-10">
-                                    <h3 className="sub-header text-center md:mt-2 leading-normal uppercase text-stroke text-light-yellow-bg">
-                                        What I  <span className='aboutHeader text-stroke text-light-yellow-bg font-craftwork font-extrabold ml-2'>Do</span>
-                                    </h3>
+                                <div className='relative z-10'>
+                                    <h3 id="aboutHeader" className="sub-header text-center font-craftwork font-extrabold mt-2 text-stroke tracking-[2px] leading-normal text-light-yellow-bg uppercase">What I Do</h3>
                                 </div>
                             </div>
 
-                            <div className="flex flex-wrap justify-between items-center gap-8 md:gap-4 mb-14 md:mb-[3rem] lg:px-8">
-                                {/* Card 1 */}
-                                <div data-cursor='hover' className="relative h-fit group w-full md:w-[48%] lg:w-[31%] hover:-translate-y-2 hover:-rotate-2 transition duration-500">
-                                    {/* Shadow Layer */}
-                                    <div className="absolute top-3 left-0 w-full h-full bg-light-yellow-bg rounded-xl -z-10 border-2"></div>
-
-                                    {/* Card Content */}
-                                    <div className="relative z-10 about-card bg-light-yellow-bg p-4 border-2 h-full overflow-hidden rounded-xl">
-                                        <div className="flex flex-col group-hover:rounded-xl transition-all duration-500 group-hover:bg-yellow">
+                            {/* ref={cardRef} */}
+                            <div className='about-container px-6 flex flex-wrap justify-between items-center gap-4 mb-14 md:mb-[5rem] lg:mb-[6rem] md:px-6 lg:px-10'>
+                                <div className='about-card h-fit z-10 transition-all duration-500 group cursor-pointer bg-light-yellow-bg w-full md:w-[48%] lg:w-[31%]'>
+                                    <div className='relative z-10 p-4 border-2 h-full overflow-hidden rounded-xl'>
+                                        <div className='flex flex-col group-hover:bg-yellow group-hover:rounded-xl transition-all duration-500'>
                                             <div className="translate-x-[60%]">
-                                                <img src={design} alt="icon" className="card w-[200px] md:w-[260px] h-full" />
+                                                <img src={design} alt="icon" className='w-[200px] md:w-[260px] h-full' />
+                                            </div>
+                                            <div className="p-4 ">
+                                                <h2 className='group-hover:text-white'>Web Design</h2>
+                                                <p className='text-[18px]'>I craft ideas and solutions to bridge people and purpose on web.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className='about-card h-fit group cursor-pointer w-full md:w-[48%] lg:w-[31%]'>
+                                    <div className='relative z-10 p-4 bg-light-yellow-bg border-2 h-full overflow-hidden rounded-xl'>
+                                        <div className='flex flex-col group-hover:bg-orange group-hover:rounded-xl transition-all duration-500'>
+                                            <div className="p-4">
+                                                <h2 className="pb-2 group-hover:text-white">UXUI Design</h2>
+                                                <p className='text-[18px]'>I build user-friendly and visually appealing interfaces for intuitive digital experiences. </p>
+                                            </div>
+
+                                            <div className="translate-x-[50%]">
+                                                <img src={uxui} alt="icon" className='w-[200px] md:w-[230px] h-full' />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className='about-card h-fit relative z-10 transition-all duration-500 group cursor-pointer w-full md:w-[48%] lg:w-[31%]'>
+                                    <div className='relative z-10 p-4 bg-light-yellow-bg border-2 h-full overflow-hidden rounded-xl'>
+                                        <div className='flex flex-col group-hover:bg-blue group-hover:rounded-xl transition-all duration-500'>
+                                            <div className="translate-x-[60%]">
+                                                <img src={coding} alt="icon" className='w-[200px] lg:w-[260px] h-full' />
                                             </div>
                                             <div className="p-4">
-                                                <h2 className="group-hover:text-white">Web Design</h2>
-                                                <p className="text-[18px]">I craft ideas and solutions to bridge people and purpose on web.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                                {/* Card 2 */}
-                                <div data-cursor='hover' className="about-card h-fit group w-full md:w-[48%] lg:w-[31%] hover:-translate-y-2 transition duration-500">
-                                    <div className="relative">
-                                        <div className="absolute top-3 left-0 w-full h-full bg-light-yellow-bg rounded-xl -z-10 border-2"></div>
-
-                                        <div className="relative z-10 about-card bg-light-yellow-bg p-4 border-2 h-full overflow-hidden rounded-xl">
-                                            <div className='flex flex-col group-hover:rounded-xl transition-all duration-500 group-hover:bg-orange'>
-                                                <div className="p-4">
-                                                    <h2 className="pb-2 group-hover:text-white">UXUI Design</h2>
-                                                    <p className="text-[18px]">I build user-friendly and visually appealing interfaces for intuitive digital experiences.</p>
-                                                </div>
-                                                <div className="translate-x-[50%]">
-                                                    <img src={uxui} alt="icon" className="card-2 w-[200px] md:w-[230px] h-full" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                {/* Card 3 */}
-                                <div data-cursor='hover' className="about-card h-fit relative z-10 transition-all duration-500 group w-full md:w-[48%] lg:w-[31%] hover:-translate-y-2 hover:rotate-2">
-                                    <div className='relative'>
-                                        <div className="absolute top-3 left-0 w-full h-full bg-light-yellow-bg rounded-xl -z-10 border-2"></div>
-
-                                        <div className="relative z-10 about-card bg-light-yellow-bg p-4 border-2 h-full overflow-hidden rounded-xl">
-                                            <div className='flex flex-col group-hover:rounded-xl transition-all duration-500 group-hover:bg-blue'>
-                                                <div className="translate-x-[60%]">
-                                                    <img src={coding} alt="icon" className="card w-[200px] lg:w-[260px] h-full" />
-                                                </div>
-                                                <div className="p-4">
-                                                    <h2 className="pb-2 group-hover:text-white">Front-End Development</h2>
-                                                    <p className="text-[18px]">I bring designs to life by coding responsive, functional, and engaging web interfaces.</p>
-                                                </div>
+                                                <h2 className="pb-2 group-hover:text-white">Front-End Development</h2>
+                                                <p className='text-[18px]'>I bring designs to life by coding responsive, functional, and engaging web interfaces.</p>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <div ref={aboutCtaRef} className="flex justify-center items-center">
+                            <div ref={aboutCtaRef} className='flex justify-center items-center  mb-6 lg:mb-12'>
                                 <PrimaryBtn
                                     to="/about"
                                     text="About Me"
                                     icon={arrow}
-                                    className="about-btn"
+                                    className='about-btn'
                                 />
                             </div>
                         </div>
                     </div>
-                </section >
+                </section>
 
-                <div className='overflow-hidden bg-darker-bg '>
-                    <div className='max-w-container py-4 h-full flex'>
-                        <Marquee autoFill='true' pauseOnHover='true' direction='right'>
-                            <img src={icon1} alt="" className='mr-[5.5rem]' />
-                            <img src={icon2} alt="" className='mr-[5.5rem]' />
-                            <img src={icon3} alt="" className='mr-[5.5rem]' />
-                            <img src={icon4} alt="" className='mr-[5.5rem]' />
-                            <img src={icon5} alt="" className='mr-[5.5rem]' />
-                        </Marquee>
-
-                    </div>
-                </div>
-
-
-                <section ref={craftRef} className="relative h-full py-[10rem] bg-darker-bg">
-                    <div className='max-w-container relative rounded-xl'>
-                        <div className='recent flex mx-auto w-fit bg-charcoal rounded-md px-4 py-2 rotate-6'>
-                            <p className="text-base tracking-[3px] md:tracking-[5px] md:text-xl font-roundo-semibold uppercase text-white">Recent</p >
+                <section ref={craftRef} className="relative h-full outer-container">
+                    <div className='max-w-container border-x relative'>
+                        <div className='hidden md:block md:absolute md:h-full md:w-[.5px] md:bg-gray-400 md:top-0 md:left-1/4 md:transform md:-translate-x-1/2 -z-1'></div>
+                        <div className='hidden md:block md:absolute md:h-full md:w-[.5px] md:bg-gray-400 md:top-0 md:left-2/4 md:transform md:-translate-x-1/2 -z-1'></div>
+                        <div className='hidden md:block md:absolute md:h-full md:w-[.5px] md:bg-gray-400 md:top-0 md:left-3/4 md:transform md:-translate-x-1/2 -z-1'></div>
+                        <div className='w-full flex justify-end'>
+                            <div className='inline-block w-fit bg-charcoal px-4 py-2 rotate-12'>
+                                <p className="text-base tracking-[3px] md:tracking-[5px] md:text-xl font-roundo-semibold uppercase text-white">Linspired</p >
+                            </div >
                         </div >
-
                         <div className="text-center mb-6 lg:mb-12">
-                            <h3 className="craftHeader text-center sub-header font-craftwork font-extrabold mt-2 text-light-yellow-bg text-stroke uppercase leading-normal">Crafts</h3>
+                            <h3 id="craftHeader" className="text-center sub-header font-craftwork font-extrabold mt-2 tracking-[2px] text-light-yellow-bg text-stroke uppercase leading-normal">Feat. Crafts</h3>
                         </div>
 
-                        <div ref={gridRef} className="relative grid grid-cols-1 md:grid-cols-2 mb-10 gap-6">
-                            {crafts.slice(0, 2).map((craft, index) => {
+                        <div ref={gridRef} className="relative grid grid-cols-1 md:grid-cols-2 mb-10 overflow-hidden">
+                            {/* border in desktop */}
+                            <div className='hidden md:block md:absolute md:w-full md:h-[2px] md:bg-charcoal md:top-0 z-0'></div>
+                            <div className='hidden md:block md:absolute md:w-full md:h-[2px] md:bg-charcoal md:bottom-0 z-0'></div>
+                            <div className='hidden md:block md:absolute md:w-full md:h-[2px] md:bg-charcoal md:top-1/2 z-0 md:-translate-y-1/2'></div>
+                            <div className='hidden md:block md:absolute md:h-full md:w-[2px] md:bg-charcoal md:top-0 md:left-1/2 md:transform md:-translate-x-1/2 z-0'></div>
+
+                            {crafts.slice(0, 4).map((craft, index) => {
                                 return (
                                     <CraftCard
                                         key={craft.id}
@@ -520,22 +579,24 @@ function Home() {
                                 );
                             })}
                         </div>
-                    </div>
-                    <div className='flex justify-center mb-10'>
-                        <PrimaryBtn
-                            to="/crafts"
-                            text="More Crafts"
-                            icon={arrow}
-                            className='about-btn'
-                        />
+
+
+                        <div className='flex justify-center items-center'>
+                            <PrimaryBtn
+                                to="/crafts"
+                                text="More Crafts"
+                                icon={arrow}
+                                className='about-btn'
+                            />
+                        </div>
                     </div>
                 </section >
 
-                <HorizontalScroll speed={.3} bgColor='bg-light-yellow-bg'>
+                <HorizontalScroll speed={.1} bgColor='bg-light-yellow-bg'>
                     <div className=' w-[25px]'>
                         <img src={images[currentImage]} alt="emoji " className="h-[25px] w-[25px]" />
                     </div>
-                    <span className='font-roundo-medium uppercase tracking-wide '>A designer who can code</span>
+                    <span className='font-roundo-medium uppercase tracking-wide'>A designer who can code</span>
                     <div className=' w-[25px]'>
                         <img src={images[currentImage]} alt="emoji " className="h-[25px] w-[25px]" />
                     </div>
@@ -543,7 +604,7 @@ function Home() {
                     <div className=' w-[25px]'>
                         <img src={images[currentImage]} alt="emoji " className="h-[25px] w-[25px]" />
                     </div>
-                    <span className='font-roundo-medium uppercase tracking-wide'>Based in Vancouver</span>
+                    <span className='font-roundo-medium uppercase tracking-wide '>Based in Vancouver</span>
                 </HorizontalScroll>
 
             </div >
