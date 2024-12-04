@@ -44,8 +44,8 @@ function CraftDetail() {
     return (
         <>
             {/* banner */}
-            <section className='overflow-hidden py-[10rem]'>
-                <div className='relative h-full max-w-container flex flex-col items-center justify-between gap-8 md:flex-row '>
+            <section className='max-w-container overflow-hidden py-[10rem]'>
+                <div className='relative h-full flex flex-col items-center justify-between gap-8 md:flex-row '>
                     <div className='flex-1'>
                         <p className='text-dark-grey text-center mb-2 md:text-left'>{craft.banner.subHeader}</p>
                         <h1 className='text-wrap text-center md:text-left'> {craft.banner.header}</h1>
@@ -58,8 +58,8 @@ function CraftDetail() {
             </section>
 
             {/* overview */}
-            <section className='overview  border-t '>
-                <div className=' content-w  border-x pt-[10rem] pb-4 bg-light-grey-bg'>
+            <section className='overview border-t'>
+                <div className='content-w pb-4 border-x bg-light-grey-bg pt-[10rem]'>
                     <div className='max-w-[35rem]'>
                         <p className='text-dark-grey'> {craft.overview.tagline} </p>
                         <h2 className='text-orange'>{craft.title}</h2>

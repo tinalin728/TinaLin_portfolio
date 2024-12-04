@@ -20,6 +20,7 @@ import wordpress from '../../public/assets/about/wordpress.svg'
 import checker from '../../public/assets/about/checker.svg'
 import orangeChecker from '../../public/assets/about/orangeChecker.svg'
 import greyChecker from '../../public/assets/about/greyChecker.svg'
+import grainbg from '../../public/assets/about/grain.png'
 
 
 
@@ -51,6 +52,13 @@ function About() {
         backgroundRepeat: 'no-repeat',
         backgroundOpacity: '.1'
     }
+    const grain = {
+        backgroundImage: `url(${grainbg})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        backgroundOpacity: '.1'
+    }
 
 
     return (
@@ -60,8 +68,7 @@ function About() {
                 tagline='From Education to Tech'
             />
 
-
-            <div className='bg-light-grey-bg border-2 py-[10rem]'>
+            <div className='bg-darker-bg border-2 py-[10rem]'>
                 <div className='max-w-container'>
                     {/* image */}
                     <section className='flex flex-col lg:flex-row gap-16 items-center justify-center'>
@@ -71,7 +78,7 @@ function About() {
                                     <div className="absolute top-[62%] left-[54%] -translate-x-1/2 -translate-y-1/2 w-[101%] h-[115%] bg-light-yellow-bg border-2 rounded-xl z-[1]"></div>
                                     <div className="absolute top-[60%] left-[52%] -translate-x-1/2 -translate-y-1/2 w-[101%] h-[115%] bg-light-yellow-bg border-2 rounded-xl z-[1]"></div>
 
-                                    <div className="absolute top-[58%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[101%] h-[115%] bg-white border-2 rounded-xl z-[1]"></div>
+                                    <div className="absolute top-[58%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[101%] h-[115%] bg-light-yellow-bg border-2 rounded-xl z-[1]"></div>
 
 
                                     <div className='relative z-10 mx-auto mb-4'>
@@ -168,10 +175,10 @@ function About() {
                             <div className="relative flex flex-col justify-center items-end cursor-pointer">
                                 <div
                                     className="card bg-white w-[300px] h-[400px] p-4 rounded-xl border-2 relative overflow-hidden hover:z-10 hover:scale-105 hover:translate-y-2 transition-transform duration-300 ease-in">
-                                    <div className="absolute top-0 left-0 w-full px-4 py-2 bg-charcoal border-b-2">
+                                    <div className="absolute top-0 left-0 w-full px-4 py-2 bg-blue border-b-2">
                                         <div className="flex justify-between items-center">
-                                            <p className="font-roundo-medium mt-1 text-white"> Hidden Talent </p>
-                                            <div className='h-3 w-3 border-2 border-dark-grey rounded-full bg-light-yellow-bg'></div>
+                                            <p className="font-roundo-medium mt-1"> Hidden Talent </p>
+                                            <div className='h-3 w-3 border-2 rounded-full bg-light-yellow-bg'></div>
                                         </div>
                                     </div>
 
@@ -217,8 +224,8 @@ function About() {
                     </section >
 
                     <section className=''>
-                        <div className='flex flex-col-reverse md:flex-row gap-16 relative'>
-                            <div className='basis-[40%] relative overflow-hidden w-full md:w-[80%]'>
+                        <div className='flex flex-col-reverse items-center lg:flex-row gap-16 relative'>
+                            <div className='basis-[40%] relative overflow-hidden w-full md:w-[80%] bg-white rounded-xl'>
                                 <div className='h-14 w-full absolute top-0 border-2 bg-charcoal rounded-t-xl z-10 text-white flex items-center justify-between px-6'>
                                     <p className=''>
                                         My Currents
@@ -226,10 +233,10 @@ function About() {
                                     <div className='flex gap-3 items-center md:gap-4 '>
                                         <div className='w-3 md:w-4 h-[2px] bg-light-yellow-bg'></div>
                                         <div className='h-3 w-3 md:h-4 md:w-4 rounded-full bg-yellow'></div>
-                                        <div className='h-3 w-3 md:h-4 md:w-4  bg-orange'></div>
+                                        <div className='h-3 w-3 md:h-4 md:w-4  bg-blue'></div>
                                     </div>
                                 </div>
-                                <div className='pt-14 pb-4 px-8 relative bg-white border-2 rounded-xl'>
+                                <div className='pt-14 pb-4 px-8 relative border-2 rounded-xl' style={grain}>
                                     <img src={hobbies} alt="hobbies" />
                                 </div>
                             </div>

@@ -26,7 +26,7 @@ function Crafts() {
 
 
     const filterClasses = (isActive) =>
-        `font-roundo-medium text-base py-1 px-8 rounded-t-xl border-t-2 border-x-2 transition duration-300 ${isActive ? 'bg-charcoal text-white' : 'bg-light-yellow-bg text-charcoal'
+        `font-roundo-medium text-base py-1 px-8 transition duration-300 cursor-none ${isActive ? 'bg-charcoal text-white border-t-2 border-x-2' : 'bg-light-yellow-bg text-charcoal border-t-2 border-x-2'
         }`
     const columns = windowWidth < 768 ? 1 : 2;
     const rows = Math.ceil(filteredCrafts.length / columns);
@@ -38,9 +38,9 @@ function Crafts() {
                 tagline='Made With Love & Purpose'
             />
 
-            <section className='pb-10'>
-                <div className='hidden md:block'>
-                    <div className='ml-10 flex'>
+            <section className=''>
+                <div className='hidden md:block border-b-2'>
+                    <div className='flex  max-w-container'>
                         <button
                             className={filterClasses(filter === 'all')}
                             onClick={() => setFilter('all')}
@@ -57,19 +57,10 @@ function Crafts() {
                         >Front-End </button>
                     </div>
                 </div>
-                <div className='py-10 border-2  bg-light-grey-bg'>
-                    <div className="relative grid grid-cols-1 md:grid-cols-2 bg-light-yellow-bg">
-                        {/* top bottom border */}
-                        <div className='hidden md:block md:absolute md:w-full md:h-[2px] md:bg-charcoal md:top-0 z-0'></div>
-                        <div className='hidden md:block md:absolute md:w-full md:h-[2px] md:bg-charcoal md:bottom-0 z-0'></div>
 
-                        {/* horizontal middle border */}
-                        {rows > 1 && (
-                            <div className="hidden md:block md:absolute md:w-full md:h-[2px] md:bg-charcoal md:top-1/2 z-0 md:-translate-y-1/2"></div>
-                        )}
-                        {/* vertical border */}
-                        <div className='hidden md:block md:absolute md:h-full md:w-[2px] md:bg-charcoal md:top-0 md:left-1/2 md:transform md:-translate-x-1/2 z-0'></div>
 
+                <div className='pt-10 pb-[10rem] bg-darker-bg'>
+                    <div className="relative grid grid-cols-1 md:grid-cols-2 gap-6  max-w-container">
                         {filteredCrafts.map((craft, index) => {
                             return (
                                 <CraftCard

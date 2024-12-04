@@ -30,7 +30,7 @@
     }
 
     a {
-        @apply text-base tracking-[3px] font-roundo uppercase
+        @apply text-base tracking-[3px] font-roundo uppercase cursor-none
     }
 
     main {
@@ -38,7 +38,8 @@
     }
 
     body {
-        @apply overflow-x-hidden bg-[#FBF8F0]
+        @apply overflow-x-hidden bg-[#FBF8F0] cursor-none;
+
     }
 
     li {
@@ -49,12 +50,7 @@
         max-width: 85rem;
         margin: 0 auto;
         padding: 0 2rem;
-    }
-
-    @media (min-width: 768px) {
-        .max-w-container {
-            padding: 0 4rem;
-        }
+        box-sizing: border-box
     }
 
     .content-gap {
@@ -90,7 +86,6 @@
     }
 
     .big-header {
-
         font-size: clamp(1.5rem, 0.5677rem + 3.9779vw, 3.75rem);
         @apply font-craftwork font-extrabold
         /* @apply font-craftwork font-extrabold tracking-[10px] text-nowrap text-orange leading-none font-size: clamp(4.1875rem, -47.1549rem + 219.061vw, 150rem); */
