@@ -8,6 +8,11 @@
 
 @layer base {
 
+    * {
+        cursor: none !important;
+        -webkit-user-select: none;
+        user-select: none;
+    }
 
     h1 {
         @apply text-[2.2rem] md:text-2xl font-craftwork font-extrabold text-orange capitalize
@@ -38,7 +43,8 @@
     }
 
     body {
-        @apply overflow-x-hidden bg-[#FBF8F0] cursor-none;
+        @apply overflow-x-hidden bg-[#FBF8F0];
+        cursor: none !important;
 
     }
 
