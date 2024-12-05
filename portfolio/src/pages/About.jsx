@@ -172,7 +172,7 @@ function About() {
                         </div>
 
                         <div className="relative flex-1">
-                            <div className="relative flex flex-col justify-center items-end cursor-pointer">
+                            <div className="relative flex flex-col justify-center items-end">
                                 <div
                                     className="card bg-white w-[300px] h-[400px] p-4 rounded-xl border-2 relative overflow-hidden hover:z-10 hover:scale-105 hover:translate-y-2 transition-transform duration-300 ease-in">
                                     <div className="absolute top-0 left-0 w-full px-4 py-2 bg-blue border-b-2">

@@ -81,8 +81,8 @@ function Footer() {
                 fillStyle: "transparent",
             }
         });
-        const wallLeft = Bodies.rectangle(-100, height / 2, 160, height, { isStatic: true });
-        const wallRight = Bodies.rectangle(width + 100, height / 2, 160, height, { isStatic: true });
+        const wallLeft = Bodies.rectangle(-80, height / 2, 160, height, { isStatic: true });
+        const wallRight = Bodies.rectangle(width + 80, height / 2, 160, height, { isStatic: true });
         const roof = Bodies.rectangle((width / 2) + 160, -80, width + 320, 160, { isStatic: true })
 
         Composite.add(world, [ground, wallLeft, wallRight, roof])
@@ -325,8 +325,8 @@ function Footer() {
                 { x: 0, y: height },
             ]);
 
-            Matter.Body.setPosition(wallLeft, { x: -100, y: height / 2 });
-            Matter.Body.setPosition(wallRight, { x: width + 100, y: height / 2 });
+            Matter.Body.setPosition(wallLeft, { x: -80, y: height / 2 });
+            Matter.Body.setPosition(wallRight, { x: width + 80, y: height / 2 });
             Matter.Body.setPosition(roof, { x: width / 2, y: -80 });
             console.log("Right Wall:", wallRight.position, wallRight.vertices);
         };

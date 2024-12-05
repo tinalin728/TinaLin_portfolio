@@ -1,21 +1,25 @@
 import React, { useRef, useEffect, useState } from 'react'
+import WindowWidth from '../hooks/WindowWidth'
 import defaultCursor from '../../public/assets/cursor.png'
 import thumbCursor from '../../public/assets/thumb.png'
 import pointer from '../../public/assets/point.png'
 
 function Cursor() {
     const cursorRef = useRef(null);
-    const [cursorImage, setCursorImage] = useState(defaultCursor)
+    const [cursorImage, setCursorImage] = useState(defaultCursor);
+    const [isMobile, setIsMobile] = useState(false)
+    const windowWidth = WindowWidth();
 
     useEffect(() => {
+
+        if (windowWidth <= 768) return;
         //update cursor position on mouse move
         const handleMouseMove = (e) => {
             const { clientX, clientY } = e;
-            const cursor = cursorRef.current
-
-            cursor.style.left = `${clientX}px`;
-            cursor.style.top = `${clientY}px`;
-
+            if (cursorRef.current) {
+                cursorRef.current.style.left = `${clientX}px`;
+                cursorRef.current.style.top = `${clientY}px`;
+            }
         };
 
         //change cursor image on hover
@@ -39,17 +43,38 @@ function Cursor() {
             }
         };
 
+        const handleMouseLeave = () => {
+            console.log("Mouse left viewport");
+            if (cursorRef.current) {
+                cursorRef.current.style.visibility = "hidden";
+            }
+        };
+
+        const handleMouseEnter = () => {
+            console.log("Mouse entered viewport");
+            if (cursorRef.current) {
+                cursorRef.current.style.visibility = "visible";
+            }
+        };
 
         window.addEventListener('mousemove', handleMouseMove);
         document.addEventListener("mouseover", handleMouseOver);
         document.addEventListener("mouseout", handleMouseOut);
+        window.addEventListener("mouseleave", handleMouseLeave);
+        window.addEventListener("mouseenter", handleMouseEnter);
 
         return () => {
             window.removeEventListener('mousemove', handleMouseMove);
             document.removeEventListener("mouseover", handleMouseOver);
             document.removeEventListener("mouseout", handleMouseOut);
+            window.removeEventListener("mouseleave", handleMouseLeave);
+            window.removeEventListener("mouseenter", handleMouseEnter);
         }
-    }, []);
+    }, [windowWidth]);
+
+    if (windowWidth <= 768) {
+        return null;
+    }
 
 
     return (
@@ -64,7 +89,7 @@ function Cursor() {
                 position: 'fixed',
                 transform: 'translate(-50%, -50%)',
                 zIndex: 9999,
-                visibility: 'visible'
+                visibility: 'visible',
             }}
         >
 

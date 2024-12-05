@@ -37,12 +37,12 @@
         {
             "id": 2,
             "type": "coding",
-            "title": "Basics. - E-commerce Retailer",
+            "title": "Basics: Online Clothing Store",
             "img": "/assets/homepage/basics/cover.jpg",
             "skills": [
                 "HTML",
-                "Tailwind",
                 "JS",
+                "Tailwind",
                 "Project Management"
             ]
         },

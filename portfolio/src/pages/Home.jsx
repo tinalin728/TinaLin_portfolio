@@ -277,7 +277,6 @@ function Home() {
 
 
     const craftRef = useRef(null);
-    const craftHeaderRef = useRef([]);
     const gridRef = useRef(null);
 
     useGSAP(() => {
@@ -285,7 +284,7 @@ function Home() {
         const scrollTriggerConfig = {
             trigger: craftRef.current,
             start: 'top 10%',
-            toggleActions: "play reverse play reverse"
+            toggleActions: "play none none none"
             //markers: true,
         }
         gsap.fromTo('.recent', { y: -50, rotate: 0 },
@@ -319,9 +318,6 @@ function Home() {
                 scrollTrigger: { ...scrollTriggerConfig }
             }
         );
-
-
-
     }, [craftRef.current])
 
 
@@ -420,7 +416,7 @@ function Home() {
                                     <div className="relative z-10 about-card bg-light-yellow-bg p-4 border-2 h-full overflow-hidden rounded-xl">
                                         <div className="flex flex-col group-hover:rounded-xl transition-all duration-500 group-hover:bg-yellow">
                                             <div className="translate-x-[60%]">
-                                                <img src={design} alt="icon" className="card w-[200px] md:w-[260px] h-full" />
+                                                <img src={design} alt="icon" className="card w-[180px] md:w-[200px] lg:W-[260px] h-full" />
                                             </div>
                                             <div className="p-4">
                                                 <h2 className="group-hover:text-white">Web Design</h2>
