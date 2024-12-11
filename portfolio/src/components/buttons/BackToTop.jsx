@@ -8,7 +8,7 @@ function BackToTop() {
 
     useEffect(() => {
         const handleScroll = () => {
-            setShowBtn(window.scrollY > 400);
+            setShowBtn(window.scrollY > 2500);
         };
 
         window.addEventListener('scroll', handleScroll);
@@ -32,7 +32,7 @@ function BackToTop() {
                 transform: showBtn ? 'scale(1)' : 'scale(0.9)',
             }}
 
-            className='fixed flex bottom-10 right-14 items-center h-[50px] w-[50px] rounded-full justify-center z-[50] bg-orange border shadow-md'
+            className='fixed flex bottom-10 right-10 items-center h-[50px] w-[50px] rounded-full justify-center z-[50] bg-charcoal bg-opacity-[.8] shadow-md'
             onClick={scrollToTop}
         >
             <svg

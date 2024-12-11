@@ -58,7 +58,7 @@
         },
         {
             "id": 4,
-            "type": "UXUI",
+            "type": "branding",
             "title": "Zen Matcha",
             "img": "/assets/homepage/zenmatcha/cover.jpg",
             "skills": [
