@@ -373,11 +373,12 @@ function Footer() {
 
                         <div className='z-10 flex flex-col gap-4 justify-center items-center md:flex-row'>
                             <div className='flex gap-4'>
-                                <a href="https://github.com/tinalin728" className='inline-flex justify-center items-center h-[3.5rem] w-[3.5rem] border-2 border-light-yellow-bg  text-light-yellow-bg rounded-full shadow-white hover:shadow-white-hover hover:translate-x-[1%] hover:translate-y-[1%] transition-all duration-500 font-roundo-semibold md:h-[4rem] md:w-[4rem]'> <FontAwesomeIcon icon={faGithub} className='text-[28px] md:text-[30px]' /></a>
+                                <a href="https://github.com/tinalin728" className='inline-flex justify-center items-center h-[3.2rem] w-[3.2rem] border-2 border-light-yellow-bg  text-light-yellow-bg rounded-full shadow-white hover:shadow-white-hover hover:translate-x-[1%] hover:translate-y-[1%] transition-all duration-500 font-roundo-semibold md:h-[4rem] md:w-[4rem]'> <FontAwesomeIcon icon={faGithub} className='text-[28px] md:text-[30px]' /></a>
 
-                                <a href="https://www.linkedin.com/in/tina-lin-000613b5/" className='inline-flex justify-center items-center h-[3.5rem] w-[3.5rem] border-2 border-light-yellow-bg rounded-full text-light-yellow-bg shadow-white hover:shadow-white-hover hover:translate-x-[1%] hover:translate-y-[1%] transition-all duration-500 font-roundo-semibold md:h-[4rem] md:w-[4rem]'> <FontAwesomeIcon icon={faLinkedinIn} className='text-[28px] md:text-[30px]' /></a>
+                                <a href="https://www.linkedin.com/in/tina-lin-000613b5/" className='inline-flex justify-center items-center h-[3.2rem] w-[3.2rem] border-2 border-light-yellow-bg rounded-full text-light-yellow-bg shadow-white hover:shadow-white-hover hover:translate-x-[1%] hover:translate-y-[1%] transition-all duration-500 font-roundo-semibold md:h-[4rem] md:w-[4rem]'> <FontAwesomeIcon icon={faLinkedinIn} className='text-[28px] md:text-[30px]' /></a>
 
-                                <a href="https://www.linkedin.com/in/tina-lin-000613b5/" className='md:hidden inline-flex justify-center items-center h-[3.5rem] w-[3.5rem] border-2 border-light-yellow-bg rounded-full text-light-yellow-bg shadow-white hover:shadow-white-hover hover:translate-x-[.5%] hover:translate-y-[1%] transition-all duration-500 font-roundo-semibold md:h-[4rem] md:w-[4rem]'> <FontAwesomeIcon icon={faEnvelope} className='text-[28px] md:text-[30px]' /></a>
+                                <a href="https://www.linkedin.com/in/tina-lin-000613b5/" className='md:hidden inline-flex justify-center items-center h-[3.2rem] w-[3.2rem] border-2 border-light-yellow-bg rounded-full text-light-yellow-bg shadow-white hover:shadow-white-hover hover:translate-x-[.5%] hover:translate-y-[1%] transition-all duration-500 font-roundo-semibold md:h-[4rem] md:w-[4rem]'> <FontAwesomeIcon icon={faEnvelope} className='text-[28px] md:text-[30px]' />
+                                </a>
                             </div>
 
                             <a href="mailto:yuting.lin728@gmail.com" className='hidden md:inline-block px-5 py-3 border-2 border-white rounded-full text-white shadow-white text-base hover:shadow-white-hover hover:translate-x-[.5%] transition-all duration-500 font-roundo-semibold md:px-6 md:py-4'>
@@ -392,7 +393,7 @@ function Footer() {
                 <div className='max-w-container flex flex-col items-center justify-center md:flex-row md:justify-between py-2'>
                     <div className='flex items-center gap-4'>
                         <div><img src={coffee} alt="" className='w-[35px] md:w-[40px]' /></div>
-                        <span className='text-sm md:text-base'>Made with shots of expresso</span>
+                        <span className='text-sm md:text-base'>Made with shots of espresso</span>
                     </div>
                     <div>
                         <span className='text-sm md:text-base'> 2024 Tina Lin</span>

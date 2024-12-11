@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react'
+import { Tabs, Tab, TabList, TabPanel } from "react-tabs";
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { tomorrow } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import backLog from '../../../public/assets/basics/backlog.png'
+
 
 import ImageModal from '../ImageModal'
 
 function CodingLayout({ craft }) {
-
-    const CUSTOM_ANIMATION = {
-        mount: { scale: 1 },
-        unmount: { scale: .9 },
-    };
+    const [activeTab, setActiveTab] = useState(0);
 
     // image modal
     const [modalData, setModalData] = useState({ isOpen: false, src: '', alt: '' });
@@ -20,28 +20,33 @@ function CodingLayout({ craft }) {
     const closeModal = () => {
         setModalData({ isOpen: false, src: '', alt: '' })
     }
+    const CUSTOM_ANIMATION = {
+        mount: { scale: 1 },
+        unmount: { scale: .9 },
+    };
+
 
 
     return (
         <>
-            <section className='pt-14 pb-0'>
+            <section className='pt-14 pb-0 content-w'>
                 <div className='py-14 border-t-2 border-light-grey border-dashed'>
                     <h2 className='mb-10 text-orange'>{craft.contribution.backlog.title}</h2>
 
                     <div className='mb-10 flex flex-col md:flex-row gap-10 '>
-
                         <div className='flex-1' >
                             <p dangerouslySetInnerHTML={{ __html: craft.contribution.backlog.content }} />
                         </div>
 
-                        <div className='flex-1'>
+                        <div className='flex-1 p-2 rounded-xl bg-white bg-opacity-55 h-full'>
                             <img src={craft.contribution.backlog.image.src} alt={craft.contribution.backlog.image.altText}
-                                className='w-full h-[400px] object-cover'
+                                className='w-full max-h-[400px] object-cover border border-gray-400 rounded-md'
                                 onClick={() => handleImgClick({
                                     src: craft.contribution.backlog.image.src,
                                     alt: craft.contribution.backlog.image.altText
                                 })}
                             />
+                            <p className='text-center italic text-sm text-dark-grey pt-2'>{craft.contribution.backlog.image.caption}</p>
                         </div>
                         <ImageModal
                             isOpen={modalData.isOpen}
@@ -53,19 +58,22 @@ function CodingLayout({ craft }) {
                 </div>
             </section >
 
-            <section>
+
+            <section className='content-w'>
                 <div className='py-14 border-t-2 border-light-grey border-dashed'>
 
                     <h2 className=' text-orange mb-10'>{craft.contribution.wireframe.title}</h2>
 
                     <div className='flex flex-col-reverse md:flex-row gap-10'>
-                        <div className='flex-1'>
+                        <div className='flex-1 p-2 bg-white bg-opacity-50 rounded-xl'>
                             <img src={craft.contribution.wireframe.image.src} alt={craft.contribution.wireframe.image.altText}
+                                className='rounded-md border border-gray-400'
                                 onClick={() => handleImgClick({
                                     src: craft.contribution.wireframe.image.src,
                                     alt: craft.contribution.wireframe.image.altText
                                 })}
                             />
+                            <p className='text-center italic text-sm text-dark-grey pt-2'>{craft.contribution.wireframe.image.caption}</p>
                         </div>
                         <ImageModal
                             isOpen={modalData.isOpen}
@@ -81,97 +89,60 @@ function CodingLayout({ craft }) {
                 </div>
             </section>
 
-            <section>
+            <section className='content-w'>
                 <div className='py-14 border-t-2 border-light-grey border-dashed'>
 
-                    <h2 className='text-orange'>{craft.dev.header}</h2>
-                    <div className='content-gap'>
-                        <h3>{craft.dev.tailwind.title}</h3>
-                        <div className='flex flex-col gap-10 md:flex-row'>
+                    <h2 className='mb-10 text-orange'>{craft.dev.header}</h2>
+
+                    <div className=''>
+                        <div className='flex flex-col gap-10 lg:flex-row'>
                             <div className='flex-1'>
+                                <h3>{craft.dev.tailwind.title}</h3>
                                 <p dangerouslySetInnerHTML={{ __html: craft.dev.tailwind.content }} className='mb-4' />
-                                <p>{craft.dev.tailwind.content2}</p>
                             </div>
                             <div className='flex-1'>
-                                <img src={craft.dev.tailwind.image.src} alt={craft.dev.tailwind.image.altText} className='' />
+                                <img src={craft.dev.tailwind.image.src} alt={craft.dev.tailwind.image.altText} className='w-[80%]' />
                             </div>
                         </div>
-                    </div>
-
-                    <div className='content-gap'>
-                        <h3>{craft.dev.mobile.title}</h3>
-
-                        <p dangerouslySetInnerHTML={{ __html: craft.dev.mobile.content }} className='mb-4' />
-
-                        <img src={craft.dev.mobile.image.src} alt={craft.dev.mobile.image.altText} className='mx-auto' />
                     </div>
 
                     <div className='content-gap'>
                         <h3 className='mb-6'>{craft.dev.component.header}</h3>
-                        <p>{craft.dev.component.content}</p>
-                        <div className='content-gap mt-6'>
-                            <p className='text-md font-roundo-medium'>{craft.dev.component.json.title}</p>
-                            <div className='flex flex-col gap-10 md:flex-row'>
-                                <p dangerouslySetInnerHTML={{ __html: craft.dev.component.json.content }} />
-                                <img src={craft.dev.component.json.image.src} alt={craft.dev.component.json.image.altText} className='w-full md:w-1/2' />
-                            </div>
-                        </div>
+                        <p className='mb-6'>{craft.dev.component.content}</p>
+                        <div className='flex flex-col gap-10 lg:flex-row'>
+                            <Tabs selectedIndex={activeTab} onSelect={(index) => setActiveTab(index)}>
+                                <TabList className='flex -mb-2'>
+                                    {craft.dev.component.snippets.map((item, index) => (
+                                        <Tab key={index} className={`border-t border-x px-4 py-2 tracking-wide ${activeTab === index ? 'bg-charcoal text-white outline-none' : 'bg-transparent text-black'
+                                            }
+                                            `}> {item.tab}</Tab>
+                                    ))}
+                                </TabList>
 
-                        <div className='content-gap'>
-                            <p className='text-md font-roundo-medium mb-6'>{craft.dev.component.web.title}</p>
-                            <div className='flex flex-col-reverse gap-10 md:flex-row'>
-                                <img src={craft.dev.component
-                                    .web.image.src} alt={craft.dev.component.web.altText} />
-                                <p dangerouslySetInnerHTML={{ __html: craft.dev.component.web.content }} />
-                            </div>
-                        </div>
-
-                        <div className='content-gap'>
-                            <p className='text-md font-roundo-medium'>{craft.dev.component.modular.title}</p>
-                            <div className='flex flex-col gap-10 md:flex-row'>
-                                <div className='flex-1'>
-                                    <p dangerouslySetInnerHTML={{ __html: craft.dev.component.modular.content }} className='mb-6' />
-                                    <p>{craft.dev.component.modular.content2} </p>
-                                </div>
-
-                                <div className='flex-1'>
-                                    <div className='flex flex-col gap-10 items-center'>
-                                        {craft.dev.component.modular.image.map((img, index) => (
-                                            <img key={index} src={img.src} alt={img.altText} />
-                                        ))}
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <div className='content-gap'>
-                        <h2 className='mb-6'>{craft.dev.functionality.header} </h2>
-                        <div className='flex flex-col gap-10 md:flex-row content-gap'>
-                            <div className='flex-1'>
-                                <p className='text-md font-roundo-medium'>{craft.dev.functionality.fav.title}</p>
-                                <p>{craft.dev.functionality.fav.content} </p>
-                            </div>
-
-                            <img src={craft.dev.functionality.fav.image.src} alt={craft.dev.functionality.fav.image.altText} className='flex-1' />
-                        </div>
-
-                        <div className='flex flex-col gap-10 md:flex-row'>
-                            <div className='flex-1'>
-                                <p className='text-md font-roundo-medium'>{craft.dev.functionality.slick.title}</p>
-                                <p>{craft.dev.functionality.slick.content}</p>
-                            </div>
-
-                            <img src={craft.dev.functionality.slick.image.src} alt={craft.dev.functionality.slick.image.altText} className='flex-1' />
+                                {craft.dev.component.snippets.map((item, index) => (
+                                    <TabPanel key={index}>
+                                        <SyntaxHighlighter language='javascript'
+                                            style={tomorrow} showLineNumbers={true} wrapLines
+                                            customStyle={{
+                                                width: "100%",
+                                                maxWidth: "65rem",
+                                                height: "500px",
+                                                overflow: "auto",
+                                            }}
+                                        >
+                                            {item.code}
+                                        </SyntaxHighlighter>
+                                    </TabPanel>
+                                ))}
+                            </Tabs>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <section>
+            <section className='content-w'>
                 <div className='py-14 border-t-2 border-light-grey border-dashed'>
-                    <div className='content-gap'>
+                    <div>
                         <h2 className='text-orange'>Final Result</h2>
                     </div>
                 </div>

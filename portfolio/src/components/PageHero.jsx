@@ -3,7 +3,7 @@ import React from 'react'
 function PageHero({ header, tagline }) {
 
     return (
-        <section className='bg-light-yellow-bg py-[14rem] p-0 relative'>
+        <section className='bg-light-yellow-bg py-[10rem] p-0 relative'>
             <div className='max-w-container grid place-items-center'>
                 <div className=''>
                     <h2 className='sub-header font-craftwork font-extrabold text-light-yellow-bg leading-normal tracking-[5px] uppercase text-stroke text-shadow'>

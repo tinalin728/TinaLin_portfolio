@@ -15,7 +15,7 @@
     }
 
     h1 {
-        @apply text-[2.2rem] md:text-2xl font-craftwork font-extrabold text-orange capitalize
+        @apply text-[2.1rem] md:text-2xl font-craftwork font-extrabold text-orange capitalize
     }
 
     h2 {
@@ -27,11 +27,11 @@
     }
 
     h4 {
-        @apply text-base tracking-wider md:tracking-wider md:text-md lg:text-lg font-craftwork font-bold
+        @apply text-base tracking-wider md:tracking-wider md:text-md lg:text-lg font-roundo-medium
     }
 
     p {
-        @apply text-base font-roundo
+        @apply text-base font-roundo lg:text-[17px]
     }
 
     a {
@@ -49,7 +49,7 @@
     }
 
     li {
-        @apply font-roundo text-base
+        @apply font-roundo text-base lg:text-[17px]
     }
 
     .max-w-container {
@@ -155,18 +155,18 @@
 
     .btn-text-shadow {
         text-shadow:
-            .5px -.5px 0 #1e1e1e,
-            1px -1px 0 #1e1e1e,
-            1.5px -1.5px 0 #1e1e1e,
-            2px -2px 0 #1e1e1e,
-            2.5px -2.5px 0 #1e1e1e,
-            3px -3px 0 #1e1e1e,
-            3.5px -3.5px 0 #1e1e1e,
-            4px -4px 0 #1e1e1e,
-            4.5px -4.5px 0 #1e1e1e,
-            5px -5px 0 #1e1e1e,
-            5.5px -5.5px 0 #1e1e1e,
-            6px -6px 0 #1e1e1e;
+            -0.5px 0.5px 0 #1e1e1e,
+            -1px 1px 0 #1e1e1e,
+            -1.5px 1.5px 0 #1e1e1e,
+            -2px 2px 0 #1e1e1e,
+            -2.5px 2.5px 0 #1e1e1e,
+            -3px 3px 0 #1e1e1e,
+            -3.5px 3.5px 0 #1e1e1e,
+            -4px 4px 0 #1e1e1e,
+            -4.5px 4.5px 0 #1e1e1e,
+            -5px 5px 0 #1e1e1e,
+            -5.5px 5.5px 0 #1e1e1e,
+            -6px 6px 0 #1e1e1e;
     }
 
     .btn-text-shadow-r {
@@ -184,6 +184,11 @@
             -5.5px -5.5px 0 #1e1e1e,
             -6px -6px 0 #1e1e1e;
     }
+
+    .swiper {
+        overflow: visible !important;
+    }
+
 }
 
 @layer components {}

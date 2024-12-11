@@ -28,7 +28,7 @@ module.exports = withMT({
         md: ['1.25rem'],
         lg: ['1.375rem'],
         xl: ['1.618rem'],
-        '2xl': ['2.618rem', { lineHeight: '3rem', letterSpacing: '1px' }],
+        '2xl': ['2.618rem', { lineHeight: '3.8rem', letterSpacing: '1px' }],
         '3xl': ['4.236rem', { lineHeight: '5rem', letterSpacing: '1.5px' }],
         '4xl': ['6.854rem', { lineHeight: '7.5rem', letterSpacing: '2px' }],
         '5xl': ['53.75px', { lineHeight: '113.4px', letterSpacing: '7.56px', }],
@@ -57,12 +57,12 @@ module.exports = withMT({
       boxShadow: {
         'inner': 'inset -1px -1px 3px -1px rgb(0 0 0 / 0.1)',
 
-        'charcoal': '3px 4px 0 #1e1e1e',
+        'charcoal': '2px 3px 0 #1e1e1e',
         'charcoal-right': '-3px -4px 0 #1e1e1e',
-        'charcoal-hover': '1.5px 1.5px 0 #1e1e1e',
+        'charcoal-hover': '1.2px 1.2px 0 #1e1e1e',
 
-        'white': '3px 4px 0 #FBF8F0',
-        'white-hover': '1.5px 1.5px 0 #FBF8F0',
+        'white': '2px 3px 0 #FBF8F0',
+        'white-hover': '1.2px 1.2px 0 #FBF8F0',
 
         'grey': '2px 4px 0 #717171',
 
@@ -78,20 +78,6 @@ module.exports = withMT({
       },
 
       keyframes: {
-        morph: {
-          '0%': { 'border-radius': '50% 40% 50% 40% / 50% 50% 50% 50%' },
-
-          '50%': { 'border-radius': '60% 40% 60% 40% / 50% 40% 50% 40%' },
-
-          '100%': { 'border-radius': '50% 40% 50% 40% / 50% 50% 50% 50%' },
-        },
-
-
-        waves: {
-          '0%': { backgroundPositionX: '0' },
-          '100%': { backgroundPositionX: '200%' },
-        },
-
         zoom: {
           '0%': { transform: 'scale(.8)' },
           '100%': { transform: 'scale(1)' }

@@ -3,6 +3,7 @@ import WindowWidth from '../hooks/WindowWidth'
 import defaultCursor from '../../public/assets/cursor.png'
 import thumbCursor from '../../public/assets/thumb.png'
 import pointer from '../../public/assets/point.png'
+import stickyPoint from '../../public/assets/point2.svg'
 
 function Cursor() {
     const cursorRef = useRef(null);
@@ -24,20 +25,26 @@ function Cursor() {
 
         //change cursor image on hover
         const handleMouseOver = (e) => {
-            const element = e.target.closest("a, button, [data-cursor='hover']");
+            const element = e.target.closest("a, button, [data-cursor]");
             if (element) {
-                if (element.tagName === "A") {
-                    setCursorImage(pointer);
+                const cursorType = element.getAttribute("data-cursor");
+
+                if (cursorType === "sticky-nav") {
+                    setCursorImage(stickyPoint);
+                } else if (cursorType === "hover") {
+                    setCursorImage(thumbCursor);
+                } else if (element.tagName === "A") {
+                    setCursorImage(stickyPoint);
                 } else if (element.tagName === "BUTTON") {
                     setCursorImage(pointer);
-                } else if (element.getAttribute("data-cursor") === "hover") {
-                    setCursorImage(thumbCursor);
+                } else {
+                    setCursorImage(defaultCursor);
                 }
             }
         };
 
         const handleMouseOut = (e) => {
-            const element = e.target.closest("a, button, [data-cursor='hover']");
+            const element = e.target.closest("a, button, [data-cursor]");
             if (element) {
                 setCursorImage(defaultCursor); // Reset to default cursor
             }
@@ -87,7 +94,7 @@ function Cursor() {
                 width: '40px',
                 height: '40px',
                 position: 'fixed',
-                transform: 'translate(-50%, -50%)',
+                transform: 'translate(-50%, -20%)',
                 zIndex: 9999,
                 visibility: 'visible',
             }}

@@ -26,7 +26,7 @@ function CraftCard({ title, img, skills, id, craftHeaderRef }) {
                 <div className="flex flex-col p-[1rem]" >
                     <div className='overflow-hidden border-2 rounded-xl' >
                         <img src={img} alt="project"
-                            className='relative object-cover max-w-full h-auto transition duration-500 ease-in-out'
+                            className='relative object-cover max-w-full min-h-[250px] md:h-auto transition duration-500 ease-in-out'
                             style={{ transform: `scale(${scale})` }}
                         />
                     </div>

@@ -102,7 +102,7 @@ function About() {
 
                         <div className='basis-[70%]'>
                             <div className='py-2 mb-2 text-orange border-b border-black border-dashed'>
-                                <h4>Peek Into My Life</h4>
+                                <h3>Peek Into My Life</h3>
                             </div>
                             <p className='indent-4 mb-2 font-roundo-medium text-[20px]'>Hi I'm Tina!</p>
                             <p className='indent-4 mb-2'>
@@ -126,10 +126,10 @@ function About() {
                         </div>
                     </section>
 
-                    <section className='py-[10rem] flex flex-col items-center justify-center lg:flex-row gap-10 relative'>
+                    <section className='py-20 lg:py-[10rem] flex flex-col items-center justify-center lg:flex-row gap-10 relative'>
                         <div className='lg:flex-1 w-full'>
                             <div className='py-2 mb-2 border-b border-black border-dashed'>
-                                <h4 className='text-orange'>Skills</h4>
+                                <h3 className='text-orange'>Skills</h3>
                             </div>
 
                             <div className='grid gap-10'>
@@ -219,8 +219,6 @@ function About() {
                                 </div>
                             </div>
                         </div>
-
-
                     </section >
 
                     <section className=''>
@@ -230,10 +228,13 @@ function About() {
                                     <p className=''>
                                         My Currents
                                     </p>
-                                    <div className='flex gap-3 items-center md:gap-4 '>
+                                    <div className='flex gap-2 items-center md:gap-4'>
                                         <div className='w-3 md:w-4 h-[2px] bg-light-yellow-bg'></div>
                                         <div className='h-3 w-3 md:h-4 md:w-4 rounded-full bg-yellow'></div>
-                                        <div className='h-3 w-3 md:h-4 md:w-4  bg-blue'></div>
+                                        <div class="relative w-5 h-5">
+                                            <div class="absolute top-1/2 left-0 w-full h-[3px] bg-blue rotate-45 origin-center"></div>
+                                            <div class="absolute top-1/2 left-0 w-full h-[3px] bg-blue -rotate-45 origin-center"></div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div className='pt-14 pb-4 px-8 relative border-2 rounded-xl' style={grain}>
@@ -243,7 +244,7 @@ function About() {
 
                             <div className='basis-[60%] w-full'>
                                 <div className='py-2 mb-8 border-b border-black border-dashed text-orange'>
-                                    <h4>I Also Like</h4>
+                                    <h3>I Also Like</h3>
                                 </div>
                                 <div className='basis-[60%]'>
                                     <ul className='list-disc px-4 '>

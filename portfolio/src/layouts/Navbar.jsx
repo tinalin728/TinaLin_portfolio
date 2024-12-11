@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import logo from '../../public/assets/logo.svg'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEnvelope } from "@fortawesome/free-regular-svg-icons"
+
 import { faLinkedinIn } from "@fortawesome/free-brands-svg-icons"
 
 function Navbar() {
@@ -55,9 +57,12 @@ function Navbar() {
                                         About
                                     </NavLink>
 
-                                    <div className='py-2 px-4 rounded-full bg-orange shadow-charcoal border-2 hover:shadow-charcoal-hover transition duration-300'>
+                                    {/* <div className='py-2 px-4 rounded-full bg-orange shadow-charcoal border-2 hover:shadow-charcoal-hover transition duration-300'>
                                         <a href="mailto:yuting.lin728@gmail.com" className="font-roundo-medium text-white">Contact</a>
-                                    </div>
+                                    </div> */}
+
+                                    <a href="https://www.linkedin.com/in/tina-lin-000613b5/" className='inline-flex justify-center items-center h-[3.2rem] w-[3.2rem] border-2 rounded-full shadow-charcoal hover:shadow-charcoal-hover hover:translate-x-[.5%] hover:translate-y-[1%] transition-all duration-500 font-roundo-semibold'> <FontAwesomeIcon icon={faEnvelope} className='text-[28px]' />
+                                    </a>
                                 </ul>
                             </nav>
                         </div>

@@ -2,7 +2,10 @@ import React, { useState, useEffect, useRef, useLayoutEffect, forwardRef } from 
 import { Link } from 'react-router-dom';
 import { Parallax } from 'react-scroll-parallax';
 import Marquee from "react-fast-marquee";
+import { Swiper, SwiperSlide } from 'swiper/react';
 
+// Import Swiper styles
+import 'swiper/css';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 gsap.registerPlugin(useGSAP);
@@ -406,65 +409,90 @@ function Home() {
                                 </div>
                             </div>
 
-                            <div className="flex flex-wrap justify-between items-center gap-8 md:gap-4 mb-14 md:mb-[3rem] lg:px-8">
-                                {/* Card 1 */}
-                                <div data-cursor='hover' className="relative h-fit group w-full md:w-[48%] lg:w-[31%] hover:-translate-y-2 hover:-rotate-2 transition duration-500">
-                                    {/* Shadow Layer */}
-                                    <div className="absolute top-3 left-0 w-full h-full bg-light-yellow-bg rounded-xl -z-10 border-2"></div>
-
-                                    {/* Card Content */}
-                                    <div className="relative z-10 about-card bg-light-yellow-bg p-4 border-2 h-full overflow-hidden rounded-xl">
-                                        <div className="flex flex-col group-hover:rounded-xl transition-all duration-500 group-hover:bg-yellow">
-                                            <div className="translate-x-[60%]">
-                                                <img src={design} alt="icon" className="card w-[180px] md:w-[200px] lg:W-[260px] h-full" />
-                                            </div>
-                                            <div className="p-4">
-                                                <h2 className="group-hover:text-white">Web Design</h2>
-                                                <p className="text-[18px]">I craft ideas and solutions to bridge people and purpose on web.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                                {/* Card 2 */}
-                                <div data-cursor='hover' className="about-card h-fit group w-full md:w-[48%] lg:w-[31%] hover:-translate-y-2 transition duration-500">
-                                    <div className="relative">
+                            <Swiper
+                                spaceBetween={20}
+                                slidesPerView={1.05}
+                                onSlideChange={() => console.log('slide change')}
+                                onSwiper={(swiper) => console.log(swiper)}
+                                breakpoints={{
+                                    450: {
+                                        slidesPerView: 1.3,
+                                        spaceBetween: 20,
+                                    },
+                                    720: { // Tablet
+                                        slidesPerView: 2,
+                                        spaceBetween: 40,
+                                    },
+                                    1000: {
+                                        slidesPerView: 2.5,
+                                        spaceBetween: 40,
+                                    },
+                                    1024: { // Desktop
+                                        slidesPerView: 3,
+                                        spaceBetween: 50,
+                                    },
+                                }}
+                                className='mb-10 overflow-visible'
+                            >
+                                <SwiperSlide>
+                                    <div data-cursor='hover' className="relative group hover:-translate-y-2 hover:-rotate-2 transition duration-500">
+                                        {/* Shadow Layer */}
                                         <div className="absolute top-3 left-0 w-full h-full bg-light-yellow-bg rounded-xl -z-10 border-2"></div>
 
-                                        <div className="relative z-10 about-card bg-light-yellow-bg p-4 border-2 h-full overflow-hidden rounded-xl">
-                                            <div className='flex flex-col group-hover:rounded-xl transition-all duration-500 group-hover:bg-orange'>
-                                                <div className="p-4">
-                                                    <h2 className="pb-2 group-hover:text-white">UXUI Design</h2>
-                                                    <p className="text-[18px]">I build user-friendly and visually appealing interfaces for intuitive digital experiences.</p>
-                                                </div>
-                                                <div className="translate-x-[50%]">
-                                                    <img src={uxui} alt="icon" className="card-2 w-[200px] md:w-[230px] h-full" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                {/* Card 3 */}
-                                <div data-cursor='hover' className="about-card h-fit relative z-10 transition-all duration-500 group w-full md:w-[48%] lg:w-[31%] hover:-translate-y-2 hover:rotate-2">
-                                    <div className='relative'>
-                                        <div className="absolute top-3 left-0 w-full h-full bg-light-yellow-bg rounded-xl -z-10 border-2"></div>
-
-                                        <div className="relative z-10 about-card bg-light-yellow-bg p-4 border-2 h-full overflow-hidden rounded-xl">
-                                            <div className='flex flex-col group-hover:rounded-xl transition-all duration-500 group-hover:bg-blue'>
+                                        {/* Card Content */}
+                                        <div className="relative z-10 about-card bg-light-yellow-bg p-4 border-2 overflow-hidden rounded-xl h-[440px]">
+                                            <div className="flex flex-col group-hover:rounded-xl transition-all duration-500 group-hover:bg-yellow h-full">
                                                 <div className="translate-x-[60%]">
-                                                    <img src={coding} alt="icon" className="card w-[200px] lg:w-[260px] h-full" />
+                                                    <img src={design} alt="icon" className="card w-[180px] md:w-[200px] lg:w-[220px] h-full" />
                                                 </div>
                                                 <div className="p-4">
-                                                    <h2 className="pb-2 group-hover:text-white">Front-End Development</h2>
-                                                    <p className="text-[18px]">I bring designs to life by coding responsive, functional, and engaging web interfaces.</p>
+                                                    <h2 className="group-hover:text-white">Web Design</h2>
+                                                    <p className="text-[18px]">I captivate audiences with interactive, impactful websites that blend creativity and functionality seamlessly.</p>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
+                                </SwiperSlide>
+                                <SwiperSlide>
+                                    <div data-cursor='hover' className="about-card group hover:-translate-y-2 transition duration-500">
+                                        <div className="relative">
+                                            <div className="absolute top-3 left-0 w-full h-full bg-light-yellow-bg rounded-xl -z-10 border-2"></div>
+
+                                            <div className="relative z-10 about-card bg-light-yellow-bg p-4 border-2 overflow-hidden rounded-xl h-[440px]">
+                                                <div className='flex flex-col group-hover:rounded-xl transition-all duration-500 group-hover:bg-orange'>
+                                                    <div className="p-4">
+                                                        <h2 className="pb-2 group-hover:text-white">UX/UI Design</h2>
+                                                        <p className="text-[18px]">I build user-friendly and visually appealing interfaces for intuitive digital experiences.</p>
+                                                    </div>
+                                                    <div className="translate-x-[50%]">
+                                                        <img src={uxui} alt="icon" className="card-2 w-[190px] md:w-[230px] h-full" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </SwiperSlide>
+                                <SwiperSlide>
+                                    <div data-cursor='hover' className="about-card relative z-10 transition-all duration-500 group hover:-translate-y-2 hover:rotate-2">
+                                        <div className='relative'>
+                                            <div className="absolute top-3 left-0 w-full h-full bg-light-yellow-bg rounded-xl -z-10 border-2"></div>
+
+                                            <div className="relative z-10 about-card bg-light-yellow-bg p-4 border-2 overflow-hidden rounded-xl h-[440px]">
+                                                <div className='flex flex-col group-hover:rounded-xl transition-all duration-500 group-hover:bg-blue'>
+                                                    <div className="translate-x-[50%] overflow-hidden">
+                                                        <img src={coding} alt="icon" className="card w-[200px] lg:w-[250px] h-full" />
+                                                    </div>
+                                                    <div className="p-4  -mt-8 z-10">
+                                                        <h2 className="pb-2 group-hover:text-white">Front-End Development</h2>
+                                                        <p className="text-[18px]">I bring designs to life through code, creating responsive websites for seamless user experiences.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </SwiperSlide>
+                            </Swiper>
+                            {/* */}
 
                             <div ref={aboutCtaRef} className="flex justify-center items-center">
                                 <PrimaryBtn
@@ -481,11 +509,11 @@ function Home() {
                 <div className='overflow-hidden bg-darker-bg '>
                     <div className='max-w-container py-4 h-full flex'>
                         <Marquee autoFill='true' pauseOnHover='true' direction='right'>
-                            <img src={icon1} alt="" className='mr-[5.5rem]' />
-                            <img src={icon2} alt="" className='mr-[5.5rem]' />
-                            <img src={icon3} alt="" className='mr-[5.5rem]' />
-                            <img src={icon4} alt="" className='mr-[5.5rem]' />
-                            <img src={icon5} alt="" className='mr-[5.5rem]' />
+                            <img src={icon1} alt="" className='mr-12 md:mr-[5.5rem] ' />
+                            <img src={icon2} alt="" className='mr-12 md:mr-[5.5rem]' />
+                            <img src={icon3} alt="" className='mr-12 md:mr-[5.5rem]' />
+                            <img src={icon4} alt="" className='mr-12 md:mr-[5.5rem]' />
+                            <img src={icon5} alt="" className='mr-12 md:mr-[5.5rem]' />
                         </Marquee>
 
                     </div>
