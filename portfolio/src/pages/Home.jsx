@@ -71,7 +71,6 @@ function Home() {
     }
     const cursorRef = useRef(null);
 
-
     // animation for hero section
     useGSAP(() => {
         // headline animation

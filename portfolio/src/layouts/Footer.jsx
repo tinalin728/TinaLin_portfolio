@@ -104,7 +104,6 @@ function Footer() {
             '/assets/pills/latin.svg',
             '/assets/pills/react.svg',
             '/assets/pills/tailwind.svg',
-
         ];
 
         //preload images
@@ -314,7 +313,6 @@ function Footer() {
                 const pillBodies = createPills(loadedTextures, width);
                 pillBodies.forEach((pill) => Composite.add(world, pill));
             });
-
 
             // Update walls and ground
             Matter.Body.setPosition(ground, { x: width / 2, y: height - 5 });
