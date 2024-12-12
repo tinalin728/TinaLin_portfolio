@@ -688,7 +688,7 @@ export function fetchProductList(dataPath, containerId, productType, callback) {
     },
     {
         id: 4,
-        type: 'branding',
+        type: 'coding',
         status: 'completed',
         title: 'Zen Matcha',
 
