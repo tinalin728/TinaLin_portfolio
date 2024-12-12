@@ -60,8 +60,9 @@
     }
 
     .content-gap {
-        margin: 6.5rem 0;
+        @apply my-[3em] md:my-[4rem] lg:my-[5.5rem];
     }
+
 
     .content-w {
         max-width: 85rem;

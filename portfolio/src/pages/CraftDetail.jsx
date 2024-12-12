@@ -50,7 +50,7 @@ function CraftDetail() {
         <>
             {/* banner */}
             <section className='max-w-container overflow-hidden py-[6rem]'>
-                <div className='relative h-full flex flex-col items-center justify-between gap-8 md:flex-row '>
+                <div className='relative h-full flex flex-col items-center justify-between gap-8 md:flex-row'>
                     <div className='flex-1'>
                         <p className='text-dark-grey text-center mb-2 md:text-left'>{craft.banner.subHeader}</p>
                         <h1 className='text-wrap text-center md:text-left'> {craft.banner.header}</h1>
@@ -66,7 +66,7 @@ function CraftDetail() {
             <section className='overview border-t-2  bg-darker-bg'>
                 <div className='content-w pb-4 pt-[10rem]'>
                     <h2>Project Overview</h2>
-                    <div className='md:flex md:gap-16 md:justify-center'>
+                    <div className='flex flex-col gap-10 md:flex-row md:gap-16 md:justify-center'>
                         <div className='flex-1'>
                             <p className='mb-10'>{craft.overview.content}</p>
                             <a href="#prototype" className='px-6 py-4 rounded-full border-2  font-roundo-medium shadow-charcoal hover:shadow-charcoal-hover transition duration-300'>Skip to Prototype</a>
