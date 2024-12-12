@@ -39,7 +39,7 @@ function Crafts() {
             />
 
             <section className=''>
-                <div className='hidden md:block border-b-2'>
+                <div className='hidden md:block'>
                     <div className='flex  max-w-container'>
                         <button
                             className={filterClasses(filter === 'all')}
@@ -59,7 +59,7 @@ function Crafts() {
                 </div>
 
 
-                <div className='pt-10 pb-[10rem] bg-darker-bg'>
+                <div className='pt-10 pb-[10rem] bg-darker-bg border-2'>
                     <div className="relative grid grid-cols-1 md:grid-cols-2 gap-6  max-w-container">
                         {filteredCrafts.map((craft, index) => {
                             return (
