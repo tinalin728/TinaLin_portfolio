@@ -61,7 +61,7 @@ function Navbar() {
                                         <a href="mailto:yuting.lin728@gmail.com" className="font-roundo-medium text-white">Contact</a>
                                     </div> */}
 
-                                    <a href="https://www.linkedin.com/in/tina-lin-000613b5/" className='inline-flex justify-center items-center h-[3.2rem] w-[3.2rem] border-2 rounded-full shadow-charcoal hover:shadow-charcoal-hover hover:translate-x-[.5%] hover:translate-y-[1%] transition-all duration-500 font-roundo-semibold'> <FontAwesomeIcon icon={faEnvelope} className='text-[28px]' />
+                                    <a href="mailto:yuting.lin728@gmail.com" className='inline-flex justify-center items-center h-[3.2rem] w-[3.2rem] border-2 rounded-full shadow-charcoal hover:shadow-charcoal-hover hover:translate-x-[.5%] hover:translate-y-[1%] transition-all duration-500 font-roundo-semibold'> <FontAwesomeIcon icon={faEnvelope} className='text-[28px]' />
                                     </a>
                                 </ul>
                             </nav>

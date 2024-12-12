@@ -322,8 +322,6 @@ function Home() {
         );
     }, [craftRef.current])
 
-
-
     const firstCraft = crafts[0]
 
     return (
@@ -372,8 +370,10 @@ function Home() {
                                 a product designer <br /> who loves coding	&#x2661;</p>
                         </div>
                         {/* <div className='absolute bottom-14 right-14 hidden md:block'>
-                            <img ref={cursorRef} src={cursor} alt="" className='w-[8rem] md:w-[10rem]' />
+                            <img ref={cursorRef} src={cursor} alt="" className='w-[4rem] md:w-[8rem]' />
                         </div> */}
+
+
                     </div>
                 </section >
 
@@ -398,7 +398,7 @@ function Home() {
                         <div className="relative z-10">
                             <div className="mb-6 lg:mb-12">
                                 <div className="explore flex w-fit mx-auto bg-charcoal rounded-md px-4 py-2 -rotate-6">
-                                    <p className="text-base text-center tracking-[3px] md:tracking-[5px] md:text-xl font-roundo-semibold uppercase text-white">Explore</p>
+                                    <p className="tracking-widest uppercase text-white text-sm md:text-base text-nowrap">Explore</p>
                                 </div>
 
                                 <div className="relative z-10">
@@ -522,7 +522,7 @@ function Home() {
                 <section ref={craftRef} className="relative h-full py-[10rem] bg-darker-bg">
                     <div className='max-w-container relative rounded-xl'>
                         <div className='recent flex mx-auto w-fit bg-charcoal rounded-md px-4 py-2 rotate-6'>
-                            <p className="text-base tracking-[3px] md:tracking-[5px] md:text-xl font-roundo-semibold uppercase text-white">Recent</p >
+                            <p className="tracking-widest uppercase text-white text-sm md:text-base text-nowrap">Most Recent</p >
                         </div >
 
                         <div className="text-center mb-6 lg:mb-12">
