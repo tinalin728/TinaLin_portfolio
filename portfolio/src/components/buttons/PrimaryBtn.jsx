@@ -17,12 +17,12 @@ function PrimaryBtn({ to, text, icon, href, reverseOrder = false }) {
                     <div>
                         <img src={icon} alt="" width={30} />
                     </div>
-                    <span className="font-roundo text-base lg:tracking-[2px]">{text}</span>
+                    <span className="font-roundo-medium text-base lg:tracking-[2px]">{text}</span>
                 </>
 
             ) : (
                 <>
-                    <span className="font-roundo text-base lg:tracking-[2px]">{text}</span>
+                    <span className="font-roundo-medium text-base lg:tracking-[2px]">{text}</span>
                     <div className='group-hover:-rotate-[15deg] transition duration-500'>
                         <img src={icon} alt="icon" width={30} />
                     </div>

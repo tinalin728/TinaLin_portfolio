@@ -18,7 +18,7 @@ import sunglasses from "../../public/assets/homepage/emoji-sunglasses.png"
 import rainbow from '../../public/assets/homepage/rainbow.svg'
 import thunder from '../../public/assets/homepage/thunder.svg'
 import rose from '../../public/assets/homepage/rose.svg'
-import cursor from '../../public/assets/homepage/cursor.png'
+// import cursor from '../../public/assets/homepage/cursor.png'
 import arrow from '../../public/assets/icons/arrow.svg';
 import outline from '../../public/assets/homepage/outlineLogo.svg'
 
@@ -448,8 +448,8 @@ function Home() {
                             <p className='text-lg'>Hi I'm Tina,<br />
                                 a product designer <br /> who loves coding	&#x2661;</p>
                         </div>
-                        {/* <div className='absolute bottom-14 right-14 hidden md:block'>
-                            <img ref={cursorRef} src={cursor} alt="" className='w-[8rem] md:w-[10rem]' />
+                        {/* <div className='absolute bottom-14 right-14 hidden md:block z-10'>
+                            <img src={cursor} alt="" className='w-[8rem] md:w-[10rem]' />
                         </div> */}
                     </div>
                 </section >

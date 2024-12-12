@@ -11,7 +11,7 @@ function PageHero({ header, tagline }) {
                     </h2>
                 </div>
                 <div className='absolute top-[35%] left-1/2 md:left-[35%] -translate-x-1/2 -translate-y-1/2 py-2 px-4 bg-charcoal w-fit rounded-md md:-rotate-6'>
-                    <p className='font-roundo-light tracking-widest uppercase text-white text-sm md:text-base text-nowrap'>{tagline}</p>
+                    <p className='tracking-widest uppercase text-white text-sm md:text-base text-nowrap'>{tagline}</p>
                 </div>
             </div>
         </section>
