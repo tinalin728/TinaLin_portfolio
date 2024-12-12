@@ -442,7 +442,7 @@ function Home() {
                                         {/* Card Content */}
                                         <div className="relative z-10 about-card bg-light-yellow-bg p-4 border-2 overflow-hidden rounded-xl h-[440px]">
                                             <div className="flex flex-col group-hover:rounded-xl transition-all duration-500 group-hover:bg-yellow h-full">
-                                                <div className="translate-x-[60%]">
+                                                <div className="translate-x-[60%] relative">
                                                     <img src={design} alt="icon" className="card w-[180px] md:w-[200px] lg:w-[220px] h-full" />
                                                 </div>
                                                 <div className="p-4">
