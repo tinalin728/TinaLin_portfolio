@@ -138,15 +138,15 @@ function UIUXLayout({ craft }) {
 
                             <div className='flex-1 p-2 rounded-xl bg-white bg-opacity-50 h-full'>
                                 <div className='mx-auto overflow-hidden border border-gray-400 rounded-md'>
-                                    <img src={craft.research.competitor.image.src}
-                                        alt={craft.research.competitor.image.altText}
+                                    <img src={craft.research.competitor.img.src}
+                                        alt={craft.research.competitor.img.altText}
                                         className='h-full object-cover'
                                         onClick={() => handleImgClick({
-                                            src: craft.research.competitor.image.src,
-                                            alt: craft.research.competitor.image.altText
+                                            src: craft.research.competitor.img.src,
+                                            alt: craft.research.competitor.img.altText
                                         })} />
                                 </div>
-                                <p className='text-center mt-2 text-dark-grey italic text-sm'>{craft.research.competitor.image.caption}</p>
+                                <p className='text-center mt-2 text-dark-grey italic text-sm'>{craft.research.competitor.img.caption}</p>
 
                                 <ImageModal
                                     isOpen={modalData.isOpen}
@@ -187,8 +187,7 @@ function UIUXLayout({ craft }) {
                                     ))}
                                 </ul>
 
-
-
+                                {/* 
                                 <div className='content-gap flex flex-col gap-10 lg:flex-row'>
                                     <div className='flex-1'>
                                         <h2>Competitor Analysis</h2>
@@ -211,7 +210,7 @@ function UIUXLayout({ craft }) {
                                             onClose={closeModal}
                                         />
                                     </div>
-                                </div>
+                                </div> */}
 
                             </div>
                         </div>
@@ -361,41 +360,6 @@ function UIUXLayout({ craft }) {
                                             <img
                                                 src={craft.design.wireframes.medfi.visualInput.img.src}
                                                 alt={craft.design.wireframes.medfi.visualInput.img.altText}
-                                            />
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div className="flex flex-col gap-10 mb-10 lg:flex-row lg:items-stretch lg:mb-20">
-                                    <div className="lg:basis-1/3 lg:sticky lg:top-[40%] h-full">
-                                        <div className='border-l-2 border-blue py-2 mb-4'>
-                                            <p className='text-[18px] font-roundo-medium capitalize px-2 lg:px-4 lg:text-[20px]'> {craft.design.wireframes.medfi.sizeRec.header} </p>
-                                        </div>
-                                        <p>{craft.design.wireframes.medfi.sizeRec.content}</p>
-                                    </div>
-
-                                    <div className="lg:basis-2/3 lg:mt-20">
-                                        <div id="input-image">
-                                            <img
-                                                src={craft.design.wireframes.medfi.sizeRec.img.src}
-                                                alt={craft.design.wireframes.medfi.sizeRec.img.altText}
-                                            />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="flex flex-col gap-10 mb-10 lg:flex-row lg:items-stretch lg:mb-20">
-                                    <div className="lg:basis-1/3 lg:sticky lg:top-[40%] h-full">
-                                        <div className='border-l-2 border-charchaol py-2 mb-4'>
-                                            <p className='text-[18px] font-roundo-medium capitalize px-2 lg:px-4 lg:text-[20px]'> {craft.design.wireframes.medfi.avatar.header} </p>
-                                        </div>
-                                        <p>{craft.design.wireframes.medfi.avatar.content}</p>
-                                    </div>
-
-                                    <div className="lg:basis-2/3 lg:mt-20">
-                                        <div id="input-image">
-                                            <img
-                                                src={craft.design.wireframes.medfi.avatar.img.src}
-                                                alt={craft.design.wireframes.medfi.avatar.img.altText}
                                             />
                                         </div>
                                     </div>
