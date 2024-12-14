@@ -8,6 +8,7 @@ import CraftDetail from './pages/CraftDetail'
 import ScrollToTop from './hooks/ScrollToTop'
 import SmoothScrolling from './components/SmoothScrolling'
 import { ParallaxProvider } from "react-scroll-parallax";
+
 import Cursor from './components/Cursor'
 
 

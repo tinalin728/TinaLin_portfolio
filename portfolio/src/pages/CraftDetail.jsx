@@ -8,6 +8,8 @@ import DesignLayout from '../components/craftDetail/DesignLayout';
 import { gsap } from 'gsap/gsap-core'
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+import { Helmet } from 'react-helmet';
+
 import PrimaryBtn from '../components/buttons/PrimaryBtn';
 import arrow from '../../public/assets/icons/arrow.svg';
 
@@ -39,15 +41,30 @@ function CraftDetail() {
         } else {
             document.querySelector('main').style.overflow = 'hidden';
         }
-
         return () => {
             document.querySelector('main').style.overflow = '';
         };
     }, [craft])
 
 
+
     return (
         <>
+            {/* metadata */}
+            <Helmet>
+                <title>{craft.title} | Tina Lin's Portfolio</title>
+                <meta name="description" content={craft.overview.content} />
+                <meta
+                    name="keywords"
+                    content={`Tina Lin, ${craft.title}, ${craft.type}, Portfolio, UX Design, Web Development`}
+                />
+                <meta property="og:title" content={`${craft.title} | Tina Lin's Portfolio`} />
+                <meta property="og:description" content={craft.overview.content} />
+                <meta property="og:image" content={craft.banner.image.src} />
+                <meta property="og:url" content={`https://www.tinalin.ca/crafts/${craft.id}`} />
+                <meta property="og:type" content="article" />
+            </Helmet>
+
             {/* banner */}
             <section className='max-w-container overflow-hidden py-[6rem]'>
                 <div className='relative h-full flex flex-col items-center justify-between gap-8 md:flex-row'>
