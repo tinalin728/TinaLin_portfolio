@@ -149,7 +149,7 @@ export const craftsData = [
             competitor: {
                 title: 'Competitor Research',
                 description: "After identifying key issues with the Tim Hortons app, I turned to competitor research to explore how similar brands handle offer redemption. I analyzed the flows of Starbucks and McDonald's, which stood out for their simplicity— <span> users can order immediately after clicking an offer. </span> This comparison provided valuable insights into best practices and highlighted opportunities where the Tim Hortons app could improve its user experience.",
-                image: {
+                img: {
                     src: "/assets/tims/research-CA.png",
                     altText: "competitor analysis",
                     caption: 'Click to view competitor analysis'
@@ -286,10 +286,10 @@ export const craftsData = [
         id: 3,
         type: 'UXUI',
         status: 'completed',
-        title: 'My Personalized Model Plugin',
+        title: 'FitBot- App for Perfect Jeans',
 
         banner: {
-            subHeader: 'My Personalized Model Plugin',
+            subHeader: 'FitBot- App for Perfect Pants',
             header: 'Your Fit, Your Way',
             image: {
                 src: '/assets/pm/banner.png',
@@ -299,7 +299,7 @@ export const craftsData = [
         },
 
         overview: {
-            content: "Shopping for pants online can be a challenge. Sizing varies across brands, fit visualization is limited, and returns are a hassle. As someone who’s experienced these frustrations firsthand, I designed a plugin that uses user measurements to provide personalized fit recommendations. This tool not only simplifies shopping for users but also helps retailers reduce return rates and build customer confidence.",
+            content: "Shopping for pants online has always been a challenge. With inconsistent sizing across brands, the inability to visualize fit, and the hassle of returns, many shoppers feel frustrated and uncertain. Drawing from my own experiences, I created an app that combines AI assistance, 3D visualization, and user measurements to deliver personalized fit recommendations. This app simplifies the shopping process, boosts user confidence, and helps retailers minimize returns by ensuring customers find their perfect fit.",
 
             deliverables: 'User interviews, wireframes, prototypes',
             role: 'UX research, UX/UI design',
@@ -395,11 +395,19 @@ export const craftsData = [
 
             competitor: {
                 title: 'Validating Market Gaps',
-                description: "I analyzed four brands—Uniqlo, Aritzia, Levi’s, and Abercrombie—to understand how they assist users with sizing. Uniqlo and Aritzia offer interactive tools but lack detailed visuals, while Levi’s and Abercrombie rely on traditional charts with minimal personalization. This highlighted the need for <span>combining tailored recommendations with enhanced visual representation.</span>",
-                image: {
+                // description: "I analyzed four brands—Uniqlo, Aritzia, Levi’s, and Abercrombie—to understand how they assist users with sizing. Uniqlo and Aritzia offer interactive tools but lack detailed visuals, while Levi’s and Abercrombie rely on traditional charts with minimal personalization. This highlighted the need for <span>combining tailored recommendations with enhanced visual representation.</span>",
+                // image: {
+                //     src: '/assets/pm/research-brand.svg',
+                //     altText: 'Competitor Analysis',
+                //     caption: 'Click to view analysis'
+                // }
+
+                description: "I went on a search for existing apps and discovered that <span> most focus on general clothing or whole-body recommendations, often neglecting the specific challenges of pants shopping. </span> Tools like WEARFITS and Wrobe.ai excel in providing virtual try-ons and full-body visualization, but they lack conversational AI or a focus on pants-specific needs. Similarly, Stylee prioritizes styling advice over practical fit solutions. This gap motivated me to <span> create an app that bridge these gaps.",
+
+                img: {
                     src: '/assets/pm/research-brand.svg',
-                    altText: 'Competitor Analysis',
-                    caption: 'Click to view analysis'
+                    altText: 'competitor analysis',
+                    caption: 'Existing Plugin Analysis'
                 }
             }
         },
@@ -410,27 +418,27 @@ export const craftsData = [
 
                 solution: [
                     {
-                        title: "Interactive Sizing Tool",
-                        icon: "📏",
-                        description: "Provide tailored size recommendations that works for both experienced and first-time online shoppers."
+                        title: "Sizing AI Assistant",
+                        icon: "💬",
+                        description: " An intelligent chat assistant to guide users with personalized size recommendations"
 
                     },
                     {
-                        title: "Fit Visualization",
+                        title: "3D FitModel",
                         icon: "👀",
-                        description: "Introduce realistic 3D AI avatars to help users visualize how pants fit specific areas like the waist, hips, and inseam."
+                        description: "Introduce realistic 3D AI models to help users visualize how pants fit specific areas like the waist, hips, and inseam."
 
                     },
                     {
-                        title: "Clear Guide",
+                        title: "Interactive Sizing Tool",
                         icon: "📃",
-                        description: "Offer size recommendations with clear explanations and visual indicators"
+                        description: "Guides users through selecting their measurements, fit preferences, and length, with visual feedback"
                     }
                 ],
             },
 
             ca: {
-                content: "Exploring existing plugins revealed that <span> most focus on whole-body recommendations, not pants-specific needs </span>. While effective for general sizing, these tools lack features to show how pants fit key areas like the waist, hips, and inseam. This presented an opportunity to <span> create a plugin focused on pants sizing, combining accurate size recommendations with dynamic 3D visualizations. </span>",
+                content: "I went on a search for existing plugins and realized that <span> most focus on whole-body recommendations and overlook pants-specific needs. </span> While these tools work well for general sizing, they fail to address how pants fit key areas like the waist, hips, and inseam. This gap inspired me to <span> create a solution tailored specifically for pants shoppers, combining precise size recommendations, an interactive onboarding process, and dynamic 3D visualizations. </span>",
 
                 img: {
                     src: '/assets/pm/define-ca.svg',
@@ -474,7 +482,7 @@ export const craftsData = [
 
         design: {
             sketch: {
-                description: "I began with some quick sketches to get my ideas flowing and explore different possibilities. I chose to focus on a desktop plugin for the initial scope, as it aligns with the behavior of users shopping for pants online. The design was tailored to integrate seamlessly into existing e-commerce websites.",
+                description: "I began with quick sketches to get my ideas flowing and explore different possibilities. I chose to focus on a IOS mobile app for the initial scope, as it aligns with the behavior of users shopping for pants on the go. The design was tailored to provide a seamless and engaging experience, integrating features like an AI assistant and 3D model visualization to make sizing and fit recommendations more intuitive and personalized.",
                 image: {
                     src: "/assets/pm/design-sketch.svg",
                     altText: "wireframe sketches",
@@ -498,36 +506,22 @@ export const craftsData = [
                 medfi: {
                     input: {
                         header: 'Simplify size selection',
-                        content: 'Instead of dealing with complicated size charts, users can simply input their basic info and measurements if they know them. It’s a quicker, easier way to figure out the best size without the guesswork.',
+                        content: 'The onboarding process begins with a step-by-step sizing tool that guides users through entering their measurements (waist, hip, inseam) using sliders. Fit preferences like style and length are also captured to provide tailored recommendations. This eliminates the need for confusing size charts and guesswork.',
                         img: {
                             src: '/assets/pm/wireframe1.svg',
                             altText: 'wireframe'
                         }
                     },
                     visualInput: {
-                        header: 'Visual Size Adjustment for a Tailored Fit',
-                        content: 'If users are unsure about their size, they can adjust the 3D model to match their body shape, making it easier to visualize the fit without relying on size charts',
+                        header: 'Chat Assistant with 3D Model',
+                        content: 'Once the sizing data is collected, users can engage with the chat assistant for further recommendations. The integrated 3D model adjusts dynamically to reflect user inputs, allowing them to visualize how pants fit specific areas like the waist, hips, and inseam. This feature combines personalized guidance with realistic fit visualization.',
+
                         img: {
                             src: '/assets/pm/wireframe2.svg',
                             altText: 'wireframe'
                         }
                     },
-                    sizeRec: {
-                        header: 'Confident Size Recommendation',
-                        content: 'By providing two size recommendations with confidence scores, users no longer need to rely solely on ambiguous size charts.',
-                        img: {
-                            src: '/assets/pm/wireframe3.svg',
-                            altText: 'wireframe'
-                        }
-                    },
-                    avatar: {
-                        header: 'Interactive 3D Model',
-                        content: "A realistic customizable 3D model lets users switch between half-body and full-body views. Users can rotate and view the model from all angles to see how the pants fit key areas like the waist, hips, and inseam.",
-                        img: {
-                            src: '/assets/pm/wireframe4.svg',
-                            altText: 'wireframe'
-                        }
-                    },
+
                 }
             },
         },
