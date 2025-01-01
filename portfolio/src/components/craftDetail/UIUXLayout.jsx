@@ -307,7 +307,7 @@ function UIUXLayout({ craft }) {
                         <div className='grid gap-10 px-10'>
                             {craft.design.wireframes.medfiProto.map((img, index) => (
                                 <div key={index}>
-                                    <img src={img.src} alt={img.altText} />
+                                    <img src={img.src} alt={img.altText} className='w-full' />
                                 </div>
                             ))}
                         </div>
