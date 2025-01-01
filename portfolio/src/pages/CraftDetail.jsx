@@ -128,7 +128,7 @@ function CraftDetail() {
                                 <p>{craft.overview.solution}</p>
 
                                 <div className='mt-14'>
-                                    <a href="#prototype" className='px-6 py-4 rounded-full border-2 font-roundo-medium shadow-charcoal hover:shadow-charcoal-hover transition duration-300'>{craft.overview.link}</a>
+                                    <a href="#prototype" className='px-6 py-4 rounded-full border-2 font-roundo-medium shadow-charcoal hover:shadow-charcoal-hover transition duration-300 tracking-[1px] md:tracking-[2px]'>{craft.overview.link}</a>
                                 </div>
 
                             </div>
@@ -159,7 +159,7 @@ function CraftDetail() {
                 </div>
             </div>
 
-            <section className="border-y border-black py-14 overflow-hidden">
+            <section className="border-t-2 border-black py-14 overflow-hidden">
                 <div className="max-w-container">
                     <h2 className="mb-6">View More Projects!</h2>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -177,12 +177,12 @@ function CraftDetail() {
                                         src={project.cover}
                                         alt={project.banner.image.altText}
                                         autoPlay muted playsInline loop
-                                        className="w-full border-2"
+                                        className="w-full"
                                     />
                                 ) : (
                                     <img src={project.cover}
                                         alt={project.banner.image.altText}
-                                        className="w-full border-2"
+                                        className="w-full"
                                     />
                                 )}
 
