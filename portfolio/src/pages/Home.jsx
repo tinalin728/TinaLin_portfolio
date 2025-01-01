@@ -542,6 +542,7 @@ function Home() {
                                         mediaType={craft.media}
                                         src={craft.src}
                                         skills={craft.skills}
+                                        content={craft.content}
                                     />
                                 );
                             })}
