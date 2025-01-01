@@ -10,7 +10,7 @@ function PageHero({ header, tagline }) {
                         {header}
                     </h2>
                 </div>
-                <div className='absolute top-[35%] left-1/2 md:left-[35%] -translate-x-1/2 -translate-y-1/2 py-2 px-4 bg-charcoal w-fit rounded-md md:-rotate-6'>
+                <div className='hidden md:block md:absolute md:top-[35%] md:left-[35%] md:-translate-x-1/2 md:-translate-y-1/2 py-2 px-4 bg-charcoal w-fit rounded-md md:-rotate-6'>
                     <p className='tracking-widest uppercase text-white text-sm md:text-base text-nowrap'>{tagline}</p>
                 </div>
             </div>

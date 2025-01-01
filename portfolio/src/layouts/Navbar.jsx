@@ -1,22 +1,24 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
 import logo from '../../public/assets/logo.svg'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEnvelope } from "@fortawesome/free-regular-svg-icons"
-
+import Lenis from 'lenis'
 import { faLinkedinIn } from "@fortawesome/free-brands-svg-icons"
 
 function Navbar() {
 
     const [isOpen, setIsOpen] = useState(false);
+    const [isPaused, setIsPaused] = useState(false);
+
     const toggleMenu = () => {
         setIsOpen(!isOpen);
 
-        if (!isOpen) {
-            document.body.classList.add('overflow-hidden');
-        } else {
-            document.body.classList.remove('overflow-hidden');
-        }
+        // if (!isOpen) 
+        //     document.body.classList.add('overflow-hidden');
+        // } else {
+        //     document.body.classList.remove('overflow-hidden');
+        // }
     }
 
     const handleMenuToggle = () => {
@@ -24,6 +26,8 @@ function Navbar() {
             toggleMenu();
         }
     }
+
+
 
     // animation styles for the hamburger icon 
     const topStyle = isOpen
@@ -56,10 +60,6 @@ function Navbar() {
                                     <NavLink to="/about" onClick={handleMenuToggle} className="font-roundo-medium hover:text-orange py-6 md:py-8">
                                         About
                                     </NavLink>
-
-                                    {/* <div className='py-2 px-4 rounded-full bg-orange shadow-charcoal border-2 hover:shadow-charcoal-hover transition duration-300'>
-                                        <a href="mailto:yuting.lin728@gmail.com" className="font-roundo-medium text-white">Contact</a>
-                                    </div> */}
 
                                     <a href="mailto:yuting.lin728@gmail.com" className='inline-flex justify-center items-center h-[3.2rem] w-[3.2rem] border-2 rounded-full shadow-charcoal hover:shadow-charcoal-hover hover:translate-x-[.5%] hover:translate-y-[1%] transition-all duration-500 font-roundo-semibold'> <FontAwesomeIcon icon={faEnvelope} className='text-[28px]' />
                                     </a>

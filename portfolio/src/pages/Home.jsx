@@ -366,8 +366,8 @@ function Home() {
                             </Parallax>
                         </div>
                         <div className='absolute left-8 md:left-14 bottom-8 md:bottom-[10%]'>
-                            <p className='text-lg'>Hi I'm Tina,<br />
-                                a product designer <br /> who loves coding	&#x2661;</p>
+                            <h3 className='font-roundo-medium'>Hi I'm Tina,<br />
+                                a UX/UI designer <br /> who loves coding	&#x2661;</h3>
                         </div>
                         {/* <div className='absolute bottom-14 right-14 hidden md:block'>
                             <img ref={cursorRef} src={cursor} alt="" className='w-[4rem] md:w-[8rem]' />
@@ -409,6 +409,9 @@ function Home() {
                             </div>
 
                             <Swiper
+                                style={{
+                                    overflow: 'visible',
+                                }}
                                 spaceBetween={20}
                                 slidesPerView={1.05}
                                 onSlideChange={() => console.log('slide change')}
@@ -536,9 +539,9 @@ function Home() {
                                         key={craft.id}
                                         id={craft.id}
                                         title={craft.title}
-                                        img={craft.img}
+                                        mediaType={craft.media}
+                                        src={craft.src}
                                         skills={craft.skills}
-                                    // craftHeaderRef={(el) => (craftHeaderRef.current[index] = el)}
                                     />
                                 );
                             })}

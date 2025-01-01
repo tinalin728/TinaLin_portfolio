@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
 import Home from './pages/Home'
 import About from './pages/About'
@@ -8,11 +8,11 @@ import CraftDetail from './pages/CraftDetail'
 import ScrollToTop from './hooks/ScrollToTop'
 import SmoothScrolling from './components/SmoothScrolling'
 import { ParallaxProvider } from "react-scroll-parallax";
-
 import Cursor from './components/Cursor'
 
 
 function App() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
     <Router>
@@ -29,7 +29,6 @@ function App() {
             </Route>
           </Routes>
         </ParallaxProvider>
-
       </SmoothScrolling >
     </Router>
   )

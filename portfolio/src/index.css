@@ -23,7 +23,7 @@
     }
 
     h3 {
-        @apply text-md md:text-lg font-craftwork font-bold tracking-[1px] mb-2 capitalize
+        @apply text-md md:text-lg font-roundo-medium tracking-[1px] mb-2 
     }
 
     h4 {
@@ -60,7 +60,7 @@
     }
 
     .content-gap {
-        @apply my-[3em] md:my-[4rem] lg:my-[5.5rem];
+        @apply py-[3em] md:py-[4rem] lg:py-[5.5rem];
     }
 
 
@@ -186,13 +186,11 @@
             -6px -6px 0 #1e1e1e;
     }
 
-    .swiper {
-        overflow: visible !important;
+
+    .swiper-button-prev, .swiper-button-next {
+        color: #E36A46 !important;
     }
-
 }
-
-@layer components {}
 
 
 @layer utilities {
