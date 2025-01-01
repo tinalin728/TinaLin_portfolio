@@ -46,6 +46,16 @@ function CraftDetail() {
         };
     }, [craft])
 
+    useEffect(() => {
+        // Scroll to the top of the page whenever the `id` changes
+        window.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: 'auto', // You can change to 'auto' for instant scroll
+        });
+    }, [id]);
+
+
 
 
     return (
@@ -80,29 +90,54 @@ function CraftDetail() {
             </section>
 
             {/* overview */}
-            <section className='overview border-t-2  bg-darker-bg'>
-                <div className='content-w pb-4 pt-[10rem]'>
-                    <h2>Project Overview</h2>
-                    <div className='flex flex-col gap-10 md:flex-row md:gap-16 md:justify-center'>
-                        <div className='flex-1'>
-                            <p className='mb-10'>{craft.overview.content}</p>
-                            <a href="#prototype" className='px-6 py-4 rounded-full border-2  font-roundo-medium shadow-charcoal hover:shadow-charcoal-hover transition duration-300'>Skip to Prototype</a>
+            <section className='overview border-t-2  bg-darker-bg pt-[10rem]'>
+                <div className='content-w pb-4 '>
+                    <div className='py-10 border-b-2 border-light-grey border-dashed'>
+                        <span className='text-dark-grey uppercase font-roundo tracking-wider'>Introduction</span>
+                        <h1>Overview</h1>
+                    </div>
+
+                    <div>
+                        <div className='flex flex-col gap-6 md:flex-row md:justify-center md:gap-10 my-10'>
+                            <div className='flex-1'>
+                                <p className='font-roundo-medium uppercase tracking-wider'>Role</p>
+                                <p>{craft.overview.role}</p>
+                            </div>
+                            <div className='flex-1'>
+                                <p className='font-roundo-medium uppercase tracking-wider'>Project Timeline</p>
+                                <p>{craft.overview.duration}</p>
+                            </div>
+                            <div className='flex-1'>
+                                <p className='font-roundo-medium uppercase tracking-wider'>{craft.overview.user.title}</p>
+                                <p>{craft.overview.user.content}</p>
+                            </div>
+                            <div className='flex-1'>
+                                <p className='font-roundo-medium uppercase tracking-wider'>Process</p>
+                                <p>{craft.overview.process}</p>
+                            </div>
                         </div>
 
-                        <div className='flex-1'>
-                            <div className='flex flex-col justify-between gap-6'>
-                                <div>
-                                    <p className='font-roundo-medium text-orange'>My Role</p>
-                                    <p>{craft.overview.role}</p>
+                        <div className='flex flex-col-reverse gap-10 content-gap items-center md:flex-row'>
+                            <div className='basis-2/3'>
+                                <h3 className='mb-10 ital'>{craft.overview.headline} </h3>
+                                <p className='mb-10'>{craft.overview.content}</p>
+                                <p className='font-roundo-medium uppercase tracking-wider'>The Challenge</p>
+                                <p className='mb-10'>{craft.overview.challenge}</p>
+
+                                <p className='font-roundo-medium uppercase tracking-wider'> The Solution</p>
+                                <p>{craft.overview.solution}</p>
+
+                                <div className='mt-14'>
+                                    <a href="#prototype" className='px-6 py-4 rounded-full border-2 font-roundo-medium shadow-charcoal hover:shadow-charcoal-hover transition duration-300'>{craft.overview.link}</a>
                                 </div>
-                                <div>
-                                    <p className='font-roundo-medium text-orange'>Project Duration</p>
-                                    <p>{craft.overview.duration}</p>
-                                </div>
-                                <div>
-                                    <p className='font-roundo-medium text-orange'>Deliverables</p>
-                                    <p>{craft.overview.deliverables}</p>
-                                </div>
+
+                            </div>
+
+                            <div className='basis-1/3'>
+                                <img src={craft.overview.img.src} alt={craft.overview.img.altText} className="w-full"
+                                    loading="lazy"
+                                />
+                                <p className='font-roundo-medium text-center text-sm mt-2 text-dark-grey mb-10'>{craft.overview.img.caption}</p>
                             </div>
                         </div>
                     </div>
@@ -122,45 +157,47 @@ function CraftDetail() {
                         )
                     }
                 </div>
-
             </div>
 
-            <div className='border-y border-black pt-14 overflow-hidden'>
-                <div className='max-w-container flex justify-between translate-y-4'>
-                    {prev ?
-                        (<button
-                            onClick={() => {
-                                window.scrollTo({
-                                    top: 0,
-                                    left: 0,
-                                    behavior: 'auto',
-                                }); navigate(`/crafts/${prev.id}`);
-                            }}
-                            className='font-craftwork text-light-yellow-bg text-stroke text-3xl font-extrabold uppercase hover:btn-text-shadow transition duration-500'>
-                            Prev
-                        </button>) :
-                        (<span className='font-craftwork text-transparent text-stroke text-3xl  font-extrabold uppercase cursor-not-allowed'>Prev </span>)
+            <section className="border-y border-black py-14 overflow-hidden">
+                <div className="max-w-container">
+                    <h2 className="mb-6">View More Projects!</h2>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        {[
+                            craftsData[(currentIndex + 1) % craftsData.length], // Next project
+                            craftsData[(currentIndex + 2) % craftsData.length], // Project after next
+                        ].map((project) => (
+                            <Link
+                                key={project.id}
+                                to={`/crafts/${project.id}`}
+                                className="group block p-2 border-2 rounded-lg shadow-lg relative overflow-hidden"
+                            >
+                                {project.media === "video" ? (
+                                    <video
+                                        src={project.cover}
+                                        alt={project.banner.image.altText}
+                                        autoPlay muted playsInline loop
+                                        className="w-full border-2"
+                                    />
+                                ) : (
+                                    <img src={project.cover}
+                                        alt={project.banner.image.altText}
+                                        className="w-full border-2"
+                                    />
+                                )}
 
-                    }
-
-                    {next ? (
-                        <button
-                            onClick={() => {
-                                window.scrollTo({
-                                    top: 0,
-                                    left: 0,
-                                    behavior: 'auto',
-                                });
-                                navigate(`/crafts/${next.id}`);
-                            }}
-                            className='font-craftwork font-extrabold text-light-yellow-bg text-3xl text-stroke uppercase hover:btn-text-shadow-r'>
-                            Next
-                        </button>
-                    ) : (
-                        <span className='font-craftwork text-transparent text-stroke text-3xl font-extrabold uppercase cursor-not-allowed'>Next </span>
-                    )}
+                                <div
+                                    className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 flex justify-center items-center text-white transition-opacity duration-300"
+                                >
+                                    <h3 className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                        {project.title}
+                                    </h3>
+                                </div>
+                            </Link>
+                        ))}
+                    </div>
                 </div>
-            </div>
+            </section>
         </>
     )
 }

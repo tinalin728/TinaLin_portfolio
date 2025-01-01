@@ -27,44 +27,54 @@
             "id": 1,
             "type": "UXUI",
             "title": "Tim Horton's App Redesign",
-            "img": "/assets/homepage/tims/cover.jpg",
+            "media": "video",
+            "src": "/assets/homepage/tims/cover.mp4",
             "skills": [
-                "UXUI",
-                "Prototyping",
+                "Research",
+                "UX/UI Design",
                 "User Testing"
-            ]
+            ],
+            "content": "Redesigning the flow of redeeming offers"
         },
         {
             "id": 2,
             "type": "coding",
-            "title": "Basics: Online Clothing Store",
-            "img": "/assets/homepage/basics/cover.jpg",
+            "title": "Basics",
+            "media": "image",
+            "src": "/assets/homepage/basics/cover.jpg",
             "skills": [
                 "HTML",
                 "JS",
                 "Tailwind",
-                "Project Management"
-            ]
+                "Project Management",
+                "Collaboration"
+            ],
+            "content": "Front-end development for an online apparel store"
         },
         {
             "id": 3,
             "type": "UXUI",
             "title": "FitBot",
-            "img": "/assets/homepage/pm/cover.jpg",
+            "media": "image",
+            "src": "/assets/homepage/pm/cover.jpg",
             "skills": [
-                "UXUI",
-                "Research"
-            ]
+                "Research",
+                "UX/UI Design",
+                "User Testing"
+            ],
+            "content": "App for finding the perfect fit for pants"
         },
         {
             "id": 4,
             "type": "UXUI",
             "title": "Zen Matcha",
-            "img": "/assets/homepage/zenmatcha/cover.jpg",
+            "media": "image",
+            "src": "/assets/homepage/zenmatcha/cover.jpg",
             "skills": [
                 "Branding",
                 "Graphic Design"
-            ]
+            ],
+            "content": "Branding for an online dessert store"
         }
     ]
 }

@@ -100,7 +100,12 @@ function ProjectNav({ stickyNav }) {
                         className={`indicator w-8 h-1 ${activeSection === nav.id ? "bg-orange" : "bg-dark-grey"
                             } group-hover:w-12 transition-all duration-500`}
                     ></span>
-                    <span className="ml-4 opacity-0 group-hover:opacity-100 text-sm transition">
+                    <span
+                        className={`ml-4 text-sm transition ${activeSection === nav.id
+                            ? "opacity-100"
+                            : "opacity-0 group-hover:opacity-100"
+                            }`}
+                    >
                         {nav.label}
                     </span>
                 </a>

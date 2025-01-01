@@ -39,7 +39,7 @@ function Crafts() {
             />
 
             <section className=''>
-                <div className='hidden md:block'>
+                {/* <div className='hidden md:block'>
                     <div className='flex  max-w-container'>
                         <button
                             className={filterClasses(filter === 'all')}
@@ -56,10 +56,10 @@ function Crafts() {
                             onClick={() => setFilter('coding')}
                         >Front-End </button>
                     </div>
-                </div>
+                </div> */}
 
 
-                <div className='pt-10 pb-[10rem] bg-darker-bg border-2'>
+                <div className='py-[10rem] bg-darker-bg border-2'>
                     <div className="relative grid grid-cols-1 md:grid-cols-2 gap-6  max-w-container">
                         {filteredCrafts.map((craft, index) => {
                             return (
@@ -67,8 +67,10 @@ function Crafts() {
                                     key={craft.id}
                                     id={craft.id}
                                     title={craft.title}
-                                    img={craft.img}
+                                    mediaType={craft.media}
+                                    src={craft.src}
                                     skills={craft.skills}
+                                    content={craft.content}
                                 />
                             );
                         })}

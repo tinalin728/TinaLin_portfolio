@@ -24,7 +24,7 @@ module.exports = withMT({
       fontSize: {
         xs: ['0.75rem', { lineHeight: '1rem', letterSpacing: '0' }],
         sm: ['0.875rem', { lineHeight: '1.25rem', letterSpacing: '0' }],
-        base: ['1rem', { lineHeight: '30px' }],
+        base: ['1rem', { lineHeight: '30px', letterSpacing: '0' }],
         md: ['1.25rem'],
         lg: ['1.375rem'],
         xl: ['1.618rem'],

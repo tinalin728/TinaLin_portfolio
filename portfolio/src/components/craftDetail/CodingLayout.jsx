@@ -2,7 +2,19 @@ import React, { useEffect, useState } from 'react'
 import { Tabs, Tab, TabList, TabPanel } from "react-tabs";
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { tomorrow } from 'react-syntax-highlighter/dist/esm/styles/prism';
-import backLog from '../../../public/assets/basics/backlog.png'
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faArrowRight, faArrowLeft } from "@fortawesome/free-solid-svg-icons"
+
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+
+
+// import required modules
+import { Navigation, Pagination } from 'swiper/modules';
 
 
 import ImageModal from '../ImageModal'
@@ -29,12 +41,17 @@ function CodingLayout({ craft }) {
 
     return (
         <>
-            <section className='pt-14 pb-0 content-w'>
-                <div className='py-14 border-t-2 border-light-grey border-dashed'>
-                    <h2 className='mb-10 text-orange'>{craft.contribution.backlog.title}</h2>
+            <section className='content-w'>
+                <div className=''>
+                    <div className='py-10 border-b-2 border-light-grey border-dashed'>
+                        <span className='text-dark-grey uppercase font-roundo tracking-wider'>Project Initiation</span>
+                        <h1>Planning</h1>
+                    </div>
 
-                    <div className='mb-10 flex flex-col md:flex-row gap-10 '>
+
+                    <div className='mt-10 flex flex-col md:flex-row gap-10 '>
                         <div className='flex-1' >
+                            <h2>{craft.contribution.backlog.title}</h2>
                             <p dangerouslySetInnerHTML={{ __html: craft.contribution.backlog.content }} />
                         </div>
 
@@ -55,16 +72,60 @@ function CodingLayout({ craft }) {
                             onClose={closeModal}
                         />
                     </div>
+
+                    <div className='content-gap flex flex-col gap-6 md:flex-row-reverse'>
+                        <div className='flex-1'>
+                            <h2>User Stories</h2>
+                            <p>{craft.contribution.stories.content}</p>
+                        </div>
+                        <div className='flex-1'>
+                            <img src={craft.contribution.stories.image.src} alt={craft.contribution.stories.image.altText} />
+                        </div>
+                    </div>
                 </div>
             </section >
 
 
             <section className='content-w'>
-                <div className='py-14 border-t-2 border-light-grey border-dashed'>
+                <div className=''>
+                    <div className='py-10 border-b-2 border-light-grey border-dashed'>
+                        <span className='text-dark-grey uppercase font-roundo tracking-wider'>Sprint 1 & 2</span>
+                        <h1>Design</h1>
+                    </div>
 
-                    <h2 className=' text-orange mb-10'>{craft.contribution.wireframe.title}</h2>
 
-                    <div className='flex flex-col-reverse md:flex-row gap-10'>
+                    <div className='content-gap flex flex-col md:flex-row gap-10'>
+                        <div className='flex-1'>
+                            <h2 className=''>{craft.contribution.sitemap.title}</h2>
+                            <p>{craft.contribution.sitemap.content}
+                            </p>
+                        </div>
+
+                        <div className='flex-1 p-2 bg-white bg-opacity-50 rounded-xl'>
+                            <img src={craft.contribution.sitemap.image.src} alt={craft.contribution.sitemap.image.altText}
+                                className='rounded-md border border-gray-400'
+                                onClick={() => handleImgClick({
+                                    src: craft.contribution.sitemap.image.src,
+                                    alt: craft.contribution.sitemap.image.altText
+                                })}
+                            />
+                            <p className='text-center italic text-sm text-dark-grey pt-2'>{craft.contribution.sitemap.image.caption}</p>
+                        </div>
+                        <ImageModal
+                            isOpen={modalData.isOpen}
+                            src={modalData.src}
+                            alt={modalData.alt}
+                            onClose={closeModal}
+                        />
+                    </div>
+
+                    <div className='content-gap flex flex-col md:flex-row-reverse gap-10'>
+                        <div className='flex-1'>
+                            <h2 className=''>{craft.contribution.wireframe.title}</h2>
+                            <p>{craft.contribution.wireframe.content}
+                            </p>
+                        </div>
+
                         <div className='flex-1 p-2 bg-white bg-opacity-50 rounded-xl'>
                             <img src={craft.contribution.wireframe.image.src} alt={craft.contribution.wireframe.image.altText}
                                 className='rounded-md border border-gray-400'
@@ -81,33 +142,49 @@ function CodingLayout({ craft }) {
                             alt={modalData.alt}
                             onClose={closeModal}
                         />
-                        <div className='flex-1'>
-                            <p>{craft.contribution.wireframe.content}
-                            </p>
-                        </div>
                     </div>
                 </div>
             </section>
 
-            <section className='content-w'>
-                <div className='py-14 border-t-2 border-light-grey border-dashed'>
+            <section>
+                <div className='content-w'>
+                    <div className='py-10 border-b-2 border-light-grey border-dashed'>
+                        <span className='text-dark-grey uppercase font-roundo tracking-wider'>Sprint 3 & 4 / Revision</span>
+                        <h1>Develop</h1>
+                    </div>
+                </div>
 
-                    <h2 className='mb-10 text-orange'>{craft.dev.header}</h2>
 
-                    <div className=''>
-                        <div className='flex flex-col gap-10 lg:flex-row'>
-                            <div className='flex-1'>
-                                <h3>{craft.dev.tailwind.title}</h3>
-                                <p dangerouslySetInnerHTML={{ __html: craft.dev.tailwind.content }} className='mb-4' />
+                <div className='mt-10'>
+                    <div className='content-w'>
+                        <h2>Deliverables</h2>
+                        <p>During sprint 3, we met with our instructor, who acted as a stakeholder, and she suggested adding elements to reflect the company’s philosophy and values, such as sustainability. To address this, the design team prioritized refining the original pages and added a new product homepage, postponing the cart page development. By the end of sprint 4, I developed a five-page website that followed the wireframe design.</p>
+                    </div>
+                    <div className='mt-10 px-8 grid grid-cols-1 gap-10 md:grid-cols-3 lg:grid-cols-5'>
+                        {craft.dev.screens.map((item, index) => (
+                            <div key={index}>
+                                <img src={item.src} alt={item.altText} />
+                                <p className='font-roundo-medium text-center text-sm mt-2 text-dark-grey'>{item.caption}</p>
                             </div>
-                            <div className='flex-1'>
-                                <img src={craft.dev.tailwind.image.src} alt={craft.dev.tailwind.image.altText} className='w-[80%]' />
-                            </div>
+                        ))}
+                    </div>
+                </div>
+
+                <div className='content-gap'>
+                    <div className='content-w flex flex-col gap-10 lg:flex-row'>
+                        <div className='flex-1'>
+                            <h2>{craft.dev.tailwind.title}</h2>
+                            <p dangerouslySetInnerHTML={{ __html: craft.dev.tailwind.content }} className='mb-4' />
+                        </div>
+                        <div className='flex-1'>
+                            <img src={craft.dev.tailwind.image.src} alt={craft.dev.tailwind.image.altText} className='w-[80%]' />
                         </div>
                     </div>
+                </div>
 
-                    <div className='content-gap'>
-                        <h3 className='mb-6'>{craft.dev.component.header}</h3>
+                <div className='content-gap'>
+                    <div className='content-w'>
+                        <h2 className='mb-6'>{craft.dev.component.header}</h2>
                         <p className='mb-6'>{craft.dev.component.content}</p>
                         <div className='flex flex-col gap-10 lg:flex-row'>
                             <Tabs selectedIndex={activeTab} onSelect={(index) => setActiveTab(index)}>
@@ -140,10 +217,60 @@ function CodingLayout({ craft }) {
                 </div>
             </section>
 
-            <section className='content-w'>
-                <div className='py-14 border-t-2 border-light-grey border-dashed'>
-                    <div>
-                        <h2 className='text-orange'>Final Result</h2>
+            <section id='prototype'>
+                <div className='content-w'>
+                    <div className='py-10 border-b-2 border-light-grey border-dashed'>
+                        <span className='text-dark-grey uppercase font-roundo tracking-wider'>Results</span>
+                        <h1>Final Look</h1>
+                    </div>
+                </div>
+                <div className='content-gap'>
+                    <div className='content-w'>
+                        <div className='relative'>
+                            <Swiper
+                                style={{
+                                    overflow: 'hidden !important',
+                                }}
+                                rewind={true}
+                                navigation={{ nextEl: ".arrow-right", prevEl: ".arrow-left" }}
+                                pagination={true}
+                                modules={[Navigation, Pagination]}
+                                slidesPerView={1}
+                            >
+
+                                {craft.final.map((item, index) => (
+                                    <SwiperSlide key={index}>
+                                        <div>
+                                            <p className='text-center mb-4'>{item.caption}</p>
+
+                                            <video
+                                                src={item.src}
+                                                autoPlay
+                                                loop
+                                                muted
+                                                playsInline
+                                                className="w-full h-auto rounded-xl"
+                                            >
+                                                Your browser does not support the video tag.
+                                            </video>
+                                        </div>
+                                    </SwiperSlide>
+                                ))}
+                            </Swiper>
+
+                            <button className="arrow-left absolute top-1/2 left-10 z-10 w-10 h-10 bg-white rounded-full">
+                                <FontAwesomeIcon icon={faArrowLeft} />
+                            </button>
+                            <button className="arrow-right absolute top-1/2 right-10 z-10 w-10 h-10 bg-white rounded-full">
+                                <FontAwesomeIcon icon={faArrowRight} />
+                            </button>
+                        </div>
+
+                        <div className='content-gap flex justify-center'>
+                            <div>
+                                <a href="https://github.com/tinalin728/basics/tree/main/src" target='_blank' className='px-6 py-4 rounded-full border-2 font-roundo-medium shadow-charcoal hover:shadow-charcoal-hover transition duration-300'> View Code </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
