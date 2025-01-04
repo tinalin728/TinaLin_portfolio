@@ -205,12 +205,8 @@ function CraftDetail() {
                                 ) : (
                                     <img src={project.cover}
                                         alt={project.banner.image.altText}
-<<<<<<< Updated upstream
-                                        className="w-full border-2"
-=======
                                         loading="lazy"
                                         className="w-full"
->>>>>>> Stashed changes
                                     />
                                 )}
 

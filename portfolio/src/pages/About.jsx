@@ -216,8 +216,7 @@ function About() {
                             <p className='indent-4'>
                                 What really drew me into the design and tech industry was when I was introduced to
                                 <a href="https://lingraphica.com/aac-devices/what-is-an-aac-device/" target='_blank' className='text-base font-roundo tracking-normal md:text-[18px] capitalize text-orange mx-2'>AAC devices</a>
-
-                                as a communication aid for autistic children at work. It showed me how thoughtful design and technology can bridge communication gaps and improve lives, which then led me to pursue the New Media Design and Development program at BCIT. Nevertheless, I continue to carry the same values as I’ve held as a teacher- empathy, inclusivity, and connection.
+                                as a communication aid for autistic children at work. It showed me how thoughtful design and technology can bridge communication gaps and improve lives, which then led me to pursue the New Media Design and Development program at BCIT.
                             </p>
                             <div className='mt-10'>
                                 <PrimaryBtn
