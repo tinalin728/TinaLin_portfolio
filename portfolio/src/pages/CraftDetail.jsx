@@ -84,10 +84,11 @@ function CraftDetail() {
                     </div>
 
                     <div className='flex-1'>
-                        <img src={craft.banner.image.src} alt={craft.banner.image.altText} className={`${craft.banner.image.classes}`} />
+                        <img src={craft.banner.image.src} alt={craft.banner.image.altText} loading="lazy" className={`${craft.banner.image.classes}`} />
                     </div>
                 </div>
             </section>
+
 
             {/* overview */}
             <section className='overview border-t-2  bg-darker-bg pt-[10rem]'>
@@ -117,6 +118,7 @@ function CraftDetail() {
                             </div>
                         </div>
 
+
                         <div className='flex flex-col-reverse gap-10 content-gap items-center md:flex-row'>
                             <div className='basis-2/3'>
                                 <h3 className='mb-10 ital'>{craft.overview.headline} </h3>
@@ -128,16 +130,37 @@ function CraftDetail() {
                                 <p>{craft.overview.solution}</p>
 
                                 <div className='mt-14'>
-                                    <a href="#prototype" className='px-6 py-4 rounded-full border-2 font-roundo-medium shadow-charcoal hover:shadow-charcoal-hover transition duration-300 tracking-[1px] md:tracking-[2px]'>{craft.overview.link}</a>
+                                    <a href="#prototype" className='px-6 py-4 rounded-full border-2 font-roundo-medium shadow-charcoal hover:shadow-charcoal-hover transition duration-300'>{craft.overview.link}</a>
                                 </div>
 
                             </div>
 
-                            <div className='basis-1/3'>
-                                <img src={craft.overview.img.src} alt={craft.overview.img.altText} className="w-full"
-                                    loading="lazy"
-                                />
-                                <p className='font-roundo-medium text-center text-sm mt-2 text-dark-grey mb-10'>{craft.overview.img.caption}</p>
+                            <div className='basis-1/3 w-full h-full'>
+                                {craft.overview.media.type === 'image' ? (
+                                    <div className='w-full'>
+                                        <img
+                                            src={craft.overview.media.src}
+                                            alt={craft.overview.media.altText}
+                                            className="max-w-[500px]"
+                                        />
+                                        <p className="text-center text-sm mt-2 text-dark-grey">
+                                            {craft.overview.media.caption}
+                                        </p>
+                                    </div>
+                                ) : (
+                                    <div className="relative w-full">
+                                        <video
+                                            src={craft.overview.media.src}
+                                            preload="none"
+                                            autoPlay muted playsInline loop
+                                            className='relative object-cover max-w-full md:h-auto transition duration-500 ease-in-out rounded-xl overflow-hidden'
+                                        />
+                                        <p className="text-center text-sm mt-2 text-dark-grey">
+                                            {craft.overview.media.caption}
+
+                                        </p>
+                                    </div>
+                                )}
                             </div>
                         </div>
                     </div>
@@ -159,7 +182,7 @@ function CraftDetail() {
                 </div>
             </div>
 
-            <section className="border-t-2 border-black py-14 overflow-hidden">
+            <section className="border-y border-black py-14 overflow-hidden">
                 <div className="max-w-container">
                     <h2 className="mb-6">View More Projects!</h2>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -177,19 +200,24 @@ function CraftDetail() {
                                         src={project.cover}
                                         alt={project.banner.image.altText}
                                         autoPlay muted playsInline loop
-                                        className="w-full"
+                                        className="w-full border-2"
                                     />
                                 ) : (
                                     <img src={project.cover}
                                         alt={project.banner.image.altText}
+<<<<<<< Updated upstream
+                                        className="w-full border-2"
+=======
+                                        loading="lazy"
                                         className="w-full"
+>>>>>>> Stashed changes
                                     />
                                 )}
 
                                 <div
                                     className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 flex justify-center items-center text-white transition-opacity duration-300"
                                 >
-                                    <h3 className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                    <h3 className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-center px-4">
                                         {project.title}
                                     </h3>
                                 </div>

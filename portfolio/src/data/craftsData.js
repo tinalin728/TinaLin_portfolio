@@ -19,6 +19,7 @@ export const craftsData = [
             },
         },
 
+
         overview: {
             user: {
                 title: 'Target Audience',
@@ -31,10 +32,12 @@ export const craftsData = [
             content: "As a loyal customer, I often found the offer redemption flow clunky and unintuitive. This project became my opportunity to reimagine the app\’s user experience, focusing on simplifying the offer redemption process and refreshing the overall design.",
             challenge: 'Redesigning the mobile app’s offer redemption flow to improve usability and satisfaction.',
             solution: 'A streamlined process that eliminates confusion and enables users to redeem offers effortlessly.',
-            img: {
-                src: 'https://media.giphy.com/media/ANHQbr9QPNcSE0puDW/giphy.gif',
-                altText: 'Tim Horton\'s',
-                caption: 'Sneak Peak'
+
+            media: {
+                type: 'video',
+                src: '/assets/tims/intro.mp4',
+                altText: "Tim Horton's",
+                caption: 'Sneak Peek',
             },
             link: 'skip to prototype'
 
@@ -333,11 +336,13 @@ export const craftsData = [
             content: "For many shoppers, inconsistent sizing charts and the inability to try on pants lead to frustration, wasted time, and frequent returns. Despite technological advancements, the lack of a personalized approach to sizing leaves users feeling uncertain and less confident about their purchase decisions, making online shopping for pants a challenging experience.",
             challenge: 'Creating solutions that help users find perfect pants online',
             solution: 'An app that features an AI chat assistant for personalized size recommendations, paired with a 3D model that aligns with the user\'s size for accurate visualization.',
-            img: {
-                src: 'https://media.giphy.com/media/oxh7p9D3ATA04KsiCs/giphy.gif',
-                altText: 'Fitbot',
-                caption: 'Sneak Peak'
+            media: {
+                type: 'video',
+                src: '/assets/pm/intro.mp4',
+                altText: "fitbot",
+                caption: 'Sneak Peek',
             },
+
             link: 'skip to prototype'
 
         },
@@ -622,34 +627,62 @@ export const craftsData = [
         id: 2,
         type: 'coding',
         status: 'completed',
-        title: 'Basics - Online Apparel Store',
+        title: 'Basics. - Online Apparel Store',
         media: "image",
         cover: "/assets/homepage/basics/cover.jpg",
         banner: {
-            subHeader: 'Basics',
+            subHeader: 'Basics.',
             header: 'Front-End Development for Basics E-Commerce',
             image: {
                 src: '/assets/basics/banner.png',
-                altText: 'my personalized model',
+                altText: 'Basics banner',
                 classes: "scale-150"
             },
         },
+        stickyNav: [
+            {
+                id: "planning",
+                step: "01",
+                label: "Planning",
+                color: "text-orange",
+            },
+            {
+                id: "design",
+                step: "02",
+                label: "Design",
+                color: "text-orange",
+            },
+            {
+                id: "develop",
+                step: "03",
+                label: "Develop",
+                color: "text-orange",
+            },
+            {
+                id: "prototype",
+                step: "04",
+                label: "Final",
+                color: "text-orange",
+            },
+        ],
+
         overview: {
             user: {
                 title: 'Tools',
                 content: 'Figma , HTML , TailwindCSS , Javascript'
             },
-            process: 'Research & Planning → Design → Develop → Reflection',
+            process: 'Planning → Design → Develop → Final',
             role: 'Product Owner, Front-end developers',
             duration: '5 weeks - May, 2024 (Project itself) , 3 weeks - Oct, 2024 (Revision)',
             headline: 'Creating a minimalist e-commerce experience that blends style and functionality...',
             content: "For the Basics project, I worked with a team of four to design and develop an e-commerce platform for minimalist apparels. The project aimed to simulate a real-world team environment while implementing Agile methodologies for efficient project management. As both the Product Owner and Front-End Developer, I oversaw the project timeline while building the website from scratch.",
             challenge: 'Developing a five-page website from scratch that aligned with user stories, all within a 5-week timeline and part-time schedule.',
             solution: 'Delivered a responsive five-page website built with HTML, TailwindCSS, and JavaScript, designed to align with user stories and provide a seamless user experience.',
-            img: {
+            media: {
+                type: 'image',
                 src: '/assets/basics/intro.png',
-                altText: 'ProAlign',
-                caption: 'Sneak Peak'
+                altText: "basics",
+                caption: 'Sneak Peek',
             },
             link: 'skip to results'
         },

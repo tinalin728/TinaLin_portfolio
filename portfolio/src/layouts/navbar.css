@@ -1,0 +1,42 @@
+.polygon,
+.circle {
+    stroke-dashoffset: 0;
+    stroke-dasharray: 500;
+    animation: none;
+}
+
+.logo-wrapper:hover .polygon,
+.logo-wrapper:hover .circle {
+    stroke-dashoffset: 500;
+    animation: draw 1s ease-in-out forwards;
+}
+
+.logo-wrapper:hover .logo {
+    fill-opacity: 0;
+    animation: fill-in .5s 1.1s ease-in-out forwards;
+}
+
+@keyframes draw {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes fill-in {
+    to {
+        fill-opacity: 1;
+    }
+}
+
+/* .logo-wrapper .polygon,
+.logo-wrapper .circle {
+    transition: all .3s ease-in-out;
+    fill-opacity: 1;
+}
+
+.logo-wrapper:hover .polygon,
+.logo-wrapper:hover .circle {
+    fill-opacity: 0;
+    stroke: black;
+    stroke-width: 2.5px;
+} */

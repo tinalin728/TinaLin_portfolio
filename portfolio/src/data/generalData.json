@@ -34,14 +34,14 @@
                 "UX/UI Design",
                 "User Testing"
             ],
-            "content": "Redesigning the flow of redeeming offers"
+            "content": "Redesigning the flow of redeeming offers on the mobile app"
         },
         {
             "id": 2,
             "type": "coding",
-            "title": "Basics",
-            "media": "image",
-            "src": "/assets/homepage/basics/cover.jpg",
+            "title": "Basics.",
+            "media": "video",
+            "src": "/assets/homepage/basics/cover.mp4",
             "skills": [
                 "HTML",
                 "JS",
@@ -56,7 +56,7 @@
             "type": "UXUI",
             "title": "FitBot",
             "media": "image",
-            "src": "/assets/homepage/pm/cover.jpg",
+            "src": "/assets/homepage/pm/cover2.jpg",
             "skills": [
                 "Research",
                 "UX/UI Design",

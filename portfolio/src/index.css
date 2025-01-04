@@ -15,15 +15,15 @@
     }
 
     h1 {
-        @apply text-[2.1rem] md:text-2xl font-craftwork font-extrabold text-orange capitalize
+        @apply text-[2.5rem] md:text-2xl font-craftwork font-extrabold text-orange capitalize tracking-widest
     }
 
     h2 {
-        @apply text-xl font-craftwork font-bold capitalize tracking-[1px] mb-2
+        @apply text-xl font-craftwork font-bold capitalize mb-2
     }
 
     h3 {
-        @apply text-md md:text-lg font-roundo-medium tracking-[1px] mb-2 
+        @apply text-md md:text-lg font-roundo-medium tracking-[1px] mb-2
     }
 
     h4 {
@@ -47,6 +47,7 @@
         cursor: none !important;
 
     }
+
 
     li {
         @apply font-roundo text-base lg:text-[17px]
@@ -101,13 +102,13 @@
 
     .sub-header {
         font-size: clamp(3.125rem, 2.607rem + 2.2099vw, 4.375rem);
-        @apply font-craftwork font-extrabold capitalize
+        @apply font-craftwork font-extrabold uppercase text-stroke text-light-yellow-bg tracking-wide
     }
 
-    .section-header {
+    /* .section-header {
         font-size: clamp(3.625rem, 3.1408rem + 2.0657vw, 5rem);
         line-height: 1;
-    }
+    } */
 
     .footer-header {
         font-size: clamp(3.4375rem, 2.3371rem + 4.6948vw, 6.5625rem);
@@ -187,7 +188,8 @@
     }
 
 
-    .swiper-button-prev, .swiper-button-next {
+    .swiper-button-prev,
+    .swiper-button-next {
         color: #E36A46 !important;
     }
 }

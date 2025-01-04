@@ -1,6 +1,8 @@
 import React from 'react'
 import PrimaryBtn from '../components/buttons/PrimaryBtn'
-import PageHero from '../components/PageHero'
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+gsap.registerPlugin(useGSAP);
 
 // images
 import profilePic from '../../public/assets/about/tina.jpg'
@@ -60,13 +62,116 @@ function About() {
         backgroundOpacity: '.1'
     }
 
+    useGSAP(() => {
+        gsap.fromTo(
+            '.tag', {
+            y: -50,
+        },
+            {
+                y: 0,
+                duration: .5,
+                ease: "bounce.out",
+            }
+        ),
+            gsap.fromTo(
+                ".sub-header",
+                { textShadow: "none" },
+                {
+                    textShadow: `
+                0.5px 0.5px 0 #1e1e1e,
+                1px 1px 0 #1e1e1e,
+                1.5px 1.5px 0 #1e1e1e,
+                2px 2px 0 #1e1e1e,
+                2.5px 2.5px 0 #1e1e1e,
+                3px 3px 0 #1e1e1e,
+                3.5px 3.5px 0 #1e1e1e,
+                4px 4px 0 #1e1e1e,
+                4.5px 4.5px 0 #1e1e1e,
+                5px 5px 0 #1e1e1e,
+                5.5px 5.5px 0 #1e1e1e,
+                6px 6px 0 #1e1e1e`,
+                    duration: 1,
+                    ease: "power3.out",
+                });
+
+        const letters = document.querySelectorAll('.letter')
+
+        letters.forEach((l) => {
+            let hoverTimeline;
+
+            l.addEventListener('mouseenter', () => {
+                if (hoverTimeline) hoverTimeline.kill();
+
+                hoverTimeline = gsap.timeline();
+                hoverTimeline.to(l, {
+                    x: -3,
+                    y: -3,
+                    textShadow: `
+                        1px 1px 0 #1e1e1e,
+                        2px 2px 0 #1e1e1e,
+                        3px 3px 0 #1e1e1e,
+                        4px 4px 0 #1e1e1e,
+                        5px 5px 0 #1e1e1e,
+                        6px 6px 0 #1e1e1e,
+                        7px 7px 0 #1e1e1e,
+                        8px 8px 0 #1e1e1e,
+                        9px 9px 0 #1e1e1e,
+                        10px 10px 0 #1e1e1e
+                        `,
+                    duration: 0.2,
+                    ease: "power1.inOut",
+                })
+            });
+            l.addEventListener('mouseleave', () => {
+                if (hoverTimeline) hoverTimeline.kill();
+
+                hoverTimeline = gsap.timeline();
+                hoverTimeline.to(l, {
+                    x: 0,
+                    y: 0,
+                    textShadow: `
+                         0.5px 0.5px 0 #1e1e1e,
+                    1px 1px 0 #1e1e1e,
+                    1.5px 1.5px 0 #1e1e1e,
+                    2px 2px 0 #1e1e1e,
+                    2.5px 2.5px 0 #1e1e1e,
+                    3px 3px 0 #1e1e1e,
+                    3.5px 3.5px 0 #1e1e1e,
+                    4px 4px 0 #1e1e1e,
+                    4.5px 4.5px 0 #1e1e1e,
+                    5px 5px 0 #1e1e1e,
+                    5.5px 5.5px 0 #1e1e1e,
+                    6px 6px 0 #1e1e1e
+                        `,
+                    duration: 0.2,
+                    ease: "power1.inOut",
+                })
+            });
+        })
+
+
+    }, [])
+
 
     return (
         <>
-            <PageHero
-                header='About'
-                tagline='From Education to Tech'
-            />
+            <section className='bg-light-yellow-bg py-[8rem] p-0 relative'>
+                <div className='max-w-container flex flex-col justify-center items-center'>
+                    <div className=''>
+                        <h2 className="craftHeader text-center sub-header ">
+                            {Array.from("About").map((letter, index) => (
+                                <span key={index} className="letter inline-block font-craftwork font-extrabold mt-2 text-light-yellow-bg text-stroke uppercase tracking-wider leading-none">
+                                    {letter}
+                                </span>
+                            ))}
+                        </h2>
+                    </div>
+
+                    <div className='tag hidden md:block md:absolute md:top-[30%] md:left-[40%] md:-translate-x-1/2 md:-translate-y-1/2 py-2 px-4 bg-charcoal w-fit rounded-md md:-rotate-6'>
+                        <p className='tracking-widest uppercase text-white text-sm md:text-base text-nowrap'>From Education to Tech</p>
+                    </div>
+                </div>
+            </section>
 
             <div className='bg-darker-bg border-2 py-[10rem]'>
                 <div className='max-w-container'>

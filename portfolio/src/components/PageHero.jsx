@@ -3,14 +3,15 @@ import React from 'react'
 function PageHero({ header, tagline }) {
 
     return (
-        <section className='bg-light-yellow-bg py-[10rem] p-0 relative'>
-            <div className='max-w-container grid place-items-center'>
+        <section className='bg-light-yellow-bg py-[8rem] p-0 relative'>
+            <div className='max-w-container flex flex-col justify-center items-center'>
                 <div className=''>
                     <h2 className='sub-header font-craftwork font-extrabold text-light-yellow-bg leading-normal tracking-[5px] uppercase text-stroke text-shadow'>
                         {header}
                     </h2>
                 </div>
-                <div className='hidden md:block md:absolute md:top-[35%] md:left-[35%] md:-translate-x-1/2 md:-translate-y-1/2 py-2 px-4 bg-charcoal w-fit rounded-md md:-rotate-6'>
+
+                <div className='hidden md:block md:absolute md:top-[30%] md:left-[40%] md:-translate-x-1/2 md:-translate-y-1/2 py-2 px-4 bg-charcoal w-fit rounded-md md:-rotate-6'>
                     <p className='tracking-widest uppercase text-white text-sm md:text-base text-nowrap'>{tagline}</p>
                 </div>
             </div>

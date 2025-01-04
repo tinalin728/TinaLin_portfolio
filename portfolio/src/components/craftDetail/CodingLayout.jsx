@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react'
+import BackToTop from '../buttons/BackToTop'
+import ProjectNav from './ProjectNav'
 import { Tabs, Tab, TabList, TabPanel } from "react-tabs";
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { tomorrow } from 'react-syntax-highlighter/dist/esm/styles/prism';
@@ -41,7 +43,12 @@ function CodingLayout({ craft }) {
 
     return (
         <>
-            <section className='content-w'>
+            <BackToTop />
+
+            {/* sticky nav */}
+            <ProjectNav stickyNav={craft.stickyNav} />
+
+            <section id='planning' className='content-w'>
                 <div className=''>
                     <div className='py-10 border-b-2 border-light-grey border-dashed'>
                         <span className='text-dark-grey uppercase font-roundo tracking-wider'>Project Initiation</span>
@@ -86,7 +93,7 @@ function CodingLayout({ craft }) {
             </section >
 
 
-            <section className='content-w'>
+            <section id='design' className='content-w'>
                 <div className=''>
                     <div className='py-10 border-b-2 border-light-grey border-dashed'>
                         <span className='text-dark-grey uppercase font-roundo tracking-wider'>Sprint 1 & 2</span>
@@ -146,7 +153,7 @@ function CodingLayout({ craft }) {
                 </div>
             </section>
 
-            <section>
+            <section id='develop'>
                 <div className='content-w'>
                     <div className='py-10 border-b-2 border-light-grey border-dashed'>
                         <span className='text-dark-grey uppercase font-roundo tracking-wider'>Sprint 3 & 4 / Revision</span>
@@ -171,7 +178,7 @@ function CodingLayout({ craft }) {
                 </div>
 
                 <div className='content-gap'>
-                    <div className='content-w flex flex-col gap-10 lg:flex-row'>
+                    <div className='content-w flex flex-col gap-10 items-center lg:flex-row'>
                         <div className='flex-1'>
                             <h2>{craft.dev.tailwind.title}</h2>
                             <p dangerouslySetInnerHTML={{ __html: craft.dev.tailwind.content }} className='mb-4' />

@@ -1,5 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
+import SocialIcon from '../components/buttons/SocialIcon';
+
+import { gsap } from "gsap";
+import { useGSAP } from '@gsap/react';
+import "./navbar.css"
+gsap.registerPlugin(useGSAP);
 import logo from '../../public/assets/logo.svg'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEnvelope } from "@fortawesome/free-regular-svg-icons"
@@ -43,16 +49,44 @@ function Navbar() {
         : { transform: 'none', transition: 'transform 0.5s', transformOrigin: 'center', width: '100%' };
 
 
+
     return (
         <header className='overflow-hidden outer-container'>
             <div className='max-w-container relative'>
-                <div className='flex justify-between items-center'>
-                    <NavLink to="/" className='flex-1 z-[100] py-6'>
-                        <img src={logo} alt="logo" width={40} />
+                <div className='flex justify-between items-center w-full'>
+                    <NavLink to="/" className="logo-wrapper z-[100] py-6">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="-20 -20 202 194"
+                            className="w-14 h-14"
+                        >
+                            <g className="logo" data-name="Layer 1">
+                                {/* Polygon */}
+                                <polygon
+                                    className="polygon"
+                                    points="0 2 0 39 62 39 62 154 99 154 99 39 99 24 99 2 0 2"
+                                    fill="black"
+                                    stroke="black"
+                                    strokeWidth="1"
+
+                                />
+                                {/* Circle */}
+                                <circle
+                                    className="circle"
+                                    cx="140"
+                                    cy="22"
+                                    r="22"
+                                    fill="#e36a46"
+                                    stroke="#e36a46"
+                                    strokeWidth="2"
+                                />
+                            </g>
+                        </svg>
                     </NavLink>
+
                     <div className={`${isOpen ? 'fixed inset-0 h-screen bg-light-grey-bg md:relative md:h-auto' : 'hidden'} md:block z-[99]`}>
                         <div className='flex flex-col justify-center h-full'>
-                            <nav>
+                            <nav className='md:grow'>
                                 <ul className='flex flex-col items-center justify-center gap-8 md:h-auto md:flex-row'>
                                     <NavLink to="/crafts" onClick={handleMenuToggle} className="font-roundo-medium hover:text-orange py-6 md:py-8">
                                         Crafts
@@ -61,8 +95,12 @@ function Navbar() {
                                         About
                                     </NavLink>
 
-                                    <a href="mailto:yuting.lin728@gmail.com" className='inline-flex justify-center items-center h-[3.2rem] w-[3.2rem] border-2 rounded-full shadow-charcoal hover:shadow-charcoal-hover hover:translate-x-[.5%] hover:translate-y-[1%] transition-all duration-500 font-roundo-semibold'> <FontAwesomeIcon icon={faEnvelope} className='text-[28px]' />
-                                    </a>
+                                    <SocialIcon
+                                        href='yuting.lin728@gmail.com'
+                                        icon={faEnvelope}
+                                        mail={true}
+                                        additionalClasses='shadow-charcoal hover:shadow-charcoal-hover'
+                                    />
                                 </ul>
                             </nav>
                         </div>
