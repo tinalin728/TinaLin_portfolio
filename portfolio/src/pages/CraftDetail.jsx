@@ -84,10 +84,11 @@ function CraftDetail() {
                     </div>
 
                     <div className='flex-1'>
-                        <img src={craft.banner.image.src} alt={craft.banner.image.altText} className={`${craft.banner.image.classes}`} />
+                        <img src={craft.banner.image.src} alt={craft.banner.image.altText} loading="lazy" className={`${craft.banner.image.classes}`} />
                     </div>
                 </div>
             </section>
+
 
             {/* overview */}
             <section className='overview border-t-2  bg-darker-bg pt-[10rem]'>
@@ -117,6 +118,7 @@ function CraftDetail() {
                             </div>
                         </div>
 
+
                         <div className='flex flex-col-reverse gap-10 content-gap items-center md:flex-row'>
                             <div className='basis-2/3'>
                                 <h3 className='mb-10 ital'>{craft.overview.headline} </h3>
@@ -133,11 +135,32 @@ function CraftDetail() {
 
                             </div>
 
-                            <div className='basis-1/3'>
-                                <img src={craft.overview.img.src} alt={craft.overview.img.altText} className="w-full"
-                                    loading="lazy"
-                                />
-                                <p className='font-roundo-medium text-center text-sm mt-2 text-dark-grey mb-10'>{craft.overview.img.caption}</p>
+                            <div className='basis-1/3 w-full h-full'>
+                                {craft.overview.media.type === 'image' ? (
+                                    <div className='w-full'>
+                                        <img
+                                            src={craft.overview.media.src}
+                                            alt={craft.overview.media.altText}
+                                            className="max-w-[500px]"
+                                        />
+                                        <p className="text-center text-sm mt-2 text-dark-grey">
+                                            {craft.overview.media.caption}
+                                        </p>
+                                    </div>
+                                ) : (
+                                    <div className="relative w-full">
+                                        <video
+                                            src={craft.overview.media.src}
+                                            preload="none"
+                                            autoPlay muted playsInline loop
+                                            className='relative object-cover max-w-full md:h-auto transition duration-500 ease-in-out rounded-xl overflow-hidden'
+                                        />
+                                        <p className="text-center text-sm mt-2 text-dark-grey">
+                                            {craft.overview.media.caption}
+
+                                        </p>
+                                    </div>
+                                )}
                             </div>
                         </div>
                     </div>
@@ -182,14 +205,19 @@ function CraftDetail() {
                                 ) : (
                                     <img src={project.cover}
                                         alt={project.banner.image.altText}
+<<<<<<< Updated upstream
                                         className="w-full border-2"
+=======
+                                        loading="lazy"
+                                        className="w-full"
+>>>>>>> Stashed changes
                                     />
                                 )}
 
                                 <div
                                     className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 flex justify-center items-center text-white transition-opacity duration-300"
                                 >
-                                    <h3 className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                    <h3 className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-center px-4">
                                         {project.title}
                                     </h3>
                                 </div>

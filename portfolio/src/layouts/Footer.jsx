@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { ReactTyped } from "react-typed";
+import SocialIcon from '../components/buttons/SocialIcon';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Matter from 'matter-js'
@@ -371,15 +371,24 @@ function Footer() {
 
                         <div className='z-10 flex flex-col gap-4 justify-center items-center md:flex-row'>
                             <div className='flex gap-4'>
-                                <a href="https://github.com/tinalin728" className='inline-flex justify-center items-center h-[3.2rem] w-[3.2rem] border-2 border-light-yellow-bg rounded-full text-light-yellow-bg shadow-white hover:shadow-white-hover hover:translate-x-[1%] hover:translate-y-[1%] transition-all duration-500 font-roundo-semibold'> <FontAwesomeIcon icon={faGithub} className='text-[28px]' /></a>
-
-                                <a href="https://www.linkedin.com/in/tina-lin-000613b5/" className='inline-flex justify-center items-center h-[3.2rem] w-[3.2rem] border-2 border-light-yellow-bg rounded-full text-light-yellow-bg shadow-white hover:shadow-white-hover hover:translate-x-[1%] hover:translate-y-[1%] transition-all duration-500 font-roundo-semibold'> <FontAwesomeIcon icon={faLinkedinIn} className='text-[28px]' /></a>
-
-                                <a href="https://www.linkedin.com/in/tina-lin-000613b5/" className='md:hidden inline-flex justify-center items-center h-[3.2rem] w-[3.2rem] border-2 border-light-yellow-bg rounded-full text-light-yellow-bg shadow-white hover:shadow-white-hover hover:translate-x-[1%] hover:translate-y-[1%] transition-all duration-500 font-roundo-semibold'> <FontAwesomeIcon icon={faEnvelope} className='text-[28px]' />
-                                </a>
+                                <SocialIcon
+                                    href='https://github.com/tinalin728'
+                                    icon={faGithub}
+                                    additionalClasses='border-light-yellow-bg text-light-yellow-bg shadow-white hover:shadow-white-hover'
+                                />
+                                <SocialIcon
+                                    href='https://www.linkedin.com/in/tina-lin-000613b5/'
+                                    icon={faLinkedinIn}
+                                    additionalClasses='border-light-yellow-bg text-light-yellow-bg shadow-white hover:shadow-white-hover'
+                                />
+                                <SocialIcon
+                                    href='https://www.linkedin.com/in/tina-lin-000613b5/'
+                                    icon={faEnvelope}
+                                    additionalClasses='md:hidden border-light-yellow-bg text-light-yellow-bg shadow-white hover:shadow-white-hover'
+                                />
                             </div>
 
-                            <a href="mailto:yuting.lin728@gmail.com" className='hidden md:inline-block px-5 py-2 border-2 border-white rounded-full text-white shadow-white text-base hover:shadow-white-hover hover:translate-x-[.5%] transition-all duration-500 font-roundo-semibold tracking-widest'>
+                            <a href="mailto:yuting.lin728@gmail.com" className='hidden md:inline-block px-5 py-[.55rem] border-2 border-white rounded-full text-white shadow-white text-base hover:shadow-white-hover hover:translate-x-[.5%] transition-all duration-500 font-roundo-semibold tracking-[3px] lowercase'>
                                 yuting.lin728@gmail.com
                             </a>
                         </div>

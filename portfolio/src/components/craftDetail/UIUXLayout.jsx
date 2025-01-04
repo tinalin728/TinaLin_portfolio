@@ -95,7 +95,7 @@ function UIUXLayout({ craft }) {
                             </div>
 
                             <div className='p-2 bg-white bg-opacity-50 rounded-xl shadow-md'>
-                                <img src={craft.research.interview.map.src} alt={craft.research.interview.map.altText} className='w-full' />
+                                <img src={craft.research.interview.map.src} alt={craft.research.interview.map.altText} className='w-full' loading="lazy" />
                             </div>
 
                         </div>
@@ -113,6 +113,7 @@ function UIUXLayout({ craft }) {
                                     <img src={craft.research.flowAnalysis.image.src}
                                         alt={craft.research.flowAnalysis.image.altText}
                                         className='w-full h-auto object-contain object-center'
+                                        loading="lazy"
                                         onClick={() => handleImgClick({
                                             src: craft.research.flowAnalysis.image.src,
                                             alt: craft.research.flowAnalysis.image.altText
@@ -158,6 +159,7 @@ function UIUXLayout({ craft }) {
                                     <img src={craft.research.competitor.img.src}
                                         alt={craft.research.competitor.img.altText}
                                         className='h-full object-cover'
+                                        loading="lazy"
                                         onClick={() => handleImgClick({
                                             src: craft.research.competitor.img.src,
                                             alt: craft.research.competitor.img.altText
@@ -238,7 +240,7 @@ function UIUXLayout({ craft }) {
 
                             {craft.define.tabData.map((tab, index) => (
                                 <CustomTabPanel value={value} index={index} key={index}>
-                                    <img src={tab.src} alt={tab.altText} />
+                                    <img src={tab.src} alt={tab.altText} loading="lazy" />
                                 </CustomTabPanel>
                             ))}
                         </Box>
@@ -277,6 +279,7 @@ function UIUXLayout({ craft }) {
                             <div className='h-[90%] overflow-hidden mx-auto border border-gray-400 rounded-md'>
                                 <img src={craft.design.flow.image.src}
                                     alt={craft.design.flow.image.altText}
+                                    loading="lazy"
                                     className='object-cover object-center'
                                     onClick={() => handleImgClick({
                                         src: craft.design.flow.image.src,
@@ -307,7 +310,7 @@ function UIUXLayout({ craft }) {
                         <div className='grid gap-10 px-10'>
                             {craft.design.wireframes.medfiProto.map((img, index) => (
                                 <div key={index}>
-                                    <img src={img.src} alt={img.altText} className='w-full' />
+                                    <img src={img.src} alt={img.altText} className='w-full' loading="lazy" />
                                 </div>
                             ))}
                         </div>
@@ -349,7 +352,7 @@ function UIUXLayout({ craft }) {
                     <div className='content-gap'>
                         <h2 className='mb-4'>Problems that users found</h2>
                         <div className='p-2 bg-white rounded-xl bg-opacity-50'>
-                            <img src={craft.testing.problemImg.src} alt={craft.testing.problemImg.altText} className='w-full' />
+                            <img src={craft.testing.problemImg.src} alt={craft.testing.problemImg.altText} className='w-full' loading="lazy" />
                         </div>
                     </div>
                 </div>
@@ -369,7 +372,7 @@ function UIUXLayout({ craft }) {
                         <div className='py-10'>
                             {craft.iteration.image.map((img, index) => (
                                 <div key={index} className=''>
-                                    <img src={img.src} alt={img.altText} />
+                                    <img src={img.src} alt={img.altText} loading="lazy" />
                                     <p className='font-roundo-medium text-center text-sm mt-2 text-dark-grey'> Updated offer details and menu screen</p>
                                 </div>
                             ))}
@@ -396,12 +399,12 @@ function UIUXLayout({ craft }) {
                                             <div className="flex-1">
                                                 <div className="flex flex-col gap-4 justify-center items-center md:flex-row md:gap-10">
                                                     <div>
-                                                        <img src={item.original} alt="Original Design" />
+                                                        <img src={item.original} alt="Original Design" loading="lazy" />
                                                         <p className='font-roundo-medium text-center text-sm mt-2 text-red-600'>{item.ori_caption}</p>
                                                     </div>
                                                     <div>
                                                         <img src={item.new} alt="New Design" />
-                                                        <p className='font-roundo-medium text-center text-sm mt-2  text-green-600'>{item.new_caption}</p>
+                                                        <p className='font-roundo-medium text-center text-sm mt-2  text-green-600' loading="lazy">{item.new_caption}</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -425,7 +428,7 @@ function UIUXLayout({ craft }) {
                                                 <p>{item.content}</p>
                                             </div>
                                             <div className='p-2 bg-white bg-opacity-50 rounded-xl shadow-md'>
-                                                <img src={item.src} alt={item.alt} />
+                                                <img src={item.src} alt={item.alt} loading="lazy" />
                                             </div>
                                         </div>
                                     </div>
@@ -442,7 +445,7 @@ function UIUXLayout({ craft }) {
                                     <p>The onboarding process starts with an intuitive sizing tool that guides users step-by-step to input the necessary data to provide accurate sizing. For those unsure of their size, a visual model allows adjustments via sliders. This approach removes the complexity of size charts and guesswork, making the process seamless and user-friendly.</p>
                                 </div>
                                 <div>
-                                    <img src={craft.iteration.finalScreen.onboarding.img.src} alt={craft.iteration.finalScreen.onboarding.img.alt} />
+                                    <img src={craft.iteration.finalScreen.onboarding.img.src} alt={craft.iteration.finalScreen.onboarding.img.alt} loading="lazy" />
                                 </div>
                             </div>
 
@@ -459,7 +462,7 @@ function UIUXLayout({ craft }) {
                                         <p> Since the chatbot is the main focus, by centralizing everything in one place, the interface remains clean and simple, ensuring users can quickly navigate to what they need. </p>
                                     </div>
                                     <div className='basis-1/3'>
-                                        <img src={craft.iteration.finalScreen.home.img.src} alt={craft.iteration.finalScreen.home.img.alt} className='max-w-[230px]' />
+                                        <img src={craft.iteration.finalScreen.home.img.src} alt={craft.iteration.finalScreen.home.img.alt} className='max-w-[230px]' loading="lazy" />
                                     </div>
                                 </div>
                             </div>
@@ -467,7 +470,7 @@ function UIUXLayout({ craft }) {
                             <div className=''>
                                 <div className='content-gap flex flex-col gap-6 md:flex-row-reverse md:gap-10 md:items-center'>
                                     <div className='mb-10 flex-1'>
-                                        <h3>FitBot & FitModel </h3>
+                                        <h3>Chat with FitBot</h3>
                                         <p> Once the sizing data is collected, users can engage with FitBot for further recommendations. FitBot goes beyond traditional suggestions by integrating with a realistic 3D AI model that updates in real-time to reflect user measurements. This allows users to visualize how pants will fit key areas such as the waist, hips, and inseam. Combining AI-driven guidance with realistic fit visualization, FitBot creates a seamless and interactive experience tailored to each user.</p>
                                     </div>
 
@@ -476,10 +479,10 @@ function UIUXLayout({ craft }) {
                                     <div className='flex-1'>
                                         <div className='flex gap-4'>
                                             <div className='w-full'>
-                                                <img src={craft.iteration.finalScreen.fitbot.img.src} alt={craft.iteration.finalScreen.fitbot.img.alt} />
+                                                <img src={craft.iteration.finalScreen.fitbot.img.src} alt={craft.iteration.finalScreen.fitbot.img.alt} loading="lazy" />
                                             </div>
                                             <div className='w-full'>
-                                                <img src={craft.iteration.finalScreen.model.img.src} alt={craft.iteration.finalScreen.model.img.alt} />
+                                                <img src={craft.iteration.finalScreen.model.img.src} alt={craft.iteration.finalScreen.model.img.alt} loading="lazy" />
                                             </div>
                                         </div>
                                     </div>

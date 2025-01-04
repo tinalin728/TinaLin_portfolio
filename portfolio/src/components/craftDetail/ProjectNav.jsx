@@ -93,7 +93,7 @@ function ProjectNav({ stickyNav }) {
                     data-cursor="sticky-nav"
                     key={nav.id}
                     href={`#${nav.id}`}
-                    className={`group relative flex items-center w-full pr-10 ${activeSection === nav.id ? "text-orange font-bold" : "text-black"
+                    className={`group relative flex items-center w-full pr-10 tracking-wide ${activeSection === nav.id ? "text-orange" : "text-dark-grey"
                         }`}
                 >
                     <span
@@ -101,7 +101,7 @@ function ProjectNav({ stickyNav }) {
                             } group-hover:w-12 transition-all duration-500`}
                     ></span>
                     <span
-                        className={`ml-4 text-sm transition ${activeSection === nav.id
+                        className={`ml-2 text-sm transition ${activeSection === nav.id
                             ? "opacity-100"
                             : "opacity-0 group-hover:opacity-100"
                             }`}
