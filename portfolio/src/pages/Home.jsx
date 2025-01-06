@@ -3,15 +3,16 @@ import { Link } from 'react-router-dom';
 import { Parallax } from 'react-scroll-parallax';
 import Marquee from "react-fast-marquee";
 import { Swiper, SwiperSlide } from 'swiper/react';
-
-// Import Swiper styles
 import 'swiper/css';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 gsap.registerPlugin(useGSAP);
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
 gsap.registerPlugin(ScrollTrigger);
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faInfo } from "@fortawesome/free-solid-svg-icons"
+import { faUser } from "@fortawesome/free-regular-svg-icons"
+
 
 import CraftCard from '../components/CraftCard';
 import PrimaryBtn from '../components/buttons/PrimaryBtn';
@@ -30,6 +31,7 @@ import icon5 from '../../public/assets/homepage/marquee/icon5.svg'
 import arrow from '../../public/assets/icons/arrow.svg';
 import arrowD from '../../public/assets/icons/arrow_down.svg';
 import outline from '../../public/assets/homepage/outlineLogo.svg'
+
 
 import design from "../../public/assets/homepage/web-design.svg"
 import uxui from "../../public/assets/homepage/uxui.svg"
@@ -264,7 +266,7 @@ function Home() {
                 6px 6px 0 #1e1e1e`,
                 duration: 1,
                 ease: "power3.out",
-                scrollTrigger: { ...baseScrollTriggerConfig }
+                scrollTrigger: { ...baseScrollTriggerConfig },
             });
 
         gsap.fromTo(
@@ -334,7 +336,7 @@ function Home() {
                     4.5px 4.5px 0 #1e1e1e,
                     5px 5px 0 #1e1e1e,
                     5.5px 5.5px 0 #1e1e1e,
-                    6px 6px 0 #1e1e1e`, // Reset shadow
+                    6px 6px 0 #1e1e1e`,
                     duration: 0.3,
                     ease: "power3.out",
                 });
@@ -462,7 +464,7 @@ function Home() {
                             <div
                                 key={index}
                                 ref={(el) => (glitchRefs.current[index] = el)}
-                                className="absolute -translate-x-1/2 -translate-y-1/2 origin-center"
+                                className="absolute -translate-x-1/2 -translate-y-1/2 origin-center -mt-10 md:mt-0"
                                 style={{ top: pos.top, left: pos.left }}
                             >
                                 <img src={outline} loading="lazy" alt="" className="w-full scale-[1.5] md:scale-110 lg:scale-100" />
@@ -471,7 +473,7 @@ function Home() {
                     })}
 
                     <div className='relative max-w-container w-full h-full flex flex-col justify-center items-center gap-4'>
-                        <div className='inline-flex flex-col items-center gap-2 text-center'>
+                        <div className='inline-flex flex-col items-center gap-2 text-center -mt-12 md:mt-0'>
                             <Parallax speed={isMobile ? -.5 : -1}>
                                 <div ref={refs.line1} className='inline-block px-4 py-2 md:px-6 lg:px-8 lg:py-4 bg-charcoal rounded-md w-fit rotate-3 -translate-x-10'>
                                     <h1 className='text-white font-normal big-header uppercase'>I Create</h1>
@@ -494,17 +496,36 @@ function Home() {
                                 </div>
                             </Parallax>
                         </div>
+
                         <div className='absolute left-8 md:left-14 bottom-8 md:bottom-[10%]'>
+                            <div className='flex gap-3 items-center mb-3'>
+                                <div className='inline-flex justify-center items-center h-[2.4rem] w-[2.4rem] border-2 rounded-full inset-shadow'>
+                                    <FontAwesomeIcon icon={faUser} className='text-[20px] ' />
+                                </div>
+                                <div>
+                                    <h3 className='mt-2 text-md leading-none'> Tina Lin</h3>
+                                </div>
+                            </div>
+                            <div className='flex gap-3 items-start'>
+                                <div className='inline-flex justify-center items-center h-[2.3rem] w-[2.3rem] border-2  rounded-full inset-shadow'>
+                                    <FontAwesomeIcon icon={faInfo} className='text-[20px]' />
+                                </div>
+                                <div>
+                                    <h3 className='mt-2 text-md leading-normal'>UX/UI Designer <br /> who enjoys coding &#x2661;</h3>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* <div className='absolute left-8 md:left-14 bottom-8 md:bottom-[10%]'>
                             <h3>Hi I'm Tina!</h3>
-                            <h3 >[ A <span className='role'> UX/UI designer</span> ] </h3>
+                            <h3 >[ A <span className='role text-[#d3d3d3]'> UX/UI designer</span> ] </h3>
                             <h3>who enjoys coding &#x2661;</h3>
                         </div>
                         <div className='absolute right-8 md:right-14 bottom-8 md:bottom-[10%]'>
-                            <p>&#123;/* scroll to see */&#125;</p>
-                        </div>
+                            <p></p>
+                        </div> */}
                     </div>
                 </section >
-
 
                 <HorizontalScroll speed={.3}>
                     <div className=' w-[25px]'>
@@ -532,7 +553,7 @@ function Home() {
                                 <div className="relative z-10">
                                     <h2 className="sub-header text-center">
                                         What I
-                                        <span className="aboutHeader ml-6">
+                                        <span className="aboutHeader ml-6 text-nowrap">
                                             {Array.from("Do").map((letter, index) => (
                                                 <span key={index} className="about-letter inline-block text-stroke text-light-yellow-bg font-craftwork font-extrabold ">
                                                     {letter}
@@ -583,7 +604,7 @@ function Home() {
                                                     <img src={design} alt="icon" className="card w-[180px] md:w-[200px] lg:w-[220px] h-full" />
                                                 </div>
                                                 <div className="p-4">
-                                                    <h2 className="group-hover:text-white">Web Design</h2>
+                                                    <h2 className="group-hover:text-white">Research</h2>
                                                     <p className="text-[18px]">I captivate audiences with interactive, impactful websites that blend creativity and functionality seamlessly.</p>
                                                 </div>
                                             </div>
@@ -598,7 +619,7 @@ function Home() {
                                             <div className="relative z-10 about-card bg-light-yellow-bg p-4 border-2 overflow-hidden rounded-xl h-[440px]">
                                                 <div className='flex flex-col group-hover:rounded-xl transition-all duration-500 group-hover:bg-orange'>
                                                     <div className="p-4">
-                                                        <h2 className="pb-2 group-hover:text-white">UX/UI Design</h2>
+                                                        <h2 className="pb-2 group-hover:text-white">UX / UI Design</h2>
                                                         <p className="text-[18px]">I’m passionate about understanding people and designing solutions that truly resonate with them.</p>
                                                     </div>
                                                     <div className="translate-x-[50%]">
@@ -646,11 +667,11 @@ function Home() {
                 <div className='overflow-hidden bg-darker-bg '>
                     <div className='max-w-container py-4 h-full flex'>
                         <Marquee autoFill='true' pauseOnHover='true' direction='right'>
-                            <img src={icon1} alt="" className='mr-12 md:mr-[5.5rem] ' />
-                            <img src={icon2} alt="" className='mr-12 md:mr-[5.5rem]' />
-                            <img src={icon3} alt="" className='mr-12 md:mr-[5.5rem]' />
-                            <img src={icon4} alt="" className='mr-12 md:mr-[5.5rem]' />
-                            <img src={icon5} alt="" className='mr-12 md:mr-[5.5rem]' />
+                            <img src={icon1} alt="" className='mr-10 md:mr-[5rem] ' />
+                            <img src={icon2} alt="" className='mr-10 md:mr-[5rem]' />
+                            <img src={icon3} alt="" className='mr-10 md:mr-[5rem]' />
+                            <img src={icon4} alt="" className='mr-10 md:mr-[5rem]' />
+                            <img src={icon5} alt="" className='mr-10 md:mr-[5rem]' />
                         </Marquee>
 
                     </div>
@@ -676,8 +697,8 @@ function Home() {
                             </h2>
                         </div>
 
-                        <div ref={gridRef} className="relative grid grid-cols-1 md:grid-cols-2 mb-10 gap-6">
-                            {crafts.slice(0, 2).map((craft, index) => {
+                        <div className="relative grid grid-cols-1 md:grid-cols-2 mb-10 gap-6">
+                            {crafts.slice(0, 2).map((craft) => {
                                 return (
                                     <CraftCard
                                         key={craft.id}
@@ -686,6 +707,8 @@ function Home() {
                                         mediaType={craft.media}
                                         src={craft.src}
                                         skills={craft.skills}
+                                        content={craft.content}
+                                        status={craft.status}
                                     />
                                 );
                             })}
@@ -709,11 +732,15 @@ function Home() {
                     <div className=' w-[25px]'>
                         <img src={images[currentImage]} alt="emoji " loading="lazy" className="h-[25px] w-[25px]" />
                     </div>
-                    <span className='font-roundo-medium uppercase tracking-wide '>Say Hi</span>
+                    <span className='font-roundo-medium uppercase tracking-wide '>Contact Me</span>
                     <div className=' w-[25px]'>
                         <img src={images[currentImage]} alt="emoji " loading="lazy" className="h-[25px] w-[25px]" />
                     </div>
                     <span className='font-roundo-medium uppercase tracking-wide'>Say Hi</span>
+                    <div className=' w-[25px]'>
+                        <img src={images[currentImage]} alt="emoji " loading="lazy" className="h-[25px] w-[25px]" />
+                    </div>
+                    <span className='font-roundo-medium uppercase tracking-wide'>Contact Me</span>
                 </HorizontalScroll>
             </div >
         </>

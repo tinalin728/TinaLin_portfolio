@@ -4,13 +4,13 @@ import SocialIcon from '../components/buttons/SocialIcon';
 
 import { gsap } from "gsap";
 import { useGSAP } from '@gsap/react';
-import "./navbar.css"
+// import "./navbar.css"
 gsap.registerPlugin(useGSAP);
 import logo from '../../public/assets/logo.svg'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEnvelope } from "@fortawesome/free-regular-svg-icons"
-import Lenis from 'lenis'
 import { faLinkedinIn } from "@fortawesome/free-brands-svg-icons"
+import Lenis from 'lenis'
 
 function Navbar() {
 

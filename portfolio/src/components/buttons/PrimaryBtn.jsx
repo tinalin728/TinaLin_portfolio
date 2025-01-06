@@ -10,7 +10,7 @@ function PrimaryBtn({ to, text, icon, href, reverseOrder = false }) {
     const commonClasses = 'group relative bg-light-yellow-bg inline-flex items-center justify-center border-2 border rounded-full shadow-charcoal overflow-hidden hover:shadow-charcoal-hover hover:translate-x-[.5%] transition-all duration-500'
 
     const btnContent = (
-        <div className='relative inline-flex items-center gap-4 px-6 py-4 transition duration-300 ease-in z-10'>{
+        <div className='relative inline-flex items-center gap-4 px-6 py-3 transition duration-300 ease-in z-10'>{
 
             reverseOrder ? (
                 <>
@@ -31,7 +31,6 @@ function PrimaryBtn({ to, text, icon, href, reverseOrder = false }) {
         }
         </div>
     )
-
 
     // const hoverEffect = (
     //     <div

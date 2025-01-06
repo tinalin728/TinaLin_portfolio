@@ -73,8 +73,8 @@ module.exports = withMT({
         'morph': 'morph 2s ease-in-out infinite',
         'waves': 'waves 2s linear infinite',
         'zoom': 'zoom .3s linear',
-        'border': 'border 2s linear infinite'
-
+        'border': 'border 2s linear infinite',
+        'flash': 'flash 1s ease-out infinite'
       },
 
       keyframes: {
@@ -97,7 +97,12 @@ module.exports = withMT({
             'border-width': '4px',
             'border-color': 'red',
           },
-        }
+        },
+
+        flash: {
+          '0%, 100%': { color: 'black' },
+          '50%': { color: 'grey' }
+        },
 
       },
     },
@@ -108,6 +113,9 @@ module.exports = withMT({
       addUtilities({
         '.text-stroke': {
           '-webkit-text-stroke': '2px #1e1e1e'
+        },
+        '.text-white-stroke': {
+          '-webkit-text-stroke': '2px #e1dfd8'
         },
 
 

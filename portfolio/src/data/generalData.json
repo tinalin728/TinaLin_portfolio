@@ -34,7 +34,8 @@
                 "UX/UI Design",
                 "User Testing"
             ],
-            "content": "Redesigning the flow of redeeming offers on the mobile app"
+            "content": "Redesigning the flow of redeeming offers on the mobile app",
+            "status": "complete"
         },
         {
             "id": 2,
@@ -49,7 +50,8 @@
                 "Project Management",
                 "Collaboration"
             ],
-            "content": "Front-end development for an online apparel store"
+            "content": "Front-end development for an online apparel store",
+            "status": "complete"
         },
         {
             "id": 3,
@@ -62,7 +64,8 @@
                 "UX/UI Design",
                 "User Testing"
             ],
-            "content": "App for finding the perfect fit for pants"
+            "content": "App for finding the perfect fit for pants",
+            "status": "complete"
         },
         {
             "id": 4,
@@ -74,7 +77,8 @@
                 "Branding",
                 "Graphic Design"
             ],
-            "content": "Branding for an online dessert store"
+            "content": "Branding for an online dessert store",
+            "status": "incomplete"
         }
     ]
 }

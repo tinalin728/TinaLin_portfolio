@@ -147,25 +147,6 @@ function Crafts() {
 
 
             <section className=''>
-                {/* <div className='hidden md:block'>
-                    <div className='flex  max-w-container'>
-                        <button
-                            className={filterClasses(filter === 'all')}
-                            onClick={() => setFilter('all')}
-                        > All </button>
-
-                        <button
-                            className={filterClasses(filter === 'UXUI')}
-                            onClick={() => setFilter('UXUI')}
-                        >UXUI Design</button>
-
-                        <button
-                            className={filterClasses(filter === 'coding')}
-                            onClick={() => setFilter('coding')}
-                        >Front-End </button>
-                    </div>
-                </div> */}
-
                 <div className='py-[10rem] bg-darker-bg border-2'>
                     <div className="relative grid grid-cols-1 md:grid-cols-2 gap-6  max-w-container">
                         {filteredCrafts.map((craft, index) => {
@@ -178,6 +159,7 @@ function Crafts() {
                                     src={craft.src}
                                     skills={craft.skills}
                                     content={craft.content}
+                                    status={craft.status}
                                 />
                             );
                         })}

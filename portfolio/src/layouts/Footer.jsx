@@ -11,6 +11,7 @@ import { faEnvelope } from "@fortawesome/free-regular-svg-icons"
 import WindowWidth from '../hooks/WindowWidth';
 
 import coffee from '../../public/assets/icons/coffee.png'
+import { useGSAP } from '@gsap/react';
 
 
 
@@ -211,6 +212,7 @@ function Footer() {
             }
         };
 
+
         //since using Lenis can be in conflict with scroll trigger, using scrollProxy tells scrolltrigger to correctly tract the scroll position
         //connects scrolltrigger to Lenis by overriding how scrolltrigger calculates
         ScrollTrigger.scrollerProxy(containerRef.current, {
@@ -308,7 +310,7 @@ function Footer() {
 
             // Recreate dynamic bodies 
             preloadImages(textures, (loadedTextures) => {
-                console.log("Preload complete. Recreating pills...");
+                //console.log("Preload complete. Recreating pills...");
 
                 const pillBodies = createPills(loadedTextures, width);
                 pillBodies.forEach((pill) => Composite.add(world, pill));
@@ -352,18 +354,22 @@ function Footer() {
         };
     }, [triggered]);
 
-
     return (
         <footer ref={containerRef} className='relative h-full bg-charcoal overflow-hidden'>
             <div ref={wrapperRef} className='relative w-full'>
                 <div className="absolute top-0 left-0 w-full h-full z-10">
                     <canvas ref={canvasRef} className="w-full h-full" />
                 </div>
-                <div className='h-[90vh] relative max-w-container py-10 lg:py-[5rem]'>
+                <div className='h-[80vh] relative max-w-container py-10 lg:py-[6rem]'>
                     <div className='flex flex-col justify-center items-center gap-3 md:gap-6 lg:gap-8'>
-                        <h2 className='font-craftwork font-extrabold text-light-yellow-bg text-shadow text-stroke text-center footer-header tracking-[5px]'>
+                        {/* <h2 className='font-craftwork font-extrabold text-light-yellow-bg text-shadow text-stroke text-center footer-header tracking-[5px]'>
                             Say Hello
-                        </h2>
+                        </h2> */}
+                        <div className='text-center'>
+                            <h1 className='sub-header'>
+                                Say Hello !
+                            </h1>
+                        </div>
 
                         <p className='text-center font-roundo tracking-normal text-light-yellow-bg md:text-lg'> I would love to hear from you! <br />
                             Feel free to reach out to me about anything and let’s get creative together!</p>
@@ -393,6 +399,7 @@ function Footer() {
                             </a>
                         </div>
                     </div>
+
                 </div>
             </div>
 

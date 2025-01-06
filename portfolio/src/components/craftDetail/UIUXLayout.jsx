@@ -249,7 +249,7 @@ function UIUXLayout({ craft }) {
 
                 {/* pants */}
                 {craft.define.features && (
-                    <div>
+                    <div className='content-gap'>
                         <h2>{craft.define.features.header}</h2>
                         <p className='mb-6'>{craft.define.features.content} </p>
 
