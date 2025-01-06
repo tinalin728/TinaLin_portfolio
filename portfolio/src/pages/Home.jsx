@@ -604,8 +604,8 @@ function Home() {
                                                     <img src={design} alt="icon" className="card w-[180px] md:w-[200px] lg:w-[220px] h-full" />
                                                 </div>
                                                 <div className="p-4">
-                                                    <h2 className="group-hover:text-white">Research</h2>
-                                                    <p className="text-[18px]">I captivate audiences with interactive, impactful websites that blend creativity and functionality seamlessly.</p>
+                                                    <h2 className="group-hover:text-white">Web Design</h2>
+                                                    <p className="text-[18px]">I create interactive, impactful websites that blend creativity and functionality seamlessly.</p>
                                                 </div>
                                             </div>
                                         </div>
