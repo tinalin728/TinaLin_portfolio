@@ -94,8 +94,8 @@
     }
 
     .big-header {
-        font-size: clamp(1.5rem, 0.5677rem + 3.9779vw, 3.75rem);
-        @apply font-craftwork font-extrabold tracking-wider
+        font-size: clamp(2rem, 1.2334rem + 3.2707vw, 3.85rem);
+        @apply font-craftwork font-normal tracking-[.25rem] uppercase
     }
 
     .sub-header {

@@ -130,7 +130,7 @@ function Crafts() {
             <section className='bg-light-yellow-bg py-[8rem] p-0 relative'>
                 <div className='max-w-container flex flex-col justify-center items-center'>
                     <div className=''>
-                        <h2 className="craftHeader text-center sub-header ">
+                        <h2 className="craftHeader text-center sub-header text-nowrap">
                             {Array.from("Crafts").map((letter, index) => (
                                 <span key={index} className="letter inline-block font-craftwork font-extrabold mt-2 text-light-yellow-bg text-stroke uppercase tracking-wider leading-none">
                                     {letter}

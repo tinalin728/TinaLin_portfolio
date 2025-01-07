@@ -95,7 +95,7 @@ function Home() {
                     rotate: rotations[index],
                     duration: 1,
                     ease: "bounce.out",
-                    delay: index * 0.1,
+                    delay: index * 0.18,
                     //when animation completes, allow background mouse interaction
                     onComplete: () => setAnimationComplete(true)
                 },
@@ -464,66 +464,60 @@ function Home() {
                             <div
                                 key={index}
                                 ref={(el) => (glitchRefs.current[index] = el)}
-                                className="absolute -translate-x-1/2 -translate-y-1/2 origin-center -mt-10 md:mt-0"
+                                className="hidden md:block md:absolute md:-translate-x-1/2 md:-translate-y-1/2 md:origin-center md:mt-0"
                                 style={{ top: pos.top, left: pos.left }}
                             >
-                                <img src={outline} loading="lazy" alt="" className="w-full scale-[1.5] md:scale-110 lg:scale-100" />
+                                <img src={outline} loading="lazy" alt="" className="w-full md:scale-100 lg:scale-105" />
                             </div>
                         );
                     })}
 
                     <div className='relative max-w-container w-full h-full flex flex-col justify-center items-center gap-4'>
-                        <div className='inline-flex flex-col items-center gap-2 text-center -mt-12 md:mt-0'>
+                        <div className='inline-flex flex-col items-center justify-center gap-2 -mt-12 md:-mt-10'>
                             <Parallax speed={isMobile ? -.5 : -1}>
-                                <div ref={refs.line1} className='inline-block px-4 py-2 md:px-6 lg:px-8 lg:py-4 bg-charcoal rounded-md w-fit rotate-3 -translate-x-10'>
-                                    <h1 className='text-white font-normal big-header uppercase'>I Create</h1>
+                                <div ref={refs.line1} className='inline-block px-4 py-2 md:px-8 lg:px-10 lg:py-5 bg-charcoal rounded-md w-fit rotate-6 -translate-x-2'>
+                                    <h1 className='text-white big-header'>The </h1>
                                 </div>
                             </Parallax>
                             <Parallax speed={isMobile ? -1 : -2}>
-                                <div ref={refs.line2} className='inline-block px-4 py-2 md:px-6 lg:px-8 lg:py-4 bg-charcoal rounded-md  w-fit -rotate-3 translate-x-10'>
-                                    <h1 className='text-white font-normal big-header uppercase'>Meaningful</h1>
+                                <div ref={refs.line2} className='inline-block px-4 py-2 md:px-6 lg:px-10 lg:py-5 bg-charcoal rounded-md w-fit -rotate-4 translate-x-0'>
+                                    <h1 className='text-white big-header'> Product &</h1>
                                 </div>
                             </Parallax>
 
-                            <Parallax speed={isMobile ? -1.5 : -3}>
-                                <div ref={refs.line3} className='inline-block px-4 py-2 md:px-6 lg:px-8 lg:py-4 bg-charcoal rounded-md  w-fit rotate-6 -translate-x-[30%]'>
-                                    <h1 className='text-white font-normal big-header uppercase'>Digital</h1>
+                            <Parallax speed={isMobile ? -1.5 : -2.5}>
+                                <div ref={refs.line3} className='inline-block px-4 py-2 md:px-6 lg:px-10 lg:py-5 mt-2 md:mt-4 bg-charcoal rounded-md  w-fit rotate-4 -translate-x-[10%]'>
+                                    <h1 className='text-white big-header'>Design of</h1>
                                 </div>
                             </Parallax>
-                            <Parallax speed={isMobile ? -1 : -4}>
-                                <div ref={refs.line4} className='inline-block px-4 py-2 md:px-6 lg:px-8 lg:py-4 bg-charcoal rounded-md w-fit -rotate-6 translate-x-10'>
-                                    <h1 className='text-white font-normal big-header uppercase'>Experiences</h1>
+                            <Parallax speed={isMobile ? -1 : -3}>
+                                <div ref={refs.line4} className='inline-block px-4 py-2 md:px-6 lg:px-10 lg:py-5  mt-2 md:mt-4 bg-charcoal rounded-md w-fit -rotate-4 translate-x-10'>
+                                    <h1 className='text-white big-header'>Tina Lin</h1>
                                 </div>
                             </Parallax>
                         </div>
 
-                        <div className='absolute left-8 md:left-14 bottom-8 md:bottom-[10%]'>
-                            <div className='flex gap-3 items-center mb-3'>
-                                <div className='inline-flex justify-center items-center h-[2.4rem] w-[2.4rem] border-2 rounded-full inset-shadow'>
-                                    <FontAwesomeIcon icon={faUser} className='text-[20px] ' />
-                                </div>
-                                <div>
-                                    <h3 className='mt-2 text-md leading-none'> Tina Lin</h3>
-                                </div>
-                            </div>
+                        <div className='absolute left-8 md:left-14 bottom-[10%]'>
+
                             <div className='flex gap-3 items-start'>
-                                <div className='inline-flex justify-center items-center h-[2.3rem] w-[2.3rem] border-2  rounded-full inset-shadow'>
-                                    <FontAwesomeIcon icon={faInfo} className='text-[20px]' />
-                                </div>
+                                {/* <div className='inline-flex justify-center items-center h-[2.3rem] w-[2.3rem] border-2  rounded-full inset-shadow'>
+                                    <FontAwesomeIcon icon={faUser} className='text-[20px] ' />
+                                </div> */}
                                 <div>
-                                    <h3 className='mt-2 text-md leading-normal'>UX/UI Designer <br /> who enjoys coding &#x2661;</h3>
+                                    <span className='text-base tracking-[3px] font-roundo-medium uppercase'>A UX/UI Designer <br /> who enjoys coding &#x2661;</span>
                                 </div>
                             </div>
                         </div>
-
-                        {/* <div className='absolute left-8 md:left-14 bottom-8 md:bottom-[10%]'>
-                            <h3>Hi I'm Tina!</h3>
-                            <h3 >[ A <span className='role text-[#d3d3d3]'> UX/UI designer</span> ] </h3>
-                            <h3>who enjoys coding &#x2661;</h3>
+                        <div className='hidden md:block md:absolute md:right-14 md:bottom-[10%]'>
+                            <div className='flex gap-3 items-start'>
+                                {/* <div className='inline-flex justify-center items-center h-[2.3rem] w-[2.3rem] border-2  rounded-full inset-shadow'>
+                                    <FontAwesomeIcon icon={faUser} className='text-[20px] ' />
+                                </div> */}
+                                <div>
+                                    <span className='text-base tracking-[3px] font-roundo-medium uppercase'>Vancouver, BC</span>
+                                </div>
+                            </div>
                         </div>
-                        <div className='absolute right-8 md:right-14 bottom-8 md:bottom-[10%]'>
-                            <p></p>
-                        </div> */}
                     </div>
                 </section >
 
@@ -531,18 +525,18 @@ function Home() {
                     <div className=' w-[25px]'>
                         <img src={images[currentImage]} alt="emoji" className="h-[25px] w-[25px]" />
                     </div>
-                    <span className='font-roundo-medium uppercase tracking-wide text-white'>A designer who can code</span>
+                    <span className='font-roundo-medium uppercase tracking-widest text-white'>A designer who can code</span>
                     <div className=' w-[25px]'>
                         <img src={images[currentImage]} alt="emoji " className="h-[25px] w-[25px]" />
                     </div>
-                    <span className='font-roundo-medium uppercase tracking-wide text-white'>A developer who can design</span>
+                    <span className='font-roundo-medium uppercase tracking-widest text-white'>A developer who can design</span>
                     <div className=' w-[25px]'>
                         <img src={images[currentImage]} alt="emoji " className="h-[25px] w-[25px]" />
                     </div>
-                    <span className='font-roundo-medium uppercase tracking-wide text-white'>Based in Vancouver</span>
+                    <span className='font-roundo-medium uppercase tracking-widest text-white'>Based in Vancouver</span>
                 </HorizontalScroll>
 
-                <section ref={aboutRef} className="relative py-[10rem] bg-darker-bg">
+                {/* <section ref={aboutRef} className="relative py-[10rem] bg-darker-bg">
                     <div className="max-w-container">
                         <div className="relative z-10">
                             <div className="mb-6 lg:mb-12">
@@ -594,10 +588,8 @@ function Home() {
                             >
                                 <SwiperSlide>
                                     <div data-cursor='hover' className="relative group hover:-translate-y-2 hover:-rotate-2 transition duration-500">
-                                        {/* Shadow Layer */}
                                         <div className="absolute top-3 left-0 w-full h-full bg-light-yellow-bg rounded-xl -z-10 border-2"></div>
 
-                                        {/* Card Content */}
                                         <div className="relative z-10 about-card bg-light-yellow-bg p-4 border-2 overflow-hidden rounded-xl h-[440px]">
                                             <div className="flex flex-col group-hover:rounded-xl transition-all duration-500 group-hover:bg-yellow h-full">
                                                 <div className="translate-x-[60%] relative">
@@ -650,7 +642,7 @@ function Home() {
                                     </div>
                                 </SwiperSlide>
                             </Swiper>
-                            {/* */}
+
 
                             <div ref={aboutCtaRef} className="flex justify-center items-center">
                                 <PrimaryBtn
@@ -662,8 +654,8 @@ function Home() {
                             </div>
                         </div>
                     </div>
-                </section >
-
+                </section > */}
+                {/* 
                 <div className='overflow-hidden bg-darker-bg '>
                     <div className='max-w-container py-4 h-full flex'>
                         <Marquee autoFill='true' pauseOnHover='true' direction='right'>
@@ -675,18 +667,15 @@ function Home() {
                         </Marquee>
 
                     </div>
-                </div>
+                </div> */}
 
 
-                <section ref={craftRef} className="relative h-full py-[10rem] bg-darker-bg">
+                <section ref={craftRef} id='crafts' className="relative h-full py-[10rem] bg-darker-bg">
                     <div className='max-w-container relative rounded-xl'>
                         <div className='recent flex mx-auto w-fit bg-charcoal rounded-md px-4 py-2 rotate-6'>
-                            <span className="uppercase font-roundo text-white text-nowrap text-sm md:text-base tracking-widest">Most Recent</span >
+                            <span className="text-base tracking-[3px] font-roundo-medium uppercase text-white">Selected</span >
                         </div >
 
-                        {/* <div className="text-center mb-6 lg:mb-12">
-                            <h3 className="craftHeader text-center sub-header font-craftwork font-extrabold mt-2 text-light-yellow-bg text-stroke uppercase leading-normal tracking-wider">Crafts</h3>
-                        </div> */}
                         <div className="text-center mb-6 lg:mb-12">
                             <h2 className="craftHeader text-center sub-header ">
                                 {Array.from("Crafts").map((letter, index) => (
@@ -697,8 +686,8 @@ function Home() {
                             </h2>
                         </div>
 
-                        <div className="relative grid grid-cols-1 md:grid-cols-2 mb-10 gap-6">
-                            {crafts.slice(0, 2).map((craft) => {
+                        <div className="relative grid grid-cols-1 lg:grid-cols-2 mb-10 gap-6">
+                            {crafts.map((craft) => {
                                 return (
                                     <CraftCard
                                         key={craft.id}
@@ -713,14 +702,6 @@ function Home() {
                                 );
                             })}
                         </div>
-                    </div>
-                    <div className='flex justify-center mb-10'>
-                        <PrimaryBtn
-                            to="/crafts"
-                            text="More Crafts"
-                            icon={arrow}
-                            className='about-btn'
-                        />
                     </div>
                 </section >
 

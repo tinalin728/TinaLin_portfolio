@@ -672,7 +672,7 @@ export const craftsData = [
                 content: 'Figma , HTML , TailwindCSS , Javascript'
             },
             process: 'Planning → Design → Develop → Final',
-            role: 'Product Owner, Front-end developers',
+            role: 'Product Owner, Front-end developer',
             duration: '5 weeks - May, 2024 (Project itself) , 3 weeks - Oct, 2024 (Revision)',
             headline: 'Creating a minimalist e-commerce experience that blends style and functionality...',
             content: "For the Basics project, I worked with a team of four to design and develop an e-commerce platform for minimalist apparels. The project aimed to simulate a real-world team environment while implementing Agile methodologies for efficient project management. As both the Product Owner and Front-End Developer, I oversaw the project timeline while building the website from scratch.",

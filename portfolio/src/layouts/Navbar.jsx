@@ -88,11 +88,17 @@ function Navbar() {
                         <div className='flex flex-col justify-center h-full'>
                             <nav className='md:grow'>
                                 <ul className='flex flex-col items-center justify-center gap-8 md:h-auto md:flex-row'>
-                                    <NavLink to="/crafts" onClick={handleMenuToggle} className="font-roundo-medium hover:text-orange py-6 md:py-8">
+                                    <NavLink to="/" onClick={handleMenuToggle} className={({ isActive }) =>
+                                        `font-roundo-medium py-6 md:py-8 hover:scale-95 transition-all duration-300 ${isActive ? "text-orange" : ""
+                                        }`
+                                    }>
                                         Crafts
                                     </NavLink>
-                                    <NavLink to="/about" onClick={handleMenuToggle} className="font-roundo-medium hover:text-orange py-6 md:py-8">
-                                        About
+                                    <NavLink to="/about" onClick={handleMenuToggle} className={({ isActive }) =>
+                                        `font-roundo-medium py-6 md:py-8  hover:scale-95 transition-all duration-300  ${isActive ? "text-orange" : ""
+                                        }`
+                                    }>
+                                        TinaLin
                                     </NavLink>
 
                                     <SocialIcon
@@ -107,7 +113,7 @@ function Navbar() {
                     </div>
 
                     {/* hamburger icon */}
-                    <button className="hamburger z-[100] md:hidden" aria-controls="primary-nav"
+                    <button className="hamburger z-[100] md:hidden " aria-controls="primary-nav"
                         aria-expanded={isOpen} onClick={toggleMenu}>
                         <svg className="hamburger w-[2.5rem]" viewBox="0, 0, 100, 100">
 
