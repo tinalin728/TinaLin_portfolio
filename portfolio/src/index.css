@@ -95,12 +95,12 @@
 
     .big-header {
         font-size: clamp(2rem, 1.2334rem + 3.2707vw, 3.85rem);
-        @apply font-craftwork font-normal tracking-[.25rem] uppercase
+        @apply font-craftwork font-normal tracking-[.25rem] uppercase text-nowrap
     }
 
     .sub-header {
         font-size: clamp(3.125rem, 2.607rem + 2.2099vw, 4.375rem);
-        @apply font-craftwork font-extrabold uppercase text-stroke text-light-yellow-bg tracking-wide
+        @apply font-craftwork font-extrabold uppercase text-stroke text-light-yellow-bg tracking-wide text-nowrap
     }
 
     /* .section-header {
