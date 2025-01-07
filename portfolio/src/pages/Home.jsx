@@ -95,7 +95,7 @@ function Home() {
                     rotate: rotations[index],
                     duration: 1,
                     ease: "bounce.out",
-                    delay: index * 0.18,
+                    delay: index * 0.12,
                     //when animation completes, allow background mouse interaction
                     onComplete: () => setAnimationComplete(true)
                 },

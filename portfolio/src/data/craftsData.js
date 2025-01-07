@@ -631,8 +631,8 @@ export const craftsData = [
         media: "image",
         cover: "/assets/homepage/basics/cover.jpg",
         banner: {
-            subHeader: 'Basics.',
-            header: 'Front-End Development for Basics E-Commerce',
+            subHeader: 'Basics. - E-commerce ',
+            header: 'Designed and Developed an online apparel store',
             image: {
                 src: '/assets/basics/banner.png',
                 altText: 'Basics banner',
