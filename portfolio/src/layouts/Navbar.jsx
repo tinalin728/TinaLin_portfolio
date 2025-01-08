@@ -85,7 +85,7 @@ function Navbar() {
 
 
     return (
-        <header className='overflow-hidden pt-4'>
+        <header className='overflow-hidden pt-4 md:pt-0'>
             <div className='max-w-container relative'>
                 <div className='flex justify-between items-center w-full'>
                     <div>
