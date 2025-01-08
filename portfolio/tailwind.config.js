@@ -70,11 +70,12 @@ module.exports = withMT({
       },
 
       animation: {
-        'morph': 'morph 2s ease-in-out infinite',
-        'waves': 'waves 2s linear infinite',
+
         'zoom': 'zoom .3s linear',
         'border': 'border 2s linear infinite',
-        'flash': 'flash 1s ease-out infinite'
+        'flash': 'flash 1s ease-out infinite',
+        'slideIn': 'slideIn 0.5s ease-out forwards',
+        'slideOut': 'slideOut 0.5s ease-out forwards'
       },
 
       keyframes: {
@@ -103,7 +104,14 @@ module.exports = withMT({
           '0%, 100%': { color: 'black' },
           '50%': { color: 'grey' }
         },
-
+        slideIn: {
+          '0%': { transform: 'translateX(-100%)' },
+          '100%': { transform: 'translateX(0)' },
+        },
+        slideOut: {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(100%)' },
+        }
       },
     },
   },
