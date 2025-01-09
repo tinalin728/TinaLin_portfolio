@@ -1,20 +1,25 @@
-import React, { useRef, useEffect, useState } from 'react'
-import WindowWidth from '../hooks/WindowWidth'
-import defaultCursor from '../../public/assets/cursor.png'
-import thumbCursor from '../../public/assets/thumb.png'
-import pointer from '../../public/assets/point.png'
-import stickyPoint from '../../public/assets/point2.svg'
+import React, { useRef, useEffect, useState } from 'react';
+import WindowWidth from '../hooks/WindowWidth';
+import defaultCursor from '../../public/assets/cursor.png';
+import thumbCursor from '../../public/assets/thumb.png';
+import pointer from '../../public/assets/point.png';
+import stickyPoint from '../../public/assets/point2.svg';
 
 function Cursor() {
     const cursorRef = useRef(null);
     const [cursorImage, setCursorImage] = useState(defaultCursor);
-    const [isMobile, setIsMobile] = useState(false)
     const windowWidth = WindowWidth();
 
     useEffect(() => {
+        // Disable cursor on smaller screens
+        if (windowWidth <= 768) {
+            if (cursorRef.current) {
+                cursorRef.current.style.visibility = 'none'; // Hide cursor
+            }
+            return; // Exit early
+        }
 
-        if (windowWidth <= 768) return;
-        //update cursor position on mouse move
+        // Update cursor position on mouse move
         const handleMouseMove = (e) => {
             const { clientX, clientY } = e;
             if (cursorRef.current) {
@@ -23,19 +28,19 @@ function Cursor() {
             }
         };
 
-        //change cursor image on hover
+        // Change cursor image on hover
         const handleMouseOver = (e) => {
-            const element = e.target.closest("a, button, [data-cursor]");
+            const element = e.target.closest('a, button, [data-cursor]');
             if (element) {
-                const cursorType = element.getAttribute("data-cursor");
+                const cursorType = element.getAttribute('data-cursor');
 
-                if (cursorType === "sticky-nav") {
+                if (cursorType === 'sticky-nav') {
                     setCursorImage(stickyPoint);
-                } else if (cursorType === "hover") {
+                } else if (cursorType === 'hover') {
                     setCursorImage(thumbCursor);
-                } else if (element.tagName === "A") {
+                } else if (element.tagName === 'A') {
                     setCursorImage(stickyPoint);
-                } else if (element.tagName === "BUTTON") {
+                } else if (element.tagName === 'BUTTON') {
                     setCursorImage(pointer);
                 } else {
                     setCursorImage(defaultCursor);
@@ -43,49 +48,53 @@ function Cursor() {
             }
         };
 
+        // Reset cursor image when leaving elements
         const handleMouseOut = (e) => {
-            const element = e.target.closest("a, button, [data-cursor]");
+            const element = e.target.closest('a, button, [data-cursor]');
             if (element) {
                 setCursorImage(defaultCursor); // Reset to default cursor
             }
         };
 
+        // Hide cursor when leaving the viewport
         const handleMouseLeave = () => {
-            console.log("Mouse left viewport");
             if (cursorRef.current) {
-                cursorRef.current.style.visibility = "hidden";
+                cursorRef.current.style.visibility = 'hidden';
             }
         };
 
+        // Show cursor when entering the viewport
         const handleMouseEnter = () => {
-            console.log("Mouse entered viewport");
             if (cursorRef.current) {
-                cursorRef.current.style.visibility = "visible";
+                cursorRef.current.style.visibility = 'visible';
             }
         };
 
+        // Add event listeners
         window.addEventListener('mousemove', handleMouseMove);
-        document.addEventListener("mouseover", handleMouseOver);
-        document.addEventListener("mouseout", handleMouseOut);
-        window.addEventListener("mouseleave", handleMouseLeave);
-        window.addEventListener("mouseenter", handleMouseEnter);
+        document.addEventListener('mouseover', handleMouseOver);
+        document.addEventListener('mouseout', handleMouseOut);
+        window.addEventListener('mouseleave', handleMouseLeave);
+        window.addEventListener('mouseenter', handleMouseEnter);
 
+        // Cleanup event listeners on unmount
         return () => {
             window.removeEventListener('mousemove', handleMouseMove);
-            document.removeEventListener("mouseover", handleMouseOver);
-            document.removeEventListener("mouseout", handleMouseOut);
-            window.removeEventListener("mouseleave", handleMouseLeave);
-            window.removeEventListener("mouseenter", handleMouseEnter);
+            document.removeEventListener('mouseover', handleMouseOver);
+            document.removeEventListener('mouseout', handleMouseOut);
+            window.removeEventListener('mouseleave', handleMouseLeave);
+            window.removeEventListener('mouseenter', handleMouseEnter);
         }
     }, [windowWidth]);
 
+    // Return null for smaller screens
     if (windowWidth <= 768) {
         return null;
     }
 
-
     return (
-        <div ref={cursorRef}
+        <div
+            ref={cursorRef}
             style={{
                 backgroundImage: `url(${cursorImage})`,
                 backgroundSize: 'contain',
@@ -94,14 +103,12 @@ function Cursor() {
                 width: '40px',
                 height: '40px',
                 position: 'fixed',
-                transform: 'translate(-50%, -20%)',
+                transform: 'translate(-50%, -50%)',
                 zIndex: 9999,
                 visibility: 'visible',
             }}
-        >
-
-        </div>
-    )
+        ></div>
+    );
 }
 
-export default Cursor
+export default Cursor;
