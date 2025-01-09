@@ -146,25 +146,21 @@ function Footer() {
 
         // create pills
         const createPills = (textures, canvasWidth) => {
-            // console.log("createPills invoked");
-            // console.log("Textures passed:", textures);
-            // console.log("Canvas width:", canvasWidth);
-
-            if (!Array.isArray(textures) || textures.length === 0) {
-                console.error("Invalid or empty textures:", textures);
-                return []; // Prevent errors by returning an empty array
-            }
-
             const screenWidth = window.innerWidth;
-            const pillWidth = screenWidth < 768 ? 60 : 100;
-            const pillHeight = screenWidth < 768 ? 20 : 30;
-            const spread = screenWidth < 768 ? 20 : 40;
-            const startX = canvasWidth / 2;
 
+            // Adjust pill dimensions based on screen size
+            const pillWidth = screenWidth > 1920 ? 180 : screenWidth > 1440 ? 120 : screenWidth < 768 ? 60 : 100;
+            const pillHeight = screenWidth > 1920 ? 55 : screenWidth > 1440 ? 50 : screenWidth < 768 ? 20 : 30;
+            const spread = Math.min(screenWidth / textures.length, screenWidth > 1920 ? 80 : screenWidth > 1440 ? 60 : 40);
+
+            console.log("Screen Width:", screenWidth, "Pill Width:", pillWidth, "Pill Height:", pillHeight);
+
+            const startX = canvasWidth / 2 - ((textures.length - 1) * spread) / 2; // Center pills
+
+            // Create pills from textures
             const pills = textures.map((texture, index) => {
-                const offset = (index - textures.length / 2) * spread;
-                const x = startX + offset;
-                const y = 60 - Math.abs(offset) * 0.3;
+                const x = startX + index * spread;
+                const y = 60; // Adjust Y position if needed
 
                 return Bodies.rectangle(x, y, pillWidth, pillHeight, {
                     restitution: 1,
@@ -173,16 +169,18 @@ function Footer() {
                     render: {
                         sprite: {
                             texture: texture,
-                            xScale: screenWidth < 768 ? 0.8 : 1,
-                            yScale: screenWidth < 768 ? 0.8 : 1,
+                            xScale: screenWidth > 1920 ? 1.3 : screenWidth > 1440 ? 1.2 : screenWidth < 768 ? 0.8 : 1,
+                            yScale: screenWidth > 1920 ? 1.3 : screenWidth > 1440 ? 1.2 : screenWidth < 768 ? 0.8 : 1,
                         },
                     },
                 });
             });
 
-            console.log("Created pills:", pills);
             return pills;
         };
+
+
+
 
 
         //Create pills using all textures
@@ -366,7 +364,7 @@ function Footer() {
                             Say Hello
                         </h2> */}
                         <div className='text-center'>
-                            <h1 className='sub-header'>
+                            <h1 className='sub-header text-wrap'>
                                 Say Hello !
                             </h1>
                         </div>

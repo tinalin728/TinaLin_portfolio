@@ -74,7 +74,6 @@ function CraftCard({ title, src, mediaType, skills, id, content, status }) {
                         {/* Media Section with Grayscale */}
                         <div className="overflow-hidden border-2 rounded-md">
                             {mediaType === "video" ? (
-
                                 <video
                                     src={src}
                                     autoPlay

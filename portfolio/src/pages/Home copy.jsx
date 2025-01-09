@@ -467,15 +467,15 @@ function Home() {
                     <span className='font-roundo-medium uppercase tracking-widest text-white'>Front-end development</span>
                 </HorizontalScroll>
 
-                {/* <section className='max-w-container py-[8rem] h-full bg-darker-bg'>
-                    <div className=''>
-                        <div className='flex w-fit bg-charcoal rounded-md px-4 py-2 mb-4'>
+                <section className='max-w-container py-[8rem] h-full bg-darker-bg'>
+                    <div className='flex flex-col justify-center items-center h-full'>
+                        <div className='flex mx-auto w-fit bg-charcoal rounded-md px-4 py-2'>
                             <span className="text-base font-roundo tracking-[3px] font-roundo-medium uppercase text-white">About</span >
-                        </div>
+                        </div >
 
                         <h2 className=''>Lorem ipsum dolor sit amet consectetur adipisicing elit. At quo accusamus molestiae voluptatum quia libero, omnis tempora nihil ullam, recusandae exercitationem eveniet, minus quisquam. Molestias dolor incidunt voluptatem doloribus doloremque.</h2>
                     </div>
-                </section> */}
+                </section>
 
                 <section ref={craftRef} id='crafts' className="relative h-full py-[10rem] bg-darker-bg">
                     <div className='max-w-container relative rounded-xl'>

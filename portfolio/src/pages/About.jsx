@@ -218,8 +218,8 @@ function About() {
 
             </section>
 
-            <div className='bg-darker-bg border-2 '>
-                <div className='max-w-container'>
+            <div className='bg-darker-bg border-t-2'>
+                <div className='max-w-container max-content-w'>
                     {/* image */}
                     <section className='flex flex-col lg:flex-row gap-10 items-center justify-between py-[10rem]'>
                         <div className='basis-[35%]'>

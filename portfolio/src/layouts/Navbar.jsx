@@ -146,14 +146,14 @@ function Navbar() {
                                     </NavLink>
 
 
-                                    <SocialIcon
+                                    {/* <SocialIcon
                                         href='yuting.lin728@gmail.com'
                                         icon={faEnvelope}
                                         mail={true}
                                         additionalClasses={`${isOpen
                                             ? 'shadow-white border-white hover:shadow-white text-white'
                                             : 'shadow-charcoal hover:shadow-charcoal-hover text-black'
-                                            }`} />
+                                            }`} /> */}
                                 </ul>
                             </nav>
                         </div>
