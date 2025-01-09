@@ -120,7 +120,7 @@ function CraftDetail() {
                         </div>
 
 
-                        <div className='flex flex-col-reverse gap-10 content-gap items-center md:flex-row'>
+                        <div className='flex flex-col-reverse gap-10 content-gap items-center lg:flex-row'>
                             <div className='basis-2/3'>
                                 <h3 className='mb-10 ital'>{craft.overview.headline} </h3>
                                 <p className='mb-10'>{craft.overview.content}</p>
@@ -136,13 +136,13 @@ function CraftDetail() {
 
                             </div>
 
-                            <div className='basis-1/3 w-full h-full'>
+                            <div className='basis-1/3 w-full h-full mx-auto'>
                                 {craft.overview.media.type === 'image' ? (
-                                    <div className='w-full'>
+                                    <div className='w-full lg:max-w-[500px]'>
                                         <img
                                             src={craft.overview.media.src}
                                             alt={craft.overview.media.altText}
-                                            className="max-w-[500px]"
+                                            className=""
                                             loading='lazy'
                                         />
                                         <p className="text-center text-sm mt-2 text-dark-grey">
