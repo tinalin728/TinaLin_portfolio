@@ -31,6 +31,7 @@ import icon5 from '../../public/assets/homepage/marquee/icon5.svg'
 import arrow from '../../public/assets/icons/arrow.svg';
 import arrowD from '../../public/assets/icons/arrow_down.svg';
 import outline from '../../public/assets/homepage/outlineLogo.svg'
+import logo from '../../public/assets/logo.svg'
 
 
 import design from "../../public/assets/homepage/web-design.svg"
@@ -40,18 +41,31 @@ import data from '../data/generalData.json';
 
 
 function Home() {
-    const [about, setAbout] = useState([]);
-    const [crafts, setCrafts] = useState([])
+    const [crafts, setCrafts] = useState([]);
+    const windowWidth = WindowWidth();
+    const isMobile = windowWidth < 768;
+
+    const [time, setTime] = useState('');
 
     useEffect(() => {
         const { about, crafts } = data;
-        setAbout(about);
         setCrafts(crafts);
     }, []);
 
-    //adjust parallax speed in different window screen size
-    const windowWidth = WindowWidth();
-    const isMobile = windowWidth < 768;
+    useEffect(() => {
+        const updateTime = () => {
+            const now = new Date();
+            const options = { hour: "2-digit", minute: "2-digit", hour12: true, timeZone: "America/Los_Angeles" };
+            const localTime = now.toLocaleTimeString("en-US", options);
+            setTime(localTime);
+        };
+
+        updateTime(); // Initialize the time immediately
+        const interval = setInterval(updateTime, 1000); // Update every second
+
+        return () => clearInterval(interval); // Cleanup on unmount
+    }, []);
+
 
 
     // horizontal scroll, image swapping
@@ -75,28 +89,25 @@ function Home() {
 
     // animation for hero section
     useGSAP(() => {
-        // headline animation
+
         const elements = [refs.line1.current, refs.line2.current, refs.line3.current, refs.line4.current];
-        //each line has unique rotation
         const rotations = [6, -3, 6, -6];
 
-        const timeline = gsap.timeline({
-        });
+        const timeline = gsap.timeline();
 
         elements.forEach((element, index) => {
+            if (!element) return; // Ensure element exists before animating
+
             timeline.fromTo(
                 element,
                 {
-                    rotate: 0,
+                    rotate: 0, // Start with no rotation
                 },
                 {
-                    opacity: 1,
-                    // Apply unique rotation
-                    rotate: rotations[index],
+                    rotate: rotations[index], // Apply unique rotation
                     duration: 1,
                     ease: "bounce.out",
-                    delay: index * 0.12,
-                    //when animation completes, allow background mouse interaction
+                    delay: index * 0.12, // Stagger delay for each element
                     onComplete: () => setAnimationComplete(true)
                 },
                 "<"
@@ -104,14 +115,16 @@ function Home() {
         });
 
         timeline.to(
-            '.role', {
-            color: '#E36A46',
-            duration: .5,
-            ease: 'power1.out'
-        },
-            "+1.5"
-        )
-    }, [])
+            ".role",
+            {
+                color: "#E36A46",
+                duration: 0.5,
+                ease: "power1.out",
+            },
+            "+=1.5"
+        );
+    }, []); // Only start the animation after preloader finishes
+
 
     const [animationComplete, setAnimationComplete] = useState(false);
     const [isMouseInside, setIsMouseInside] = useState(false);
@@ -218,132 +231,6 @@ function Home() {
         });
         //dependencies required to reruns the effect and that animations only start when the initial animation finishes.
     }, [mousePosition, animationComplete]);
-
-
-    const aboutRef = useRef(null);
-    const aboutCtaRef = useRef(null);
-
-
-    // animation for about section
-    useGSAP(() => {
-        const baseScrollTriggerConfig = {
-            trigger: aboutRef.current,
-            start: 'top 10%',
-            toggleActions: "play none none none",
-            //markers: true,
-        }
-
-        gsap.fromTo(
-            '.explore', {
-            y: -50,
-            rotate: 0
-        },
-            {
-                y: 0,
-                rotate: 6,
-                duration: .5,
-                ease: "bounce.out",
-                scrollTrigger: { ...baseScrollTriggerConfig }
-            }
-        )
-
-        gsap.fromTo(
-            ".aboutHeader",
-            { textShadow: "none" },
-            {
-                textShadow: `
-                0.5px 0.5px 0 #1e1e1e,
-                1px 1px 0 #1e1e1e,
-                1.5px 1.5px 0 #1e1e1e,
-                2px 2px 0 #1e1e1e,
-                2.5px 2.5px 0 #1e1e1e,
-                3px 3px 0 #1e1e1e,
-                3.5px 3.5px 0 #1e1e1e,
-                4px 4px 0 #1e1e1e,
-                4.5px 4.5px 0 #1e1e1e,
-                5px 5px 0 #1e1e1e,
-                5.5px 5.5px 0 #1e1e1e,
-                6px 6px 0 #1e1e1e`,
-                duration: 1,
-                ease: "power3.out",
-                scrollTrigger: { ...baseScrollTriggerConfig },
-            });
-
-        gsap.fromTo(
-            '.card', { x: 200 },
-            {
-                x: 0,
-                duration: 1.5,
-                ease: "power3.out",
-                scrollTrigger: { ...baseScrollTriggerConfig }
-            });
-        gsap.fromTo(
-            '.card-2', { opacity: 0, y: 200 },
-            {
-                opacity: 1,
-                y: 0,
-                duration: 1.5,
-                ease: "power3.out",
-                scrollTrigger: { ...baseScrollTriggerConfig }
-            });
-
-        // Add hover animation for individual letters in "Do"
-        const letters = document.querySelectorAll(".about-letter");
-
-        letters.forEach((letter) => {
-            let hoverTimeline;
-
-            letter.addEventListener("mouseenter", () => {
-                if (hoverTimeline) hoverTimeline.kill();
-
-                hoverTimeline = gsap.timeline();
-                hoverTimeline.to(letter, {
-                    x: -3, // Slightly pop left
-                    y: -3, // Slightly pop up
-                    textShadow: `
-                    1px 1px 0 #1e1e1e,
-                        2px 2px 0 #1e1e1e,
-                        3px 3px 0 #1e1e1e,
-                        4px 4px 0 #1e1e1e,
-                        5px 5px 0 #1e1e1e,
-                        6px 6px 0 #1e1e1e,
-                        7px 7px 0 #1e1e1e,
-                        8px 8px 0 #1e1e1e,
-                        9px 9px 0 #1e1e1e,
-                        10px 10px 0 #1e1e1e
-                    `, // Expanded shadow
-                    duration: 0.3,
-                    ease: "elastic.out(1, 0.4)", // Springy pop-out effect
-                });
-            });
-
-            letter.addEventListener("mouseleave", () => {
-                if (hoverTimeline) hoverTimeline.kill();
-
-                hoverTimeline = gsap.timeline();
-                hoverTimeline.to(letter, {
-                    x: 0, // Reset position
-                    y: 0, // Reset position
-                    textShadow: `
-                    0.5px 0.5px 0 #1e1e1e,
-                    1px 1px 0 #1e1e1e,
-                    1.5px 1.5px 0 #1e1e1e,
-                    2px 2px 0 #1e1e1e,
-                    2.5px 2.5px 0 #1e1e1e,
-                    3px 3px 0 #1e1e1e,
-                    3.5px 3.5px 0 #1e1e1e,
-                    4px 4px 0 #1e1e1e,
-                    4.5px 4.5px 0 #1e1e1e,
-                    5px 5px 0 #1e1e1e,
-                    5.5px 5.5px 0 #1e1e1e,
-                    6px 6px 0 #1e1e1e`,
-                    duration: 0.3,
-                    ease: "power3.out",
-                });
-            });
-        });
-
-    }, [aboutRef.current])
 
 
     const craftRef = useRef(null);
@@ -454,7 +341,6 @@ function Home() {
 
     }, [craftRef.current]);
 
-
     return (
         <>
             <div className='h-full relative'>
@@ -500,9 +386,6 @@ function Home() {
                         <div className='absolute left-8 md:left-14 bottom-[10%]'>
 
                             <div className='flex gap-3 items-start'>
-                                {/* <div className='inline-flex justify-center items-center h-[2.3rem] w-[2.3rem] border-2  rounded-full inset-shadow'>
-                                    <FontAwesomeIcon icon={faUser} className='text-[20px] ' />
-                                </div> */}
                                 <div>
                                     <span className='text-base tracking-[3px] font-roundo-medium uppercase'>A UX/UI Designer <br /> who enjoys coding &#x2661;</span>
                                 </div>
@@ -510,10 +393,9 @@ function Home() {
                         </div>
                         <div className='hidden md:block md:absolute md:right-14 md:bottom-[10%]'>
                             <div className='flex gap-3 items-start'>
-                                {/* <div className='inline-flex justify-center items-center h-[2.3rem] w-[2.3rem] border-2  rounded-full inset-shadow'>
-                                    <FontAwesomeIcon icon={faUser} className='text-[20px] ' />
-                                </div> */}
-                                <div>
+
+                                <div className='flex flex-col '>
+                                    <span className='text-base tracking-[3px] font-roundo-medium uppercase text-end'>{time}, PST</span>
                                     <span className='text-base tracking-[3px] font-roundo-medium uppercase'>Vancouver, BC</span>
                                 </div>
                             </div>
@@ -525,150 +407,20 @@ function Home() {
                     <div className=' w-[25px]'>
                         <img src={images[currentImage]} alt="emoji" className="h-[25px] w-[25px]" />
                     </div>
-                    <span className='font-roundo-medium uppercase tracking-widest text-white'>A designer who can code</span>
+                    <span className='font-roundo-medium uppercase tracking-widest text-white'>Web design</span>
                     <div className=' w-[25px]'>
                         <img src={images[currentImage]} alt="emoji " className="h-[25px] w-[25px]" />
                     </div>
-                    <span className='font-roundo-medium uppercase tracking-widest text-white'>A developer who can design</span>
+                    <span className='font-roundo-medium uppercase tracking-widest text-white'>Ux/ui design</span>
                     <div className=' w-[25px]'>
                         <img src={images[currentImage]} alt="emoji " className="h-[25px] w-[25px]" />
                     </div>
-                    <span className='font-roundo-medium uppercase tracking-widest text-white'>Based in Vancouver</span>
+                    <span className='font-roundo-medium uppercase tracking-widest text-white'>Research</span>
+                    <div className=' w-[25px]'>
+                        <img src={images[currentImage]} alt="emoji " className="h-[25px] w-[25px]" />
+                    </div>
+                    <span className='font-roundo-medium uppercase tracking-widest text-white'>Front-end development</span>
                 </HorizontalScroll>
-
-                {/* <section ref={aboutRef} className="relative py-[10rem] bg-darker-bg">
-                    <div className="max-w-container">
-                        <div className="relative z-10">
-                            <div className="mb-6 lg:mb-12">
-                                <div className="explore flex w-fit mx-auto bg-charcoal rounded-md px-4 py-2 -rotate-6">
-                                    <p className="uppercase text-white text-nowrap text-sm md:text-base lg:text-base md:tracking-widest lg:tracking-widest">Explore</p>
-                                </div>
-
-                                <div className="relative z-10">
-                                    <h2 className="sub-header text-center">
-                                        What I
-                                        <span className="aboutHeader ml-6 text-nowrap">
-                                            {Array.from("Do").map((letter, index) => (
-                                                <span key={index} className="about-letter inline-block text-stroke text-light-yellow-bg font-craftwork font-extrabold ">
-                                                    {letter}
-                                                </span>
-                                            ))}
-                                        </span>
-                                    </h2>
-                                </div>
-                            </div>
-
-                            <Swiper
-                                style={{
-                                    overflow: 'visible',
-                                }}
-                                spaceBetween={20}
-                                slidesPerView={1.05}
-                                onSlideChange={() => console.log('slide change')}
-                                onSwiper={(swiper) => console.log(swiper)}
-                                breakpoints={{
-                                    450: {
-                                        slidesPerView: 1.3,
-                                        spaceBetween: 20,
-                                    },
-                                    720: { // Tablet
-                                        slidesPerView: 2,
-                                        spaceBetween: 40,
-                                    },
-                                    1000: {
-                                        slidesPerView: 2.5,
-                                        spaceBetween: 40,
-                                    },
-                                    1024: { // Desktop
-                                        slidesPerView: 3,
-                                        spaceBetween: 50,
-                                    },
-                                }}
-                                className='mb-10 overflow-visible'
-                            >
-                                <SwiperSlide>
-                                    <div data-cursor='hover' className="relative group hover:-translate-y-2 hover:-rotate-2 transition duration-500">
-                                        <div className="absolute top-3 left-0 w-full h-full bg-light-yellow-bg rounded-xl -z-10 border-2"></div>
-
-                                        <div className="relative z-10 about-card bg-light-yellow-bg p-4 border-2 overflow-hidden rounded-xl h-[440px]">
-                                            <div className="flex flex-col group-hover:rounded-xl transition-all duration-500 group-hover:bg-yellow h-full">
-                                                <div className="translate-x-[60%] relative">
-                                                    <img src={design} alt="icon" className="card w-[180px] md:w-[200px] lg:w-[220px] h-full" />
-                                                </div>
-                                                <div className="p-4">
-                                                    <h2 className="group-hover:text-white">Web Design</h2>
-                                                    <p className="text-[18px]">I create interactive, impactful websites that blend creativity and functionality seamlessly.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </SwiperSlide>
-                                <SwiperSlide>
-                                    <div data-cursor='hover' className="about-card group hover:-translate-y-2 transition duration-500">
-                                        <div className="relative">
-                                            <div className="absolute top-3 left-0 w-full h-full bg-light-yellow-bg rounded-xl -z-10 border-2"></div>
-
-                                            <div className="relative z-10 about-card bg-light-yellow-bg p-4 border-2 overflow-hidden rounded-xl h-[440px]">
-                                                <div className='flex flex-col group-hover:rounded-xl transition-all duration-500 group-hover:bg-orange'>
-                                                    <div className="p-4">
-                                                        <h2 className="pb-2 group-hover:text-white">UX / UI Design</h2>
-                                                        <p className="text-[18px]">I’m passionate about understanding people and designing solutions that truly resonate with them.</p>
-                                                    </div>
-                                                    <div className="translate-x-[50%]">
-                                                        <img src={uxui} alt="icon" className="card-2 w-[190px] md:w-[230px] h-full" />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </SwiperSlide>
-                                <SwiperSlide>
-                                    <div data-cursor='hover' className="about-card relative z-10 transition-all duration-500 group hover:-translate-y-2 hover:rotate-2">
-                                        <div className='relative'>
-                                            <div className="absolute top-3 left-0 w-full h-full bg-light-yellow-bg rounded-xl -z-10 border-2"></div>
-
-                                            <div className="relative z-10 about-card bg-light-yellow-bg p-4 border-2 overflow-hidden rounded-xl h-[440px]">
-                                                <div className='flex flex-col group-hover:rounded-xl transition-all duration-500 group-hover:bg-blue'>
-                                                    <div className="translate-x-[50%] overflow-hidden">
-                                                        <img src={coding} alt="icon" className="card w-[200px] lg:w-[250px] h-full" />
-                                                    </div>
-                                                    <div className="p-4  -mt-8 z-10">
-                                                        <h2 className="pb-2 group-hover:text-white">Front-End Development</h2>
-                                                        <p className="text-[18px]">I love turning ideas into interactive experiences by bringing designs to life with code.</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </SwiperSlide>
-                            </Swiper>
-
-
-                            <div ref={aboutCtaRef} className="flex justify-center items-center">
-                                <PrimaryBtn
-                                    to="/about"
-                                    text="About Me"
-                                    icon={arrow}
-                                    className="about-btn"
-                                />
-                            </div>
-                        </div>
-                    </div>
-                </section > */}
-                {/* 
-                <div className='overflow-hidden bg-darker-bg '>
-                    <div className='max-w-container py-4 h-full flex'>
-                        <Marquee autoFill='true' pauseOnHover='true' direction='right'>
-                            <img src={icon1} alt="" className='mr-10 md:mr-[5rem] ' />
-                            <img src={icon2} alt="" className='mr-10 md:mr-[5rem]' />
-                            <img src={icon3} alt="" className='mr-10 md:mr-[5rem]' />
-                            <img src={icon4} alt="" className='mr-10 md:mr-[5rem]' />
-                            <img src={icon5} alt="" className='mr-10 md:mr-[5rem]' />
-                        </Marquee>
-
-                    </div>
-                </div> */}
-
 
                 <section ref={craftRef} id='crafts' className="relative h-full py-[10rem] bg-darker-bg">
                     <div className='max-w-container relative rounded-xl'>
@@ -709,19 +461,19 @@ function Home() {
                     <div className=' w-[25px]'>
                         <img src={images[currentImage]} alt="emoji " loading="lazy" className="h-[25px] w-[25px]" />
                     </div>
-                    <span className='font-roundo-medium uppercase tracking-wide '>Say Hi</span>
+                    <span className='font-roundo-medium uppercase tracking-widest '>Say Hi</span>
                     <div className=' w-[25px]'>
                         <img src={images[currentImage]} alt="emoji " loading="lazy" className="h-[25px] w-[25px]" />
                     </div>
-                    <span className='font-roundo-medium uppercase tracking-wide '>Contact Me</span>
+                    <span className='font-roundo-medium uppercase tracking-widest '>Contact Me</span>
                     <div className=' w-[25px]'>
                         <img src={images[currentImage]} alt="emoji " loading="lazy" className="h-[25px] w-[25px]" />
                     </div>
-                    <span className='font-roundo-medium uppercase tracking-wide'>Say Hi</span>
+                    <span className='font-roundo-medium uppercase tracking-widest'>Say Hi</span>
                     <div className=' w-[25px]'>
                         <img src={images[currentImage]} alt="emoji " loading="lazy" className="h-[25px] w-[25px]" />
                     </div>
-                    <span className='font-roundo-medium uppercase tracking-wide'>Contact Me</span>
+                    <span className='font-roundo-medium uppercase tracking-widest'>Contact Me</span>
                 </HorizontalScroll>
             </div >
         </>

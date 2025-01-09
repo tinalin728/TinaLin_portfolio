@@ -89,7 +89,7 @@ function Navbar() {
             <div className='max-w-container relative'>
                 <div className='flex justify-between items-center w-full'>
                     <div>
-                        <NavLink to="/" className="logo-wrapper z-[1000] py-6">
+                        <NavLink to="/" className="z-[1000] py-6">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 viewBox="-20 -20 202 194"
@@ -97,12 +97,10 @@ function Navbar() {
                             >
                                 <g className="logo" data-name="Layer 1">
                                     <polygon
-                                        className="polygon"
                                         points="0 2 0 39 62 39 62 154 99 154 99 39 99 24 99 2 0 2"
                                         fill={isOpen ? "#FBF8F0" : "black"}
                                     />
                                     <circle
-                                        className="circle"
                                         cx="140"
                                         cy="22"
                                         r="22"
@@ -144,7 +142,7 @@ function Navbar() {
                                         }
 
                                     >
-                                        About
+                                        TinaLin
                                     </NavLink>
 
 

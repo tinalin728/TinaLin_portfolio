@@ -11,7 +11,7 @@ function Layout() {
     const isCraftDetails = matchPath('/crafts/:id', location.pathname)
 
     const pageTitles = {
-        '/': "Tina Lin - UX/UI Designer & Front-End Developer",
+        '/': "Tina Lin UX/UI Designer & Front-End Developer",
         '/about': "About Tina Lin - UX/UI Designer & Front-End Developer",
         '/projects': "Crafts- Tina Lin's Portfolio, UX/UI Designer & Front-End Developer"
     };

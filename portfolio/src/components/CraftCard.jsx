@@ -53,7 +53,7 @@ function CraftCard({ title, src, mediaType, skills, id, content, status }) {
                             <div className="flex flex-wrap gap-2">
                                 {skills.map((skill, index) => (
                                     <div className="inline-block" key={index}>
-                                        <span className="font-roundo tracking-[.8px] md:tracking-[1.5px] text-white bg-charcoal px-3 py-1 border rounded-md text-sm text-nowrap">
+                                        <span className="font-roundo tracking-[.8px] md:tracking-[1.5px] text-white bg-charcoal px-3 py-1 rounded-md text-sm text-nowrap">
                                             {skill}
                                         </span>
                                     </div>
@@ -107,7 +107,7 @@ function CraftCard({ title, src, mediaType, skills, id, content, status }) {
                             <div className="flex flex-wrap gap-2">
                                 {skills.map((skill, index) => (
                                     <div className="inline-block" key={index}>
-                                        <span className="font-roundo tracking-[.8px] md:tracking-[1.5px] text-white bg-charcoal px-3 py-1 border rounded-md text-sm text-nowrap">
+                                        <span className="font-roundo tracking-[.8px] md:tracking-[1.5px] text-white bg-charcoal px-3 py-1 rounded-md text-sm text-nowrap">
                                             {skill}
                                         </span>
                                     </div>
