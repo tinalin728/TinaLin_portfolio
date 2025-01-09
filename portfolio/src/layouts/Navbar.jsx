@@ -98,7 +98,7 @@ function Navbar() {
                                 <g className="logo" data-name="Layer 1">
                                     <polygon
                                         points="0 2 0 39 62 39 62 154 99 154 99 39 99 24 99 2 0 2"
-                                        fill={isOpen ? "#FBF8F0" : "black"}
+                                        fill="black"
                                     />
                                     <circle
                                         cx="140"
