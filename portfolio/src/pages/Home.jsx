@@ -353,7 +353,7 @@ function Home() {
                                 className="hidden md:block md:absolute md:-translate-x-1/2 md:-translate-y-1/2 md:origin-center md:mt-0"
                                 style={{ top: pos.top, left: pos.left }}
                             >
-                                <img src={outline} loading="lazy" alt="" className="w-full md:scale-100 lg:scale-105" />
+                                <img src={outline} loading="lazy" alt="" className="w-full md:scale-100 lg:scale-115" />
                             </div>
                         );
                     })}
