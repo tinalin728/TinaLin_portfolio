@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom';
 import { useParams, useNavigate } from 'react-router-dom'
 import { craftsData } from '../data/craftsData'
@@ -12,6 +12,7 @@ import { Helmet } from 'react-helmet';
 
 import PrimaryBtn from '../components/buttons/PrimaryBtn';
 import arrow from '../../public/assets/icons/arrow.svg';
+import LazyLoading from '../components/LazyLoading';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -55,8 +56,8 @@ function CraftDetail() {
         });
     }, [id]);
 
-
-
+    const videoRef = useRef(null);
+    const [isLoaded, setIsLoaded] = useState(false);
 
     return (
         <>
@@ -142,6 +143,7 @@ function CraftDetail() {
                                             src={craft.overview.media.src}
                                             alt={craft.overview.media.altText}
                                             className="max-w-[500px]"
+                                            loading='lazy'
                                         />
                                         <p className="text-center text-sm mt-2 text-dark-grey">
                                             {craft.overview.media.caption}
@@ -149,7 +151,13 @@ function CraftDetail() {
                                     </div>
                                 ) : (
                                     <div className="relative w-full">
-                                        <video
+                                        {/* <video
+                                            src={craft.overview.media.src}
+                                            preload="none"
+                                            autoPlay muted playsInline loop
+                                            className='relative object-cover max-w-full md:h-auto transition duration-500 ease-in-out rounded-xl overflow-hidden'
+                                        /> */}
+                                        <LazyLoading
                                             src={craft.overview.media.src}
                                             preload="none"
                                             autoPlay muted playsInline loop
@@ -157,7 +165,6 @@ function CraftDetail() {
                                         />
                                         <p className="text-center text-sm mt-2 text-dark-grey">
                                             {craft.overview.media.caption}
-
                                         </p>
                                     </div>
                                 )}
@@ -196,11 +203,11 @@ function CraftDetail() {
                                 className="group block p-2 border-2 rounded-lg shadow-lg relative overflow-hidden"
                             >
                                 {project.media === "video" ? (
-                                    <video
+                                    <LazyLoading
                                         src={project.cover}
                                         alt={project.banner.image.altText}
                                         autoPlay muted playsInline loop
-                                        className="w-full border-2"
+                                        className="w-full"
                                     />
                                 ) : (
                                     <img src={project.cover}
