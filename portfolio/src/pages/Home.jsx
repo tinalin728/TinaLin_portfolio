@@ -188,9 +188,9 @@ function Home() {
             // Calculate the scale dynamically based on screen width
             const defaultScale =
                 screenWidth > 1920
-                    ? 1.48
+                    ? 1.3
                     : screenWidth > 1440
-                        ? 1 + (0.48 * (screenWidth - 1440)) / (1920 - 1440)
+                        ? 1 + (0.3 * (screenWidth - 1440)) / (1920 - 1440)
                         : 1;
 
 
@@ -256,9 +256,9 @@ function Home() {
                 const screenWidth = window.innerWidth;
                 const dynamicScale =
                     screenWidth > 1920
-                        ? 1.48
+                        ? 1.3
                         : screenWidth > 1440
-                            ? 1 + (0.48 * (screenWidth - 1440)) / (1920 - 1440)
+                            ? 1 + (0.3 * (screenWidth - 1440)) / (1920 - 1440)
                             : 1;
 
                 // Animates the glitch element to the calculated x and y positions.
