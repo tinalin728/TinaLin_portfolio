@@ -281,14 +281,14 @@ function About() {
                                 </div>
 
                                 <div>
-                                    <p className='indent-4 pt-4 mb-2 font-roundo-medium text-[20px]'>Hi I'm Tina!</p>
-                                    <p className='indent-4 mb-2'>
+                                    <p className='pt-4 mb-2 font-roundo-medium text-[20px]'>Hi I'm Tina!</p>
+                                    <p className='mb-3'>
                                         With a background in Linguistics and Education, I’ve always tried to find ways to bring creativity into my professional life, whether through creating interactive curriculums to meet the diverse needs of children or designing engaging materials using everyday items.
                                     </p>
-                                    <p className='indent-4'>
+                                    <p className=''>
                                         What really drew me into the design and tech industry was when I was introduced to
                                         <a href="https://lingraphica.com/aac-devices/what-is-an-aac-device/" target='_blank' className='text-base font-roundo tracking-normal md:text-[18px] capitalize text-dark-grey mx-2'>AAC devices</a>
-                                        as a communication aid for autistic children at work. It showed me how thoughtful design and technology can bridge communication gaps and improve lives, which led me to pursue the New Media Design and Development program at BCIT, where I discovered my path for both design and development.
+                                        as a communication aid for autistic children at work. It showed me how thoughtful design and technology can bridge communication gaps and improve lives, which led me to pursue the New Media Design and Development program at BCIT, where I've discovered my passion for both design and development.
                                     </p>
                                     <div className='mt-10'>
                                         <PrimaryBtn
