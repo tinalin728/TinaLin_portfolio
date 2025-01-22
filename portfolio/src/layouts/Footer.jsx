@@ -10,7 +10,7 @@ import { faEnvelope } from "@fortawesome/free-regular-svg-icons"
 
 import WindowWidth from '../hooks/WindowWidth';
 
-import coffee from '../../public/assets/icons/coffee.png'
+import coffee from '../../public/assets/icons/coffee-white.png'
 import { useGSAP } from '@gsap/react';
 
 import HorizontalScroll from '../components/HorizontalScroll';
@@ -358,18 +358,6 @@ function Footer() {
 
     return (
         <footer ref={containerRef} className='relative h-full overflow-hidden'>
-            {/* <HorizontalScroll speed={.1} bgColor=''>
-                <span className='font-roundo-medium uppercase tracking-widest'>Web design</span>
-                <div className='w-1 h-1 rounded-full bg-gray-500'> </div>
-                <span className='font-roundo-medium uppercase tracking-widest'>Ux/ui design</span>
-                <div className='w-1 h-1 rounded-full bg-gray-500'> </div>
-
-                <span className='font-roundo-medium uppercase tracking-widest'>Research</span>
-                <div className='w-1 h-1 rounded-full bg-gray-500'> </div>
-
-                <span className='font-roundo-medium uppercase tracking-widest'>Front-end development</span>
-                <div className='w-1 h-1 rounded-full bg-gray-500'> </div>
-            </HorizontalScroll> */}
             <div ref={wrapperRef} className='relative w-full bg-charcoal overflow-hidden mt-10'>
                 <div className="absolute top-0 left-0 w-full h-full z-10">
                     <canvas ref={canvasRef} className="w-full h-full" />
