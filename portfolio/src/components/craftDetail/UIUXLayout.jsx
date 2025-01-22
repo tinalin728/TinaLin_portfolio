@@ -508,7 +508,7 @@ function UIUXLayout({ craft }) {
 
             </section >
 
-            <section id='reflection' className='content-w'>
+            <section id='reflection' className='content-w pb-20 md:pb-[10rem]'>
                 <div className=''>
                     <div className='py-10 border-b-2 border-light-grey border-dashed'>
                         <span className='text-dark-grey uppercase font-roundo tracking-wider'> Final Thoughts</span>

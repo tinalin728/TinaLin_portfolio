@@ -25,7 +25,10 @@ export const craftsData = [
                 title: 'Target Audience',
                 content: 'Tim Horton\'s app users (first-timers, regular users)'
             },
-            process: 'Research → Ideation → Design → Testing → Iteration → Reflection',
+            process: {
+                header: 'process',
+                content: 'Research → Ideation → Design → Testing → Iteration → Reflection'
+            },
             role: 'Researcher , UX/UI designer',
             duration: '4 weeks - July 2024',
             headline: 'Tim Horton\'s is a beloved Canadian icon, but its app experience wasn\'t living up to its reputation...',
@@ -39,7 +42,7 @@ export const craftsData = [
                 altText: "Tim Horton's",
                 caption: 'Sneak Peek',
             },
-            link: 'skip to prototype'
+            protoLink: 'skip to prototype'
 
         },
 
@@ -329,7 +332,10 @@ export const craftsData = [
                 title: 'Target Audience',
                 content: 'Shoppers struggling to find pants that fit perfectly.'
             },
-            process: 'Research → Ideation → Design → Testing → Iteration → Reflection',
+            process: {
+                header: 'Process',
+                content: 'Research → Ideation → Design → Testing → Iteration → Reflection'
+            },
             role: 'Researcher , UX/UI designer',
             duration: '4 weeks - May 2024',
             headline: 'While online shopping has made it easy and convenient for people, finding pants that fit online has remained a challenge...',
@@ -343,17 +349,10 @@ export const craftsData = [
                 caption: 'Sneak Peek',
             },
 
-            link: 'skip to prototype'
+            protoLink: 'skip to prototype'
 
         },
 
-
-        process: {
-            image: {
-                src: '/assets/pm/design-process.svg',
-                altText: 'design process'
-            }
-        },
 
         stickyNav: [
             {
@@ -625,7 +624,7 @@ export const craftsData = [
 
     {
         id: 2,
-        type: 'coding',
+        type: 'html',
         status: 'completed',
         title: 'Basics. - Online Apparel Store',
         media: "image",
@@ -671,7 +670,10 @@ export const craftsData = [
                 title: 'Tools',
                 content: 'Figma , HTML , TailwindCSS , Javascript'
             },
-            process: 'Planning → Design → Develop → Final',
+            process: {
+                header: 'Process',
+                content: 'Planning → Design → Develop → Final'
+            },
             role: 'Product Owner, Front-end developer',
             duration: '5 weeks - May, 2024 (Project itself) , 3 weeks - Oct, 2024 (Revision)',
             headline: 'Creating a minimalist e-commerce experience that blends style and functionality...',
@@ -684,7 +686,10 @@ export const craftsData = [
                 altText: "basics",
                 caption: 'Sneak Peek',
             },
-            link: 'skip to results'
+            webLink: {
+                text: 'Live Demo',
+                link: "https://basics.tinalin.ca/"
+            },
         },
 
         contribution: {
@@ -845,10 +850,60 @@ export function fetchProductList(dataPath, containerId, productType, callback) {
             },
         ]
     },
+
     {
         id: 4,
-        type: 'coding',
-        status: 'incomplete',
+        type: 'react',
+        status: 'completed',
+        title: 'Nomly: Recipe Finder & Grocery List Web App',
+        media: "image",
+        cover: "/assets/nomly/banner.png",
+        banner: {
+            subHeader: 'Nomly - Web App',
+            header: 'Recipe Discovery & Grocery Planning',
+            image: {
+                src: '/assets/nomly/banner.png',
+                altText: 'Nomly banner',
+                classes: 'scale-125'
+            },
+        },
+
+
+        overview: {
+            user: {
+                title: 'Tools',
+                content: 'Figma , React.JS , TailwindCSS, Spoonacular API'
+            },
+            process: {
+                header: 'Features',
+                content: 'Explore Recipes, Add to Favorites, Create shopping list, dark mode'
+            },
+            role: 'Web Designer, Front-end developer',
+            duration: '2 weeks - Dec, 2024',
+            headline: 'Leveraging Spoonacular API to develop an web app that streamlines recipe discovery and grocery management.',
+            content: "Nomly is a web app designed to provide users with an intuitive platform for discovering recipes, managing saved favorites, and generating grocery lists. Built with React and TailwindCSS, the app integrates the Spoonacular API to fetch real-time recipe data.",
+
+            challenge: 'Transitioning from HTML to React.js was a bit challenging at first. I was used to the simplicity of static HTML, but React introduced new concepts like components, state management, and passing props.',
+
+            solution: 'I focused on component-based thinking and practiced state management through small features like recipe cards and favorite lists. Learning to lift state and pass props effectively took time, but breaking down complex tasks and using resources like documentation and tutorials helped me gain confidence and streamline development.',
+            media: {
+                type: 'image',
+                src: '/assets/nomly/intro.png',
+                altText: "Nomly",
+                caption: 'Sneak Peek',
+            },
+            webLink: {
+                text: 'Live Demo',
+                link: "https://nomly.tinalin.ca/"
+            },
+        },
+
+    },
+
+    {
+        id: 6,
+        type: 'design',
+        status: 'completed',
         title: 'Zen Matcha',
         media: "image",
         cover: "/assets/homepage/zenmatcha/cover.jpg",
@@ -860,7 +915,6 @@ export function fetchProductList(dataPath, containerId, productType, callback) {
                 src: '/assets/zm/logoname.svg',
                 alt: 'tim horton\'s app redesign',
                 classes: "scale-[.50] w-fit h-fit"
-
             },
         },
 
@@ -883,20 +937,29 @@ export function fetchProductList(dataPath, containerId, productType, callback) {
         // },
 
         overview: {
-            user: 'Tim Horton\'s app users (first-timers, regular users)',
-            process: 'Research → Ideation → Design → Testing → Iteration → Reflection',
-            role: 'Researcher , UX/UI designer',
-            duration: '4 weeks - July 2024',
-            headline: 'Tim Horton\'s is a beloved Canadian icon, but its app experience wasn\'t living up to its reputation...',
-            content: "As a loyal customer, I often found the offer redemption flow clunky and unintuitive. This project became my opportunity to reimagine the app\’s user experience, focusing on simplifying the offer redemption process and refreshing the overall design.",
-            challenge: 'Redesigning the mobile app’s offer redemption flow to improve usability and satisfaction.',
-            solution: 'A streamlined process that eliminates confusion and enables users to redeem offers effortlessly.',
-            img: {
-                src: '/assets/tims/detail_new.png',
-                altText: 'ProAlign',
-                caption: 'Sneak Peak'
-            }
+            user: {
+                title: 'Tools',
+                content: 'Figma , HTML , TailwindCSS , Javascript'
+            },
+            process: {
+                header: 'Process',
+                content: 'Planning → Design → Develop → Final'
+            },
+            role: 'Product Owner, Front-end developer',
+            duration: '5 weeks - May, 2024 (Project itself) , 3 weeks - Oct, 2024 (Revision)',
+            headline: 'Creating a minimalist e-commerce experience that blends style and functionality...',
+            content: "For the Basics project, I worked with a team of four to design and develop an e-commerce platform for minimalist apparels. The project aimed to simulate a real-world team environment while implementing Agile methodologies for efficient project management. As both the Product Owner and Front-End Developer, I oversaw the project timeline while building the website from scratch.",
+            challenge: 'Developing a five-page website from scratch that aligned with user stories, all within a 5-week timeline and part-time schedule.',
+            solution: 'Delivered a responsive five-page website built with HTML, TailwindCSS, and JavaScript, designed to align with user stories and provide a seamless user experience.',
+            media: {
+                type: 'image',
+                src: '/assets/basics/intro.png',
+                altText: "basics",
+                caption: 'Sneak Peek',
+            },
+            link: 'skip to results'
         },
+
 
         featImg: {
             src: '/assets/zm/foodbag.jpg',

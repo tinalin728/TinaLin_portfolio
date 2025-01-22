@@ -1,81 +1,67 @@
 {
-    "about": [
-        {
-            "id": 2,
-            "title": "Web Design",
-            "content": "I craft ideas and solutions to bridge people and purpose..",
-            "icon": "/assets/homepage/web-design.svg",
-            "width": 100
-        },
-        {
-            "id": 3,
-            "title": "UX/UI Design",
-            "content": "I build user-friendly and visually appealing interfaces for intuitive digital experiences.",
-            "icon": "/assets/homepage/uxui.svg",
-            "width": 120
-        },
-        {
-            "id": 4,
-            "title": "Front-End Development",
-            "content": "I bring designs to life by coding responsive, functional, and engaging web interfaces.",
-            "icon": "/assets/homepage/front-end.svg",
-            "width": 120
-        }
-    ],
     "crafts": [
         {
             "id": 1,
             "type": "UXUI",
             "title": "Tim Horton's App Redesign",
             "media": "video",
-            "src": "/assets/homepage/tims/cover.mp4",
+            "src": "/assets/homepage/tims/tims.mp4",
             "skills": [
-                "Research",
-                "UX/UI Design",
-                "User Testing"
+                "UX/UI"
             ],
-            "content": "Redesigning the flow of redeeming offers on the mobile app",
+            "content": "This UX case study focused on redesigning the flow of redeeming offers on the mobile app.",
             "status": "complete"
         },
         {
-            "id": 2,
+            "id": 4,
             "type": "coding",
-            "title": "Basics.",
-            "media": "video",
-            "src": "/assets/homepage/basics/cover.mp4",
+            "title": "Nomly: Recipe Finding + Grocery List Web App",
+            "media": "image",
+            "src": "/assets/nomly/cover.jpg",
             "skills": [
-                "HTML",
-                "JS",
-                "Tailwind",
-                "Project Management",
-                "Collaboration"
+                "Web Development",
+                "React.JS",
+                "Tailwind"
             ],
-            "content": "Designing and developing an online apparel store",
+            "content": "Branding for an online dessert store",
             "status": "complete"
         },
         {
             "id": 3,
             "type": "UXUI",
-            "title": "FitBot",
+            "title": "FitBot - App for finding the perfect pants online",
             "media": "image",
             "src": "/assets/homepage/pm/cover2.jpg",
             "skills": [
-                "Research",
-                "UX/UI Design",
-                "User Testing"
+                "UX/UI"
             ],
             "content": "Creating Solutions for finding the perfect fit for pants",
             "status": "complete"
         },
         {
-            "id": 4,
-            "type": "UXUI",
-            "title": "Zen Matcha",
+            "id": 2,
+            "type": "agile",
+            "title": "Basics. - apparel store website",
             "media": "image",
-            "src": "/assets/homepage/zenmatcha/cover.jpg",
+            "src": "/assets/homepage/basics/cover.jpg",
             "skills": [
-                "Branding",
-                "Graphic Design"
+                "Web Development",
+                "HTML",
+                "Tailwind"
+            ],
+            "content": "Leading an agile project and developing an online apparel store",
+            "status": "complete"
+        },
+        {
+            "id": 5,
+            "type": "coding",
+            "title": "CoreVault - SaaS Landing Page",
+            "media": "image",
+            "src": "/assets/homepage/corevault/cover.jpg",
+            "skills": [
+                "Web Development",
+                "React.JS",
+                "Tailwind"
             ],
             "content": "Branding for an online dessert store",
             "status": "incomplete"

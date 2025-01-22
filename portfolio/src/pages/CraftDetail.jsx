@@ -13,6 +13,7 @@ import { Helmet } from 'react-helmet';
 import PrimaryBtn from '../components/buttons/PrimaryBtn';
 import arrow from '../../public/assets/icons/arrow.svg';
 import LazyLoading from '../components/LazyLoading';
+import ReactLayout from '../components/craftDetail/ReactLayout';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -47,14 +48,14 @@ function CraftDetail() {
         };
     }, [craft])
 
-    useEffect(() => {
-        // Scroll to the top of the page whenever the `id` changes
-        window.scrollTo({
-            top: 0,
-            left: 0,
-            behavior: 'auto', // You can change to 'auto' for instant scroll
-        });
-    }, [id]);
+    // useEffect(() => {
+    //     // Scroll to the top of the page whenever the `id` changes
+    //     window.scrollTo({
+    //         top: 0,
+    //         left: 0,
+    //         behavior: 'auto', // You can change to 'auto' for instant scroll
+    //     });
+    // }, [id]);
 
     const videoRef = useRef(null);
     const [isLoaded, setIsLoaded] = useState(false);
@@ -87,6 +88,7 @@ function CraftDetail() {
                     <div className='flex-1'>
                         <img src={craft.banner.image.src} alt={craft.banner.image.altText} loading="lazy" className={`${craft.banner.image.classes}`} />
                     </div>
+
                 </div>
             </section>
 
@@ -102,20 +104,20 @@ function CraftDetail() {
                     <div>
                         <div className='flex flex-col gap-6 md:flex-row md:justify-center md:gap-10 my-10'>
                             <div className='flex-1'>
-                                <p className='font-roundo-medium uppercase tracking-wider'>Role</p>
+                                <p className='font-roundo-medium uppercase tracking-wider underline underline-offset-[4px]'>Role</p>
                                 <p>{craft.overview.role}</p>
                             </div>
                             <div className='flex-1'>
-                                <p className='font-roundo-medium uppercase tracking-wider'>Project Timeline</p>
+                                <p className='font-roundo-medium uppercase tracking-wider underline underline-offset-[4px]'>Project Timeline</p>
                                 <p>{craft.overview.duration}</p>
                             </div>
                             <div className='flex-1'>
-                                <p className='font-roundo-medium uppercase tracking-wider'>{craft.overview.user.title}</p>
+                                <p className='font-roundo-medium uppercase tracking-wider underline underline-offset-[4px]'>{craft.overview.user.title}</p>
                                 <p>{craft.overview.user.content}</p>
                             </div>
                             <div className='flex-1'>
-                                <p className='font-roundo-medium uppercase tracking-wider'>Process</p>
-                                <p>{craft.overview.process}</p>
+                                <p className='font-roundo-medium uppercase tracking-wider underline underline-offset-[4px]'>{craft.overview.process.header}</p>
+                                <p>{craft.overview.process.content}</p>
                             </div>
                         </div>
 
@@ -124,14 +126,24 @@ function CraftDetail() {
                             <div className='basis-2/3'>
                                 <h3 className='mb-10 ital'>{craft.overview.headline} </h3>
                                 <p className='mb-10'>{craft.overview.content}</p>
-                                <p className='font-roundo-medium uppercase tracking-wider'>The Challenge</p>
+                                <p className='font-roundo-medium uppercase tracking-wider underline underline-offset-[4px]'>The Challenge</p>
                                 <p className='mb-10'>{craft.overview.challenge}</p>
 
-                                <p className='font-roundo-medium uppercase tracking-wider'> The Solution</p>
+                                <p className='font-roundo-medium uppercase tracking-wider underline underline-offset-[4px]'> The Solution</p>
                                 <p>{craft.overview.solution}</p>
 
                                 <div className='mt-14'>
-                                    <a href="#prototype" className='px-6 py-4 rounded-full border-2 font-roundo-medium shadow-charcoal hover:shadow-charcoal-hover transition duration-300'>{craft.overview.link}</a>
+                                    {
+                                        craft.overview.protoLink && (
+                                            <a href="#prototype" className='px-6 py-4 rounded-full border-2 font-roundo-medium shadow-charcoal hover:shadow-charcoal-hover transition duration-300'>{craft.overview.protoLink}</a>
+                                        )
+                                    }
+                                    {
+                                        craft.overview.webLink && (
+                                            <a href={craft.overview.webLink.link} target='__blank' className='px-6 py-4 rounded-full border-2 font-roundo-medium shadow-charcoal hover:shadow-charcoal-hover transition duration-300'>{craft.overview.webLink.text}</a>
+                                        )
+                                    }
+
                                 </div>
 
                             </div>
@@ -179,12 +191,11 @@ function CraftDetail() {
                 <div className='h-full'>
                     {/* render uiux or coding project */}
 
-                    {craft.type === 'UXUI' ?
-                        (<UIUXLayout craft={craft} />) :
-                        craft.type === 'coding' ? (
-                            <CodingLayout craft={craft} />) : (
-                            <DesignLayout craft={craft} />
-                        )
+                    {craft.type === 'UXUI' ? (<UIUXLayout craft={craft} />) :
+                        craft.type === 'html' ? (<CodingLayout craft={craft} />) :
+                            craft.type === 'react' ? (<ReactLayout craft={craft} />) :
+                                craft.type === 'design' ? (<DesignLayout craft={craft} />) :
+                                    (<p>Coming Soon!</p>)
                     }
                 </div>
             </div>

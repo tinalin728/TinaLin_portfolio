@@ -39,13 +39,12 @@
     }
 
     main {
-        @apply bg-[#FBF8F0] overflow-hidden
+        @apply overflow-hidden
     }
 
     body {
-        @apply overflow-x-hidden bg-[#FBF8F0];
+        @apply overflow-x-hidden bg-light-yellow-bg text-brown;
         cursor: none !important;
-
     }
 
 
@@ -54,6 +53,8 @@
     }
 
     .max-w-container {
+        max-width: 110rem;
+        width: 100%;
         margin: 0 auto;
         padding: 0 4rem;
         box-sizing: border-box;
@@ -66,7 +67,7 @@
     }
 
     .max-content-w {
-        max-width: 100rem;
+        max-width: 110rem;
     }
 
     .content-gap {
@@ -103,8 +104,8 @@
     }
 
     .big-header {
-        font-size: clamp(2rem, 1.1713rem + 3.5359vw, 4.5rem);
-        /* Default scaling */
+        font-size: clamp(2rem, 1.1592rem + 3.5874vw, 4.5rem);
+
         @apply font-craftwork font-normal tracking-[.25rem] uppercase text-nowrap;
 
         @media (min-width: 1920px) {
@@ -114,9 +115,14 @@
     }
 
 
+    .sub-header-normal {
+        font-size: clamp(3.8rem, 2.607rem + 2.2099vw, 6rem);
+        @apply font-craftwork font-extrabold tracking-wide normal-case
+    }
+
     .sub-header {
-        font-size: clamp(3.125rem, 2.607rem + 2.2099vw, 6rem);
-        @apply font-craftwork font-extrabold uppercase text-stroke text-light-yellow-bg tracking-wide text-nowrap
+        font-size: clamp(3.8rem, 2.607rem + 2.2099vw, 5rem);
+        @apply font-craftwork font-extrabold uppercase text-stroke text-light-yellow-bg text-nowrap tracking-tighter
     }
 
     /* .section-header {
@@ -157,5 +163,21 @@
 
     .animation-border {
         @apply animate-border
+    }
+
+    .text-shadow-custom {
+        text-shadow:
+            0.5px 0.5px 0 #342A1A,
+            1px 1px 0 #342A1A,
+            1.5px 1.5px 0 #342A1A,
+            2px 2px 0 #342A1A,
+            2.5px 2.5px 0 #342A1A,
+            3px 3px 0 #342A1A,
+            3.5px 3.5px 0 #342A1A,
+            4px 4px 0 #342A1A,
+            4.5px 4.5px 0 #342A1A,
+            5px 5px 0 #342A1A,
+            5.5px 5.5px 0 #342A1A,
+            6px 6px 0 #342A1A;
     }
 }

@@ -193,7 +193,7 @@ function CodingLayout({ craft }) {
                     <div className='content-w'>
                         <h2 className='mb-6'>{craft.dev.component.header}</h2>
                         <p className='mb-6'>{craft.dev.component.content}</p>
-                        <div className='flex flex-col gap-10 lg:flex-row'>
+                        <div className='flex flex-col gap-10 lg:flex-row overflow-hidden'>
                             <Tabs selectedIndex={activeTab} onSelect={(index) => setActiveTab(index)}>
                                 <TabList className='flex -mb-2'>
                                     {craft.dev.component.snippets.map((item, index) => (
@@ -208,10 +208,11 @@ function CodingLayout({ craft }) {
                                         <SyntaxHighlighter language='javascript'
                                             style={tomorrow} showLineNumbers={true} wrapLines
                                             customStyle={{
-                                                width: "100%",
-                                                maxWidth: "65rem",
-                                                height: "500px",
+                                                width: '100%',
+                                                minHeight: "500px",
+                                                height: '100%',
                                                 overflow: "auto",
+                                                letterSpacing: '.8px'
                                             }}
                                         >
                                             {item.code}
@@ -224,7 +225,7 @@ function CodingLayout({ craft }) {
                 </div>
             </section>
 
-            <section id='prototype'>
+            <section id='prototype' className='pb-20 md:pb-[10rem]'>
                 <div className='content-w'>
                     <div className='py-10 border-b-2 border-light-grey border-dashed'>
                         <span className='text-dark-grey uppercase font-roundo tracking-wider'>Results</span>

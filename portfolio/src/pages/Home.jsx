@@ -32,6 +32,7 @@ import arrow from '../../public/assets/icons/arrow.svg';
 import arrowD from '../../public/assets/icons/arrow_down.svg';
 import outline from '../../public/assets/homepage/outlineLogo.svg'
 import logo from '../../public/assets/logo.svg'
+import uiux from '../../public/assets/homepage/uxui.svg'
 
 
 import design from "../../public/assets/homepage/web-design.svg"
@@ -188,10 +189,10 @@ function Home() {
             // Calculate the scale dynamically based on screen width
             const defaultScale =
                 screenWidth > 1920
-                    ? 1.3
+                    ? 1.25
                     : screenWidth > 1440
-                        ? 1 + (0.3 * (screenWidth - 1440)) / (1920 - 1440)
-                        : 1;
+                        ? 1.1 + (0.15 * (screenWidth - 1490)) / (1920 - 1490)
+                        : 1.1;
 
 
             console.log(`Screen Width: ${screenWidth}, Default Scale: ${defaultScale}`); // Debugging
@@ -215,8 +216,6 @@ function Home() {
             window.removeEventListener("resize", applyInitialScaling);
         };
     }, []);
-
-
 
 
     useEffect(() => {
@@ -256,10 +255,10 @@ function Home() {
                 const screenWidth = window.innerWidth;
                 const dynamicScale =
                     screenWidth > 1920
-                        ? 1.3
+                        ? 1.25
                         : screenWidth > 1440
-                            ? 1 + (0.3 * (screenWidth - 1440)) / (1920 - 1440)
-                            : 1;
+                            ? 1.1 + (0.15 * (screenWidth - 1490)) / (1920 - 1490)
+                            : 1.1;
 
                 // Animates the glitch element to the calculated x and y positions.
                 gsap.to(glitch, {
@@ -280,6 +279,71 @@ function Home() {
     }, [mousePosition, animationComplete]);
 
 
+    const aboutRef = useRef(null);
+    useEffect(() => {
+        gsap.fromTo(
+            '.about-bg',
+            {
+                y: 100,
+                opacity: 0
+            },
+            {
+                y: 0,
+                opacity: .8,
+                duration: 1.2,
+                ease: 'power3.out',
+                scrub: true,
+
+                scrollTrigger: {
+                    trigger: aboutRef.current,
+                    start: 'top 20%',
+                    end: 'bottom top',
+                    toggleActions: 'play none none reverse',
+                },
+            }
+        );
+        gsap.fromTo(
+            '.about-bg-back',
+            {
+                y: 100,
+                opacity: 0
+            },
+            {
+                y: 0,
+                opacity: .4,
+                duration: 1.2,
+                ease: 'power3.out',
+                scrub: true,
+
+                scrollTrigger: {
+                    trigger: aboutRef.current,
+                    start: 'top 20%',
+                    end: 'bottom top',
+                    toggleActions: 'play none none reverse',
+                },
+            }
+        );
+        gsap.fromTo(
+            '.about-tag',
+            {
+                rotate: '0'
+            },
+            {
+                rotate: '15deg',
+                duration: 1.2,
+                ease: 'power3.out',
+                scrub: true,
+                scrollTrigger: {
+                    trigger: aboutRef.current,
+                    start: 'top 20%',
+                    end: 'bottom top',
+                    toggleActions: 'play none none reverse',
+                },
+            }
+        );
+    }, []);
+
+
     const craftRef = useRef(null);
     useGSAP(() => {
         const scrollTriggerConfig = {
@@ -292,8 +356,9 @@ function Home() {
         // Animate recent text
         gsap.fromTo(
             ".recent",
-            { y: -50, rotate: 0 },
+            { y: -50, rotate: 0, opacity: 0 },
             {
+                opacity: 1,
                 y: 0,
                 rotate: -6,
                 duration: 0.5,
@@ -308,18 +373,18 @@ function Home() {
             { textShadow: "none" },
             {
                 textShadow: `
-                    0.5px 0.5px 0 #1e1e1e,
-                    1px 1px 0 #1e1e1e,
-                    1.5px 1.5px 0 #1e1e1e,
-                    2px 2px 0 #1e1e1e,
-                    2.5px 2.5px 0 #1e1e1e,
-                    3px 3px 0 #1e1e1e,
-                    3.5px 3.5px 0 #1e1e1e,
-                    4px 4px 0 #1e1e1e,
-                    4.5px 4.5px 0 #1e1e1e,
-                    5px 5px 0 #1e1e1e,
-                    5.5px 5.5px 0 #1e1e1e,
-                    6px 6px 0 #1e1e1e`,
+                    0.5px 0.5px 0 #342A1A,
+                    1px 1px 0 #342A1A,
+                    1.5px 1.5px 0 #342A1A,
+                    2px 2px 0 #342A1A,
+                    2.5px 2.5px 0 #342A1A,
+                    3px 3px 0 #342A1A,
+                    3.5px 3.5px 0 #342A1A,
+                    4px 4px 0 #342A1A,
+                    4.5px 4.5px 0 #342A1A,
+                    5px 5px 0 #342A1A,
+                    5.5px 5.5px 0 #342A1A,
+                    6px 6px 0 #342A1A`,
                 duration: 0.8,
                 ease: "power4.out", // Strong easing for pop-out effect
                 scrollTrigger: { ...scrollTriggerConfig },
@@ -341,16 +406,16 @@ function Home() {
                     x: -3, // Slightly press down
                     y: -3, // Slightly press right
                     textShadow: `
-                        1px 1px 0 #1e1e1e,
-                        2px 2px 0 #1e1e1e,
-                        3px 3px 0 #1e1e1e,
-                        4px 4px 0 #1e1e1e,
-                        5px 5px 0 #1e1e1e,
-                        6px 6px 0 #1e1e1e,
-                        7px 7px 0 #1e1e1e,
-                        8px 8px 0 #1e1e1e,
-                        9px 9px 0 #1e1e1e,
-                        10px 10px 0 #1e1e1e
+                        1px 1px 0 #342A1A,
+                        2px 2px 0 #342A1A,
+                        3px 3px 0 #342A1A,
+                        4px 4px 0 #342A1A,
+                        5px 5px 0 #342A1A,
+                        6px 6px 0 #342A1A,
+                        7px 7px 0 #342A1A,
+                        8px 8px 0 #342A1A,
+                        9px 9px 0 #342A1A,
+                        10px 10px 0 #342A1A
                         `,
                     duration: 0.2,
                     ease: "power1.inOut", // Smooth press effect
@@ -367,18 +432,18 @@ function Home() {
                     x: 0, // Reset position
                     y: 0, // Reset position
                     textShadow: `
-                        0.5px 0.5px 0 #1e1e1e,
-                    1px 1px 0 #1e1e1e,
-                    1.5px 1.5px 0 #1e1e1e,
-                    2px 2px 0 #1e1e1e,
-                    2.5px 2.5px 0 #1e1e1e,
-                    3px 3px 0 #1e1e1e,
-                    3.5px 3.5px 0 #1e1e1e,
-                    4px 4px 0 #1e1e1e,
-                    4.5px 4.5px 0 #1e1e1e,
-                    5px 5px 0 #1e1e1e,
-                    5.5px 5.5px 0 #1e1e1e,
-                    6px 6px 0 #1e1e1e`, // Reset shadow
+                        0.5px 0.5px 0 #342A1A,
+                    1px 1px 0 #342A1A,
+                    1.5px 1.5px 0 #342A1A,
+                    2px 2px 0 #342A1A,
+                    2.5px 2.5px 0 #342A1A,
+                    3px 3px 0 #342A1A,
+                    3.5px 3.5px 0 #342A1A,
+                    4px 4px 0 #342A1A,
+                    4.5px 4.5px 0 #342A1A,
+                    5px 5px 0 #342A1A,
+                    5.5px 5.5px 0 #342A1A,
+                    6px 6px 0 #342A1A`, // Reset shadow
                     duration: 0.3,
                     ease: "power3.out", // Smooth reset
                 });
@@ -390,13 +455,13 @@ function Home() {
     return (
         <>
             <div className='relative'>
-                <section ref={heroRef} className='relative h-[85vh] w-full outer-container'>
+                <section ref={heroRef} className='relative h-[85vh] w-full outer-container mb-[10rem]'>
                     {positions.map((pos, index) => {
                         return (
                             <div
                                 key={index}
                                 ref={(el) => (glitchRefs.current[index] = el)}
-                                className="glitch-element hidden md:block md:absolute md:-translate-x-1/2 md:-translate-y-1/2 md:origin-center md:mt-0"
+                                className="glitch-element hidden md:block md:absolute md:-translate-x-1/2 md:-translate-y-1/2 md:origin-center md:-mt-2"
                                 style={{ top: pos.top, left: pos.left }}
                             >
                                 <img src={outline} loading="lazy" alt="" className="w-full" />
@@ -405,131 +470,110 @@ function Home() {
                     })}
 
                     <div className='relative max-w-container w-full h-full flex flex-col justify-center items-center gap-4'>
-                        <div className='inline-flex flex-col items-center justify-center gap-2 -mt-12 md:-mt-10'>
-                            <Parallax speed={isMobile ? -.5 : -1}>
-                                <div ref={refs.line1} className='inline-block px-4 py-2 md:px-8 lg:px-10 lg:py-5 bg-charcoal rounded-md w-fit rotate-6 -translate-x-2'>
-                                    <h1 className='text-white big-header'>The </h1>
-                                </div>
-                            </Parallax>
-                            <Parallax speed={isMobile ? -1 : -2}>
-                                <div ref={refs.line2} className='inline-block px-4 py-2 md:px-6 lg:px-10 lg:py-5 bg-charcoal rounded-md w-fit -rotate-4 translate-x-0'>
-                                    <h1 className='text-white big-header'> Product &</h1>
-                                </div>
-                            </Parallax>
+                        <div className='inline-flex flex-col items-center justify-center gap-2 -mt-12 md:-mt-14'>
+                            <div ref={refs.line1} className='inline-block px-4 py-2 md:px-8 lg:px-10 lg:py-3 xl:py-5 bg-charcoal rounded-md w-fit rotate-6 -translate-x-2'>
+                                <h1 className='text-white big-header'>The </h1>
+                            </div>
+                            <div ref={refs.line2} className='inline-block px-4 py-2 md:px-6 lg:px-10 lg:py-3 xl:py-5 bg-charcoal rounded-md w-fit -rotate-4 translate-x-0'>
+                                <h1 className='text-white big-header'> Product &</h1>
+                            </div>
 
-                            <Parallax speed={isMobile ? -1.5 : -2.5}>
-                                <div ref={refs.line3} className='inline-block px-4 py-2 md:px-6 lg:px-10 lg:py-5 mt-2 md:mt-4 bg-charcoal rounded-md  w-fit rotate-4 -translate-x-[10%]'>
-                                    <h1 className='text-white big-header'>Design of</h1>
-                                </div>
-                            </Parallax>
-                            <Parallax speed={isMobile ? -1 : -3}>
-                                <div ref={refs.line4} className='inline-block px-4 py-2 md:px-6 lg:px-10 lg:py-5  mt-2 md:mt-4 bg-charcoal rounded-md w-fit -rotate-4 translate-x-10'>
-                                    <h1 className='text-white big-header'>Tina Lin</h1>
-                                </div>
-                            </Parallax>
-                        </div>
-
-                        <div className='absolute left-8 md:left-14 bottom-[5%]'>
-                            <div className='flex gap-3 items-start'>
-                                <div>
-                                    <span className='text-base tracking-[3px] font-roundo-medium uppercase'>A UX/UI Designer <br /> who enjoys coding &#x2661;</span>
-                                </div>
+                            <div ref={refs.line3} className='inline-block px-4 py-2 md:px-6 lg:px-10 lg:py-3 xl:py-5 mt-2 md:mt-4 bg-charcoal rounded-md  w-fit rotate-4 -translate-x-[10%]'>
+                                <h1 className='text-white big-header'>Design of</h1>
+                            </div>
+                            <div ref={refs.line4} className='inline-block px-4 py-2 md:px-6 lg:px-10 lg:py-3 xl:py-5 mt-2 md:mt-4 bg-charcoal rounded-md w-fit -rotate-4 translate-x-8'>
+                                <h1 className='text-white big-header'>Tina Lin ⤹</h1>
                             </div>
                         </div>
-                        <div className='hidden md:block md:absolute md:right-14 md:bottom-[5%]'>
-                            <div className='flex gap-3 items-start'>
 
+                        <div className='absolute left-8 md:left-14 bottom-[2%]'>
+                            <div className='flex flex-col items-end'>
+                                <p className='text-base tracking-[3px] font-roundo-medium uppercase'>A UX / UI Designer <br /> who enjoys coding</p>
+                            </div>
+                        </div>
+                        <div className='hidden md:block md:absolute md:right-14 md:bottom-[2%]'>
+                            <div className='flex gap-3 items-start'>
                                 <div className='flex flex-col '>
-                                    <span className='text-base tracking-[3px] font-roundo-medium uppercase text-end'>{time}, PST</span>
                                     <span className='text-base tracking-[3px] font-roundo-medium uppercase'>Vancouver, BC</span>
+
                                 </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </section >
+
+
+                <section ref={aboutRef} className="h-[80vh] max-w-container">
+                    <div className='bg-darker-bg h-full rounded-2xl overflow-hidden'>
+                        <div className='max-w-container py-2 flex items-center justify-center flex-col gap-10 h-full relative'>
+                            <div className='relative z-10 text-center lg:max-w-[60rem]'>
+                                <h1 className='font-roundo-medium normal-case leading-normal text-center text-black'>Design <span className='about-tag text-center font-roundo px-4 py-2 bg-charcoal text-white rounded-md'>meets</span> code, <br /> and I love Both. </h1>
+
+                            </div>
+
+                            <div className='flex items-center justify-center relative z-20'>
+                                <PrimaryBtn
+                                    to='/about'
+                                    text='About Me'
+                                    icon={arrow}
+                                />
+                            </div>
+
+                            <div className='absolute bottom-0 left-1/2 z-0 -translate-x-1/2 lg:left-[20%]'>
+                                <img src={uiux} alt="" className='about-bg opacity-80 ' />
+                            </div>
+                            <div className='absolute top-0 z-0 lg:right-[10%] rotate-180'>
+                                <img src={uiux} alt="" className='about-bg-back opacity-40 ' />
+                            </div>
+
+                        </div>
+                    </div>
+                </section>
+
+                <section ref={craftRef} id='crafts' className="relative h-full pt-[10rem] pb-20 md:pb-[10rem] lg:pb-[15rem]">
+                    <div className='max-w-container relative'>
+                        <div className='relative'>
+                            <div className='recent flex mx-auto w-fit bg-charcoal rounded-md px-4 py-2 rotate-6'>
+                                <span className="text-base tracking-[3px] font-roundo-medium uppercase text-white ">Featured</span >
+                            </div >
+
+                            <div className="mx-auto mb-6 lg:mb-12">
+                                <h2 className="craftHeader text-center sub-header">
+                                    {Array.from("Crafts").map((letter, index) => (
+                                        <span key={index} className="craft-letter inline-block font-craftwork font-extrabold mt-2 text-light-yellow-bg text-stroke uppercase leading-none -mx-[2px] md:mx-0 md:tracking-wider">
+                                            {letter}
+                                        </span>
+                                    ))}
+                                </h2>
+                            </div>
+                            {/* <p className='mb-10 text-base tracking-[3px] font-roundo-medium uppercase'>Feat. Crafts</p> */}
+                            <div className="relative grid grid-cols-1 lg:grid-cols-2 mb-10 gap-8">
+                                {crafts.slice(0, 2).map((craft) => {
+                                    return (
+                                        <CraftCard
+                                            key={craft.id}
+                                            id={craft.id}
+                                            title={craft.title}
+                                            mediaType={craft.media}
+                                            src={craft.src}
+                                            skills={craft.skills}
+                                            content={craft.content}
+                                            status={craft.status}
+                                        />
+                                    );
+                                })}
+                            </div>
+                            <div className='flex items-center justify-center'>
+                                <PrimaryBtn
+                                    to='/crafts'
+                                    text='More Crafts'
+                                    icon={arrow}
+                                />
                             </div>
                         </div>
                     </div>
                 </section >
-
-                <HorizontalScroll speed={.3}>
-                    <div className=' w-[25px]'>
-                        <img src={images[currentImage]} alt="emoji" className="h-[25px] w-[25px]" />
-                    </div>
-                    <span className='font-roundo-medium uppercase tracking-widest text-white'>Web design</span>
-                    <div className=' w-[25px]'>
-                        <img src={images[currentImage]} alt="emoji " className="h-[25px] w-[25px]" />
-                    </div>
-                    <span className='font-roundo-medium uppercase tracking-widest text-white'>Ux/ui design</span>
-                    <div className=' w-[25px]'>
-                        <img src={images[currentImage]} alt="emoji " className="h-[25px] w-[25px]" />
-                    </div>
-                    <span className='font-roundo-medium uppercase tracking-widest text-white'>Research</span>
-                    <div className=' w-[25px]'>
-                        <img src={images[currentImage]} alt="emoji " className="h-[25px] w-[25px]" />
-                    </div>
-                    <span className='font-roundo-medium uppercase tracking-widest text-white'>Front-end development</span>
-                </HorizontalScroll>
-
-                {/* <section className='max-w-container py-[8rem] h-full bg-darker-bg'>
-                    <div className=''>
-                        <div className='flex w-fit bg-charcoal rounded-md px-4 py-2 mb-4'>
-                            <span className="text-base font-roundo tracking-[3px] font-roundo-medium uppercase text-white">About</span >
-                        </div>
-
-                        <h2 className=''>Lorem ipsum dolor sit amet consectetur adipisicing elit. At quo accusamus molestiae voluptatum quia libero, omnis tempora nihil ullam, recusandae exercitationem eveniet, minus quisquam. Molestias dolor incidunt voluptatem doloribus doloremque.</h2>
-                    </div>
-                </section> */}
-
-                <section ref={craftRef} id='crafts' className="relative h-full py-[10rem] bg-darker-bg">
-                    <div className='max-w-container relative rounded-xl'>
-                        <div className='recent flex mx-auto w-fit bg-charcoal rounded-md px-4 py-2 rotate-6'>
-                            <span className="text-base tracking-[3px] font-roundo-medium uppercase text-white">Selected</span >
-                        </div >
-
-                        <div className="text-center mb-6 lg:mb-12">
-                            <h2 className="craftHeader text-center sub-header ">
-                                {Array.from("Crafts").map((letter, index) => (
-                                    <span key={index} className="craft-letter inline-block font-craftwork font-extrabold mt-2 text-light-yellow-bg text-stroke uppercase tracking-wider leading-none">
-                                        {letter}
-                                    </span>
-                                ))}
-                            </h2>
-                        </div>
-
-                        <div className="relative grid grid-cols-1 lg:grid-cols-2 mb-10 gap-6">
-                            {crafts.map((craft) => {
-                                return (
-                                    <CraftCard
-                                        key={craft.id}
-                                        id={craft.id}
-                                        title={craft.title}
-                                        mediaType={craft.media}
-                                        src={craft.src}
-                                        skills={craft.skills}
-                                        content={craft.content}
-                                        status={craft.status}
-                                    />
-                                );
-                            })}
-                        </div>
-                    </div>
-                </section >
-
-                <HorizontalScroll speed={.3} bgColor='bg-light-yellow-bg'>
-                    <div className=' w-[25px]'>
-                        <img src={images[currentImage]} alt="emoji " loading="lazy" className="h-[25px] w-[25px]" />
-                    </div>
-                    <span className='font-roundo-medium uppercase tracking-widest '>Say Hi</span>
-                    <div className=' w-[25px]'>
-                        <img src={images[currentImage]} alt="emoji " loading="lazy" className="h-[25px] w-[25px]" />
-                    </div>
-                    <span className='font-roundo-medium uppercase tracking-widest '>Contact Me</span>
-                    <div className=' w-[25px]'>
-                        <img src={images[currentImage]} alt="emoji " loading="lazy" className="h-[25px] w-[25px]" />
-                    </div>
-                    <span className='font-roundo-medium uppercase tracking-widest'>Say Hi</span>
-                    <div className=' w-[25px]'>
-                        <img src={images[currentImage]} alt="emoji " loading="lazy" className="h-[25px] w-[25px]" />
-                    </div>
-                    <span className='font-roundo-medium uppercase tracking-widest'>Contact Me</span>
-                </HorizontalScroll>
             </div >
         </>
     )

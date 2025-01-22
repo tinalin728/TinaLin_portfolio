@@ -24,7 +24,7 @@ module.exports = withMT({
       fontSize: {
         xs: ['0.75rem', { lineHeight: '1rem' }],
         sm: ['0.875rem', { lineHeight: '1.25rem' }],
-        base: ['1rem', { lineHeight: '30px' }],
+        base: ['1rem', { lineHeight: '33px' }],
         md: ['1.25rem'],
         lg: ['1.375rem'],
         xl: ['1.618rem'],
@@ -42,12 +42,14 @@ module.exports = withMT({
         blue: '#7BB6D8',
         'yellow-light': '#fff5e4',
         'light-yellow-bg': '#FBF8F0',
+        'light-yellow-bg-copy': '#FBF8F0',
         'darker-bg': '#e1dfd8',
         'light-grey-bg': '#F2F1EC',
         'dark-grey': '#717171',
         'light-grey': '#B3B3B3',
         'charcoal': '#1e1e1e',
-        'off-white': '#FAF9F6'
+        'off-white': '#FAF9F6',
+        'brown': '#342A1A'
       },
 
       borderColor: {
@@ -120,7 +122,7 @@ module.exports = withMT({
     function ({ addUtilities }) {
       addUtilities({
         '.text-stroke': {
-          '-webkit-text-stroke': '2px #1e1e1e'
+          '-webkit-text-stroke': '2px #342A1A'
         },
         '.text-white-stroke': {
           '-webkit-text-stroke': '2px #e1dfd8'

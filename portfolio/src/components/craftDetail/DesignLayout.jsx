@@ -1,6 +1,6 @@
 import React from 'react'
 
-function designLayout({ craft }) {
+function DesignLayout({ craft }) {
     return (
         <>
             <div className='py-14 content-w'>
@@ -79,4 +79,4 @@ function designLayout({ craft }) {
     )
 }
 
-export default designLayout
+export default DesignLayout

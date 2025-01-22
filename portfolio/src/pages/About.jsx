@@ -178,11 +178,10 @@ function About() {
             [id]: true, // Set pulsing to true for this button
         }));
 
-        // Remove pulsing animation after 150ms
         setTimeout(() => {
             setPulsing((prev) => ({
                 ...prev,
-                [id]: false, // Reset pulsing state for this button
+                [id]: false,
             }));
         }, 150);
 
@@ -199,12 +198,12 @@ function About() {
 
     return (
         <>
-            <section className='bg-light-yellow-bg py-[8rem] p-0 relative'>
+            <section className='bg-light-yellow-bg py-[6rem] p-0 relative lg:py-[8rem]'>
                 <div className='max-w-container flex flex-col justify-center items-center'>
                     <div className=''>
                         <h2 className="craftHeader text-center sub-header text-nowrap">
                             {Array.from("About").map((letter, index) => (
-                                <span key={index} className="letter inline-block font-craftwork font-extrabold mt-2 text-light-yellow-bg text-stroke uppercase tracking-wider leading-none">
+                                <span key={index} className="letter inline-block font-craftwork font-extrabold mt-2 text-light-yellow-bg text-stroke uppercase leading-none mx-[2px] md:mx-0 lg:mx-0 md:tracking-wider">
                                     {letter}
                                 </span>
                             ))}
@@ -218,36 +217,12 @@ function About() {
 
             </section>
 
-            <div className='bg-darker-bg border-t-2'>
-                <div className='max-w-container max-content-w'>
+            <div className='pb-20 md:pb-[10rem] lg:pb-[15rem]'>
+                <div className='max-w-container'>
                     {/* image */}
-                    <section className='flex flex-col lg:flex-row gap-10 items-center justify-between py-[10rem]'>
+                    <section className='flex flex-col lg:flex-row gap-10 items-center justify-between'>
                         <div className='basis-[35%]'>
-                            {/* <div className='flex flex-col items-center gap-[6rem] -mt-20 mb-10'>
-                                <div className='relative pt-14 max-w-[350px]'>
-                                    <div className="absolute top-[62%] left-[54%] -translate-x-1/2 -translate-y-1/2 w-[101%] h-[115%] bg-light-yellow-bg border-2 rounded-xl z-[1]"></div>
-                                    <div className="absolute top-[60%] left-[52%] -translate-x-1/2 -translate-y-1/2 w-[101%] h-[115%] bg-light-yellow-bg border-2 rounded-xl z-[1]"></div>
 
-                                    <div className="absolute top-[58%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[101%] h-[115%] bg-light-yellow-bg border-2 rounded-xl z-[1]"></div>
-
-
-                                    <div className='relative z-10 mx-auto mb-4'>
-                                        <img src={profilePic} alt="" className='object-cover w-[90%] mx-auto border-2 rounded-md' />
-                                    </div>
-
-                                    <div className='flex justify-between items-center px-6'>
-                                        <div className='flex gap-6 z-20 relative'>
-                                            <FontAwesomeIcon icon={faHeart} className='text-xl' />
-                                            <FontAwesomeIcon icon={faComment} className='text-xl' />
-                                            <FontAwesomeIcon icon={faPaperPlane} className='text-xl' />
-                                        </div>
-
-                                        <div className='relative z-20 w-[25px]'>
-                                            <FontAwesomeIcon icon={faBookmark} className='text-xl' />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> */}
                             <Swiper
                                 effect={'cards'}
                                 grabCursor={true}
@@ -260,7 +235,7 @@ function About() {
                                 {slides.map((slide) => (
                                     <SwiperSlide
                                         key={slide.id}
-                                        className="rounded-xl border-2 flex justify-between items-center bg-light-yellow-bg"
+                                        className="rounded-xl border-2 flex justify-between items-center bg-white"
                                     >
                                         <div className="relative pt-12">
                                             <div className="relative z-10 mx-auto">
@@ -299,7 +274,7 @@ function About() {
                             </Swiper>
                         </div>
 
-                        <div className='basis-[65%] '>
+                        <div className='basis-[65%]'>
                             <div className=''>
                                 <div className='pb-2 leading-none text-orange border-b border-black border-dashed'>
                                     <h3>Peek Into My Life</h3>
@@ -313,12 +288,12 @@ function About() {
                                     <p className='indent-4'>
                                         What really drew me into the design and tech industry was when I was introduced to
                                         <a href="https://lingraphica.com/aac-devices/what-is-an-aac-device/" target='_blank' className='text-base font-roundo tracking-normal md:text-[18px] capitalize text-dark-grey mx-2'>AAC devices</a>
-                                        as a communication aid for autistic children at work. It showed me how thoughtful design and technology can bridge communication gaps and improve lives, which then led me to pursue the New Media Design and Development program at BCIT.
+                                        as a communication aid for autistic children at work. It showed me how thoughtful design and technology can bridge communication gaps and improve lives, which led me to pursue the New Media Design and Development program at BCIT, where I discovered my path for both design and development.
                                     </p>
                                     <div className='mt-10'>
                                         <PrimaryBtn
                                             text='resume'
-                                            href='#'
+                                            href='/resume.pdf'
                                             bgColor='bg-yellow'
                                             icon={iconDownload}
                                             reverseOrder='true'
@@ -329,7 +304,7 @@ function About() {
                         </div>
                     </section>
 
-                    <section className=' flex flex-col items-center justify-between lg:flex-row gap-10 relative'>
+                    <section className='mt-20 flex flex-col items-center justify-between lg:flex-row gap-10 relative'>
                         <div className='lg:basis-[65%] w-full'>
                             <div className='mb-2 border-b border-black border-dashed'>
                                 <h3 className='text-orange'>Skills</h3>
@@ -423,7 +398,7 @@ function About() {
                         </div>
                     </section >
 
-                    <section className='py-[10rem]'>
+                    <section className='pt-[10rem]'>
                         <div className='flex flex-col-reverse items-center lg:flex-row gap-16 relative'>
                             <div className='basis-[35%] relative overflow-hidden bg-white rounded-xl'>
                                 <div className='h-14 w-full absolute top-0 border-2 bg-charcoal rounded-t-xl z-10 text-white flex items-center justify-between px-6'>

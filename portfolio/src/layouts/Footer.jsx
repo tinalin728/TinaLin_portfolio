@@ -13,7 +13,7 @@ import WindowWidth from '../hooks/WindowWidth';
 import coffee from '../../public/assets/icons/coffee.png'
 import { useGSAP } from '@gsap/react';
 
-
+import HorizontalScroll from '../components/HorizontalScroll';
 
 function Footer() {
 
@@ -91,10 +91,7 @@ function Footer() {
         // store images
         const textures = [
             '/assets/pills/french.svg',
-            '/assets/pills/japanese.svg',
-            '/assets/pills/korean.svg',
             '/assets/pills/Icelandic.svg',
-            '/assets/pills/italian.svg',
             '/assets/pills/english.svg',
             '/assets/pills/chinese.svg',
             '/assets/pills/thai.svg',
@@ -105,6 +102,11 @@ function Footer() {
             '/assets/pills/latin.svg',
             '/assets/pills/react.svg',
             '/assets/pills/tailwind.svg',
+            '/assets/pills/text.svg',
+            '/assets/pills/text-2.svg',
+            '/assets/pills/text-3.svg',
+            '/assets/pills/text-4.svg',
+            '/assets/pills/text-5.svg',
         ];
 
         //preload images
@@ -149,28 +151,31 @@ function Footer() {
             const screenWidth = window.innerWidth;
 
             // Adjust pill dimensions based on screen size
-            const pillWidth = screenWidth > 1920 ? 180 : screenWidth > 1440 ? 120 : screenWidth < 768 ? 60 : 100;
+            const pillWidth = screenWidth > 1920 ? 120 : screenWidth > 1440 ? 120 : screenWidth < 768 ? 60 : 100;
             const pillHeight = screenWidth > 1920 ? 55 : screenWidth > 1440 ? 50 : screenWidth < 768 ? 20 : 30;
             const spread = Math.min(screenWidth / textures.length, screenWidth > 1920 ? 80 : screenWidth > 1440 ? 60 : 40);
 
             console.log("Screen Width:", screenWidth, "Pill Width:", pillWidth, "Pill Height:", pillHeight);
 
+            // Calculate the starting point to center the pills
             const startX = canvasWidth / 2 - ((textures.length - 1) * spread) / 2; // Center pills
+            const centerY = 350; // Drop from this height
 
             // Create pills from textures
             const pills = textures.map((texture, index) => {
-                const x = startX + index * spread;
-                const y = 60; // Adjust Y position if needed
+                // Slightly stagger the x positions to make them not perfectly inline
+                const x = startX + index * spread + Math.random() * 15 - 2.5;
+                const y = centerY + Math.random() * 20 - 5; // Slight random vertical offset for variation
 
                 return Bodies.rectangle(x, y, pillWidth, pillHeight, {
-                    restitution: 1,
-                    friction: 0.2,
+                    restitution: .4,
+                    friction: 1,
                     label: "pill",
                     render: {
                         sprite: {
                             texture: texture,
-                            xScale: screenWidth > 1920 ? 1.3 : screenWidth > 1440 ? 1.2 : screenWidth < 768 ? 0.8 : 1,
-                            yScale: screenWidth > 1920 ? 1.3 : screenWidth > 1440 ? 1.2 : screenWidth < 768 ? 0.8 : 1,
+                            xScale: screenWidth > 1920 ? 1.2 : screenWidth > 1440 ? 1.1 : screenWidth < 768 ? 0.8 : 1,
+                            yScale: screenWidth > 1920 ? 1.2 : screenWidth > 1440 ? 1.2 : screenWidth < 768 ? 0.8 : 1,
                         },
                     },
                 });
@@ -178,8 +183,6 @@ function Footer() {
 
             return pills;
         };
-
-
 
 
 
@@ -238,7 +241,8 @@ function Footer() {
         setTimeout(() => {
             ScrollTrigger.create({
                 trigger: containerRef.current,
-                start: "top+=80% bottom",
+                start: "bottom bottom",
+                scrub: true,
                 onEnter: () => {
                     console.log("ScrollTrigger fired: onEnter");
                     if (!triggered) {
@@ -353,12 +357,24 @@ function Footer() {
     }, [triggered]);
 
     return (
-        <footer ref={containerRef} className='relative h-full bg-charcoal overflow-hidden'>
-            <div ref={wrapperRef} className='relative w-full'>
+        <footer ref={containerRef} className='relative h-full overflow-hidden'>
+            {/* <HorizontalScroll speed={.1} bgColor=''>
+                <span className='font-roundo-medium uppercase tracking-widest'>Web design</span>
+                <div className='w-1 h-1 rounded-full bg-gray-500'> </div>
+                <span className='font-roundo-medium uppercase tracking-widest'>Ux/ui design</span>
+                <div className='w-1 h-1 rounded-full bg-gray-500'> </div>
+
+                <span className='font-roundo-medium uppercase tracking-widest'>Research</span>
+                <div className='w-1 h-1 rounded-full bg-gray-500'> </div>
+
+                <span className='font-roundo-medium uppercase tracking-widest'>Front-end development</span>
+                <div className='w-1 h-1 rounded-full bg-gray-500'> </div>
+            </HorizontalScroll> */}
+            <div ref={wrapperRef} className='relative w-full bg-charcoal overflow-hidden mt-10'>
                 <div className="absolute top-0 left-0 w-full h-full z-10">
                     <canvas ref={canvasRef} className="w-full h-full" />
                 </div>
-                <div className='h-[70vh] relative max-w-container py-10 lg:py-[6rem]'>
+                <div className='h-[85vh] relative max-w-container py-10 lg:py-[6rem]'>
                     <div className='flex flex-col justify-center items-center gap-3 md:gap-6 lg:gap-8'>
                         {/* <h2 className='font-craftwork font-extrabold text-light-yellow-bg text-shadow text-stroke text-center footer-header tracking-[5px]'>
                             Say Hello
@@ -397,18 +413,17 @@ function Footer() {
                             </a>
                         </div>
                     </div>
-
                 </div>
             </div>
 
-            <div className='border-t border-black bg-light-grey-bg'>
-                <div className='max-w-container flex flex-col items-center justify-center md:flex-row md:justify-between py-2'>
+            <div className='bg-charcoal'>
+                <div className='max-w-container border-t border-white flex flex-col items-center justify-center md:flex-row md:justify-between py-2'>
                     <div className='flex items-center gap-4'>
                         <div><img src={coffee} alt="" className='w-[35px] md:w-[40px]' /></div>
-                        <span className='text-sm md:text-base'>Made with shots of espresso</span>
+                        <span className='text-sm uppercase tracking-wider font-roundo text-white'>Made with shots of espresso</span>
                     </div>
                     <div>
-                        <span className='text-sm md:text-base'> 2024 Tina Lin</span>
+                        <span className='text-sm tracking-wider uppercase font-roundo text-white'> &copy; 2024 Tina Lin</span>
                     </div>
                 </div>
             </div>

@@ -131,6 +131,17 @@ function Navbar() {
                                         }
 
                                     >
+                                        Home
+                                    </NavLink>
+                                    <NavLink
+                                        to="/crafts"
+                                        onClick={toggleMenu}
+                                        className={({ isActive }) =>
+                                            `font-roundo-medium py-6 md:py-8 hover:scale-95 transition-all duration-300 ${isActive ? (isOpen ? 'text-orange text-xl' : 'text-orange') : isOpen ? 'text-light-yellow-bg text-xl' : ''
+                                            }`
+                                        }
+
+                                    >
                                         Crafts
                                     </NavLink>
                                     <NavLink
@@ -142,7 +153,7 @@ function Navbar() {
                                         }
 
                                     >
-                                        TinaLin
+                                        About
                                     </NavLink>
 
 

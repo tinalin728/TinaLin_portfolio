@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 
-function HorizontalScroll({ children, speed = 1, bgColor = 'bg-charcoal' }) {
+function HorizontalScroll({ children, speed = 1, bgColor = '' }) {
     const scrollContainerRef = useRef(null);
     const animationRef = useRef(null);
 
@@ -37,8 +37,8 @@ function HorizontalScroll({ children, speed = 1, bgColor = 'bg-charcoal' }) {
     }, [speed]);
 
     return (
-        <div className={`border-y-2 border-charcoal py-4 ${bgColor}`}>
-            <div className="border-y-2 border-dashed border-light-grey">
+        <div className={`border-y-2 py-3 ${bgColor}`}>
+            <div className="border-y border-dashed border-light-grey">
                 {/* Scrolling content */}
                 <div
                     ref={scrollContainerRef}
@@ -49,7 +49,7 @@ function HorizontalScroll({ children, speed = 1, bgColor = 'bg-charcoal' }) {
                     }}
                 >
                     <div
-                        className="inline-flex gap-10 justify-center items-center py-2"
+                        className="inline-flex gap-10 justify-center items-center py-1"
                         style={{ display: 'inline-flex', width: 'max-content' }}
                     >
                         {children}

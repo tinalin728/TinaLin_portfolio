@@ -41,7 +41,7 @@ function Cursor() {
                 } else if (element.tagName === 'A') {
                     setCursorImage(stickyPoint);
                 } else if (element.tagName === 'BUTTON') {
-                    setCursorImage(pointer);
+                    setCursorImage(stickyPoint);
                 } else {
                     setCursorImage(defaultCursor);
                 }
