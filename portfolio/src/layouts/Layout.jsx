@@ -13,7 +13,7 @@ function Layout() {
     const pageTitles = {
         '/': "Tina Lin- UX/UI Designer & Front-End Developer",
         '/about': "About Tina Lin - UX/UI Designer & Front-End Developer",
-        '/projects': "Crafts- Tina Lin's Portfolio, UX/UI Designer & Front-End Developer"
+        '/crafts': "Crafts- Tina Lin's Projects, UX/UI Designer & Front-End Developer"
     };
 
     const defaultTitle = "Tina Lin's Portfolio - UX/UI Designer & Front-End Developer";
