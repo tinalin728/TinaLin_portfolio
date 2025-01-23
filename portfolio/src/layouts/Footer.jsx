@@ -240,20 +240,30 @@ function Footer() {
             pinType: containerRef.current.style.transform ? "transform" : "fixed",
         });
 
+        let timeoutId;
+
         if (containerRef.current) {
             ScrollTrigger.create({
                 trigger: containerRef.current,
-                start: "bottom bottom",
+                start: "top bottom",
+                end: "bottom top",
                 scrub: true,
                 onEnter: () => {
                     if (!triggered) {
-                        setTriggered(true);
-                        handlePillsDrop();
+                        timeoutId = setTimeout(() => {
+                            setTriggered(true);
+                            handlePillsDrop();
+                        }, 500);
                     }
                 },
                 onLeaveBack: () => {
                     setTriggered(false);
                     pillsDropped = false;
+                    Composite.allBodies(world).forEach((body) => {
+                        if (!body.isStatic) {
+                            Composite.remove(world, body);
+                        }
+                    });
                 },
                 // markers: true,
             });
