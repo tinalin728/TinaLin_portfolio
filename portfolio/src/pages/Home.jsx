@@ -478,10 +478,10 @@ function Home() {
                                 <h1 className='text-white big-header'> Product &</h1>
                             </div>
 
-                            <div ref={refs.line3} className='inline-block px-4 py-2 md:px-6 lg:px-10 lg:py-3 xl:py-5 mt-2 md:mt-4 bg-charcoal rounded-md  w-fit rotate-4 -translate-x-[10%]'>
+                            <div ref={refs.line3} className='inline-block px-4 py-2 md:px-6 lg:px-10 lg:py-3 xl:py-5 mt-2 md:mt-4 bg-charcoal rounded-md  w-fit rotate-4 translate-y-1 -translate-x-2 md:-translate-x-4 lg:-translate-x-[10%]'>
                                 <h1 className='text-white big-header'>Design of</h1>
                             </div>
-                            <div ref={refs.line4} className='inline-block px-4 py-2 md:px-6 lg:px-10 lg:py-3 xl:py-5 mt-2 md:mt-4 bg-charcoal rounded-md w-fit -rotate-4 translate-x-8'>
+                            <div ref={refs.line4} className='inline-block px-4 py-2 md:px-6 lg:px-10 lg:py-3 xl:py-5 mt-2 md:mt-4 bg-charcoal rounded-md w-fit -rotate-4 translate-x-3 md:translate-x-0 ld:-translate-x-[10%]'>
                                 <h1 className='text-white big-header'>Tina Lin ⤹</h1>
                             </div>
                         </div>

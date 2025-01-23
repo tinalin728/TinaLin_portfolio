@@ -50,6 +50,8 @@ function Footer() {
         const container = wrapperRef.current;
         const canvas = canvasRef.current;
 
+        canvas.style.opacity = "0";
+
         const { width, height } = container.getBoundingClientRect();
 
         // set inline style to override canvas' inline style
@@ -82,7 +84,7 @@ function Footer() {
                 fillStyle: "transparent",
             }
         });
-        const wallLeft = Bodies.rectangle(-80, height / 2, 160, height, { isStatic: true });
+        const wallLeft = Bodies.rectangle(-80, height / 2, 60, height, { isStatic: true });
         const wallRight = Bodies.rectangle(width + 80, height / 2, 160, height, { isStatic: true });
         const roof = Bodies.rectangle((width / 2) + 160, -80, width + 320, 160, { isStatic: true })
 
@@ -90,23 +92,25 @@ function Footer() {
 
         // store images
         const textures = [
-            '/assets/pills/french.svg',
-            '/assets/pills/Icelandic.svg',
-            '/assets/pills/english.svg',
-            '/assets/pills/chinese.svg',
-            '/assets/pills/thai.svg',
-            '/assets/pills/viet.svg',
-            '/assets/pills/hindi.svg',
-            '/assets/pills/danish.svg',
-            '/assets/pills/malay.svg',
-            '/assets/pills/latin.svg',
             '/assets/pills/react.svg',
             '/assets/pills/tailwind.svg',
             '/assets/pills/text.svg',
-            '/assets/pills/text-2.svg',
+            '/assets/pills/text-7.svg',
+            '/assets/pills/text-8.svg',
             '/assets/pills/text-3.svg',
-            '/assets/pills/text-4.svg',
+            '/assets/pills/text-9.svg',
+            '/assets/pills/text-16.svg',
+            '/assets/pills/text-6.svg',
+            '/assets/pills/text-10.svg',
             '/assets/pills/text-5.svg',
+            '/assets/pills/text-4.svg',
+            '/assets/pills/text-11.svg',
+            '/assets/pills/text-12.svg',
+            '/assets/pills/text-2.svg',
+            '/assets/pills/text-14.svg',
+            '/assets/pills/text-13.svg',
+            '/assets/pills/white-logo.svg',
+            '/assets/pills/text-15.svg',
         ];
 
         //preload images
@@ -130,7 +134,7 @@ function Footer() {
                     loadedTextures.push(texture); // Add successfully loaded texture
                     loadedCount++;
                     if (loadedCount === total) {
-                        console.log("Preloading complete:", loadedTextures);
+                        //console.log("Preloading complete:", loadedTextures);
                         callback(loadedTextures); // Pass the loaded textures
                     }
                 };
@@ -153,9 +157,7 @@ function Footer() {
             // Adjust pill dimensions based on screen size
             const pillWidth = screenWidth > 1920 ? 120 : screenWidth > 1440 ? 120 : screenWidth < 768 ? 60 : 100;
             const pillHeight = screenWidth > 1920 ? 55 : screenWidth > 1440 ? 50 : screenWidth < 768 ? 20 : 30;
-            const spread = Math.min(screenWidth / textures.length, screenWidth > 1920 ? 80 : screenWidth > 1440 ? 60 : 40);
-
-            console.log("Screen Width:", screenWidth, "Pill Width:", pillWidth, "Pill Height:", pillHeight);
+            const spread = Math.min(screenWidth / textures.length * 1.2, screenWidth > 1920 ? 100 : screenWidth > 1440 ? 80 : 50);
 
             // Calculate the starting point to center the pills
             const startX = canvasWidth / 2 - ((textures.length - 1) * spread) / 2; // Center pills
@@ -164,12 +166,13 @@ function Footer() {
             // Create pills from textures
             const pills = textures.map((texture, index) => {
                 // Slightly stagger the x positions to make them not perfectly inline
-                const x = startX + index * spread + Math.random() * 15 - 2.5;
-                const y = centerY + Math.random() * 20 - 5; // Slight random vertical offset for variation
+                const x = startX + index * spread + Math.random() * 20 - 10;  // Increased randomness for better spacing
+                const y = centerY + Math.random() * 30 - 15; // Slight random vertical offset for variation
 
                 return Bodies.rectangle(x, y, pillWidth, pillHeight, {
                     restitution: .4,
-                    friction: 1,
+                    density: 1,
+                    friction: .5,
                     label: "pill",
                     render: {
                         sprite: {
@@ -203,7 +206,6 @@ function Footer() {
                     console.error("Textures are not valid or ready:", textures);
                     return;
                 }
-
                 const pillBodies = createPills(textures, width);
                 pillBodies.forEach((pill) => Composite.add(world, pill));
                 pillsDropped = true;
@@ -212,6 +214,7 @@ function Footer() {
                 console.log("Pills already dropped, skipping");
             }
         };
+        canvas.style.opacity = "1";
 
 
         //since using Lenis can be in conflict with scroll trigger, using scrollProxy tells scrolltrigger to correctly tract the scroll position
@@ -237,22 +240,24 @@ function Footer() {
             pinType: containerRef.current.style.transform ? "transform" : "fixed",
         });
 
-        //delay scrolltrigger.create()
-        setTimeout(() => {
+        if (containerRef.current) {
             ScrollTrigger.create({
                 trigger: containerRef.current,
                 start: "bottom bottom",
                 scrub: true,
                 onEnter: () => {
-                    console.log("ScrollTrigger fired: onEnter");
                     if (!triggered) {
                         setTriggered(true);
                         handlePillsDrop();
                     }
                 },
+                onLeaveBack: () => {
+                    setTriggered(false);
+                    pillsDropped = false;
+                },
                 // markers: true,
             });
-        }, 100);
+        }
 
 
         // add mouse control
@@ -327,10 +332,10 @@ function Footer() {
                 { x: 0, y: height },
             ]);
 
-            Matter.Body.setPosition(wallLeft, { x: -80, y: height / 2 });
-            Matter.Body.setPosition(wallRight, { x: width + 80, y: height / 2 });
+            Matter.Body.setPosition(wallLeft, { x: -30, y: height });
+            Matter.Body.setPosition(wallRight, { x: width + 82, y: height / 2 });
             Matter.Body.setPosition(roof, { x: width / 2, y: -80 });
-            console.log("Right Wall:", wallRight.position, wallRight.vertices);
+            //console.log("Right Wall:", wallRight.position, wallRight.vertices);
         };
 
         window.addEventListener("resize", handleResize);
@@ -354,6 +359,8 @@ function Footer() {
             canvas.removeEventListener("touchmove", handleTouchMove);
             ScrollTrigger.killAll();
         };
+
+
     }, [triggered]);
 
     return (
@@ -373,7 +380,7 @@ function Footer() {
                             </h1>
                         </div>
 
-                        <p className='text-center font-roundo tracking-normal text-light-yellow-bg md:text-lg'> I would love to hear from you! <br />
+                        <p className='text-center font-roundo tracking-normal text-light-yellow-bg md:text-lg relative z-0'> I would love to hear from you! <br />
                             Feel free to reach out to me about anything and let’s get creative together!</p>
 
 

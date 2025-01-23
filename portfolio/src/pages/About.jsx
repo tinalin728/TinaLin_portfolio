@@ -16,6 +16,7 @@ import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 gsap.registerPlugin(useGSAP);
 
+import Skills from '../components/about/Skills';
 
 // images
 import profilePic from '../../public/assets/about/tina.jpg'
@@ -304,6 +305,7 @@ function About() {
                         </div>
                     </section>
 
+
                     <section className='mt-20 flex flex-col items-center justify-between lg:flex-row gap-10 relative'>
                         <div className='lg:basis-[65%] w-full'>
                             <div className='mb-2 border-b border-black border-dashed'>
@@ -318,23 +320,15 @@ function About() {
                                             <li key={index} className='font-roundo tracking-[.8px] list-disc'> {item}</li>
                                         ))}
                                     </ul>
-                                    <p className=''></p>
                                 </div>
-                                {/* <div>
-                                    <p className='font-roundo-medium text-md'>Soft Skills</p>
+
+                                <div>
+                                    <p className='font-roundo-medium pb-2 text-md'>Programming Language & Library</p>
                                     <ul className='grid md:grid-cols-2 gap-x-6 px-4 py-2'>
-                                        {softSkills.map((item, index) => (
+                                        {coding.map((item, index) => (
                                             <li key={index} className='font-roundo tracking-[.8px] list-disc'> {item}</li>
                                         ))}
                                     </ul>
-                                </div> */}
-                                <div>
-                                    <p className='font-roundo-medium pb-2 text-md'>Programming Language & Library</p>
-                                    <div className='flex gap-2 flex-wrap pt-2'>
-                                        {coding.map((item, index) => (
-                                            <div key={index} className='px-4 bg-charcoal rounded-md'><p className='text-white'>{item}</p></div>
-                                        ))}
-                                    </div>
                                 </div>
                                 <div>
                                     <p className='font-roundo-medium pb-2 text-md'>Design Software</p>
@@ -368,9 +362,9 @@ function About() {
                                 <div
                                     className="card bg-white  flex flex-col justify-center items-center p-4 w-[300px] h-[400px] rounded-xl border-2 relative overflow-hidden mr-0 md:mr-[6rem] -mt-[20rem] hover:z-10 hover:scale-105 hover:translate-y-2 transition-transform duration-300 ease-in"
                                 >
-                                    <div className="absolute top-0 left-0 w-full px-4 py-2 bg-yellow border-b-2">
+                                    <div className="absolute top-0 left-0 w-full px-4 py-2 bg-charcoal border-b-2">
                                         <div className='flex justify-between items-center'>
-                                            <p className="font-roundo-medium mt-1">Core Value</p>
+                                            <p className="font-roundo-medium mt-1 text-white">Core Value</p>
                                             <div className='h-3 w-3 border-2 rounded-full bg-orange'></div>
                                         </div>
                                     </div>
@@ -403,7 +397,7 @@ function About() {
                             <div className='basis-[35%] relative overflow-hidden bg-white rounded-xl'>
                                 <div className='h-14 w-full absolute top-0 border-2 bg-charcoal rounded-t-xl z-10 text-white flex items-center justify-between px-6'>
                                     <p className=''>
-                                        My Currents
+                                        My Current Interests
                                     </p>
                                     <div className='flex gap-2 items-center md:gap-4'>
                                         <div className='h-3 w-3 rounded-full bg-white'></div>

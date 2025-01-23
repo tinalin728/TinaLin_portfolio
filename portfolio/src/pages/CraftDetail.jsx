@@ -48,14 +48,14 @@ function CraftDetail() {
         };
     }, [craft])
 
-    // useEffect(() => {
-    //     // Scroll to the top of the page whenever the `id` changes
-    //     window.scrollTo({
-    //         top: 0,
-    //         left: 0,
-    //         behavior: 'auto', // You can change to 'auto' for instant scroll
-    //     });
-    // }, [id]);
+    useEffect(() => {
+        // Scroll to the top of the page whenever the `id` changes
+        window.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: 'auto', // You can change to 'auto' for instant scroll
+        });
+    }, [id]);
 
     const videoRef = useRef(null);
     const [isLoaded, setIsLoaded] = useState(false);
