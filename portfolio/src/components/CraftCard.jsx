@@ -15,7 +15,7 @@ function CraftCard({ title, src, mediaType, skills, id, content, status }) {
                 // Clickable card for complete projects
                 <Link
                     to={`/crafts/${id}`}
-                    className="relative font-bold leading-normal capitalize w-full h-full box group overflow-hidden group transition-all duration-300 rounded-2xl border-2 shadow-md hover:border-4"
+                    className="relative font-bold leading-normal capitalize w-full h-full box group overflow-hidden group transition-all duration-300 rounded-2xl border-2 shadow-md lg:hover:border-4"
                     onMouseMove={handleMouseMove}
                     onMouseOut={handleMouseOut}
                 >

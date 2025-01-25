@@ -18,20 +18,8 @@ import CraftCard from '../components/CraftCard';
 import PrimaryBtn from '../components/buttons/PrimaryBtn';
 import HorizontalScroll from '../components/HorizontalScroll';
 import WindowWidth from '../hooks/WindowWidth';
-
-import sunglasses from "../../public/assets/homepage/emoji-sunglasses.png"
-import rainbow from '../../public/assets/homepage/rainbow.svg'
-import thunder from '../../public/assets/homepage/thunder.svg'
-import rose from '../../public/assets/homepage/rose.svg'
-import icon1 from '../../public/assets/homepage/marquee/icon1.svg'
-import icon2 from '../../public/assets/homepage/marquee/icon2.svg'
-import icon3 from '../../public/assets/homepage/marquee/icon3.svg'
-import icon4 from '../../public/assets/homepage/marquee/icon4.svg'
-import icon5 from '../../public/assets/homepage/marquee/icon5.svg'
 import arrow from '../../public/assets/icons/arrow.svg';
-import arrowD from '../../public/assets/icons/arrow_down.svg';
 import outline from '../../public/assets/homepage/outlineLogo.svg'
-import logo from '../../public/assets/logo.svg'
 import uiux from '../../public/assets/homepage/uxui.svg'
 
 
@@ -69,17 +57,6 @@ function Home() {
 
 
 
-    // horizontal scroll, image swapping
-    const images = [sunglasses, rainbow, thunder, rose];
-    const [currentImage, setCurrentImage] = useState(0);
-    useEffect(() => {
-        const imageInterval = setInterval(() => {
-            setCurrentImage((prevImage) => (prevImage + 1) % images.length);
-        }, 1500);
-
-        return () => clearInterval(imageInterval);
-    }, []);
-
     const refs = {
         line1: useRef(null),
         line2: useRef(null),
@@ -106,25 +83,15 @@ function Home() {
                 },
                 {
                     rotate: rotations[index], // Apply unique rotation
-                    duration: 1.2,
+                    duration: .8,
                     ease: "bounce.out",
-                    delay: index * 0.2, // Stagger delay for each element
+                    delay: index * 0.1, // Stagger delay for each element
                     onComplete: () => setAnimationComplete(true)
                 },
                 "<"
             );
         });
-
-        timeline.to(
-            ".role",
-            {
-                color: "#E36A46",
-                duration: 0.5,
-                ease: "power1.out",
-            },
-            "+=1.5"
-        );
-    }, []); // Only start the animation after preloader finishes
+    }, []);
 
 
     const [animationComplete, setAnimationComplete] = useState(false);
@@ -195,14 +162,14 @@ function Home() {
                         : 1.1;
 
 
-            console.log(`Screen Width: ${screenWidth}, Default Scale: ${defaultScale}`); // Debugging
+            //console.log(`Screen Width: ${screenWidth}, Default Scale: ${defaultScale}`); 
 
             // Apply the scaling to each glitch element
             glitchRefs.current.forEach((glitch, index) => {
                 if (glitch) {
                     // Ensure each glitch has the correct transform applied
                     glitch.style.transform = `translate(-50%, -50%) scale(${defaultScale})`;
-                    console.log(`Element ${index} Transform: ${glitch.style.transform}`); // Debugging
+                    //console.log(`Element ${index} Transform: ${glitch.style.transform}`); 
                 }
             });
         };
@@ -280,7 +247,7 @@ function Home() {
 
 
     const aboutRef = useRef(null);
-    useEffect(() => {
+    useGSAP(() => {
         gsap.fromTo(
             '.about-bg',
             {
@@ -290,15 +257,12 @@ function Home() {
             {
                 y: 0,
                 opacity: .8,
-                duration: 1.2,
+                duration: 2,
                 ease: 'power3.out',
-                scrub: true,
-
                 scrollTrigger: {
                     trigger: aboutRef.current,
-                    start: 'top 20%',
-                    end: 'bottom top',
-                    toggleActions: 'play none none reverse',
+                    start: 'top 80%',
+                    toggleActions: 'restart none none none'
                 },
             }
         );
@@ -311,44 +275,25 @@ function Home() {
             {
                 y: 0,
                 opacity: .4,
-                duration: 1.2,
+                duration: 2,
                 ease: 'power3.out',
-                scrub: true,
+                scrollTrigger: {
+                    trigger: aboutRef.current,
+                    start: 'top 80%',
+                    toggleActions: 'restart none none none'
+                },
+            }
+        );
 
-                scrollTrigger: {
-                    trigger: aboutRef.current,
-                    start: 'top 20%',
-                    end: 'bottom top',
-                    toggleActions: 'play none none reverse',
-                },
-            }
-        );
-        gsap.fromTo(
-            '.about-tag',
-            {
-                rotate: '0'
-            },
-            {
-                rotate: '15deg',
-                duration: 1.2,
-                ease: 'power3.out',
-                scrub: true,
-                scrollTrigger: {
-                    trigger: aboutRef.current,
-                    start: 'top 20%',
-                    end: 'bottom top',
-                    toggleActions: 'play none none reverse',
-                },
-            }
-        );
-    }, []);
+    }, [aboutRef.current]);
+
 
 
     const craftRef = useRef(null);
     useGSAP(() => {
         const scrollTriggerConfig = {
             trigger: craftRef.current,
-            start: "top 10%",
+            start: "top 80%",
             toggleActions: "play none none none",
             // markers: true,
         };
@@ -356,11 +301,11 @@ function Home() {
         // Animate recent text
         gsap.fromTo(
             ".recent",
-            { y: -50, rotate: 0, opacity: 0 },
+            { y: -80, rotate: 0, opacity: 0 },
             {
-                opacity: 1,
                 y: 0,
                 rotate: -6,
+                opacity: 1,
                 duration: 0.5,
                 ease: "bounce.out",
                 scrollTrigger: { ...scrollTriggerConfig },
@@ -461,7 +406,7 @@ function Home() {
                             <div
                                 key={index}
                                 ref={(el) => (glitchRefs.current[index] = el)}
-                                className="glitch-element hidden md:block md:absolute md:-translate-x-1/2 md:-translate-y-1/2 md:origin-center md:-mt-2"
+                                className="glitch-element hidden md:block md:absolute md:-translate-x-1/2 md:-translate-y-1/2 md:origin-center md:-mt-4"
                                 style={{ top: pos.top, left: pos.left }}
                             >
                                 <img src={outline} loading="lazy" alt="" className="w-full" />
@@ -478,60 +423,36 @@ function Home() {
                                 <h1 className='text-white big-header'> Product &</h1>
                             </div>
 
-                            <div ref={refs.line3} className='inline-block px-4 py-2 md:px-6 lg:px-10 lg:py-3 xl:py-5 mt-2 md:mt-4 bg-charcoal rounded-md  w-fit rotate-4 translate-y-1 -translate-x-2 md:-translate-x-4 lg:-translate-x-[10%]'>
+                            <div ref={refs.line3} className='inline-block px-4 py-2 md:px-6 lg:px-10 lg:py-3 xl:py-5 mt-2 md:mt-4 bg-charcoal rounded-md  w-fit rotate-4 translate-y-1 -translate-x-2 md:-translate-x-4 lg:-translate-x-[12%]'>
                                 <h1 className='text-white big-header'>Design of</h1>
                             </div>
-                            <div ref={refs.line4} className='inline-block px-4 py-2 md:px-6 lg:px-10 lg:py-3 xl:py-5 mt-2 md:mt-4 bg-charcoal rounded-md w-fit -rotate-4 translate-x-3 md:translate-x-0 ld:-translate-x-[10%]'>
-                                <h1 className='text-white big-header'>Tina Lin ⤹</h1>
+                            <div ref={refs.line4} className='inline-block px-4 py-2 md:px-6 lg:px-10 lg:py-3 xl:py-5 mt-2 md:mt-4 bg-charcoal rounded-md w-fit -rotate-4 translate-x-10 lg:translate-x-[15%] relative'>
+                                <h1 className='text-white big-header'>Tina Lin</h1>
+
                             </div>
                         </div>
 
                         <div className='absolute left-8 md:left-14 bottom-[2%]'>
-                            <div className='flex flex-col items-end'>
+                            <div className='flex items-end'>
                                 <p className='text-base tracking-[3px] font-roundo-medium uppercase'>A UX / UI Designer <br /> who enjoys coding</p>
+
                             </div>
                         </div>
                         <div className='hidden md:block md:absolute md:right-14 md:bottom-[2%]'>
                             <div className='flex gap-3 items-start'>
                                 <div className='flex flex-col '>
-                                    <span className='text-base tracking-[3px] font-roundo-medium uppercase'>Vancouver, BC</span>
+                                    <p className='text-base tracking-[3px] font-roundo-medium uppercase'>Based in Vancouver, BC</p>
+                                    <p className='text-end text-base tracking-[3px] font-roundo-medium uppercase text-orange'>* Available for work *</p>
 
                                 </div>
                             </div>
-
                         </div>
+
                     </div>
                 </section >
 
 
-                <section ref={aboutRef} className="h-[80vh] max-w-container">
-                    <div className='bg-darker-bg h-full rounded-2xl overflow-hidden'>
-                        <div className='max-w-container py-2 flex items-center justify-center flex-col gap-10 h-full relative'>
-                            <div className='relative z-10 text-center lg:max-w-[60rem]'>
-                                <h1 className='font-roundo-medium normal-case leading-normal text-center text-black'>Design <span className='about-tag text-center font-roundo px-4 py-2 bg-charcoal text-white rounded-md'>meets</span> code, <br /> and I love Both. </h1>
-
-                            </div>
-
-                            <div className='flex items-center justify-center relative z-20'>
-                                <PrimaryBtn
-                                    to='/about'
-                                    text='About Me'
-                                    icon={arrow}
-                                />
-                            </div>
-
-                            <div className='absolute bottom-0 left-1/2 z-0 -translate-x-1/2 lg:left-[20%]'>
-                                <img src={uiux} alt="" className='about-bg opacity-80 ' />
-                            </div>
-                            <div className='absolute top-0 z-0 lg:right-[10%] rotate-180'>
-                                <img src={uiux} alt="" className='about-bg-back opacity-40 ' />
-                            </div>
-
-                        </div>
-                    </div>
-                </section>
-
-                <section ref={craftRef} id='crafts' className="relative h-full pt-[10rem] pb-20 md:pb-[10rem] lg:pb-[15rem]">
+                <section ref={craftRef} id='crafts' className="relative h-full mb-[10rem]">
                     <div className='max-w-container relative'>
                         <div className='relative'>
                             <div className='recent flex mx-auto w-fit bg-charcoal rounded-md px-4 py-2 rotate-6'>
@@ -574,6 +495,32 @@ function Home() {
                         </div>
                     </div>
                 </section >
+
+                <section ref={aboutRef} id='about' className="about relative h-[80vh] max-w-container mb-20 md:mb-[8rem]">
+                    <div className='bg-darker-bg h-full rounded-2xl overflow-hidden'>
+                        <div className='max-w-container py-2 flex items-center justify-center flex-col gap-10 h-full relative'>
+                            <div className='relative z-10 text-center lg:max-w-[60rem]'>
+                                <h1 className='font-roundo-medium normal-case leading-normal text-center text-black text-[28px] md:text-2xl'>I create <span className='about-tag text-center font-roundo px-3 py-2 bg-charcoal text-white rounded-md text-nowrap'>user-centered</span> experiences <br /> through design and code </h1>
+
+                            </div>
+
+                            <div className='flex items-center justify-center relative z-20'>
+                                <PrimaryBtn
+                                    to='/about'
+                                    text='About Me'
+                                    icon={arrow}
+                                />
+                            </div>
+
+                            <div className=' absolute bottom-0 left-1/2 z-0 -translate-x-1/2 lg:left-[20%]'>
+                                <img src={uiux} alt="" className='about-bg opacity-50' />
+                            </div>
+                            <div className=' absolute top-0 z-0 lg:right-[10%] rotate-180'>
+                                <img src={uiux} alt="" className='about-bg-back opacity-40 ' />
+                            </div>
+                        </div>
+                    </div>
+                </section>
             </div >
         </>
     )

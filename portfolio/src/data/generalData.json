@@ -4,8 +4,8 @@
             "id": 1,
             "type": "UXUI",
             "title": "Tim Horton's App Redesign",
-            "media": "video",
-            "src": "/assets/homepage/tims/tims.mp4",
+            "media": "image",
+            "src": "/assets/homepage/tims/cover.jpg",
             "skills": [
                 "UX/UI"
             ],
@@ -24,7 +24,7 @@
                 "Tailwind"
             ],
             "content": "Branding for an online dessert store",
-            "status": "complete"
+            "status": "incomplete"
         },
         {
             "id": 3,
@@ -54,8 +54,8 @@
         },
         {
             "id": 5,
-            "type": "coding",
-            "title": "CoreVault - SaaS Landing Page",
+            "type": "corevault",
+            "title": "CoreVault: SaaS Promotional landing page",
             "media": "image",
             "src": "/assets/homepage/corevault/cover.jpg",
             "skills": [

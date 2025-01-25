@@ -899,6 +899,55 @@ export function fetchProductList(dataPath, containerId, productType, callback) {
         },
 
     },
+    {
+        id: 5,
+        type: 'corevault',
+        status: 'completed',
+        title: 'CoreVault: SaaS Promotional landing page',
+        media: "image",
+        cover: "/assets/nomly/banner.png",
+        banner: {
+            subHeader: 'CoreVault - Fictional SaaS Company',
+            header: 'Designed and Developed Promotional Landing Page',
+            image: {
+                src: '/assets/nomly/banner.png',
+                altText: 'Nomly banner',
+                classes: 'scale-125'
+            },
+        },
+
+
+        overview: {
+            user: {
+                title: 'Tools',
+                content: 'Figma , illustrator, React.JS , TailwindCSS, GSAP, Lottie'
+            },
+            process: {
+                header: 'Deliverable',
+                content: 'A responsive SaaS platform landing page with key product features and call-to-action elements'
+            },
+            role: 'Web Designer, Front-end developer',
+            duration: '2 week (30 hours) - Jan, 2025',
+            headline: 'Taking my React skills further with CoreVault that refines my focus on design and user experience.',
+
+            content: "After building Nomly, I wanted to keep practicing and challenge myself with a project that emphasized design and user experience. CoreVault is a SaaS platform that offers digital banking solutions, expense tracking, and payment management. I used React and TailwindCSS to create a clean, responsive interface that balances aesthetics with functionality.",
+            challenge: "Combining neomorphic and claymorphic design elements while maintaining usability and visual balance was challenging.",
+            solution: "Experimented with different shadow depths and contrasts to blend the styles effectively.",
+
+
+            media: {
+                type: 'image',
+                src: '/assets/nomly/intro.png',
+                altText: "Nomly",
+                caption: 'Sneak Peek',
+            },
+            webLink: {
+                text: 'Live Demo - Coming Soon',
+                link: "#"
+            },
+        },
+
+    },
 
 ]
 

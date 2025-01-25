@@ -15,7 +15,7 @@
     }
 
     h1 {
-        @apply text-[2.5rem] md:text-2xl font-craftwork font-extrabold text-orange capitalize tracking-wide
+        @apply text-[2.2rem] md:text-2xl font-craftwork font-extrabold text-orange capitalize tracking-wide leading-normal
     }
 
     h2 {

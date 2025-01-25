@@ -5,6 +5,8 @@ import { craftsData } from '../data/craftsData'
 import UIUXLayout from '../components/craftDetail/UIUXLayout';
 import CodingLayout from '../components/craftDetail/CodingLayout';
 import DesignLayout from '../components/craftDetail/DesignLayout';
+import ReactLayout from '../components/craftDetail/ReactLayout';
+import CoreVault from '../components/craftDetail/CoreVault';
 import { gsap } from 'gsap/gsap-core'
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -13,7 +15,6 @@ import { Helmet } from 'react-helmet';
 import PrimaryBtn from '../components/buttons/PrimaryBtn';
 import arrow from '../../public/assets/icons/arrow.svg';
 import LazyLoading from '../components/LazyLoading';
-import ReactLayout from '../components/craftDetail/ReactLayout';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -78,11 +79,14 @@ function CraftDetail() {
             </Helmet>
 
             {/* banner */}
-            <section className='max-w-container overflow-hidden py-[6rem]'>
+            <section className='max-w-container overflow-hidden py-[3rem]'>
                 <div className='relative h-full flex flex-col items-center justify-between gap-8 md:flex-row'>
                     <div className='flex-1'>
                         <p className='text-dark-grey text-center mb-2 md:text-left'>{craft.banner.subHeader}</p>
                         <h1 className='text-wrap text-center md:text-left'> {craft.banner.header}</h1>
+                        <a href='#overview' className="tracking-wide font-roundo-medium mt-4 py-4 group hover:text-orange flex justify-center md:justify-start">
+                            Read Now <span className="ml-2 inline-block transition-transform duration-300 ease-in-out lg:group-hover:scale-y-150 lg:group-hover:translate-y-1">↓</span>
+                        </a>
                     </div>
 
                     <div className='flex-1'>
@@ -94,7 +98,7 @@ function CraftDetail() {
 
 
             {/* overview */}
-            <section className='overview border-t-2  bg-darker-bg pt-[10rem]'>
+            <section id="overview" className='overview border-t-2  bg-darker-bg pt-[5rem]'>
                 <div className='content-w pb-4 '>
                     <div className='py-10 border-b-2 border-light-grey border-dashed'>
                         <span className='text-dark-grey uppercase font-roundo tracking-wider'>Introduction</span>
@@ -163,12 +167,7 @@ function CraftDetail() {
                                     </div>
                                 ) : (
                                     <div className="relative w-full">
-                                        {/* <video
-                                            src={craft.overview.media.src}
-                                            preload="none"
-                                            autoPlay muted playsInline loop
-                                            className='relative object-cover max-w-full md:h-auto transition duration-500 ease-in-out rounded-xl overflow-hidden'
-                                        /> */}
+
                                         <LazyLoading
                                             src={craft.overview.media.src}
                                             preload="none"
@@ -194,8 +193,9 @@ function CraftDetail() {
                     {craft.type === 'UXUI' ? (<UIUXLayout craft={craft} />) :
                         craft.type === 'html' ? (<CodingLayout craft={craft} />) :
                             craft.type === 'react' ? (<ReactLayout craft={craft} />) :
-                                craft.type === 'design' ? (<DesignLayout craft={craft} />) :
-                                    (<p>Coming Soon!</p>)
+                                craft.type === 'design' ? (<DesignLayout craft={craft} />) : craft.type === 'corevault' ? (<CoreVault craft={craft} />)
+                                    :
+                                    (<h1 className='text-center h-full'>Coming Soon!</h1>)
                     }
                 </div>
             </div>

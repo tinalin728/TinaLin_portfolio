@@ -39,7 +39,7 @@ import grainbg from '../../public/assets/about/grain.png'
 
 function About() {
 
-    const coding = ["HTML", "CSS", "JS", "REACT . JS", "TAILWINDCSS", "JQUERY"];
+    const coding = ["HTML", "CSS", "JavaScript", "React . JS", "TailwindCSS", "React Native"];
     const design = [ps, ai, id, ae, dn, figma, wordpress]
     const ux = ['User Centered Design', 'User Research', 'Wireframing', 'Interactive Prototyping', 'Usability Testing', 'Responsive Design']
     const softSkills = ['Communication', 'Critical Thinking', 'Problem Solving', 'Flexibility', 'Empathy']
