@@ -78,8 +78,17 @@ function CoreVault() {
                 </div>
             </section>
 
-            <section>
-
+            <section className='content-w pb-20 md:pb-[10rem]'>
+                <div className='content-gap'>
+                    <div className='py-10 border-b-2 border-light-grey border-dashed'>
+                        <h1 className=''>Reflection</h1>
+                    </div>
+                    <div className='mt-10'>
+                        <p>
+                            Working on the CoreVault landing page allowed me to improve my design and development skills by creating a visually appealing and responsive layout that effectively showcased the platform's features. I applied critical thinking to structure content strategically and optimize performance while ensuring a smooth user experience. This project reinforced the importance of clear communication and engaging design in promoting digital products.
+                        </p>
+                    </div>
+                </div>
             </section>
         </>
     )

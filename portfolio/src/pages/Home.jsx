@@ -451,6 +451,31 @@ function Home() {
                     </div>
                 </section >
 
+                <section ref={aboutRef} id='about' className="about relative h-[80vh] max-w-container mb-20 md:mb-[8rem]">
+                    <div className='bg-darker-bg h-full rounded-2xl overflow-hidden'>
+                        <div className='max-w-container py-2 flex items-center justify-center flex-col gap-10 h-full relative'>
+                            <div className='relative z-10 text-center lg:max-w-[60rem]'>
+                                <h1 className='font-roundo-medium normal-case leading-normal text-center text-black text-[28px] md:text-2xl'>I create <span className='about-tag text-center font-roundo px-3 py-2 bg-charcoal text-white rounded-md text-nowrap'>user-centered</span> experiences <br /> through design and code </h1>
+
+                            </div>
+
+                            <div className='flex items-center justify-center relative z-20'>
+                                <PrimaryBtn
+                                    to='/about'
+                                    text='About Me'
+                                    icon={arrow}
+                                />
+                            </div>
+
+                            <div className=' absolute bottom-0 left-1/2 z-0 -translate-x-1/2 lg:left-[20%]'>
+                                <img src={uiux} alt="" className='about-bg opacity-50' />
+                            </div>
+                            <div className=' absolute top-0 z-0 lg:right-[10%] rotate-180'>
+                                <img src={uiux} alt="" className='about-bg-back opacity-40 ' />
+                            </div>
+                        </div>
+                    </div>
+                </section>
 
                 <section ref={craftRef} id='crafts' className="relative h-full mb-[10rem]">
                     <div className='max-w-container relative'>
@@ -496,31 +521,7 @@ function Home() {
                     </div>
                 </section >
 
-                <section ref={aboutRef} id='about' className="about relative h-[80vh] max-w-container mb-20 md:mb-[8rem]">
-                    <div className='bg-darker-bg h-full rounded-2xl overflow-hidden'>
-                        <div className='max-w-container py-2 flex items-center justify-center flex-col gap-10 h-full relative'>
-                            <div className='relative z-10 text-center lg:max-w-[60rem]'>
-                                <h1 className='font-roundo-medium normal-case leading-normal text-center text-black text-[28px] md:text-2xl'>I create <span className='about-tag text-center font-roundo px-3 py-2 bg-charcoal text-white rounded-md text-nowrap'>user-centered</span> experiences <br /> through design and code </h1>
 
-                            </div>
-
-                            <div className='flex items-center justify-center relative z-20'>
-                                <PrimaryBtn
-                                    to='/about'
-                                    text='About Me'
-                                    icon={arrow}
-                                />
-                            </div>
-
-                            <div className=' absolute bottom-0 left-1/2 z-0 -translate-x-1/2 lg:left-[20%]'>
-                                <img src={uiux} alt="" className='about-bg opacity-50' />
-                            </div>
-                            <div className=' absolute top-0 z-0 lg:right-[10%] rotate-180'>
-                                <img src={uiux} alt="" className='about-bg-back opacity-40 ' />
-                            </div>
-                        </div>
-                    </div>
-                </section>
             </div >
         </>
     )

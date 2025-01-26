@@ -7,8 +7,8 @@ export const craftsData = [
         type: 'UXUI',
         status: 'completed',
         title: 'Tim Horton\'s App Redesign',
-        media: "video",
-        cover: "/assets/homepage/tims/cover.mp4",
+        media: "image",
+        cover: "/assets/homepage/tims/cover.jpg",
         banner: {
             subHeader: 'Tim horton\'s App Redesign',
             header: 'Perfecting the flow of redeeming offers',
@@ -883,9 +883,9 @@ export function fetchProductList(dataPath, containerId, productType, callback) {
             headline: 'Leveraging Spoonacular API to develop an web app that streamlines recipe discovery and grocery management.',
             content: "Nomly is a web app designed to provide users with an intuitive platform for discovering recipes, managing saved favorites, and generating grocery lists. Built with React and TailwindCSS, the app integrates the Spoonacular API to fetch real-time recipe data.",
 
-            challenge: 'Transitioning from HTML to React.js was a bit challenging at first. I was used to the simplicity of static HTML, but React introduced new concepts like components, state management, and passing props.',
+            challenge: 'Fetching data was the most challenging as different endpoints in the initial fetch often lacked key details like ingredients and instructions, requiring a second fetch. Balancing data accuracy while optimizing API calls was difficult due to the free API\'s request limits.',
 
-            solution: 'I focused on component-based thinking and practiced state management through small features like recipe cards and favorite lists. Learning to lift state and pass props effectively took time, but breaking down complex tasks and using resources like documentation and tutorials helped me gain confidence and streamline development.',
+            solution: 'I utilized localStorage to store fetched data, reducing unnecessary API calls and improving performance. The initial fetch used different endpoints, and a second fetch was triggered only when key details were missing. By refining the fetch logic and reviewing API documentation, I balanced data accuracy while staying within the free API limits.',
             media: {
                 type: 'image',
                 src: '/assets/nomly/intro.png',

@@ -24,7 +24,7 @@ module.exports = withMT({
       fontSize: {
         xs: ['0.75rem', { lineHeight: '1rem' }],
         sm: ['0.875rem', { lineHeight: '1.25rem' }],
-        base: ['1rem', { lineHeight: '33px' }],
+        base: ['1rem', { lineHeight: '35px' }],
         md: ['1.25rem'],
         lg: ['1.375rem'],
         xl: ['1.618rem'],
@@ -34,6 +34,9 @@ module.exports = withMT({
         '5xl': ['53.75px', { lineHeight: '113.4px', letterSpacing: '7.56px', }],
         '6xl': ['122.4px', { lineHeight: '183.6px', letterSpacing: '0', }],
         heading: ['250px', { lineHeight: '300px', letterSpacing: '12.5px', }],
+      },
+      lineHeight: {
+        normal: '1.618'
       },
 
       colors: {
