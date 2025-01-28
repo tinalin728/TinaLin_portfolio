@@ -85,7 +85,7 @@ function Home() {
                     rotate: rotations[index], // Apply unique rotation
                     duration: .8,
                     ease: "bounce.out",
-                    delay: index * 0.1, // Stagger delay for each element
+                    delay: index * 0.15, // Stagger delay for each element
                     onComplete: () => setAnimationComplete(true)
                 },
                 "<"
@@ -261,8 +261,9 @@ function Home() {
                 ease: 'power3.out',
                 scrollTrigger: {
                     trigger: aboutRef.current,
-                    start: 'top 80%',
-                    toggleActions: 'restart none none none'
+                    start: 'top 30%',
+                    end: 'bottom top',
+                    toggleActions: 'play none none reverse'
                 },
             }
         );
@@ -279,8 +280,10 @@ function Home() {
                 ease: 'power3.out',
                 scrollTrigger: {
                     trigger: aboutRef.current,
-                    start: 'top 80%',
-                    toggleActions: 'restart none none none'
+                    start: 'top 30%',
+                    end: 'bottom top',
+                    // markers: true,
+                    toggleActions: 'play none none reverse'
                 },
             }
         );
@@ -293,7 +296,7 @@ function Home() {
     useGSAP(() => {
         const scrollTriggerConfig = {
             trigger: craftRef.current,
-            start: "top 80%",
+            start: "top 60%",
             toggleActions: "play none none none",
             // markers: true,
         };
@@ -400,7 +403,7 @@ function Home() {
     return (
         <>
             <div className='relative'>
-                <section ref={heroRef} className='relative h-[85vh] w-full outer-container mb-[10rem]'>
+                <section ref={heroRef} className=' h-[85vh] w-full outer-container relative'>
                     {positions.map((pos, index) => {
                         return (
                             <div
@@ -426,7 +429,7 @@ function Home() {
                             <div ref={refs.line3} className='inline-block px-4 py-2 md:px-6 lg:px-10 lg:py-3 xl:py-5 mt-2 md:mt-4 bg-charcoal rounded-md  w-fit rotate-4 translate-y-1 -translate-x-2 md:-translate-x-4 lg:-translate-x-[12%]'>
                                 <h1 className='text-white big-header'>Design of</h1>
                             </div>
-                            <div ref={refs.line4} className='inline-block px-4 py-2 md:px-6 lg:px-10 lg:py-3 xl:py-5 mt-2 md:mt-4 bg-charcoal rounded-md w-fit -rotate-4 translate-x-10 lg:translate-x-[15%] relative'>
+                            <div ref={refs.line4} className='inline-block px-4 py-2 md:px-6 lg:px-10 lg:py-3 xl:py-5 mt-2 md:mt-4 bg-charcoal rounded-md w-fit -rotate-4 translate-x-10 relative'>
                                 <h1 className='text-white big-header'>Tina Lin</h1>
 
                             </div>
@@ -451,8 +454,8 @@ function Home() {
                     </div>
                 </section >
 
-                <section ref={aboutRef} id='about' className="about relative h-[80vh] max-w-container mb-20 md:mb-[8rem]">
-                    <div className='bg-darker-bg h-full rounded-2xl overflow-hidden'>
+                <section ref={aboutRef} id='about' className="about relative h-full max-w-container py-20 md:py-[10rem]  bg-light-yellow-bg w-full">
+                    <div className='h-[80vh] bg-darker-bg border-2 rounded-2xl overflow-hidden'>
                         <div className='max-w-container py-2 flex items-center justify-center flex-col gap-10 h-full relative'>
                             <div className='relative z-10 text-center lg:max-w-[60rem]'>
                                 <h1 className='font-roundo-medium normal-case leading-normal text-center text-black text-[28px] md:text-2xl'>I create <span className='about-tag text-center font-roundo px-3 py-2 bg-charcoal text-white rounded-md text-nowrap'>user-centered</span> experiences <br /> through design and code </h1>
@@ -477,7 +480,7 @@ function Home() {
                     </div>
                 </section>
 
-                <section ref={craftRef} id='crafts' className="relative h-full mb-[10rem]">
+                <section ref={craftRef} id='crafts' className="relative h-full mb-[10rem] bg-light-yellow-bg w-full">
                     <div className='max-w-container relative'>
                         <div className='relative'>
                             <div className='recent flex mx-auto w-fit bg-charcoal rounded-md px-4 py-2 rotate-6'>

@@ -31,10 +31,10 @@ export const craftsData = [
             },
             role: 'Researcher , UX/UI designer',
             duration: '4 weeks - July 2024',
-            headline: 'Tim Horton\'s is a beloved Canadian icon, but its app experience wasn\'t living up to its reputation...',
-            content: "As a loyal customer, I often found the offer redemption flow clunky and unintuitive. This project became my opportunity to reimagine the app\’s user experience, focusing on simplifying the offer redemption process and refreshing the overall design.",
+            headline: 'Tim Horton\'s is a Canadian favorite, but its app wasn’t as easy to use as its coffee is to enjoy.',
+            content: "As a loyal customer, I found it frustrating to redeem offers on the app. The process felt clunky and confusing, which inspired me to rethink the design. My goal was to simplify the offer redemption flow and make the experience smoother for everyone.",
             challenge: 'Redesigning the mobile app’s offer redemption flow to improve usability and satisfaction.',
-            solution: 'A streamlined process that eliminates confusion and enables users to redeem offers effortlessly.',
+            solution: 'A simple and clear process that removes confusion, making it effortless to redeem offers.',
 
             media: {
                 type: 'video',
@@ -86,7 +86,16 @@ export const craftsData = [
         ],
 
         research: {
-            description: 'To better understand the Tim Hortons app and the user experience around redeeming offers, I started my research with these goals in mind:',
+            survey: {
+                content: "Before diving into the offer redemption flow, I conducted a survey with 19 participants to get a broad understanding of how users interact with the Tim Horton's app. The survey covered ordering habits, usability issues, and overall frustrations with the app. Key insights include :",
+                img: {
+                    src: '/assets/tims/survey.png',
+                    alt: 'survey'
+                },
+            },
+            header: 'Defining the Research Focus',
+
+            description: 'To dive deeper into the offer redemption experience, I focused my research on the following goals:',
 
             goals: [
                 'Understand user expectations and identify pain points with redeeming offers.',
@@ -96,31 +105,16 @@ export const craftsData = [
             ],
 
             interview: {
-                description: "Three users were interviewed: one weekly app user who uses offers most of the times; the other two are monthly app users, but do not really use offers. During the interview, I asked participants to complete a task — <span>redeeming a '$7 Breakfast Combo' offer </span>, and followed up with questions to dig deeper. All interviews were conducted in person, and the insights were organized using <span>affinity mapping</span>.",
+                description: "I conducted in-person user interviews with a task-based approach to understand how users redeem offers. One participant uses the app weekly and often redeems offers, while the other two use the app monthly but rarely use offers. <span> They were asked to redeem a '$7 Breakfast Combo' offer while I observed their experience, similar to a small usability test </span>. After completing the task, I followed up with questions to understand their challenges, expectations, and frustrations. The insights were then organized using affinity mapping to identify key patterns.",
 
                 map: {
                     src: "/assets/tims/research-interview.svg",
                     alt: 'affinity mapping',
                 },
-
-
-                results: [
-                    {
-                        title: 'User Pain Point A',
-                        subtitle: 'Complex redemption process',
-                        description: 'Users felt that being directed to the full menu page after activating offers was an awkward flow. They had to sift through the entire menu to find what they needed.',
-
-                    },
-                    {
-                        title: 'User Pain Point B',
-                        subtitle: 'Memory Challenge',
-                        description: 'Remembering all the items included in an offer can be tricky, especially with multiple items. Some users mentioned needing to go back to the offer section to double-check.',
-
-                    }
-                ]
             },
 
             flowAnalysis: {
+                classes: 'content-gap',
                 title: 'Heuristic Evaluation',
                 description: 'I dived deeper into the research by analyzing the flow and design of the Tim Hortons app using heuristic evaluation. This approach confirmed the issues raised during the interviews and uncovered additional problems that hadn’t been mentioned.',
 
@@ -132,8 +126,9 @@ export const craftsData = [
             },
 
             problems: {
+                classes: 'content-gap',
                 title: 'Prioritized Problems',
-                content: 'Combining my research, I prioritized the problems based on their impact on user experience and the frequency they were mentioned during interviews.',
+                content: 'By combining user interviews and heuristic evaluation, I identified the most critical issues affecting the user experience. I prioritized these problems based on How often they were mentioned by users and how much they impacted the experience.',
 
                 icons: [
                     {
@@ -226,15 +221,13 @@ export const craftsData = [
         },
 
         testing: {
-            description: 'To validate the new design, I conducted usability testing with 3 participants. Each participant was tasked with <span> redeeming a Farmer\'s Breakfast Wrap and a Classic Donut </span>, replicating common user scenarios. Their feedback, gathered through surveys and brief interviews, revealed valuable insights into what worked well and areas for improvement. Observing their interactions helped uncover subtle usability issues, leading to a more refined design.',
+            description: 'To validate the new design, I conducted usability testing with 4 participants. Each participant was tasked with <span> redeeming a Farmer\'s Breakfast Wrap and a Classic Donut </span>, to match common user actions. The goal was to see how well the new flow worked, check if they noticed the "Activate" button was gone, find out what changes they wanted, and spot any problems they faced. <span> While all participants liked the simpler flow to the offers menu, some issues remained </span>:',
 
-            task: 'Redeem an offer- a Farmer\'s Breakfast Wrap and a Classic Donut',
-
-            goals: [
-                'Evaluate the new flow\'s effectiveness',
-                'Determine if users notice the removal of the "Activate" button',
-                'Uncover desired changes users may prefer',
-                'Identify users\' challenges within the new flow'
+            findings: [
+                'User preferred being directed to the cart instead of the full menu after adding offers',
+                'Lengthy and dense offer descriptions',
+                'Users had trouble understanding the filtered menu and didn’t always know what they were selecting.',
+                'The dropdown menus were hard to read and frustrating to use'
             ],
 
             problemImg: {
@@ -316,7 +309,7 @@ export const craftsData = [
         status: 'completed',
         title: 'FitBot- App for Perfect Jeans',
         media: "image",
-        cover: "/assets/homepage/pm/cover.jpg",
+        cover: "/assets/homepage/pm/cover2.jpg",
         banner: {
             subHeader: 'FitBot- App for Perfect Pants',
             header: 'Finding the perfect fit for Jeans',
@@ -338,9 +331,9 @@ export const craftsData = [
             },
             role: 'Researcher , UX/UI designer',
             duration: '4 weeks - May 2024',
-            headline: 'While online shopping has made it easy and convenient for people, finding pants that fit online has remained a challenge...',
-            content: "For many shoppers, inconsistent sizing charts and the inability to try on pants lead to frustration, wasted time, and frequent returns. Despite technological advancements, the lack of a personalized approach to sizing leaves users feeling uncertain and less confident about their purchase decisions, making online shopping for pants a challenging experience.",
-            challenge: 'Creating solutions that help users find perfect pants online',
+            headline: 'Finding pants that fit online is always a struggle, especially for someone like me—petite and often stuck between sizes.',
+            content: "As a petite shopper, I know how frustrating it is to buy pants online. Size charts are confusing, and trying to guess the right fit leads to wasted time and returns. Even with so many options, there’s no easy way to see how pants will actually fit before buying. This experience inspired me to create a solution that helps people find the perfect fit with confidence.",
+            challenge: 'Making it easier for people to find pants that fit well when shopping online.',
             solution: 'An app that features an AI chat assistant for personalized size recommendations, paired with a 3D model that aligns with the user\'s size for accurate visualization.',
             media: {
                 type: 'video',
@@ -388,16 +381,18 @@ export const craftsData = [
         ],
 
         research: {
-            description: "My research aimed to address the challenges of online shopping for pants, focusing on user needs, fit accuracy, and opportunities for innovation. Key objectives included:",
+            header: 'Research Goals',
+
+            description: "I wanted to see how other users shop for pants online and what makes the experience frustrating or easy. To better understand this, I focused my research on user needs, fit accuracy, and ways to improve the process.:",
 
             goals: [
-                'Identify user pain points when shopping for pants online.',
-                'Explore key factors for accurate fit recommendations.',
-                'Analyze competitor solutions to identify gaps and opportunities.'
+                'Find out what frustrates people when buying pants online.',
+                'Learn what helps users feel confident about fit recommendations.',
+                'Look at competitor apps to see what’s missing and where improvements can be made.'
             ],
 
             interview: {
-                description: "To get a better understanding of user challenges and preferences when shopping for pants online, I spoke with 6 individuals: 3 of them are frequent online shoppers whereas the other 3 shop online less often. I organized the insights into an affinity map, grouping pain points, behaviors to identify key themes and patterns.",
+                description: "To understand different shopping habits, I talked to 6 people— <span> 3 who shop online often and 3 who rarely do </span>. I grouped their feedback into an affinity map to find common struggles and patterns in how they shop for pants.",
 
                 map: {
                     src: '/assets/pm/mapping.svg',
@@ -414,25 +409,25 @@ export const craftsData = [
                         src: "/assets/pm/icon1.svg",
                         altText: "issue icon",
                         header: 'Unsatisfying Pants Shopping Experiences',
-                        caption: 'All 6 participants disliked shopping for pants online, even if they frequently shop for other items.'
+                        caption: 'All 6 participants disliked it, even if they regularly buy other items online.'
                     },
                     {
                         src: "/assets/pm/icon2.svg",
                         altText: "issue icon",
                         header: 'Sizing Challenges',
-                        caption: 'All participants were frustrated with inconsistent sizing, unclear measurements, and confusing size charts.'
+                        caption: 'Everyone struggled with inconsistent sizes, unclear measurements, and confusing size charts.'
                     },
                     {
                         src: "/assets/pm/icon3.svg",
                         altText: "issue icon",
                         header: 'Heavy Reliance on Reviews and References',
-                        caption: 'Participants often rely on reviews, but many struggle to find reliable references for their body type.'
+                        caption: 'Many check reviews for guidance, but they often can’t find references that match their body type.'
                     },
                     {
                         src: "/assets/pm/icon4.svg",
                         altText: "issue icon",
                         header: 'Demand for Interactive Sizing Tools',
-                        caption: '5 out of 6 participants wanted interactive tools or quizzes to simplify the sizing process.'
+                        caption: '5 out of 6 participants said they would like interactive tools or quizzes to make finding the right size easier.'
                     },
                 ]
 
@@ -453,19 +448,18 @@ export const craftsData = [
 
         define: {
             insights: {
-                content: "As AI chat and 3D modeling technology continue to advance, I saw an opportunity to combine and leverage these tools to enhance the online pants shopping experience. User research revealed several key challenges, including inconsistent sizing, reliance on reviews, and a lack of interactive tools. To address these issues and create a user-friendly, effective app, I identified three core solutions:",
+                content: "With AI chat and 3D modeling technology evolving, I saw an opportunity to combine these tools to improve the online pants shopping experience. User research revealed several key challenges, including inconsistent sizing, reliance on reviews, and a lack of interactive tools.  To tackle these, I envisioned three key features that could revolutionize online pants shopping:",
 
                 solution: [
                     {
                         title: "Sizing AI Assistant",
                         icon: "💬",
-                        description: " A smart chatbot that guides users with personalized size recommendations through conversational and intuitive interactions."
-
+                        description: " A chatbot that doesn’t just answer questions but provides personalized size recommendations tailored to each user"
                     },
                     {
                         title: "3D FitModel",
                         icon: "👀",
-                        description: "Realistic 3D models that dynamically adjust based on user inputs, allowing users to visualize how pants fit specific areas like the waist, hips, and inseam."
+                        description: "A realistic model of the user that changes based on their size inputs. It lets users see how the pants fit on their waist, hips, and legs before buying."
                     },
                     {
                         title: "Interactive Sizing Tool",
@@ -500,7 +494,7 @@ export const craftsData = [
 
 
             header: 'Meet Liz and Jamie',
-            content: "Through my research, Liz and Jamie’s stories came to life. Liz is a casual online shopper who enjoys the convenience of buying most things online but hesitates when it comes to pants due to concerns about fit, comfort, and the hassle of returns. Jamie, on the other hand, is unsure of her size and often feels uncertain about what will actually fit. Both users share 2 common goals : <span> to have visuals that show how pants could fit and to purchase confidently.</span> To better understand their experiences, I developed a user journey map outlining each step they take, highlighting their pain points, and identifying opportunities to improve their confidence and create a seamless shopping experience.",
+            content: "Through my research, Liz and Jamie’s stories stood out. Liz, a casual online shopper, enjoys the convenience of buying most things online but avoids pants because of concerns about fit, comfort, and the hassle of returns. Jamie often feels unsure about her size and struggles to know what will actually fit. Both share two common goals: <span> to have visuals that show how pants could fit and to purchase confidently.</span> To better understand their experiences, I developed a user journey map outlining each step they take, highlighting their pain points, and identifying opportunities to improve their confidence and create a seamless shopping experience.",
 
             tabData: [
                 {
@@ -543,13 +537,12 @@ export const craftsData = [
         },
 
         testing: {
-            description: 'I conducted early user testing with 5 participants to gather initial feedback on the app\'s usability and identify any pain points or areas of confusion. This helped me understand how users interacted with key features, like FitBot, FitModel, and onboarding, and provided insights for refining the design to better meet user needs.',
+            description: 'I conducted early user testing with the med-fi prototype with 5 participants to gather initial feedback on the app\'s usability and identify any pain points or areas of confusion. They were asked <span> to find pants in their size, check the fit with the 3D FitModel, save a favorite to the Wishlist, and review a past FitBot recommendation </span>.',
 
-            task: 'Imagine you\’re shopping for pants online. Use the app to find pants in your size, visualize the fit using the 3D FitModel, and save your favorite to your Wishlist. Then, revisit your FitBot history to check a previous recommendation.',
-
-            goals: [
-                'Evaluate onboarding clarity',
-                'Test Navigation and Feature Accessibility',
+            findings: [
+                '80% of the users didn’t know FitModel was part of FitBot. Some thought they could open it from the homepage, but it only updates their size.',
+                'Users wanted FitBot to remember their last chat when they came back',
+                ' Users wanted to see the full-body view, item photos, and customer ratings. They also wanted fit ratings to show on the model.',
             ],
 
             problemImg: {
@@ -559,8 +552,8 @@ export const craftsData = [
         },
 
         iteration: {
-            title: 'Iteration',
-            content: 'Testing revealed that the main problems included 80% of users finding the navigation unclear, particularly around understanding FitModel as part of FitBot. Users wanted improved clarity on homepage labels and enhancements to the FitModel page, such as full-body views and better product details. Based on this feedback, I moved on to designing high-fidelity prototypes to refine the experience.',
+            title: 'iteration',
+            content: 'Based on the feedback, I improved homepage labels for clarity and enhanced the FitModel page with full-body views and better product details. After making these changes, I moved on to designing high-fidelity prototypes to further refine the experience.',
 
             system: [
                 {
@@ -631,7 +624,7 @@ export const craftsData = [
         cover: "/assets/homepage/basics/cover.jpg",
         banner: {
             subHeader: 'Basics. - E-commerce ',
-            header: 'Designed and Developed an online apparel store',
+            header: 'Developed an online apparel store',
             image: {
                 src: '/assets/basics/banner.png',
                 altText: 'Basics banner',
@@ -905,14 +898,14 @@ export function fetchProductList(dataPath, containerId, productType, callback) {
         status: 'completed',
         title: 'CoreVault: SaaS Promotional landing page',
         media: "image",
-        cover: "/assets/nomly/banner.png",
+        cover: "/assets/homepage/corevault/cover.jpg",
         banner: {
             subHeader: 'CoreVault - Fictional SaaS Company',
             header: 'Designed and Developed Promotional Landing Page',
             image: {
-                src: '/assets/nomly/banner.png',
+                src: '/assets/corevault/banner.png',
                 altText: 'Nomly banner',
-                classes: 'scale-125'
+                classes: ''
             },
         },
 
@@ -937,13 +930,13 @@ export function fetchProductList(dataPath, containerId, productType, callback) {
 
             media: {
                 type: 'image',
-                src: '/assets/nomly/intro.png',
-                altText: "Nomly",
+                src: '/assets/corevault/intro.png',
+                altText: "corevault",
                 caption: 'Sneak Peek',
             },
             webLink: {
-                text: 'Live Demo - Coming Soon',
-                link: "#"
+                text: 'Live Demo',
+                link: "https://corevault.tinalin.ca/"
             },
         },
 

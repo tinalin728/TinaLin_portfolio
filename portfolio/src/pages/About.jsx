@@ -204,7 +204,7 @@ function About() {
                     <div className=''>
                         <h2 className="craftHeader text-center sub-header text-nowrap">
                             {Array.from("About").map((letter, index) => (
-                                <span key={index} className="letter inline-block font-craftwork font-extrabold mt-2 text-light-yellow-bg text-stroke uppercase leading-none mx-[2px] md:mx-0 lg:mx-0 md:tracking-wider">
+                                <span key={index} className="letter inline-block font-craftwork font-extrabold mt-2 text-light-yellow-bg text-stroke uppercase leading-none -mx-[2px] md:mx-0 lg:mx-0 md:tracking-wider">
                                     {letter}
                                 </span>
                             ))}

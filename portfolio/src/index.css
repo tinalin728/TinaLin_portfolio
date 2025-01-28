@@ -39,7 +39,7 @@
     }
 
     main {
-        @apply overflow-hidden
+        /* @apply overflow-hidden */
     }
 
     body {
@@ -71,7 +71,7 @@
     }
 
     .content-gap {
-        @apply py-[3em] md:py-[4rem] lg:py-[5.5rem];
+        @apply py-4 md:py-[4rem];
     }
 
 

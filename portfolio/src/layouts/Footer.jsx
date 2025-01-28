@@ -379,7 +379,7 @@ function Footer() {
                 <div className="absolute top-0 left-0 w-full h-full z-10">
                     <canvas ref={canvasRef} className="w-full h-full" />
                 </div>
-                <div className='h-[85vh] relative max-w-container py-10 lg:py-[6rem]'>
+                <div className='h-[90vh] md:h-[85vh] relative max-w-container py-10 lg:py-[6rem]'>
                     <div className='flex flex-col justify-center items-center gap-3 md:gap-6 lg:gap-8'>
                         {/* <h2 className='font-craftwork font-extrabold text-light-yellow-bg text-shadow text-stroke text-center footer-header tracking-[5px]'>
                             Say Hello

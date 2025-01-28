@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 gsap.registerPlugin(useGSAP);
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+gsap.registerPlugin(ScrollTrigger);
 
 import WindowWidth from '../hooks/WindowWidth';
 import CraftCard from '../components/CraftCard'
@@ -25,7 +27,7 @@ function Crafts() {
     const filteredCrafts = crafts.filter((craft) => {
         const normalizedType = craft.type.toLowerCase().trim(); // Normalize type
         const normalizedFilter = filter.toLowerCase().trim(); // Normalize filter
-        console.log(`Filtering Craft - Type: "${normalizedType}", Filter: "${normalizedFilter}"`);
+        // console.log(`Filtering Craft - Type: "${normalizedType}", Filter: "${normalizedFilter}"`);
         if (normalizedFilter === 'all') return true;
         return normalizedType === normalizedFilter;
     });
@@ -141,7 +143,7 @@ function Crafts() {
                     <div className=''>
                         <h2 className="craftHeader text-center sub-header text-nowrap">
                             {Array.from("Crafts").map((letter, index) => (
-                                <span key={index} className="letter inline-block font-craftwork font-extrabold mt-2 text-light-yellow-bg text-stroke uppercase leading-none lg:px-0 mx-[2px] md:mx-0 lg:mx-0 md:tracking-wider">
+                                <span key={index} className="letter inline-block font-craftwork font-extrabold mt-2 text-light-yellow-bg text-stroke uppercase leading-none lg:px-0 -mx-[2px] md:mx-0 md:tracking-wider">
                                     {letter}
                                 </span>
                             ))}
@@ -161,10 +163,10 @@ function Crafts() {
                         <Link
                             onMouseMove={handleMouseMove}
                             onMouseOut={handleMouseOut}
-                            to={`/crafts/${firstCraft.id}`} className="block font-bold leading-normal capitalize">
+                            to={`/crafts/${firstCraft.id}`} className="block font-bold leading-normal capitalize group">
                             <div className='w-full flex flex-col p-3 mb-10 border-2 rounded-2xl overflow-hidden lg:flex-row lg:justify-center lg:items-center lg:gap-10 relative lg:mb-12 hover:border-[3px] transition-all duration-300'>
 
-                                <div className="overflow-hidden rounded-xl border border-black border-opacity-55 lg:basis-[60%]">
+                                <div className="img-container overflow-hidden rounded-xl border border-black border-opacity-55 lg:basis-[60%]">
                                     {firstCraft.media === "video" ? (
                                         <video
                                             src={firstCraft.src}
@@ -180,7 +182,7 @@ function Crafts() {
                                             <img
                                                 src={firstCraft.src}
                                                 alt="project"
-                                                className="relative object-cover max-w-full min-h-[250px] md:h-auto transition duration-500 ease-in-out z-0  overflow-hidden"
+                                                className="relative object-cover max-w-full min-h-[250px] md:h-auto transition duration-500 ease-in-out z-0  overflow-hidden project-img"
                                                 loading="lazy"
                                                 style={{ transform: `scale(${scale})` }}
                                             />
@@ -207,7 +209,7 @@ function Crafts() {
                                     </div>
                                     <p className='tracking-normal normal-case'> {firstCraft.content}</p>
 
-                                    <button className="block tracking-wide font-roundo-medium mt-4 py-4 group hover:text-orange">
+                                    <button className="block tracking-wide font-roundo-medium mt-4 py-4 group group-hover:text-orange">
                                         Read Now <span className="inline-block transition-transform duration-300 ease-in-out group-hover:scale-x-150 group-hover:translate-x-2">→</span>
                                     </button>
 

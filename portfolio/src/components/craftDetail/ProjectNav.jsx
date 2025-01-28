@@ -86,7 +86,7 @@ function ProjectNav({ stickyNav }) {
         <div
             ref={navRef}
             style={{ visibility: hasAnimated ? "visible" : "hidden" }} // Prevent flicker
-            className="hidden lg:fixed lg:top-1/2 lg:left-10 lg:transform lg:-translate-y-1/2 lg:z-50 lg:flex lg:flex-col"
+            className="hidden lg:fixed lg:top-1/2 lg:left-4 xl:left-10 lg:transform lg:-translate-y-1/2 lg:z-50 lg:flex lg:flex-col"
         >
             {stickyNav.map((nav) => (
                 <a

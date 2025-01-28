@@ -74,8 +74,43 @@ function UIUXLayout({ craft }) {
                         <h1>Research</h1>
                     </div>
 
-                    <div className='pt-10'>
-                        <h2>Research Goals</h2>
+                    {craft.research.survey && (
+                        <>
+                            <div className='mt-10 pb-4 md:pb-[4rem]'>
+
+                                <h2>Survey</h2>
+
+                                <div className='flex flex-col gap-4 xl:flex-row'>
+                                    <div className='xl:basis-[65%]'>
+                                        <p>{craft.research.survey.content}</p>
+                                        <ul className="list-disc ml-4">
+                                            <li>
+                                                <span className="font-bold">User Behavior :</span> Most users rely on the app for ordering, checking offers, and earning rewards.
+                                            </li>
+                                            <li>
+                                                <span className="font-bold">Usability Issues :</span>
+                                                <ul className="list-decimal ml-6">
+                                                    <li>
+                                                        <span className="font-bold">Redeeming Offers & Rewards :</span> 32% of users found this process challenging, making it a major pain point.
+                                                    </li>
+                                                    <li>
+                                                        <span className="font-bold">Navigating the App : </span> 38.9% of users struggled with navigation, which affected their ability to find offers and complete orders smoothly.
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div className='xl:basis-[35%] rounded-xl'>
+                                        <img src={craft.research.survey.img.src} alt={craft.research.survey.img.alt} className='bg-white p-2 bg-opacity-25 rounded-lg w-full object-cover' />
+                                    </div>
+                                </div>
+                                <p className='mt-6'> These insights confirmed my hypothesis that simplifying the redemption flow would improve the overall app experience. With these challenges in mind, I set specific research goals to better understand how users redeem offers and where improvements were needed."</p>
+                            </div>
+                        </>
+                    )}
+
+                    <div className='mt-10'>
+                        <h2>{craft.research.header}</h2>
                         <p className='mb-2'>{craft.research.description}
                         </p>
                         <ul>
@@ -102,7 +137,7 @@ function UIUXLayout({ craft }) {
                     </div>
 
                     {craft.research.flowAnalysis && (
-                        <div className='flex flex-col lg:flex-row gap-10'>
+                        <div className={`flex flex-col lg:flex-row gap-10 ${craft.research.flowAnalysis.classes}`}>
                             <div className='flex-1'>
                                 <h2>{craft.research.flowAnalysis.title}</h2>
                                 <p>{craft.research.flowAnalysis.description}</p>
@@ -132,7 +167,7 @@ function UIUXLayout({ craft }) {
                         </div>
                     )}
 
-                    <div className='content-gap'>
+                    <div className={craft.research.problems.classes}>
                         <h2 className='text-red-600'>  {craft.research.problems.title}</h2>
                         <p className='pb-4'>{craft.research.problems.content}</p>
 
@@ -191,8 +226,8 @@ function UIUXLayout({ craft }) {
 
                     {/* pants */}
                     {craft.define.insights && (
-                        <div className='mt-10'>
-                            <div className='flex-1 mb-10'>
+                        <div className='mt-10 pb-4 md:pb-[4rem]'>
+                            <div className='flex-1'>
                                 <h2>Finding Opportunities</h2>
                                 <p dangerouslySetInnerHTML={{ __html: craft.define.insights.content }} />
                                 <ul className="flex flex-col gap-10 justify-center mt-10 md:flex-row">
@@ -210,7 +245,7 @@ function UIUXLayout({ craft }) {
                         </div>
                     )}
 
-                    <div className='mt-10'>
+                    <div className='mt-10 pb-4 md:pb-[4rem]'>
                         <h2 className='mb-4'>{craft.define.header}</h2>
                         <p className='mb-10' dangerouslySetInnerHTML={{ __html: craft.define.content }} />
 
@@ -249,7 +284,7 @@ function UIUXLayout({ craft }) {
 
                 {/* pants */}
                 {craft.define.features && (
-                    <div className='content-gap'>
+                    <div className='pb-4 md:pb-[4rem]'>
                         <h2>{craft.define.features.header}</h2>
                         <p className='mb-6'>{craft.define.features.content} </p>
 
@@ -263,7 +298,7 @@ function UIUXLayout({ craft }) {
 
             {/* design */}
             <section id='design' className=''>
-                <div className='content-w'>
+                <div className='content-w pb-4 md:pb-[4rem]'>
                     <div className='py-10 border-b-2 border-light-grey border-dashed'>
                         <span className='text-dark-grey uppercase font-roundo tracking-wider'>Creating Solutions</span>
                         <h1>Design</h1>
@@ -320,41 +355,37 @@ function UIUXLayout({ craft }) {
 
             {/* user testing, */}
             <section id='testing'>
-                <div className='content-w'>
+                <div className='content-w pb-[3em] md:pb-[4rem] lg:pb-[5.5rem]'>
                     <div className='py-10 border-b-2 border-light-grey border-dashed'>
                         <span className='text-dark-grey uppercase font-roundo tracking-wider'>Validating Solutions</span>
                         <h1>Testing</h1>
                     </div>
 
                     <div className='pt-10'>
-                        <div className='mb-10'>
+                        <div className='mb-4'>
                             <h2>Does this work?</h2>
                             <p dangerouslySetInnerHTML={{ __html: craft.testing.description }} />
                         </div>
-                        <div className='flex flex-col gap-10 md:flex-row'>
-                            <div className='flex-1'>
-                                <p className='text-[20px] font-roundo-medium'>Task Given To Participants</p>
-                                <p className='mt-2'> {craft.testing.task}</p>
-                            </div>
-                            <div className='flex-1'>
-                                <p className='text-[20px] font-roundo-medium'>Usability Testing Goals</p>
-                                <ul className='my-2 ml-3'>
-                                    {craft.testing.goals.map((goal, index) => (
-                                        <li key={index} className='list-disc'>
-                                            {goal}
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
+
+                        <div className='mb-4'>
+                            <p className='text-[20px] font-roundo-medium'>Key Findings</p>
+                            <ul className='my-2 ml-3'>
+                                {craft.testing.findings.map((finding, index) => (
+                                    <li key={index} className='list-disc'>
+                                        {finding}
+                                    </li>
+                                ))}
+                            </ul>
                         </div>
+
                     </div>
 
-                    <div className='content-gap'>
+                    {/* <div className='content-gap'>
                         <h2 className='mb-4'>Problems that users found</h2>
                         <div className='p-2 bg-white rounded-xl bg-opacity-50'>
                             <img src={craft.testing.problemImg.src} alt={craft.testing.problemImg.altText} className='w-full' loading="lazy" />
                         </div>
-                    </div>
+                    </div> */}
                 </div>
             </section>
 

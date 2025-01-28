@@ -24,7 +24,21 @@
                 "Tailwind"
             ],
             "content": "Branding for an online dessert store",
-            "status": "incomplete"
+            "status": "complete"
+        },
+        {
+            "id": 5,
+            "type": "corevault",
+            "title": "CoreVault: SaaS Promotional landing page",
+            "media": "image",
+            "src": "/assets/homepage/corevault/cover.jpg",
+            "skills": [
+                "Web Development",
+                "React.JS",
+                "Tailwind"
+            ],
+            "content": "Branding for an online dessert store",
+            "status": "complete"
         },
         {
             "id": 3,
@@ -51,20 +65,6 @@
             ],
             "content": "Leading an agile project and developing an online apparel store",
             "status": "complete"
-        },
-        {
-            "id": 5,
-            "type": "corevault",
-            "title": "CoreVault: SaaS Promotional landing page",
-            "media": "image",
-            "src": "/assets/homepage/corevault/cover.jpg",
-            "skills": [
-                "Web Development",
-                "React.JS",
-                "Tailwind"
-            ],
-            "content": "Branding for an online dessert store",
-            "status": "incomplete"
         }
     ]
 }
