@@ -220,7 +220,7 @@ function Crafts() {
 
 
                     <div className="relative grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
-                        {filteredCrafts.slice(1, 6).map((craft, index) => {
+                        {filteredCrafts.slice(1, 6).map((craft) => {
                             return (
                                 <CraftCard
                                     key={craft.id}
