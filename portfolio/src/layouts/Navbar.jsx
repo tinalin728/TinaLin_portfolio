@@ -42,7 +42,7 @@ function Navbar() {
             if (isOpen) {
                 // Close the menu
                 gsap.to(menuRef.current, {
-                    x: '-100%',
+                    x: '-80%',
                     duration: .3,
                     ease: 'none',
                     overwrite: 'auto',
@@ -57,7 +57,7 @@ function Navbar() {
                 setIsOpen(true);
                 gsap.fromTo(
                     menuRef.current,
-                    { x: '100%' },
+                    { x: '80%' },
                     {
                         x: '0', duration: 0.5, ease: 'power2.out', overwrite: 'auto',
                     }
@@ -129,7 +129,6 @@ function Navbar() {
                                             `font-roundo-medium py-6 md:py-8 hover:scale-95 transition-all duration-300 ${isActive ? (isOpen ? 'text-orange text-xl' : 'text-orange') : isOpen ? 'text-light-yellow-bg text-xl' : ''
                                             }`
                                         }
-
                                     >
                                         Home
                                     </NavLink>

@@ -87,7 +87,7 @@ export const craftsData = [
 
         research: {
             survey: {
-                content: "Before diving into the offer redemption flow, I conducted a survey with 19 participants to get a broad understanding of how users interact with the Tim Horton's app. The survey covered ordering habits, usability issues, and overall frustrations with the app. Key insights include :",
+                content: "Before diving into the offer redemption flow, I conducted a survey with 19 participants to get a broad understanding of how users interact with the Tim Horton's app. The insights revealed that more than 80% of the users reply on the app for ordering and checking rewards, but :",
                 img: {
                     src: '/assets/tims/survey.png',
                     alt: 'survey'
@@ -105,6 +105,7 @@ export const craftsData = [
             ],
 
             interview: {
+                title: "User Interviews: Real Stories, Real Struggles",
                 description: "I conducted in-person user interviews with a task-based approach to understand how users redeem offers. One participant uses the app weekly and often redeems offers, while the other two use the app monthly but rarely use offers. <span> They were asked to redeem a '$7 Breakfast Combo' offer while I observed their experience, similar to a small usability test </span>. After completing the task, I followed up with questions to understand their challenges, expectations, and frustrations. The insights were then organized using affinity mapping to identify key patterns.",
 
                 map: {
@@ -115,7 +116,7 @@ export const craftsData = [
 
             flowAnalysis: {
                 classes: 'content-gap',
-                title: 'Heuristic Evaluation',
+                title: 'Breaking down UX barriers with Heuristic Evaluation',
                 description: 'I dived deeper into the research by analyzing the flow and design of the Tim Hortons app using heuristic evaluation. This approach confirmed the issues raised during the interviews and uncovered additional problems that hadn’t been mentioned.',
 
                 image: {
@@ -127,7 +128,7 @@ export const craftsData = [
 
             problems: {
                 classes: 'content-gap',
-                title: 'Prioritized Problems',
+                title: 'Prioritized Problems: What Needs Fixing First?',
                 content: 'By combining user interviews and heuristic evaluation, I identified the most critical issues affecting the user experience. I prioritized these problems based on How often they were mentioned by users and how much they impacted the experience.',
 
                 icons: [
@@ -159,7 +160,7 @@ export const craftsData = [
 
             },
             competitor: {
-                title: 'Competitor Research',
+                title: 'What Are Others Doing Better?',
                 description: "After identifying key issues with the Tim Hortons app, I turned to competitor research to explore how similar brands handle offer redemption. I analyzed the flows of Starbucks and McDonald's, which stood out for their simplicity— <span> users can order immediately after clicking an offer. </span> This comparison provided valuable insights into best practices and highlighted opportunities where the Tim Hortons app could improve its user experience.",
                 img: {
                     src: "/assets/tims/research-CA.png",
@@ -392,6 +393,7 @@ export const craftsData = [
             ],
 
             interview: {
+                title: "Shopping Habits & Fit Challenges: What Users Say",
                 description: "To understand different shopping habits, I talked to 6 people— <span> 3 who shop online often and 3 who rarely do </span>. I grouped their feedback into an affinity map to find common struggles and patterns in how they shop for pants.",
 
                 map: {
@@ -401,7 +403,7 @@ export const craftsData = [
             },
 
             problems: {
-                title: 'Key Findings',
+                title: "Common Pain Points in Finding the Right Fit",
                 content: "Insights from user interviews revealed several key challenges in the online pants shopping experience:",
 
                 icons: [
@@ -434,7 +436,7 @@ export const craftsData = [
             },
 
             competitor: {
-                title: 'Competitor Analysis',
+                title: 'Bridging the Gap: What Competitor Apps Lack',
 
                 description: "I went on a search for existing apps and discovered that <span> most focus on general clothing or whole-body recommendations, often neglecting the specific challenges of pants shopping. </span> Tools like WEARFITS and Wrobe.ai excel in providing virtual try-ons and full-body visualization, but they lack conversational AI or a focus on pants-specific needs. Similarly, Stylee prioritizes styling advice over practical fit solutions. This gap motivated me to <span> create an app that bridge these gaps.",
 

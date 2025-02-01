@@ -403,7 +403,7 @@ function Home() {
     return (
         <>
             <div className='relative'>
-                <section ref={heroRef} className=' h-[85vh] w-full outer-container relative'>
+                <section ref={heroRef} className='h-[85vh] w-full outer-container relative'>
                     {positions.map((pos, index) => {
                         return (
                             <div
@@ -417,8 +417,9 @@ function Home() {
                         );
                     })}
 
-                    <div className='relative max-w-container w-full h-full flex flex-col justify-center items-center gap-4'>
-                        <div className='inline-flex flex-col items-center justify-center gap-2 -mt-12 md:-mt-14'>
+
+                    <div className='relative max-w-container w-full h-full flex flex-col items-center justify-center'>
+                        <div className='mt-10 inline-flex flex-col items-center justify-center gap-2 md:-mt-14'>
                             <div ref={refs.line1} className='inline-block px-4 py-2 md:px-8 lg:px-10 lg:py-3 xl:py-5 bg-charcoal rounded-md w-fit rotate-6 -translate-x-2'>
                                 <h1 className='text-white big-header'>The </h1>
                             </div>
@@ -431,17 +432,15 @@ function Home() {
                             </div>
                             <div ref={refs.line4} className='inline-block px-4 py-2 md:px-6 lg:px-10 lg:py-3 xl:py-5 mt-2 md:mt-4 bg-charcoal rounded-md w-fit -rotate-4 translate-x-10 relative'>
                                 <h1 className='text-white big-header'>Tina Lin</h1>
-
                             </div>
                         </div>
 
-                        <div className='absolute left-8 md:left-14 bottom-[2%]'>
+                        <div className='block mt-10 md:absolute md:left-14 bottom-[2%]'>
                             <div className='flex items-end'>
                                 <p className='text-base tracking-[3px] font-roundo-medium uppercase'>A UX / UI Designer <br /> who enjoys coding</p>
-
                             </div>
                         </div>
-                        <div className='hidden md:block md:absolute md:right-14 md:bottom-[2%]'>
+                        <div className='block md:absolute md:right-14 md:bottom-[2%]'>
                             <div className='flex gap-3 items-start'>
                                 <div className='flex flex-col '>
                                     <p className='text-base tracking-[3px] font-roundo-medium uppercase'>Based in Vancouver, BC</p>
@@ -454,7 +453,7 @@ function Home() {
                     </div>
                 </section >
 
-                <section ref={aboutRef} id='about' className="about relative h-full max-w-container py-20 md:py-[10rem]  bg-light-yellow-bg w-full">
+                <section ref={aboutRef} id='about' className="about relative h-full max-w-container py-16 md:py-[10rem]  bg-light-yellow-bg w-full">
                     <div className='h-[80vh] bg-darker-bg border-2 rounded-2xl overflow-hidden'>
                         <div className='max-w-container py-2 flex items-center justify-center flex-col gap-10 h-full relative'>
                             <div className='relative z-10 text-center lg:max-w-[60rem]'>
@@ -470,7 +469,7 @@ function Home() {
                                 />
                             </div>
 
-                            <div className=' absolute bottom-0 left-1/2 z-0 -translate-x-1/2 lg:left-[20%]'>
+                            <div className='hidden md:block md:absolute md:bottom-0 md:left-1/2 md:z-0 md:-translate-x-1/2 lg:left-[20%]'>
                                 <img src={uiux} alt="" className='about-bg opacity-50' />
                             </div>
                             <div className=' absolute top-0 z-0 lg:right-[10%] rotate-180'>

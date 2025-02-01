@@ -78,25 +78,17 @@ function UIUXLayout({ craft }) {
                         <>
                             <div className='mt-10 pb-4 md:pb-[4rem]'>
 
-                                <h2>Survey</h2>
+                                <h2>Survey Insights</h2>
 
                                 <div className='flex flex-col gap-4 xl:flex-row'>
                                     <div className='xl:basis-[65%]'>
                                         <p>{craft.research.survey.content}</p>
-                                        <ul className="list-disc ml-4">
+                                        <ul className="list-decimal ml-6">
                                             <li>
-                                                <span className="font-bold">User Behavior :</span> Most users rely on the app for ordering, checking offers, and earning rewards.
+                                                <span className="font-bold ml-1 text-orange">32%</span> of users found this process challenging, making it a major pain point.
                                             </li>
                                             <li>
-                                                <span className="font-bold">Usability Issues :</span>
-                                                <ul className="list-decimal ml-6">
-                                                    <li>
-                                                        <span className="font-bold">Redeeming Offers & Rewards :</span> 32% of users found this process challenging, making it a major pain point.
-                                                    </li>
-                                                    <li>
-                                                        <span className="font-bold">Navigating the App : </span> 38.9% of users struggled with navigation, which affected their ability to find offers and complete orders smoothly.
-                                                    </li>
-                                                </ul>
+                                                <span className="font-bold ml-1 text-orange">38.9%</span>  of users struggled with navigation, which affected their ability to find offers and complete orders smoothly.
                                             </li>
                                         </ul>
                                     </div>
@@ -125,7 +117,7 @@ function UIUXLayout({ craft }) {
                     <div className='content-gap'>
                         <div className='flex gap-10 flex-col mb-10'>
                             <div className='flex-1'>
-                                <h2>User Interviews</h2>
+                                <h2>{craft.research.interview.title}</h2>
                                 <p className='mb-4' dangerouslySetInnerHTML={{ __html: craft.research.interview.description }} />
                             </div>
 
@@ -173,7 +165,7 @@ function UIUXLayout({ craft }) {
 
                         <div className='grid gap-10 md:grid-cols-2'>
                             {craft.research.problems.icons.map((issue, index) => (
-                                <div key={index} className='flex flex-col gap-3 items-center md:p-8'>
+                                <div key={index} className='flex flex-col gap-3 items-center md:p-5'>
                                     <img src={issue.src} alt={issue.altText} className='w-[100px]' />
                                     <p className='font-roundo-medium text-[19px]'> {issue.header}</p>
                                     <p className='text-center'>{issue.caption}</p>
@@ -212,10 +204,10 @@ function UIUXLayout({ craft }) {
                         </div>
                     </div>
                 </div>
-            </section>
+            </section >
 
             {/* ideations */}
-            <section id='define' className='content-w'>
+            < section id='define' className='content-w' >
                 <div className='content-gap'>
                     <div className=''>
                         <div className='py-10 border-b-2 border-light-grey border-dashed'>
@@ -283,21 +275,23 @@ function UIUXLayout({ craft }) {
                 </div>
 
                 {/* pants */}
-                {craft.define.features && (
-                    <div className='pb-4 md:pb-[4rem]'>
-                        <h2>{craft.define.features.header}</h2>
-                        <p className='mb-6'>{craft.define.features.content} </p>
+                {
+                    craft.define.features && (
+                        <div className='pb-4 md:pb-[4rem]'>
+                            <h2>{craft.define.features.header}</h2>
+                            <p className='mb-6'>{craft.define.features.content} </p>
 
-                        <div className='p-2 bg-white bg-opacity-50 rounded-xl'>
-                            <img src={craft.define.features.img.src} alt={craft.define.features.img.altText} />
+                            <div className='p-2 bg-white bg-opacity-50 rounded-xl'>
+                                <img src={craft.define.features.img.src} alt={craft.define.features.img.altText} />
+                            </div>
                         </div>
-                    </div>
-                )}
+                    )
+                }
 
             </section >
 
             {/* design */}
-            <section id='design' className=''>
+            < section id='design' className='' >
                 <div className='content-w pb-4 md:pb-[4rem]'>
                     <div className='py-10 border-b-2 border-light-grey border-dashed'>
                         <span className='text-dark-grey uppercase font-roundo tracking-wider'>Creating Solutions</span>
@@ -351,10 +345,10 @@ function UIUXLayout({ craft }) {
                         </div>
                     )}
                 </div>
-            </section>
+            </section >
 
             {/* user testing, */}
-            <section id='testing'>
+            < section id='testing' >
                 <div className='content-w pb-[3em] md:pb-[4rem] lg:pb-[5.5rem]'>
                     <div className='py-10 border-b-2 border-light-grey border-dashed'>
                         <span className='text-dark-grey uppercase font-roundo tracking-wider'>Validating Solutions</span>
@@ -387,7 +381,7 @@ function UIUXLayout({ craft }) {
                         </div>
                     </div> */}
                 </div>
-            </section>
+            </section >
 
             <section id='iteration'>
                 <div className='content-w'>

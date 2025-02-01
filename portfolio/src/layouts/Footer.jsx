@@ -385,12 +385,12 @@ function Footer() {
                             Say Hello
                         </h2> */}
                         <div className='text-center'>
-                            <h1 className='sub-header text-wrap'>
+                            <h1 className='sub-header text-wrap leading-tight md:leading-normal -mx-[2px] md:mx-0 md:tracking-wider'>
                                 Say Hello !
                             </h1>
                         </div>
 
-                        <p className='text-center font-roundo tracking-normal text-light-yellow-bg md:text-lg relative z-0'> I would love to hear from you! <br />
+                        <p className='text-center font-roundo tracking-normal text-light-yellow-bg text-md md:text-lg relative z-0'> I would love to hear from you! <br />
                             Feel free to reach out to me about anything and let’s get creative together!</p>
 
 
@@ -407,14 +407,14 @@ function Footer() {
                                     additionalClasses='border-light-yellow-bg text-light-yellow-bg shadow-white hover:shadow-white-hover'
                                 />
                                 <SocialIcon
-                                    href='https://www.linkedin.com/in/tina-lin-000613b5/'
+                                    href="mailto:contact@tinalin.ca"
                                     icon={faEnvelope}
                                     additionalClasses='md:hidden border-light-yellow-bg text-light-yellow-bg shadow-white hover:shadow-white-hover'
                                 />
                             </div>
 
-                            <a href="mailto:yuting.lin728@gmail.com" className='hidden md:inline-block px-5 py-[.55rem] border-2 border-white rounded-full text-white shadow-white text-base hover:shadow-white-hover hover:translate-x-[.5%] transition-all duration-500 font-roundo-semibold tracking-[3px] lowercase'>
-                                yuting.lin728@gmail.com
+                            <a href="mailto:contact@tinalin.ca" className='hidden md:inline-block px-5 py-[.55rem] border-2 border-white rounded-full text-white shadow-white text-base hover:shadow-white-hover hover:translate-x-[.5%] transition-all duration-500 font-roundo-semibold tracking-[3px] uppercase'>
+                                contact@tinalin.ca
                             </a>
                         </div>
                     </div>
