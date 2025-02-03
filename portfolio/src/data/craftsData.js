@@ -136,25 +136,25 @@ export const craftsData = [
                         src: "/assets/tims/issue1.svg",
                         altText: "icon",
                         header: 'Interrupted flow after clicking the offer',
-                        caption: 'Users are directed to the full menu page after activating an offer, with no clear guidance on what to do next.'
+                        caption: 'Users were sent back to the full menu after picking an offer, with no clear next step. This left them feeling lost.'
                     },
                     {
                         src: "/assets/tims/issue2.svg",
                         altText: "issue icon",
-                        header: 'No Sign of Eligible Items',
-                        caption: 'The menu provides no indication of which items are eligible for the activated offer, leaving users to guess.'
+                        header: 'No Clue What’s Included',
+                        caption: 'The menu didn’t show which items were part of the offer, making users guess if their order qualified.'
                     },
                     {
                         src: "/assets/tims/issue3.svg",
                         altText: "issue icon",
-                        header: 'Lack of Error Messages',
-                        caption: 'No feedback is provided when users attempt to select multiple offers, making the process unclear.'
+                        header: 'No Warnings for Mistakes',
+                        caption: 'Users didn’t know they could only use one offer at a time because there was no message letting them know.'
                     },
                     {
                         src: "/assets/tims/issue4.svg",
                         altText: "issue icon",
-                        header: 'Inability to Edit Offers',
-                        caption: 'Users cannot make changes to an offer once it has been selected.'
+                        header: 'Can’t Change Offers',
+                        caption: 'Once an offer was selected, users couldn’t edit or swap it, which made ordering frustrating.'
                     },
                 ]
 
@@ -222,13 +222,15 @@ export const craftsData = [
         },
 
         testing: {
+            header: "Does This Work?",
+
             description: 'To validate the new design, I conducted usability testing with 4 participants. Each participant was tasked with <span> redeeming a Farmer\'s Breakfast Wrap and a Classic Donut </span>, to match common user actions. The goal was to see how well the new flow worked, check if they noticed the "Activate" button was gone, find out what changes they wanted, and spot any problems they faced. <span> While all participants liked the simpler flow to the offers menu, some issues remained </span>:',
 
             findings: [
-                'User preferred being directed to the cart instead of the full menu after adding offers',
-                'Lengthy and dense offer descriptions',
-                'Users had trouble understanding the filtered menu and didn’t always know what they were selecting.',
-                'The dropdown menus were hard to read and frustrating to use'
+                '<span class="text-green-500 text-xl mr-1">☺</span> <span>Offer redemption was easier</span> : 75% liked the new process, 25% found it easier but needed some time to adjust, and 0% had trouble using it.',
+                '<span class="text-red-500 text-xl mr-1">☹</span> <span>Offer details needed improvement</span> : 50% found them clear, 25% didn’t.',
+                '<span class="text-red-500 text-xl mr-1">☹</span> <span>Users felt lost after adding offers</span> : They preferred going to the cart instead of the menu.',
+                '<span class="text-red-500 text-xl mr-1">☹</span> <span>Tracking selected offers</span> :Users had trouble understanding the filtered menu and didn’t always know what they were selecting.',
             ],
 
             problemImg: {
@@ -259,31 +261,31 @@ export const craftsData = [
                         new_caption: 'Redesign',
                     },
                     {
-                        header: "Removal of Activate Button",
-                        content: "The original activate button caused confusion since only one offer could be redeemed. I removed it, letting users redeem offers directly for a simpler experience.",
+                        header: "No more Activation Button: Just Tap and Go",
+                        content: "The original activate button caused confusion since only one offer could be redeemed. To make redeeming offers simpler, I removed it so users can apply offers directly without extra steps. This change makes ordering faster, smoother, and more intuitive.",
                         original: '/assets/tims/button_original.png',
                         ori_caption: 'Original',
                         new: '/assets/tims/button_new.png',
                         new_caption: 'Redesign',
                     },
                     {
-                        header: "Consolidation of Offer Detail Screen",
-                        content: "The original offer details were displayed in an overlay screen that was too text-heavy and difficult to read. I redesigned it by pulling the details out into its own dedicated screen and organizing the information into tabs. This structure makes the content easier to navigate and helps users quickly find the information they need.",
+                        header: "Quick, Easy Scan for Offer Details",
+                        content: "The original offer details were displayed in an overlay screen that was too text-heavy and difficult to read. I redesigned it by pulling the details out into its own dedicated screen and organizing the information into tabs. By structuring details into tabs and improving readability, users can now quickly find eligible items, offer terms, and redemption options without confusion.",
                         original: '/assets/tims/detail_original.png',
                         ori_caption: 'Original',
                         new: '/assets/tims/detail_new.png',
                         new_caption: 'Redesign',
                     },
                     {
-                        header: "Direct Access to Offer Menu",
-                        content: "The original flow was a big problem because it forced users to manually search for offer items in the full menu, which was both frustrating and time-consuming. The new flow directs users to the selected offer menu, making it easier for them to find what they need and complete their order faster. The order menu also includes a default choice based on users' past order history and preferences, so users can place an order with a single click.",
+                        header: "Less Searching, Faster Checkout: Direct Access to Offer Menu",
+                        content: "The old flow made ordering frustrating because users had to manually search through the entire menu to find their offer items. This wasted time and led to confusion. Now, the new flow takes users directly to the offer menu, so they can see exactly what’s included and make their selection faster. To make ordering even easier, the menu automatically selects a default choice based on past orders and preferences. This means users can redeem offers in fewer steps and place an order with just one click.",
                         original: '/assets/tims/menu_original.png',
                         ori_caption: 'Original',
                         new: '/assets/tims/menu_new.png',
                         new_caption: 'Redesign',
                     },
                     {
-                        header: "Implementation of Error Message",
+                        header: "Implementation of Error Message for Multiple Offers",
                         content: "When users try to redeem multiple offers, a message will pop up informing them that only one offer can be applied per purchase. This ensures clarity and helps users make an informed decision about which offer they want to use.",
                         original: '/assets/tims/home_original.png',
                         ori_caption: 'Original: No error message',
@@ -297,9 +299,12 @@ export const craftsData = [
 
         reflection: {
             content: [
-                '<span>The Impact of User Testing</span>: Testing revealed overlooked issues, like unclear visual cues and the need for better feedback during offer redemption. This feedback was critical in refining the final design.',
+                '<span> Simplicity Wins </span>: User interviews showed me how small moments of confusion can add up and make things frustrating. I realized that good design starts with listening to users and making things simple. It’s not just about how something looks—it should feel easy to use. The less people have to think, the smoother everything feels. Removing extra steps and making information clear makes a huge difference.',
 
-                '<span>Balancing Flow and UI</span>: While streamlining the flow was my initial focus, I learned that small UI tweaks are essential for a seamless and user-friendly experience.'
+                '<span>User Testing Made a HUGE Difference</span>: Testing helped me catch small but important issues, like missing visual cues and unclear offer details. Without feedback, I might not have noticed them.',
+
+                '<span>Small Changes Matter </span>:  I focused a lot on improving the flow, but I realized that small UI tweaks—like clearer labels and better organization—made a big impact on how easy the app was to use.',
+
             ],
         },
     },
@@ -384,17 +389,17 @@ export const craftsData = [
         research: {
             header: 'Research Goals',
 
-            description: "I wanted to see how other users shop for pants online and what makes the experience frustrating or easy. To better understand this, I focused my research on user needs, fit accuracy, and ways to improve the process.:",
+            description: "Instead of just fixing one step, I wanted to understand the whole shopping experience. My research focused on:",
 
             goals: [
-                'Find out what frustrates people when buying pants online.',
+                'What makes online shopping for pants frustrating? (Fit, sizing, returns, guessing the right size)',
                 'Learn what helps users feel confident about fit recommendations.',
-                'Look at competitor apps to see what’s missing and where improvements can be made.'
+                'How do other brands help with fit, and what’s still missing?'
             ],
 
             interview: {
-                title: "Shopping Habits & Fit Challenges: What Users Say",
-                description: "To understand different shopping habits, I talked to 6 people— <span> 3 who shop online often and 3 who rarely do </span>. I grouped their feedback into an affinity map to find common struggles and patterns in how they shop for pants.",
+                title: "Shopping Habits & Fit Struggles: What Users Say",
+                description: "To understand different shopping habits, I talked to 6 people— <span> 3 who shop online often and 3 who rarely do </span>. I focused on how they think, what they worry about, and what makes them confident when picking a size. I grouped their feedback into an affinity map to find common struggles and patterns in how they shop for pants.",
 
                 map: {
                     src: '/assets/pm/mapping.svg',
@@ -410,35 +415,35 @@ export const craftsData = [
                     {
                         src: "/assets/pm/icon1.svg",
                         altText: "issue icon",
-                        header: 'Unsatisfying Pants Shopping Experiences',
-                        caption: 'All 6 participants disliked it, even if they regularly buy other items online.'
+                        header: 'Frustrating Shopping Experience',
+                        caption: 'Everyone disliked shopping for pants online, even those who regularly shop for other items.'
                     },
                     {
                         src: "/assets/pm/icon2.svg",
                         altText: "issue icon",
-                        header: 'Sizing Challenges',
-                        caption: 'Everyone struggled with inconsistent sizes, unclear measurements, and confusing size charts.'
+                        header: 'Sizing is a Guessing Game',
+                        caption: 'Sizes were all over the place. Users struggled with inconsistent sizing, unclear measurements, and confusing size charts.'
                     },
                     {
                         src: "/assets/pm/icon3.svg",
                         altText: "issue icon",
-                        header: 'Heavy Reliance on Reviews and References',
+                        header: 'Reviews Aren’t Enough ',
                         caption: 'Many check reviews for guidance, but they often can’t find references that match their body type.'
                     },
                     {
                         src: "/assets/pm/icon4.svg",
                         altText: "issue icon",
-                        header: 'Demand for Interactive Sizing Tools',
-                        caption: '5 out of 6 participants said they would like interactive tools or quizzes to make finding the right size easier.'
+                        header: 'Want Better Sizing Tools',
+                        caption: '83% of participants said they would love to have interactive tools or quizzes to make finding the right size easier.'
                     },
                 ]
 
             },
 
             competitor: {
-                title: 'Bridging the Gap: What Competitor Apps Lack',
+                title: 'What Competitor Apps Lack',
 
-                description: "I went on a search for existing apps and discovered that <span> most focus on general clothing or whole-body recommendations, often neglecting the specific challenges of pants shopping. </span> Tools like WEARFITS and Wrobe.ai excel in providing virtual try-ons and full-body visualization, but they lack conversational AI or a focus on pants-specific needs. Similarly, Stylee prioritizes styling advice over practical fit solutions. This gap motivated me to <span> create an app that bridge these gaps.",
+                description: "I went on a search for existing apps and discovered that most focus on <span> general clothing or whole-body recommendations, often neglecting the specific challenges of pants shopping. </span> Tools like <span> WEARFITS </span> and <span> Wrobe.ai </span> are great for virtual try-ons and 3D models, but they don’t offer real-time fit feedback or conversational AI. <span> Stylee </span> prioritizes styling advice over practical fit solutions. None of these apps truly solve the frustration of finding the right pants fit. That’s what led me to create an app that fills this gap.",
 
                 img: {
                     src: '/assets/pm/research-brand.svg',
@@ -450,7 +455,7 @@ export const craftsData = [
 
         define: {
             insights: {
-                content: "With AI chat and 3D modeling technology evolving, I saw an opportunity to combine these tools to improve the online pants shopping experience. User research revealed several key challenges, including inconsistent sizing, reliance on reviews, and a lack of interactive tools.  To tackle these, I envisioned three key features that could revolutionize online pants shopping:",
+                content: "With AI chat and 3D modeling advancing, I saw a chance to combine these tools to fix the biggest pain points in online pants shopping. To bridge the gaps, I designed three key features to make finding the right fit easier and more reliable:",
 
                 solution: [
                     {
@@ -461,7 +466,7 @@ export const craftsData = [
                     {
                         title: "3D FitModel",
                         icon: "👀",
-                        description: "A realistic model of the user that changes based on their size inputs. It lets users see how the pants fit on their waist, hips, and legs before buying."
+                        description: "A guided setup that helps users find their perfect size with real-time visuals. Think of it like adjusting a avatar model—simple, interactive, and easy to follow."
                     },
                     {
                         title: "Interactive Sizing Tool",
@@ -496,7 +501,7 @@ export const craftsData = [
 
 
             header: 'Meet Liz and Jamie',
-            content: "Through my research, Liz and Jamie’s stories stood out. Liz, a casual online shopper, enjoys the convenience of buying most things online but avoids pants because of concerns about fit, comfort, and the hassle of returns. Jamie often feels unsure about her size and struggles to know what will actually fit. Both share two common goals: <span> to have visuals that show how pants could fit and to purchase confidently.</span> To better understand their experiences, I developed a user journey map outlining each step they take, highlighting their pain points, and identifying opportunities to improve their confidence and create a seamless shopping experience.",
+            content: "Through my research, Liz and Jamie’s stories stood out. Liz, a casual online shopper, enjoys the convenience of buying most things online but avoids pants because of concerns about fit, comfort, and the hassle of returns. Jamie often feels unsure about her size and struggles to know what will actually fit. Both share two common goals: <span> to have visuals that show how pants could fit and to purchase confidently.</span> To understand their experiences, I mapped out their journey—showing their struggles and where they need more support. This helped me find ways to improve their confidence and make shopping easier.",
 
             tabData: [
                 {
@@ -530,7 +535,7 @@ export const craftsData = [
 
             wireframes: {
                 header: 'From Sketches to Wireframes',
-                description: "I transferred my ideas to medium-fidelity wireframes nad prototype for initial user testing.",
+                description: "I transferred my ideas to medium-fidelity wireframes and prototype for initial user testing.",
                 medfiProto: [{
                     src: '/assets/pm/wireframe.png',
                     altText: 'user flow',
@@ -539,12 +544,14 @@ export const craftsData = [
         },
 
         testing: {
+            header: "Early User Testing",
             description: 'I conducted early user testing with the med-fi prototype with 5 participants to gather initial feedback on the app\'s usability and identify any pain points or areas of confusion. They were asked <span> to find pants in their size, check the fit with the 3D FitModel, save a favorite to the Wishlist, and review a past FitBot recommendation </span>.',
 
             findings: [
-                '80% of the users didn’t know FitModel was part of FitBot. Some thought they could open it from the homepage, but it only updates their size.',
-                'Users wanted FitBot to remember their last chat when they came back',
-                ' Users wanted to see the full-body view, item photos, and customer ratings. They also wanted fit ratings to show on the model.',
+                '<span class="text-green-500 text-xl mr-1">☺</span> <span> Participants appreciated the easy onboarding process with visuals.',
+                '<span class="text-red-500 text-xl mr-1">☹</span> <span>80% of the users didn’t know FitModel was part of FitBot. Some thought they could open it from the homepage, but it only updates their size.',
+                '<span class="text-blue text-[30px] mr-1">⚇</span> <span>Users wanted FitBot to remember their last chat when they came back.',
+                '<span class="text-blue text-[30px] mr-1">⚇</span> <span>Users wanted to see the full-body view, item photos, and customer ratings. They also wanted fit ratings to show on the model.',
             ],
 
             problemImg: {
@@ -587,13 +594,13 @@ export const craftsData = [
                 },
                 fitbot: {
                     img: {
-                        src: "https://media.giphy.com/media/hzgu2YnvENnGvMle8G/giphy.gif",
+                        src: "/assets/pm/chat.png",
                         alt: 'chat'
                     }
                 },
                 model: {
                     img: {
-                        src: "https://media.giphy.com/media/SFYyBsO1zQZtk3FIWu/giphy.gif",
+                        src: "/assets/pm/model.png",
                         alt: 'model'
                     }
                 },
@@ -607,9 +614,9 @@ export const craftsData = [
 
         reflection: {
             content: [
-                '<span>Early User Testing</span>:  I learned that early user testing is invaluable for uncovering areas of improvement, even if the initial feedback is tough to hear. It helped me identify issues with navigation and feature clarity, leading to a more intuitive design.',
+                '<span>Early User Testing Matters</span>: Testing early, even when things weren’t perfect, helped me find problems I didn’t notice before. Some users got confused by certain features, and their feedback helped me make things clearer and easier to use. Even when feedback was tough to hear, it made the design better. This experience showed me that good design isn’t about making things perfect right away — it’s about learning, improving, and making sure everything works smoothly for the people using it.',
 
-                '<span>Learning to Accept Criticism </span>: I realized that constructive criticism, while difficult at first, is a vital part of the design process. Embracing feedback allowed me to grow and create a product that better meets users\' needs.',
+                '<span>Feedback is Growth </span>: At first, getting criticism on something I worked hard on felt overwhelming. But I realized that every comment, even the harsh ones, pushed me toward a stronger product. Listening to users and iterating on their needs helped me create something more useful, not just something that looks good.',
 
             ]
         }
@@ -852,7 +859,7 @@ export function fetchProductList(dataPath, containerId, productType, callback) {
         status: 'completed',
         title: 'Nomly: Recipe Finder & Grocery List Web App',
         media: "image",
-        cover: "/assets/nomly/banner.png",
+        cover: "/assets/homepage/nomly/cover.png",
         banner: {
             subHeader: 'Nomly - Web App',
             header: 'Recipe Discovery & Grocery Planning',

@@ -16,8 +16,6 @@ import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 gsap.registerPlugin(useGSAP);
 
-import Skills from '../components/about/Skills';
-
 // images
 import profilePic from '../../public/assets/about/tina.jpg'
 import workPic from '../../public/assets/about/work.jpeg'
@@ -34,12 +32,14 @@ import checker from '../../public/assets/about/checker.svg'
 import orangeChecker from '../../public/assets/about/orangeChecker.svg'
 import greyChecker from '../../public/assets/about/greyChecker.svg'
 import grainbg from '../../public/assets/about/grain.png'
-
+import designSvg from "../../public/assets/homepage/web-design.svg"
+import uxuiSvg from "../../public/assets/homepage/uxui.svg"
+import codingSvg from "../../public/assets/homepage/front-end.svg"
 
 
 function About() {
 
-    const coding = ["HTML", "CSS", "JavaScript", "React . JS", "TailwindCSS", "React Native"];
+    const coding = ["HTML", "CSS", "JavaScript", "React.JS", "TailwindCSS", "React Native", "GSAP"];
     const design = [ps, ai, id, ae, dn, figma, wordpress]
     const ux = ['User Centered Design', 'User Research', 'Wireframing', 'Interactive Prototyping', 'Usability Testing', 'Responsive Design']
     const softSkills = ['Communication', 'Critical Thinking', 'Problem Solving', 'Flexibility', 'Empathy']
@@ -80,12 +80,12 @@ function About() {
         },
             {
                 y: 0,
-                duration: .5,
+                duration: .8,
                 ease: "bounce.out",
             }
         ),
             gsap.fromTo(
-                ".sub-header",
+                ".letter",
                 { textShadow: "none" },
                 {
                     textShadow: `
@@ -101,16 +101,34 @@ function About() {
                 5px 5px 0 #1e1e1e,
                 5.5px 5.5px 0 #1e1e1e,
                 6px 6px 0 #1e1e1e`,
-                    duration: 1,
-                    ease: "power3.out",
+                    duration: .8,
+                    ease: "elastic.inOut",
+                    stagger: .05,
                 });
 
+
+        gsap.fromTo(
+            '.aboutSection',
+            { y: 200, opacity: 0 },
+            {
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                ease: "back.inOut",
+                onComplete: () => {
+                    hoverEnabled = true;
+                }
+            })
+
         const letters = document.querySelectorAll('.letter')
+        let hoverEnabled = false;
 
         letters.forEach((l) => {
             let hoverTimeline;
 
             l.addEventListener('mouseenter', () => {
+
+                if (!hoverEnabled) return;
                 if (hoverTimeline) hoverTimeline.kill();
 
                 hoverTimeline = gsap.timeline();
@@ -134,6 +152,8 @@ function About() {
                 })
             });
             l.addEventListener('mouseleave', () => {
+                if (!hoverEnabled) return;
+
                 if (hoverTimeline) hoverTimeline.kill();
 
                 hoverTimeline = gsap.timeline();
@@ -159,7 +179,6 @@ function About() {
                 })
             });
         })
-
 
     }, [])
 
@@ -201,6 +220,11 @@ function About() {
         <>
             <section className='bg-light-yellow-bg py-[6rem] p-0 relative lg:py-[8rem]'>
                 <div className='max-w-container flex flex-col justify-center items-center'>
+
+                    <div className='tag mx-auto py-2 px-4 bg-charcoal w-fit rounded-md -rotate-6'>
+                        <p className='tracking-widest uppercase text-white text-sm md:text-base text-nowrap'>Journey</p>
+                    </div>
+
                     <div className=''>
                         <h2 className="craftHeader text-center sub-header text-nowrap">
                             {Array.from("About").map((letter, index) => (
@@ -211,17 +235,14 @@ function About() {
                         </h2>
                     </div>
 
-                    <div className='tag hidden md:block md:absolute md:top-[30%] md:left-[40%] md:-translate-x-1/2 md:-translate-y-1/2 py-2 px-4 bg-charcoal w-fit rounded-md md:-rotate-6'>
-                        <p className='tracking-widest uppercase text-white text-sm md:text-base text-nowrap'>From Education to Tech</p>
-                    </div>
                 </div>
 
             </section>
 
-            <div className='pb-20 md:pb-[10rem] lg:pb-[15rem]'>
+            <div className='aboutSection pb-20 md:pb-[10rem] lg:pb-[15rem]'>
                 <div className='max-w-container'>
                     {/* image */}
-                    <section className='flex flex-col lg:flex-row gap-10 items-center justify-between'>
+                    <section className='flex flex-col lg:flex-row gap-10 items-center justify-center'>
                         <div className='basis-[35%]'>
 
                             <Swiper
@@ -278,7 +299,7 @@ function About() {
                         <div className='basis-[65%]'>
                             <div className=''>
                                 <div className='pb-2 leading-none text-orange border-b border-black border-dashed'>
-                                    <h3>Peek Into My Life</h3>
+                                    <h2>From Education to Tech</h2>
                                 </div>
 
                                 <div>
@@ -289,7 +310,7 @@ function About() {
                                     <p className=''>
                                         What really drew me into the design and tech industry was when I was introduced to
                                         <a href="https://lingraphica.com/aac-devices/what-is-an-aac-device/" target='_blank' className='text-base font-roundo tracking-normal md:text-[18px] capitalize text-dark-grey mx-2'>AAC devices</a>
-                                        as a communication aid for autistic children at work. It showed me how thoughtful design and technology can bridge communication gaps and improve lives, which led me to pursue the New Media Design and Development program at BCIT, where I've discovered my passion for both design and development.
+                                        as a communication aid for autistic children at work. It showed me how thoughtful design and technology can bridge communication gaps and improve lives, which led me to pursue the New Media Design and Development program at BCIT, where I've discovered my passion for both design and development. My goal is to bridge the gap between technology and diverse user needs by creating accessible, inclusive solutions that empower everyone.
                                     </p>
                                     <div className='mt-10'>
                                         <PrimaryBtn
@@ -306,8 +327,45 @@ function About() {
                     </section>
 
 
-                    <section className='mt-20 flex flex-col items-center justify-between lg:flex-row gap-10 relative'>
-                        <div className='lg:basis-[65%] w-full'>
+                    <section className='pt-[10rem] flex flex-col gap-10 relative'>
+                        <div className='pb-2 border-b border-black border-dashed'>
+                            <h2 className='text-orange leading-none'>The Tools Behind my creations</h2>
+                        </div>
+
+                        <div className='flex flex-col justify-between gap-10 w-full md:flex-row flex-wrap'>
+                            <div className='rounded-2xl p-6 border-2 flex flex-col w-full relative overflow-hidden min-h-[35vh] md:min-w-[20rem] shadow-charcoal flex-1'>
+                                <div className='relative z-10'>
+                                    <p className='font-roundo-medium text-md'>How I Craft Experiences</p>
+                                    <ul className='flex flex-wrap gap-y-4 gap-x-6 text-nowrap mt-4'>
+                                        {ux.map((item, index) => (
+                                            <li key={index} className='font-roundo tracking-[.8px] list-none rounded-full w-fit px-4 border border-dashed'> <span className='mr-1 text-orange text-lg'> ✐</span> {item}</li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            </div>
+                            <div className='flex-1 rounded-2xl p-6 border-2 flex flex-col w-full min-h-[35vh] md:min-w-[30rem] shadow-charcoal relative overflow-hidden'>
+                                <p className='font-roundo-medium text-md mb-4'>Where Visual Magic Happens</p>
+                                <div className='flex flex-wrap gap-y-4 gap-x-6'>
+                                    {design.map((item, index) => (
+                                        <div key={index} className=''>
+                                            <img src={item} alt="" width={70} />
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+
+                            <div className='rounded-2xl p-6 border-2 flex flex-col w-full relative min-h-[35vh] md:min-w-[30rem]  overflow-hidden shadow-charcoal flex-1'>
+                                <div className='relative z-10'>
+                                    <p className='font-roundo-medium text-md'>How I Build My Playground</p>
+                                    <ul className='flex flex-wrap gap-y-4 gap-x-6 text-nowrap mt-4'>
+                                        {coding.map((item, index) => (
+                                            <li key={index} className='font-roundo tracking-[.8px] list-none rounded-full w-fit px-4 border border-dashed'> <span className='mr-1 text-yellow text-xl leading-none'>⚒</span>  {item}</li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        {/* <div className='lg:basis-[65%] w-full'>
                             <div className='mb-2 border-b border-black border-dashed'>
                                 <h3 className='text-orange'>Skills</h3>
                             </div>
@@ -341,9 +399,9 @@ function About() {
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> */}
 
-                        <div className="relative basis-[35%]">
+                        {/* <div className="relative basis-[35%]">
                             <div className="relative flex flex-col justify-center items-end">
                                 <div
                                     className="card bg-white w-[300px] h-[400px] p-4 rounded-xl border-2 relative overflow-hidden hover:z-10 hover:scale-105 hover:translate-y-2 transition-transform duration-300 ease-in">
@@ -389,11 +447,13 @@ function About() {
                                     </p>
                                 </div>
                             </div>
-                        </div>
+                        </div> */}
+
+
                     </section >
 
                     <section className='pt-[10rem]'>
-                        <div className='flex flex-col-reverse items-center lg:flex-row gap-16 relative'>
+                        <div className='flex flex-col-reverse lg:flex-row gap-16 relative'>
                             <div className='basis-[35%] relative overflow-hidden bg-white rounded-xl'>
                                 <div className='h-14 w-full absolute top-0 border-2 bg-charcoal rounded-t-xl z-10 text-white flex items-center justify-between px-6'>
                                     <p className=''>
@@ -416,14 +476,13 @@ function About() {
 
                             <div className='basis-[65%] w-full'>
                                 <div className='mb-2 border-b border-black border-dashed text-orange'>
-                                    <h3>I Also Like</h3>
+                                    <h2>When I'm Away from my monitors</h2>
                                 </div>
                                 <div className='basis-[60%] pt-2'>
-                                    <ul className='list-disc px-4 '>
-                                        <li>I love hanging out with my 3-year-old niece. She's my doodle inspiration. We spend hours building epic block towers and laughing along to Peppa Pig episodes. </li>
-
-                                        <li className='mt-2'>I'm working hard to stay healthy by making yoga and Pilates a regular habit. </li>
-                                        <li className='mt-2'>Yes, I bead. I love hands-on crafts. There’s something so satisfying about turning tiny, colorful beads into something beautiful and unique. It’s my go-to when I need to unplug and create with my hands. </li>
+                                    <ul className='flex flex-col gap-4'>
+                                        <li className='flex gap-2'> <span className='text-lg text-brown'>⛫ </span> <span className='font-roundo'>I love hanging out with my 3-year-old niece. She's my doodle inspiration. We spend hours building epic block towers and laughing along to Peppa Pig episodes.  </span></li>
+                                        <li className='flex gap-2'> <span className='text-xl text-brown'>⚐ </span> <span className='font-roundo'>I'm working hard to stay healthy by making yoga and Pilates a regular habit.</span></li>
+                                        <li className='flex gap-2'> <span className='text-lg text-brown'>✤ </span> <span className='font-roundo'>And, I bead. I love hands-on crafts. There’s something so satisfying about turning tiny, colorful beads into something beautiful and unique. It’s my go-to when I need to unplug and create with my hands. </span></li>
                                     </ul>
                                 </div>
                             </div>

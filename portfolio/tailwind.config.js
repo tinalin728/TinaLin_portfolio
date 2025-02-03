@@ -67,6 +67,7 @@ module.exports = withMT({
         'charcoal-hover': '1.2px 1.2px 0 #1e1e1e',
 
         'white': '2px 3px 0 #FBF8F0',
+        'orange': '2px 3px 0 #E36A46',
         'white-hover': '1.2px 1.2px 0 #FBF8F0',
 
         'grey': '2px 4px 0 #717171',

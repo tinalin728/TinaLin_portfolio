@@ -3,6 +3,7 @@ import SocialIcon from '../components/buttons/SocialIcon';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Matter from 'matter-js'
+import { ReactLenis, useLenis } from 'lenis/react'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLinkedinIn, faGithub } from "@fortawesome/free-brands-svg-icons"
@@ -29,6 +30,15 @@ function Footer() {
     const initialDimensions = useRef({ width: 0, height: 0 });
     const [triggered, setTriggered] = useState(false);
     let pillsDropped = false;
+    const engineRef = useRef(null); // Store Matter.js engine persistently
+
+    useLenis(() => {
+        // if (engineRef.current) {
+        //     Matter.Engine.update(engineRef.current);
+        // }
+        ScrollTrigger.update();
+    });
+
 
     useEffect(() => {
         const Engine = Matter.Engine,
@@ -39,18 +49,18 @@ function Footer() {
             Mouse = Matter.Mouse,
             Bodies = Matter.Bodies;
 
-
         // Create the engine
         const engine = Engine.create();
         const world = engine.world;
         const runner = Runner.create();
         Runner.run(runner, engine);
 
+
         // Ensure canvas size is set to full screen
         const container = wrapperRef.current;
         const canvas = canvasRef.current;
 
-        canvas.style.opacity = "0";
+        canvas.style.opacity = "0.7";
 
         const { width, height } = container.getBoundingClientRect();
 
@@ -91,100 +101,270 @@ function Footer() {
         Composite.add(world, [ground, wallLeft, wallRight, roof])
 
         // store images
-        const textures = [
-            '/assets/pills/react.svg',
-            '/assets/pills/tailwind.svg',
-            '/assets/pills/text.svg',
-            '/assets/pills/text-7.svg',
-            '/assets/pills/text-8.svg',
-            '/assets/pills/text-3.svg',
-            '/assets/pills/text-9.svg',
-            '/assets/pills/text-16.svg',
-            '/assets/pills/text-6.svg',
-            '/assets/pills/text-10.svg',
-            '/assets/pills/text-5.svg',
-            '/assets/pills/text-4.svg',
-            '/assets/pills/text-11.svg',
-            '/assets/pills/text-12.svg',
-            '/assets/pills/text-2.svg',
-            '/assets/pills/text-14.svg',
-            '/assets/pills/text-13.svg',
-            '/assets/pills/white-logo.svg',
-            '/assets/pills/text-15.svg',
-        ];
+        // const textures = [
+        //     // '/assets/pills/react.svg',
+        //     '/assets/pills/tailwind.svg',
+        //     '/assets/pills/text.svg',
+        //     // '/assets/pills/text-7.svg',
+        //     // '/assets/pills/text-8.svg',
+        //     // '/assets/pills/text-3.svg',
+        //     // '/assets/pills/text-9.svg',
+        //     // '/assets/pills/text-16.svg',
+        //     // '/assets/pills/text-6.svg',
+        //     // '/assets/pills/text-10.svg',
+        //     // '/assets/pills/text-5.svg',
+        //     // '/assets/pills/text-4.svg',
+        //     // '/assets/pills/text-11.svg',
+        //     // '/assets/pills/text-12.svg',
+        //     // '/assets/pills/text-2.svg',
+        //     // '/assets/pills/text-14.svg',
+        //     // '/assets/pills/text-13.svg',
+        //     // '/assets/pills/white-logo.svg',
+        //     // '/assets/pills/text-15.svg',
+        // ];
+
+
 
         //preload images
-        const preloadImages = (textures, callback) => {
-            //console.log("Textures after preloading:", textures);
+        // const preloadImages = (textures, callback) => {
+        //     //console.log("Textures after preloading:", textures);
 
+        //     let loadedCount = 0;
+        //     const total = textures.length;
+        //     const loadedTextures = [];
+
+        //     if (!Array.isArray(textures) || total === 0) {
+        //         console.error("No textures to preload.");
+        //         callback([]); // Trigger the callback even if there are no textures
+        //         return;
+        //     }
+
+        //     textures.forEach((texture) => {
+        //         const img = new Image();
+        //         img.src = texture;
+        //         img.onload = () => {
+        //             loadedTextures.push({
+        //                 texture,
+        //                 width: img.naturalWidth,  // Get original width
+        //                 height: img.naturalHeight // Get original height
+        //             });
+
+        //             loadedCount++;
+        //             if (loadedCount === total) {
+        //                 //console.log("Preloading complete:", loadedTextures);
+        //                 callback(loadedTextures); // Pass the loaded textures
+        //             }
+        //         };
+
+        //         img.onerror = () => {
+        //             console.error(`Failed to load image: ${texture}`);
+        //             loadedCount++;
+        //             if (loadedCount === total) {
+        //                 //console.log("Preloading complete with errors:", loadedTextures);
+        //                 callback(loadedTextures); // Pass the loaded textures, even if some failed
+        //             }
+        //         };
+        //     });
+        // };
+
+        // create pills
+        // const createPills = (textures, canvasWidth) => {
+        //     const screenWidth = window.innerWidth;
+
+        //     // Adjust pill dimensions based on screen size
+        //     const pillWidth = screenWidth > 1920 ? 120 : screenWidth > 1440 ? 120 : screenWidth < 768 ? 60 : 100;
+        //     const pillHeight = screenWidth > 1920 ? 55 : screenWidth > 1440 ? 50 : screenWidth < 768 ? 20 : 30;
+        //     const spread = Math.min(screenWidth / textures.length * 1.2, screenWidth > 1920 ? 100 : screenWidth > 1440 ? 80 : 50);
+
+        //     // Calculate the starting point to center the pills
+        //     const startX = canvasWidth / 2 - ((textures.length - 1) * spread) / 2; // Center pills
+        //     const centerY = 450; // Drop from this height
+
+        //     // Create pills from textures
+        //     const pills = textures.map((texture, index) => {
+        //         // Slightly stagger the x positions to make them not perfectly inline
+        //         const x = startX + index * spread + Math.random() * 150 - 10;
+        //         const y = centerY + Math.random() * 50 - 10; // Slight random vertical offset for variation
+
+        //         return Bodies.rectangle(x, y, pillWidth, pillHeight, {
+        //             restitution: .2,
+        //             // density: .5,
+        //             friction: .8,
+        //             label: "pill",
+        //             render: {
+        //                 sprite: {
+        //                     texture: texture,
+        //                     xScale: screenWidth > 1920 ? 1.2 : screenWidth > 1440 ? 1.1 : screenWidth < 768 ? 0.8 : 1,
+        //                     yScale: screenWidth > 1920 ? 1.2 : screenWidth > 1440 ? 1.2 : screenWidth < 768 ? 0.8 : 1,
+        //                 },
+        //             },
+        //         });
+        //     });
+
+        //     const coffee = '/assets/pills/coffee.svg';
+        //     const phone = '/assets/pills/phone.svg';
+        //     const bread = '/assets/pills/bread.svg';
+        //     const paint = '/assets/pills/paint.svg';
+        //     const react = '/assets/pills/react.svg';
+
+        //     const coffeeBody = Bodies.rectangle(canvasWidth / 2, 100, 200, 300, {
+        //         restitution: 0.8,
+        //         friction: .8,
+        //         label: "custom",
+        //         render: {
+        //             sprite: {
+        //                 texture: coffee,
+        //                 xScale: 2,
+        //                 yScale: 2
+        //             },
+        //         },
+        //     });
+        //     const phoneBody = Bodies.rectangle(canvasWidth / 2, 200, 200, 300, {
+        //         restitution: 0.5,
+        //         friction: 0.6,
+        //         label: "custom",
+        //         render: {
+        //             sprite: {
+        //                 texture: phone,
+        //                 xScale: 1.5,
+        //                 yScale: 1.5
+        //             },
+        //         },
+        //     });
+        //     const breadBody = Bodies.rectangle(canvasWidth / 2, 200, 150, 200, {
+        //         restitution: 0.5,
+        //         friction: 0.6,
+        //         label: "custom",
+        //         render: {
+        //             sprite: {
+        //                 texture: bread,
+        //                 xScale: 1,
+        //                 yScale: 1
+        //             },
+        //         },
+        //     });
+        //     const paintBody = Bodies.rectangle(canvasWidth / 2, 200, 150, 200, {
+        //         restitution: 0.5,
+        //         friction: 0.6,
+        //         label: "custom",
+        //         render: {
+        //             sprite: {
+        //                 texture: paint,
+        //                 xScale: 1.2,
+        //                 yScale: 1.2
+        //             },
+        //         },
+        //     });
+        //     const reactBody = Bodies.rectangle(canvasWidth / 2, 100, 100, 200, {
+        //         restitution: 0.5,
+        //         friction: 0.6,
+        //         label: "custom",
+        //         render: {
+        //             sprite: {
+        //                 texture: react,
+        //                 xScale: .3,
+        //                 yScale: .3
+        //             },
+        //         },
+        //     });
+
+        //     pills.push(coffeeBody, phoneBody, breadBody, paintBody, reactBody);
+        //     return pills;
+        // };
+
+        const textures = [
+            { texture: "/assets/pills/coffee.svg", baseWidth: 100, baseHeight: 150, scale: 1.7 },
+            { texture: "/assets/pills/phone.svg", baseWidth: 150, baseHeight: 150, scale: 1.2 },
+            { texture: "/assets/pills/bread.svg", baseWidth: 120, baseHeight: 120, scale: .8 },
+            { texture: "/assets/pills/paint.svg", baseWidth: 180, baseHeight: 150, scale: .8 },
+            { texture: "/assets/pills/react.svg", baseWidth: 300, baseHeight: 300, scale: 0.35 },
+            { texture: "/assets/pills/earth.svg", baseWidth: 150, baseHeight: 150, scale: 1 }
+        ]
+
+        const texturePaths = Object.keys(textures); // Extract file paths
+        console.log("Extracted Texture Paths:", texturePaths);
+
+        const preloadImages = (textures, callback) => {
             let loadedCount = 0;
             const total = textures.length;
             const loadedTextures = [];
 
             if (!Array.isArray(textures) || total === 0) {
                 console.error("No textures to preload.");
-                callback([]); // Trigger the callback even if there are no textures
+                callback([]);
                 return;
             }
 
-            textures.forEach((texture) => {
+            console.log("🔄 Preloading Images:", textures.map(t => t.texture)); // Debugging
+
+            textures.forEach((textureObj) => {
                 const img = new Image();
-                img.src = texture;
+                img.src = textureObj.texture;
+
                 img.onload = () => {
-                    loadedTextures.push(texture); // Add successfully loaded texture
+                    console.log(" Loaded Image:", textureObj.texture, "Size:", img.naturalWidth, img.naturalHeight);
+                    loadedTextures.push({
+                        ...textureObj, // Keep all original properties
+                        width: img.naturalWidth,
+                        height: img.naturalHeight
+                    });
+
                     loadedCount++;
                     if (loadedCount === total) {
-                        //console.log("Preloading complete:", loadedTextures);
-                        callback(loadedTextures); // Pass the loaded textures
+                        console.log("All images preloaded:", loadedTextures);
+                        callback(loadedTextures);
                     }
                 };
 
-                img.onerror = () => {
-                    console.error(`Failed to load image: ${texture}`);
+                img.onerror = (error) => {
+                    console.error(` Failed to load image: ${textureObj.texture}`, error);
                     loadedCount++;
                     if (loadedCount === total) {
-                        //console.log("Preloading complete with errors:", loadedTextures);
-                        callback(loadedTextures); // Pass the loaded textures, even if some failed
+                        callback(loadedTextures);
                     }
                 };
             });
         };
 
-        // create pills
         const createPills = (textures, canvasWidth) => {
             const screenWidth = window.innerWidth;
 
-            // Adjust pill dimensions based on screen size
-            const pillWidth = screenWidth > 1920 ? 120 : screenWidth > 1440 ? 120 : screenWidth < 768 ? 60 : 100;
-            const pillHeight = screenWidth > 1920 ? 55 : screenWidth > 1440 ? 50 : screenWidth < 768 ? 20 : 30;
-            const spread = Math.min(screenWidth / textures.length * 1.2, screenWidth > 1920 ? 100 : screenWidth > 1440 ? 80 : 50);
+            // Custom starting positions (relative to screen size)
+            const startPositions = [
+                { x: canvasWidth * 0.1, y: 480 }, // Coffee
+                { x: canvasWidth * 0.4, y: 500 }, // Phone
+                { x: canvasWidth * 0.20, y: 485 }, // Croissant
+                { x: canvasWidth * 0.7, y: 470 }, // Paintbrush
+                { x: canvasWidth * 0.85, y: 420 }, // Atom
+                { x: canvasWidth * 0.9, y: 420 }, // Atom
+            ];
 
-            // Calculate the starting point to center the pills
-            const startX = canvasWidth / 2 - ((textures.length - 1) * spread) / 2; // Center pills
-            const centerY = 350; // Drop from this height
+            return textures.map((textureObj, index) => {
+                const { texture, baseWidth, baseHeight, scale } = textureObj;
+                const adjustedWidth = baseWidth * scale * (screenWidth / 1440);
+                const adjustedHeight = baseHeight * scale * (screenWidth / 1440);
 
-            // Create pills from textures
-            const pills = textures.map((texture, index) => {
-                // Slightly stagger the x positions to make them not perfectly inline
-                const x = startX + index * spread + Math.random() * 20 - 10;  // Increased randomness for better spacing
-                const y = centerY + Math.random() * 30 - 15; // Slight random vertical offset for variation
+                // Use predefined positions, or default to center if out of bounds
+                let x = startPositions[index]?.x || canvasWidth / 2;
+                let y = startPositions[index]?.y || 400;
 
-                return Bodies.rectangle(x, y, pillWidth, pillHeight, {
-                    restitution: .4,
-                    density: 1,
+                // Ensure X positions are inside canvas bounds
+                // x = Math.max(adjustedWidth / 2, Math.min(canvasWidth - adjustedWidth / 2, x));
+
+                return Bodies.rectangle(x, y, adjustedWidth, adjustedHeight, {
+                    restitution: 0.8,
                     friction: .5,
-                    label: "pill",
+                    label: "illustration",
+                    isStatic: false,
                     render: {
                         sprite: {
                             texture: texture,
-                            xScale: screenWidth > 1920 ? 1.2 : screenWidth > 1440 ? 1.1 : screenWidth < 768 ? 0.8 : 1,
-                            yScale: screenWidth > 1920 ? 1.2 : screenWidth > 1440 ? 1.2 : screenWidth < 768 ? 0.8 : 1,
+                            xScale: adjustedWidth / baseWidth,
+                            yScale: adjustedHeight / baseHeight,
                         },
                     },
                 });
             });
-
-            return pills;
         };
 
 
@@ -219,55 +399,82 @@ function Footer() {
 
         //since using Lenis can be in conflict with scroll trigger, using scrollProxy tells scrolltrigger to correctly tract the scroll position
         //connects scrolltrigger to Lenis by overriding how scrolltrigger calculates
-        ScrollTrigger.scrollerProxy(containerRef.current, {
-            //Lenis's scrollTop value is used instead of the browser's default.
-            scrollTop(value) {
-                if (arguments.length) {
-                    containerRef.current.scrollTop = value;
-                }
-                //Returns the custom scroll container's dimensions and position relative to the viewport.
-                return containerRef.current.scrollTop;
-            },
-            getBoundingClientRect() {
-                return {
-                    top: 0,
-                    left: 0,
-                    width: window.innerWidth,
-                    height: window.innerHeight,
-                };
-            },
-            //Specifies whether the container uses transform or fixed positioning for smooth scrolling.
-            pinType: containerRef.current.style.transform ? "transform" : "fixed",
-        });
+        // ScrollTrigger.scrollerProxy(containerRef.current, {
+        //     //Lenis's scrollTop value is used instead of the browser's default.
+        //     scrollTop(value) {
+        //         if (arguments.length) {
+        //             containerRef.current.scrollTop = value;
+        //         }
+        //         //Returns the custom scroll container's dimensions and position relative to the viewport.
+        //         return containerRef.current.scrollTop;
+        //     },
+        //     getBoundingClientRect() {
+        //         return {
+        //             top: 0,
+        //             left: 0,
+        //             width: window.innerWidth,
+        //             height: window.innerHeight,
+        //         };
+        //     },
+        //     //Specifies whether the container uses transform or fixed positioning for smooth scrolling.
+        //     pinType: containerRef.current.style.transform ? "transform" : "fixed",
+        // });
 
+        // let timeoutId;
+
+        // if (containerRef.current) {
+        //     ScrollTrigger.create({
+        //         trigger: containerRef.current,
+        //         start: "top bottom",
+        //         end: "bottom top",
+        //         scrub: true,
+        //         onEnter: () => {
+        //             if (!triggered) {
+        //                 timeoutId = setTimeout(() => {
+        //                     setTriggered(true);
+        //                     handlePillsDrop();
+        //                 }, 300);
+        //             }
+        //         },
+        //         onLeaveBack: () => {
+        //             setTriggered(false);
+        //             pillsDropped = false;
+        //             Composite.allBodies(world).forEach((body) => {
+        //                 if (!body.isStatic) {
+        //                     Composite.remove(world, body);
+        //                 }
+        //             });
+        //         },
+        //         // markers: true,
+        //     });
+        // }
         let timeoutId;
 
-        if (containerRef.current) {
-            ScrollTrigger.create({
-                trigger: containerRef.current,
-                start: "top bottom",
-                end: "bottom top",
-                scrub: true,
-                onEnter: () => {
-                    if (!triggered) {
-                        timeoutId = setTimeout(() => {
-                            setTriggered(true);
-                            handlePillsDrop();
-                        }, 500);
-                    }
-                },
-                onLeaveBack: () => {
-                    setTriggered(false);
+        ScrollTrigger.create({
+            trigger: containerRef.current,
+            start: "top center",
+            end: "bottom top",
+            duration: 1,
+            scrub: 1,
+            onEnter: () => {
+                if (!pillsDropped) {
+                    timeoutId = setTimeout(() => {
+                        handlePillsDrop();
+                        pillsDropped = true;
+                    }, 150);
+                }
+            },
+            onLeaveBack: () => {
+                setTimeout(() => {
                     pillsDropped = false;
-                    Composite.allBodies(world).forEach((body) => {
-                        if (!body.isStatic) {
-                            Composite.remove(world, body);
-                        }
-                    });
-                },
-                // markers: true,
-            });
-        }
+                    // Composite.allBodies(world).forEach((body) => {
+                    //     if (!body.isStatic) {
+                    //         Composite.remove(world, body);
+                    //     }
+                    // });
+                }, 100);
+            },
+        });
 
 
         // add mouse control
@@ -342,7 +549,7 @@ function Footer() {
                 { x: 0, y: height },
             ]);
 
-            Matter.Body.setPosition(wallLeft, { x: -30, y: height });
+            Matter.Body.setPosition(wallLeft, { x: -28, y: height });
             Matter.Body.setPosition(wallRight, { x: width + 82, y: height / 2 });
             Matter.Body.setPosition(roof, { x: width / 2, y: -80 });
             //console.log("Right Wall:", wallRight.position, wallRight.vertices);
@@ -374,7 +581,7 @@ function Footer() {
     }, [triggered]);
 
     return (
-        <footer ref={containerRef} className='relative h-full overflow-hidden'>
+        <footer id='footer' ref={containerRef} className='relative h-full overflow-hidden'>
             <div ref={wrapperRef} className='relative w-full bg-charcoal overflow-hidden mt-10'>
                 <div className="absolute top-0 left-0 w-full h-full z-10">
                     <canvas ref={canvasRef} className="w-full h-full" />
@@ -404,7 +611,7 @@ function Footer() {
                                 <SocialIcon
                                     href='https://www.linkedin.com/in/tina-lin-000613b5/'
                                     icon={faLinkedinIn}
-                                    additionalClasses='border-light-yellow-bg text-light-yellow-bg shadow-white hover:shadow-white-hover'
+                                    additionalClasses='border-light-yellow-bg  text-light-yellow-bg shadow-white hover:shadow-white-hover'
                                 />
                                 <SocialIcon
                                     href="mailto:contact@tinalin.ca"
@@ -413,7 +620,7 @@ function Footer() {
                                 />
                             </div>
 
-                            <a href="mailto:contact@tinalin.ca" className='hidden md:inline-block px-5 py-[.55rem] border-2 border-white rounded-full text-white shadow-white text-base hover:shadow-white-hover hover:translate-x-[.5%] transition-all duration-500 font-roundo-semibold tracking-[3px] uppercase'>
+                            <a href="mailto:contact@tinalin.ca" className='hidden md:inline-block px-5 py-[.55rem] border-2 border-white rounded-full text-white shadow-white text-base hover:shadow-white-hover hover:translate-x-[.5%] transition-all duration-500 font-roundo-semibold tracking-[3px] uppercase '>
                                 contact@tinalin.ca
                             </a>
                         </div>
@@ -421,8 +628,8 @@ function Footer() {
                 </div>
             </div>
 
-            <div className='bg-charcoal'>
-                <div className='max-w-container border-t border-white flex flex-col items-center justify-center md:flex-row md:justify-between py-2'>
+            <div className='bg-charcoal border-t border-white'>
+                <div className='max-w-container flex flex-col items-center justify-center md:flex-row md:justify-between py-2'>
                     <div className='flex items-center gap-4'>
                         <div><img src={coffee} alt="" className='w-[35px] md:w-[40px]' /></div>
                         <span className='text-sm uppercase tracking-wider font-roundo text-white'>Made with shots of espresso</span>

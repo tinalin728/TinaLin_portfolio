@@ -9,7 +9,7 @@
             "skills": [
                 "UX/UI"
             ],
-            "content": "This UX case study focused on redesigning the flow of redeeming offers on the mobile app.",
+            "content": "A UX case study focused on refining the offer redemption flow in the Tim Horton's mobile app.",
             "status": "complete"
         },
         {
@@ -23,7 +23,7 @@
                 "React.JS",
                 "Tailwind"
             ],
-            "content": "Branding for an online dessert store",
+            "content": "A recipe discovery web app using Spoonacular API. It allows users to find recipes, save favorites, and generate grocery lists.",
             "status": "complete"
         },
         {

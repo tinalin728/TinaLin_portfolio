@@ -85,10 +85,10 @@ function UIUXLayout({ craft }) {
                                         <p>{craft.research.survey.content}</p>
                                         <ul className="list-decimal ml-6">
                                             <li>
-                                                <span className="font-bold ml-1 text-orange">32%</span> of users found this process challenging, making it a major pain point.
+                                                <span className="font-bold ml-1 bg-light-yellow-bg bg-opacity-80">32%</span> of users found this process challenging, making it a major pain point.
                                             </li>
                                             <li>
-                                                <span className="font-bold ml-1 text-orange">38.9%</span>  of users struggled with navigation, which affected their ability to find offers and complete orders smoothly.
+                                                <span className="font-bold ml-1 bg-light-yellow-bg bg-opacity-80 ">38.9%</span>  of users struggled with navigation, which affected their ability to find offers and complete orders smoothly.
                                             </li>
                                         </ul>
                                     </div>
@@ -162,16 +162,25 @@ function UIUXLayout({ craft }) {
                     <div className={craft.research.problems.classes}>
                         <h2 className='text-red-600'>  {craft.research.problems.title}</h2>
                         <p className='pb-4'>{craft.research.problems.content}</p>
-
-                        <div className='grid gap-10 md:grid-cols-2'>
+                        <div className='grid gap-6 md:grid-cols-2 pb-4'>
                             {craft.research.problems.icons.map((issue, index) => (
-                                <div key={index} className='flex flex-col gap-3 items-center md:p-5'>
-                                    <img src={issue.src} alt={issue.altText} className='w-[100px]' />
-                                    <p className='font-roundo-medium text-[19px]'> {issue.header}</p>
-                                    <p className='text-center'>{issue.caption}</p>
+                                <div key={index} className='rounded-xl bg-white bg-opacity-50 p-2'>
+                                    <div className='flex flex-col gap-3 border rounded-lg border-gray-400 bg-light-yellow-bg p-4 h-full'>
+                                        <img src={issue.src} alt={issue.altText} className='w-[80px]' />
+                                        <p className='font-roundo-medium text-[19px]'> {issue.header}</p>
+                                        <p>{issue.caption}</p>
+                                    </div>
                                 </div>
                             ))}
                         </div>
+                        <a href='#solution'
+                            onClick={(e) => {
+                                e.preventDefault();
+                                document.getElementById("solution")?.scrollIntoView({ behavior: "smooth" });
+                            }}
+                            className="my-2 block tracking-wider font-roundo-medium group  hover:text-orange transition-transform duration-300 ease-in-out px-4 border-l border-orange">
+                            Jump to solutions <span className="inline-block transition-transform duration-300 ease-in-out lg:group-hover:scale-y-125 lg:group-hover:translate-y-1">↓</span>
+                        </a>
                     </div>
                     <div className='content-gap'>
                         <div className='flex flex-col md:flex-row gap-10'>
@@ -222,14 +231,18 @@ function UIUXLayout({ craft }) {
                             <div className='flex-1'>
                                 <h2>Finding Opportunities</h2>
                                 <p dangerouslySetInnerHTML={{ __html: craft.define.insights.content }} />
-                                <ul className="flex flex-col gap-10 justify-center mt-10 md:flex-row">
+                                <ul className="grid gap-6 mt-10 md:grid-cols-2 lg:grid-cols-3">
                                     {craft.define.insights.solution.map((item, index) => (
-                                        <li key={index} className="flex-1 bg-white p-6 rounded-xl bg-opacity-50 md:w-[33%]">
-                                            <p className="text-center text-[19px]">
-                                                <span className="mr-2">{item.icon}</span>
-                                                {item.title}
-                                            </p>
-                                            <p className="text-sm text-gray-600 text-center mt-2">{item.description}</p>
+                                        <li key={index} className="flex-1 bg-white p-2 rounded-xl bg-opacity-50">
+                                            <div className='bg-light-yellow-bg p-4 border border-gray-400 rounded-lg'>
+                                                <div className='text-end'>
+                                                    <p className="text-xl">{item.icon}</p>
+                                                </div>
+                                                <p className="text-[19px] font-roundo-medium border-b border-dashed border-orange">
+                                                    {item.title}
+                                                </p>
+                                                <p className="mt-2">{item.description}</p>
+                                            </div>
                                         </li>
                                     ))}
                                 </ul>
@@ -357,29 +370,21 @@ function UIUXLayout({ craft }) {
 
                     <div className='pt-10'>
                         <div className='mb-4'>
-                            <h2>Does this work?</h2>
+                            <h2>{craft.testing.header}</h2>
                             <p dangerouslySetInnerHTML={{ __html: craft.testing.description }} />
                         </div>
 
                         <div className='mb-4'>
-                            <p className='text-[20px] font-roundo-medium'>Key Findings</p>
-                            <ul className='my-2 ml-3'>
+                            <p className='text-[20px] font-roundo-medium'>Key Findings:</p>
+                            <ul className='my-2'>
                                 {craft.testing.findings.map((finding, index) => (
-                                    <li key={index} className='list-disc'>
-                                        {finding}
-                                    </li>
+                                    <li key={index}
+                                        dangerouslySetInnerHTML={{ __html: finding }} />
                                 ))}
                             </ul>
                         </div>
 
                     </div>
-
-                    {/* <div className='content-gap'>
-                        <h2 className='mb-4'>Problems that users found</h2>
-                        <div className='p-2 bg-white rounded-xl bg-opacity-50'>
-                            <img src={craft.testing.problemImg.src} alt={craft.testing.problemImg.altText} className='w-full' loading="lazy" />
-                        </div>
-                    </div> */}
                 </div>
             </section >
 
@@ -396,9 +401,11 @@ function UIUXLayout({ craft }) {
                     {craft.iteration.image && craft.iteration.image.length > 0 && (
                         <div className='py-10'>
                             {craft.iteration.image.map((img, index) => (
-                                <div key={index} className=''>
-                                    <img src={img.src} alt={img.altText} loading="lazy" />
-                                    <p className='font-roundo-medium text-center text-sm mt-2 text-dark-grey'> Updated offer details and menu screen</p>
+                                <div key={index} className='p-2 rounded-xl overflow-hidden bg-white bg-opacity-50'>
+                                    <div className='py-6 mx-auto bg-gray-300 border border-gray-400 border-opacity-40 rounded-lg overflow-hidden'>
+                                        <img src={img.src} alt={img.altText} loading="lazy" className='object-cover w-full' />
+                                    </div>
+                                    <p className='text-center mt-2 text-dark-grey italic text-sm'> Major changes on offer details and menu screen</p>
                                 </div>
                             ))}
                         </div>
@@ -407,7 +414,7 @@ function UIUXLayout({ craft }) {
                     {/* tims */}
                     {craft.iteration.final && (
                         <>
-                            <div className='content-gap' >
+                            <div id='solution' className='content-gap' >
                                 <h2 className='mb-4'>Final Designs</h2>
                                 <div className="space-y-20">
                                     {craft.iteration.final.screens.map((item, index) => (
@@ -418,7 +425,7 @@ function UIUXLayout({ craft }) {
                                         >
                                             <div className="flex-1">
                                                 <h3>{item.header}</h3>
-                                                <p>{item.content}</p>
+                                                <p dangerouslySetInnerHTML={{ __html: item.content }} />
                                             </div>
 
                                             <div className="flex-1">
@@ -427,7 +434,7 @@ function UIUXLayout({ craft }) {
                                                         <img src={item.original} alt="Original Design" loading="lazy" />
                                                         <p className='font-roundo-medium text-center text-sm mt-2 text-red-600'>{item.ori_caption}</p>
                                                     </div>
-                                                    <div>
+                                                    <div className=''>
                                                         <img src={item.new} alt="New Design" />
                                                         <p className='font-roundo-medium text-center text-sm mt-2  text-green-600' loading="lazy">{item.new_caption}</p>
                                                     </div>
@@ -464,7 +471,7 @@ function UIUXLayout({ craft }) {
 
                     {craft.iteration.finalScreen && (
                         <>
-                            <div>
+                            <div id='solution'>
                                 <div className='mb-10'>
                                     <h3>Onboarding Screens</h3>
                                     <p>The onboarding process starts with an intuitive sizing tool that guides users step-by-step to input the necessary data to provide accurate sizing. For those unsure of their size, a visual model allows adjustments via sliders. This approach removes the complexity of size charts and guesswork, making the process seamless and user-friendly.</p>

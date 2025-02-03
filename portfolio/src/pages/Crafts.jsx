@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom';
 
 import gsap from 'gsap';
@@ -9,12 +9,13 @@ gsap.registerPlugin(ScrollTrigger);
 
 import WindowWidth from '../hooks/WindowWidth';
 import CraftCard from '../components/CraftCard'
-
+import FeatureCraftCard from '../components/FeatureCraftCard';
 import data from '../data/generalData.json';
 
 function Crafts() {
 
     const windowWidth = WindowWidth();
+    const craftRef = useRef(null);
 
     const [crafts, setCrafts] = useState([])
     useEffect(() => {
@@ -47,12 +48,12 @@ function Crafts() {
         },
             {
                 y: 0,
-                duration: .5,
+                duration: .8,
                 ease: "bounce.out",
             }
         ),
             gsap.fromTo(
-                ".sub-header",
+                ".letter",
                 { textShadow: "none" },
                 {
                     textShadow: `
@@ -68,16 +69,35 @@ function Crafts() {
                 5px 5px 0 #1e1e1e,
                 5.5px 5.5px 0 #1e1e1e,
                 6px 6px 0 #1e1e1e`,
-                    duration: 1,
-                    ease: "power3.out",
+                    duration: .8,
+                    ease: "elastic.inOut",
+                    stagger: .05,
                 });
 
+        gsap.fromTo(
+            '.craftSection',
+            { y: 200, opacity: 0 },
+            {
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                ease: "back.inOut",
+                onComplete: () => {
+                    hoverEnabled = true;
+                }
+
+            }
+        )
+
         const letters = document.querySelectorAll('.letter')
+        let hoverEnabled = false;
 
         letters.forEach((l) => {
             let hoverTimeline;
 
             l.addEventListener('mouseenter', () => {
+                if (!hoverEnabled) return;
+
                 if (hoverTimeline) hoverTimeline.kill();
 
                 hoverTimeline = gsap.timeline();
@@ -101,6 +121,8 @@ function Crafts() {
                 })
             });
             l.addEventListener('mouseleave', () => {
+                if (!hoverEnabled) return;
+
                 if (hoverTimeline) hoverTimeline.kill();
 
                 hoverTimeline = gsap.timeline();
@@ -127,19 +149,26 @@ function Crafts() {
             });
         })
 
-
     }, [])
-    const [scale, setScale] = useState(1);
 
-    const handleMouseMove = () => setScale(1.1);
-    const handleMouseOut = () => setScale(1);
+    const [hoverStates, setHoverStates] = useState({});
 
+    const handleMouseEnter = (id) => {
+        setHoverStates((prev) => ({ ...prev, [id]: true }));
+    };
+
+    const handleMouseLeave = (id) => {
+        setHoverStates((prev) => ({ ...prev, [id]: false }));
+    };
 
 
     return (
         <>
             <section className='bg-light-yellow-bg py-[6rem] relative lg:py-[8rem]'>
                 <div className='max-w-container flex flex-col justify-center items-center'>
+                    <div className='tag mx-auto py-2 px-4 bg-charcoal w-fit rounded-md -rotate-6'>
+                        <p className='tracking-widest uppercase text-white text-sm md:text-base text-nowrap'>Linspired</p>
+                    </div>
                     <div className=''>
                         <h2 className="craftHeader text-center sub-header text-nowrap">
                             {Array.from("Crafts").map((letter, index) => (
@@ -149,78 +178,31 @@ function Crafts() {
                             ))}
                         </h2>
                     </div>
-
-                    <div className='tag hidden md:block md:absolute md:top-[30%] md:left-[40%] md:-translate-x-1/2 md:-translate-y-1/2 py-2 px-4 bg-charcoal w-fit rounded-md md:-rotate-6'>
-                        <p className='tracking-widest uppercase text-white text-sm md:text-base text-nowrap'>Love & Purpose</p>
-                    </div>
                 </div>
             </section>
 
 
-            <section className='pb-20 md:pb-[10rem] lg:pb-[15rem]'>
+            <section className='pb-20 md:pb-[10rem] lg:pb-[15rem] craftSection'>
                 <div className=' max-w-container'>
-                    {firstCraft && (
-                        <Link
-                            onMouseMove={handleMouseMove}
-                            onMouseOut={handleMouseOut}
-                            to={`/crafts/${firstCraft.id}`} className="block font-bold leading-normal capitalize group">
-                            <div className='w-full flex flex-col p-3 mb-10 border-2 rounded-2xl overflow-hidden lg:flex-row lg:justify-center lg:items-center lg:gap-10 relative lg:mb-12 hover:border-[3px] transition-all duration-300'>
+                    {filteredCrafts.slice(0, 2).map((craft) => (
 
-                                <div className="img-container overflow-hidden rounded-xl border border-black border-opacity-55 lg:basis-[60%]">
-                                    {firstCraft.media === "video" ? (
-                                        <video
-                                            src={firstCraft.src}
-                                            autoPlay
-                                            muted
-                                            playsInline
-                                            loop
-                                            className="relative object-cover max-w-full min-h-[250px] md:h-auto transition duration-500 ease-in-out z-0  overflow-hidden"
-                                            style={{ transform: `scale(${scale})` }}
-                                        />
-                                    ) : (
-                                        <div className="relative">
-                                            <img
-                                                src={firstCraft.src}
-                                                alt="project"
-                                                className="relative object-cover max-w-full min-h-[250px] md:h-auto transition duration-500 ease-in-out z-0  overflow-hidden project-img"
-                                                loading="lazy"
-                                                style={{ transform: `scale(${scale})` }}
-                                            />
-                                        </div>
-                                    )}
-                                    <div className='absolute top-8 left-10 bg-orange px-4 rounded-md'><p className='text-white tracking-widest capitalize lg:text-[18px]'>featured</p></div>
-                                </div>
+                        <FeatureCraftCard
+                            key={craft.id}
+                            id={craft.id}
+                            title={craft.title}
+                            mediaType={craft.media}
+                            src={craft.src}
+                            skills={craft.skills}
+                            content={craft.content}
+                            status={craft.status}
+                        />
+                    ))}
 
-                                <div className=' p-4 lg:basis-[40%] lg:px-4'>
-                                    <div className='flex flex-col gap-4 '>
-                                        <div className="flex flex-wrap gap-2">
-                                            {firstCraft.skills.map((skill, index) => (
-                                                <div className="inline-block" key={index}>
-                                                    <span className="font-roundo tracking-[.8px] md:tracking-[1.5px] text-gray-800 bg-darker-bg px-3 py-1 rounded-full text-sm text-nowrap">
-                                                        {skill}
-                                                    </span>
-                                                </div>
-                                            ))}
-                                        </div>
-                                        <h3 className='leading-normal'>
-                                            {firstCraft.title}
-                                        </h3>
 
-                                    </div>
-                                    <p className='tracking-normal normal-case'> {firstCraft.content}</p>
-
-                                    <button className="block tracking-wide font-roundo-medium mt-4 py-4 group group-hover:text-orange">
-                                        Read Now <span className="inline-block transition-transform duration-300 ease-in-out group-hover:scale-x-150 group-hover:translate-x-2">→</span>
-                                    </button>
-
-                                </div>
-                            </div>
-                        </Link>
-                    )}
 
 
                     <div className="relative grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
-                        {filteredCrafts.slice(1, 6).map((craft) => {
+                        {filteredCrafts.slice(2, 6).map((craft) => {
                             return (
                                 <CraftCard
                                     key={craft.id}

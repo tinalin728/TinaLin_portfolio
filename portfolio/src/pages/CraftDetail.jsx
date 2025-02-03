@@ -19,7 +19,6 @@ import LazyLoading from '../components/LazyLoading';
 gsap.registerPlugin(ScrollTrigger);
 
 
-
 function CraftDetail() {
     const { id } = useParams();
     const navigate = useNavigate();
@@ -84,7 +83,12 @@ function CraftDetail() {
                     <div className='flex-1'>
                         <p className='text-dark-grey text-center mb-2 md:text-left'>{craft.banner.subHeader}</p>
                         <h1 className='text-wrap text-center md:text-left'> {craft.banner.header}</h1>
-                        <a href='#overview' className="tracking-wide font-roundo-medium mt-4 py-4 group hover:text-orange flex justify-center md:justify-start">
+                        <a href='#overview'
+                            onClick={(e) => {
+                                e.preventDefault();
+                                document.getElementById("overview")?.scrollIntoView({ behavior: "smooth" });
+                            }}
+                            className="tracking-wide font-roundo-medium mt-4 py-4 group hover:text-orange flex justify-center md:justify-start">
                             Read Now <span className="ml-2 inline-block transition-transform duration-300 ease-in-out lg:group-hover:scale-y-150 lg:group-hover:translate-y-1">↓</span>
                         </a>
                     </div>
@@ -139,7 +143,12 @@ function CraftDetail() {
                                 <div className='mt-14'>
                                     {
                                         craft.overview.protoLink && (
-                                            <a href="#prototype" className='px-6 py-4 rounded-full border-2 font-roundo-medium shadow-charcoal hover:shadow-charcoal-hover transition duration-300'>{craft.overview.protoLink}</a>
+                                            <a href="#prototype"
+                                                onClick={(e) => {
+                                                    e.preventDefault();
+                                                    document.getElementById("prototype")?.scrollIntoView({ behavior: "smooth" });
+                                                }}
+                                                className='px-6 py-4 rounded-full border-2 font-roundo-medium shadow-charcoal hover:shadow-charcoal-hover transition duration-300'>{craft.overview.protoLink}</a>
                                         )
                                     }
                                     {
@@ -200,7 +209,7 @@ function CraftDetail() {
                 </div>
             </div>
 
-            <section className="border-y border-black py-14 overflow-hidden">
+            <section id='view-more-projects' className="border-y border-black py-14 overflow-hidden">
                 <div className="max-w-container">
                     <h2 className="mb-6">View More Projects!</h2>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -213,20 +222,12 @@ function CraftDetail() {
                                 to={`/crafts/${project.id}`}
                                 className="group block p-2 border-2 rounded-lg shadow-lg relative overflow-hidden"
                             >
-                                {project.media === "video" ? (
-                                    <LazyLoading
-                                        src={project.cover}
-                                        alt={project.banner.image.altText}
-                                        autoPlay muted playsInline loop
-                                        className="w-full"
-                                    />
-                                ) : (
-                                    <img src={project.cover}
-                                        alt={project.banner.image.altText}
-                                        loading="lazy"
-                                        className="w-full"
-                                    />
-                                )}
+
+                                <img src={project.cover}
+                                    alt={project.banner.image.altText}
+                                    loading="lazy"
+                                    className="w-full"
+                                />
 
                                 <div
                                     className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 flex justify-center items-center text-white transition-opacity duration-300"

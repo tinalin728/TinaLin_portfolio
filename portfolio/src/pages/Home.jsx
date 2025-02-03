@@ -20,13 +20,9 @@ import HorizontalScroll from '../components/HorizontalScroll';
 import WindowWidth from '../hooks/WindowWidth';
 import arrow from '../../public/assets/icons/arrow.svg';
 import outline from '../../public/assets/homepage/outlineLogo.svg'
-import uiux from '../../public/assets/homepage/uxui.svg'
 
-
-import design from "../../public/assets/homepage/web-design.svg"
-import uxui from "../../public/assets/homepage/uxui.svg"
-import coding from "../../public/assets/homepage/front-end.svg"
 import data from '../data/generalData.json';
+import FeatureCraftCard from '../components/FeatureCraftCard';
 
 
 function Home() {
@@ -80,10 +76,12 @@ function Home() {
                 element,
                 {
                     rotate: 0, // Start with no rotation
+                    y: -10,
                 },
                 {
                     rotate: rotations[index], // Apply unique rotation
                     duration: .8,
+                    y: 0,
                     ease: "bounce.out",
                     delay: index * 0.15, // Stagger delay for each element
                     onComplete: () => setAnimationComplete(true)
@@ -246,159 +244,155 @@ function Home() {
     }, [mousePosition, animationComplete]);
 
 
-    const aboutRef = useRef(null);
-    useGSAP(() => {
-        gsap.fromTo(
-            '.about-bg',
-            {
-                y: 100,
-                opacity: 0
-            },
-            {
-                y: 0,
-                opacity: .8,
-                duration: 2,
-                ease: 'power3.out',
-                scrollTrigger: {
-                    trigger: aboutRef.current,
-                    start: 'top 30%',
-                    end: 'bottom top',
-                    toggleActions: 'play none none reverse'
-                },
-            }
-        );
-        gsap.fromTo(
-            '.about-bg-back',
-            {
-                y: 100,
-                opacity: 0
-            },
-            {
-                y: 0,
-                opacity: .4,
-                duration: 2,
-                ease: 'power3.out',
-                scrollTrigger: {
-                    trigger: aboutRef.current,
-                    start: 'top 30%',
-                    end: 'bottom top',
-                    // markers: true,
-                    toggleActions: 'play none none reverse'
-                },
-            }
-        );
-
-    }, [aboutRef.current]);
-
-
-
     const craftRef = useRef(null);
+    const [isLoaded, setIsLoaded] = useState(false);
+
+    useEffect(() => {
+        setTimeout(() => {
+            if (document.querySelectorAll(".craftCard").length > 0) {
+                console.log(".craftCard elements found! Running GSAP...");
+                setIsLoaded(true);
+            }
+        }, 200);
+    }, []);
+
+
     useGSAP(() => {
-        const scrollTriggerConfig = {
-            trigger: craftRef.current,
-            start: "top 60%",
-            toggleActions: "play none none none",
-            // markers: true,
-        };
 
-        // Animate recent text
-        gsap.fromTo(
-            ".recent",
-            { y: -80, rotate: 0, opacity: 0 },
-            {
-                y: 0,
-                rotate: -6,
-                opacity: 1,
-                duration: 0.5,
-                ease: "bounce.out",
-                scrollTrigger: { ...scrollTriggerConfig },
-            }
-        );
+        if (!craftRef.current || !isLoaded) return;
+        const ctx = gsap.context(() => {
 
-        // Animate craftHeader text-shadow to make it look like it's popping out
-        gsap.fromTo(
-            ".craftHeader",
-            { textShadow: "none" },
-            {
-                textShadow: `
-                    0.5px 0.5px 0 #342A1A,
-                    1px 1px 0 #342A1A,
-                    1.5px 1.5px 0 #342A1A,
-                    2px 2px 0 #342A1A,
-                    2.5px 2.5px 0 #342A1A,
-                    3px 3px 0 #342A1A,
-                    3.5px 3.5px 0 #342A1A,
-                    4px 4px 0 #342A1A,
-                    4.5px 4.5px 0 #342A1A,
-                    5px 5px 0 #342A1A,
-                    5.5px 5.5px 0 #342A1A,
-                    6px 6px 0 #342A1A`,
-                duration: 0.8,
-                ease: "power4.out", // Strong easing for pop-out effect
-                scrollTrigger: { ...scrollTriggerConfig },
-            }
-        );
+            let hoverEnabled = false;
 
-        const letters = document.querySelectorAll(".craft-letter");
 
-        letters.forEach((letter) => {
-            let hoverTimeline; // Define a timeline for each letter
+            const scrollTriggerConfig = {
+                trigger: craftRef.current,
+                start: "top 50%",
+                toggleActions: "play none none none",
+                // markers: true,
+            };
 
-            letter.addEventListener("mouseenter", () => {
-                // If an existing timeline is active, kill it
-                if (hoverTimeline) hoverTimeline.kill();
+            // Animate recent text
+            gsap.fromTo(
+                ".recent",
+                { y: -50, rotate: 0, opacity: 0 },
+                {
+                    y: 10,
+                    rotate: -6,
+                    opacity: 1,
+                    duration: 1,
+                    ease: "bounce.out",
+                    scrollTrigger: { ...scrollTriggerConfig },
+                }
+            );
 
-                // Create a new timeline for the hover effect
-                hoverTimeline = gsap.timeline();
-                hoverTimeline.to(letter, {
-                    x: -3, // Slightly press down
-                    y: -3, // Slightly press right
-                    textShadow: `
-                        1px 1px 0 #342A1A,
-                        2px 2px 0 #342A1A,
-                        3px 3px 0 #342A1A,
-                        4px 4px 0 #342A1A,
-                        5px 5px 0 #342A1A,
-                        6px 6px 0 #342A1A,
-                        7px 7px 0 #342A1A,
-                        8px 8px 0 #342A1A,
-                        9px 9px 0 #342A1A,
-                        10px 10px 0 #342A1A
-                        `,
-                    duration: 0.2,
-                    ease: "power1.inOut", // Smooth press effect
-                });
-            });
-
-            letter.addEventListener("mouseleave", () => {
-                // If an existing timeline is active, kill it
-                if (hoverTimeline) hoverTimeline.kill();
-
-                // Create a new timeline for resetting the animation
-                hoverTimeline = gsap.timeline();
-                hoverTimeline.to(letter, {
-                    x: 0, // Reset position
-                    y: 0, // Reset position
+            gsap.fromTo(
+                ".craft-letter",
+                { textShadow: "none", opacity: 0.5 },
+                {
+                    opacity: 1,
                     textShadow: `
                         0.5px 0.5px 0 #342A1A,
-                    1px 1px 0 #342A1A,
-                    1.5px 1.5px 0 #342A1A,
-                    2px 2px 0 #342A1A,
-                    2.5px 2.5px 0 #342A1A,
-                    3px 3px 0 #342A1A,
-                    3.5px 3.5px 0 #342A1A,
-                    4px 4px 0 #342A1A,
-                    4.5px 4.5px 0 #342A1A,
-                    5px 5px 0 #342A1A,
-                    5.5px 5.5px 0 #342A1A,
-                    6px 6px 0 #342A1A`, // Reset shadow
-                    duration: 0.3,
-                    ease: "power3.out", // Smooth reset
+                        1px 1px 0 #342A1A,
+                        1.5px 1.5px 0 #342A1A,
+                        2px 2px 0 #342A1A,
+                        2.5px 2.5px 0 #342A1A,
+                        3px 3px 0 #342A1A,
+                        3.5px 3.5px 0 #342A1A,
+                        4px 4px 0 #342A1A,
+                        4.5px 4.5px 0 #342A1A,
+                        5px 5px 0 #342A1A,
+                        5.5px 5.5px 0 #342A1A,
+                        6px 6px 0 #342A1A`,
+                    duration: .8,
+                    ease: "elastic.inOut",
+                    stagger: .05,
+                    scrollTrigger: { ...scrollTriggerConfig },
+                }
+            );
+            gsap.fromTo(
+                ".craftCard",
+                { opacity: 0, y: 200 },
+                {
+                    opacity: 1,
+                    y: 0,
+                    duration: 1.5,
+                    ease: "back.inOut",
+                    scrollTrigger: { ...scrollTriggerConfig },
+                    onComplete: () => {
+                        hoverEnabled = true;
+                    }
+                }
+            );
+
+            // hover on the letter
+            const letters = document.querySelectorAll(".craft-letter");
+            letters.forEach((letter) => {
+                let hoverTimeline;
+
+                letter.addEventListener("mouseenter", () => {
+
+                    if (!hoverEnabled) return;
+
+                    // If an existing timeline is active, kill it
+                    if (hoverTimeline) hoverTimeline.kill();
+
+                    // Create a new timeline for the hover effect
+                    hoverTimeline = gsap.timeline();
+                    hoverTimeline.to(letter, {
+                        x: -3,
+                        y: -3,
+                        textShadow: `
+                            1px 1px 0 #342A1A,
+                            2px 2px 0 #342A1A,
+                            3px 3px 0 #342A1A,
+                            4px 4px 0 #342A1A,
+                            5px 5px 0 #342A1A,
+                            6px 6px 0 #342A1A,
+                            7px 7px 0 #342A1A,
+                            8px 8px 0 #342A1A,
+                            9px 9px 0 #342A1A,
+                            10px 10px 0 #342A1A
+                            `,
+                        duration: 0.2,
+                        ease: "elastic.out",
+                    });
+                });
+
+                letter.addEventListener("mouseleave", () => {
+                    if (!hoverEnabled) return;
+
+                    // If an existing timeline is active, kill it
+                    if (hoverTimeline) hoverTimeline.kill();
+
+                    // Create a new timeline for resetting the animation
+                    hoverTimeline = gsap.timeline();
+                    hoverTimeline.to(letter, {
+                        x: 0, // Reset position
+                        y: 0, // Reset position
+                        textShadow: `
+                            0.5px 0.5px 0 #342A1A,
+                        1px 1px 0 #342A1A,
+                        1.5px 1.5px 0 #342A1A,
+                        2px 2px 0 #342A1A,
+                        2.5px 2.5px 0 #342A1A,
+                        3px 3px 0 #342A1A,
+                        3.5px 3.5px 0 #342A1A,
+                        4px 4px 0 #342A1A,
+                        4.5px 4.5px 0 #342A1A,
+                        5px 5px 0 #342A1A,
+                        5.5px 5.5px 0 #342A1A,
+                        6px 6px 0 #342A1A`,
+                        duration: 0.2,
+                        ease: "power3.out",
+                    });
                 });
             });
-        });
+            ScrollTrigger.refresh();
+        })
+        return () => ctx.revert();
 
-    }, [craftRef.current]);
+    }, [isLoaded]);
 
     return (
         <>
@@ -409,7 +403,7 @@ function Home() {
                             <div
                                 key={index}
                                 ref={(el) => (glitchRefs.current[index] = el)}
-                                className="glitch-element hidden md:block md:absolute md:-translate-x-1/2 md:-translate-y-1/2 md:origin-center md:-mt-4"
+                                className="glitch-element hidden md:block md:absolute md:-translate-x-1/2 md:-translate-y-1/2 md:origin-center md:-mt-2"
                                 style={{ top: pos.top, left: pos.left }}
                             >
                                 <img src={outline} loading="lazy" alt="" className="w-full" />
@@ -419,9 +413,9 @@ function Home() {
 
 
                     <div className='relative max-w-container w-full h-full flex flex-col items-center justify-center'>
-                        <div className='mt-10 inline-flex flex-col items-center justify-center gap-2 md:-mt-14'>
+                        <div className='-mt-20 inline-flex flex-col items-center justify-center gap-2 md:-mt-14'>
                             <div ref={refs.line1} className='inline-block px-4 py-2 md:px-8 lg:px-10 lg:py-3 xl:py-5 bg-charcoal rounded-md w-fit rotate-6 -translate-x-2'>
-                                <h1 className='text-white big-header'>The </h1>
+                                <h1 className='text-white big-header'>The</h1>
                             </div>
                             <div ref={refs.line2} className='inline-block px-4 py-2 md:px-6 lg:px-10 lg:py-3 xl:py-5 bg-charcoal rounded-md w-fit -rotate-4 translate-x-0'>
                                 <h1 className='text-white big-header'> Product &</h1>
@@ -433,59 +427,41 @@ function Home() {
                             <div ref={refs.line4} className='inline-block px-4 py-2 md:px-6 lg:px-10 lg:py-3 xl:py-5 mt-2 md:mt-4 bg-charcoal rounded-md w-fit -rotate-4 translate-x-10 relative'>
                                 <h1 className='text-white big-header'>Tina Lin</h1>
                             </div>
+
                         </div>
 
-                        <div className='block mt-10 md:absolute md:left-14 bottom-[2%]'>
-                            <div className='flex items-end'>
+                        <div className='mt-10 absolute left-8 md:left-14 bottom-[2%]'>
+                            <div className='flex flex-col'>
                                 <p className='text-base tracking-[3px] font-roundo-medium uppercase'>A UX / UI Designer <br /> who enjoys coding</p>
+                                <a href='/about' className="mt-2 block tracking-wider font-roundo-medium group  hover:text-orange transition-transform duration-300 ease-in-out px-4 border-l border-orange">
+                                    More about me <span className="inline-block transition-transform duration-300 ease-in-out group-hover:scale-x-150 group-hover:translate-x-2">→</span>
+                                </a>
                             </div>
                         </div>
-                        <div className='block md:absolute md:right-14 md:bottom-[2%]'>
+                        <div className='hidden md:block md:absolute md:right-14 md:bottom-[2%]'>
                             <div className='flex gap-3 items-start'>
-                                <div className='flex flex-col '>
+                                <div className='flex flex-col items-end'>
+                                    <a href='#footer'
+                                        onClick={(e) => {
+                                            e.preventDefault();
+                                            document.getElementById("footer")?.scrollIntoView({ behavior: "smooth" });
+                                        }}
+                                        className="mt-2 tracking-wider font-roundo-medium group  hover:text-orange transition-all duration-500 ease-in-out flex justify-center items-center">
+                                        <span className="inline-block transition-all duration-300 ease-in-out group-hover:text-orange pr-2 text-xl leading-none">☻</span>Connect with me
+                                    </a>
                                     <p className='text-base tracking-[3px] font-roundo-medium uppercase'>Based in Vancouver, BC</p>
-                                    <p className='text-end text-base tracking-[3px] font-roundo-medium uppercase text-orange'>* Available for work *</p>
-
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </section >
 
-                <section ref={aboutRef} id='about' className="about relative h-full max-w-container py-16 md:py-[10rem]  bg-light-yellow-bg w-full">
-                    <div className='h-[80vh] bg-darker-bg border-2 rounded-2xl overflow-hidden'>
-                        <div className='max-w-container py-2 flex items-center justify-center flex-col gap-10 h-full relative'>
-                            <div className='relative z-10 text-center lg:max-w-[60rem]'>
-                                <h1 className='font-roundo-medium normal-case leading-normal text-center text-black text-[28px] md:text-2xl'>I create <span className='about-tag text-center font-roundo px-3 py-2 bg-charcoal text-white rounded-md text-nowrap'>user-centered</span> experiences <br /> through design and code </h1>
-
-                            </div>
-
-                            <div className='flex items-center justify-center relative z-20'>
-                                <PrimaryBtn
-                                    to='/about'
-                                    text='About Me'
-                                    icon={arrow}
-                                />
-                            </div>
-
-                            <div className='hidden md:block md:absolute md:bottom-0 md:left-1/2 md:z-0 md:-translate-x-1/2 lg:left-[20%]'>
-                                <img src={uiux} alt="" className='about-bg opacity-50' />
-                            </div>
-                            <div className=' absolute top-0 z-0 lg:right-[10%] rotate-180'>
-                                <img src={uiux} alt="" className='about-bg-back opacity-40 ' />
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <section ref={craftRef} id='crafts' className="relative h-full mb-[10rem] bg-light-yellow-bg w-full">
+                <section ref={craftRef} id='crafts' className="relative h-full my-[10rem] bg-light-yellow-bg w-full">
                     <div className='max-w-container relative'>
                         <div className='relative'>
                             <div className='recent flex mx-auto w-fit bg-charcoal rounded-md px-4 py-2 rotate-6'>
-                                <span className="text-base tracking-[3px] font-roundo-medium uppercase text-white ">Featured</span >
+                                <span className="tracking-widest uppercase text-white text-sm md:text-base text-nowrap">Featured</span >
                             </div >
-
                             <div className="mx-auto mb-6 lg:mb-12">
                                 <h2 className="craftHeader text-center sub-header">
                                     {Array.from("Crafts").map((letter, index) => (
@@ -495,11 +471,11 @@ function Home() {
                                     ))}
                                 </h2>
                             </div>
-                            {/* <p className='mb-10 text-base tracking-[3px] font-roundo-medium uppercase'>Feat. Crafts</p> */}
-                            <div className="relative grid grid-cols-1 lg:grid-cols-2 mb-10 gap-8">
+
+                            <div className="craftCard relative grid grid-cols-1 mb-10 gap-8">
                                 {crafts.slice(0, 2).map((craft) => {
                                     return (
-                                        <CraftCard
+                                        <FeatureCraftCard
                                             key={craft.id}
                                             id={craft.id}
                                             title={craft.title}
@@ -509,9 +485,11 @@ function Home() {
                                             content={craft.content}
                                             status={craft.status}
                                         />
-                                    );
+                                    )
                                 })}
                             </div>
+
+
                             <div className='flex items-center justify-center'>
                                 <PrimaryBtn
                                     to='/crafts'

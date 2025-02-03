@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 function CraftCard({ title, src, mediaType, skills, id, content, status }) {
     const [scale, setScale] = useState(1);
 
-    const handleMouseMove = () => setScale(1.1);
+    const handleMouseMove = () => setScale(1.05);
     const handleMouseOut = () => setScale(1);
 
     const isLinked = status === "complete"; // Check if the project is complete
@@ -15,32 +15,22 @@ function CraftCard({ title, src, mediaType, skills, id, content, status }) {
                 // Clickable card for complete projects
                 <Link
                     to={`/crafts/${id}`}
-                    className="relative font-bold leading-normal capitalize w-full h-full box group overflow-hidden group transition-all duration-300 rounded-2xl border-2 shadow-md lg:hover:border-4"
+                    className="relative font-bold leading-normal capitalize w-full h-full box group overflow-hidden group transition-all duration-300 rounded-2xl border-2 lg:hover:border-[3px]"
                     onMouseMove={handleMouseMove}
                     onMouseOut={handleMouseOut}
                 >
                     <div className="flex flex-col p-3">
-                        {/* Media Section */}
+
                         <div className="overflow-hidden rounded-lg border border-black border-opacity-55">
-                            {mediaType === "video" ? (
-                                <video
-                                    src={src}
-                                    autoPlay
-                                    muted
-                                    playsInline
-                                    loop
-                                    className="relative object-cover max-w-full min-h-[250px] md:h-auto transition duration-500 ease-in-out z-0 rounded-lg overflow-hidden"
-                                    style={{ transform: `scale(${scale})` }}
-                                />
-                            ) : (
-                                <img
-                                    src={src}
-                                    alt="project"
-                                    className="relative object-cover max-w-full min-h-[250px] md:h-auto transition duration-500 ease-in-out z-0 overflow-hidden"
-                                    loading="lazy"
-                                    style={{ transform: `scale(${scale})` }}
-                                />
-                            )}
+
+                            <img
+                                src={src}
+                                alt="project"
+                                className="relative object-cover max-w-full min-h-[250px] md:h-auto transition duration-500 ease-in-out z-0 overflow-hidden"
+                                loading="lazy"
+                                style={{ transform: `scale(${scale})` }}
+                            />
+
 
                         </div>
 
