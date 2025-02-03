@@ -288,9 +288,9 @@ function Home() {
 
             gsap.fromTo(
                 ".craft-letter",
-                { textShadow: "none", opacity: 0.5 },
+                { textShadow: "none" },
                 {
-                    opacity: 1,
+
                     textShadow: `
                         0.5px 0.5px 0 #342A1A,
                         1px 1px 0 #342A1A,
@@ -433,9 +433,9 @@ function Home() {
                         <div className='mt-10 absolute left-8 md:left-14 bottom-[2%]'>
                             <div className='flex flex-col'>
                                 <p className='text-base tracking-[3px] font-roundo-medium uppercase'>A UX / UI Designer <br /> who enjoys coding</p>
-                                <a href='/about' className="mt-2 block tracking-wider font-roundo-medium group  hover:text-orange transition-transform duration-300 ease-in-out px-4 border-l border-orange">
+                                <Link to='/about' className="mt-2 block tracking-wider font-roundo-medium group  hover:text-orange transition-transform duration-300 ease-in-out px-4 border-l border-orange">
                                     More about me <span className="inline-block transition-transform duration-300 ease-in-out group-hover:scale-x-150 group-hover:translate-x-2">→</span>
-                                </a>
+                                </Link>
                             </div>
                         </div>
                         <div className='hidden md:block md:absolute md:right-14 md:bottom-[2%]'>

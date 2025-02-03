@@ -208,11 +208,11 @@ function Footer() {
 
         const textures = [
             { texture: "/assets/pills/cup.svg", baseWidth: 200, baseHeight: 240, scale: 1.5 },
-            { texture: "/assets/pills/tele.svg", baseWidth: 220, baseHeight: 180, scale: 1.4 },
+            { texture: "/assets/pills/tele.svg", baseWidth: 220, baseHeight: 190, scale: 1.4 },
             { texture: "/assets/pills/croissant.svg", baseWidth: 120, baseHeight: 120, scale: 1 },
             { texture: "/assets/pills/paintbrush.svg", baseWidth: 100, baseHeight: 100, scale: 1 },
-            { texture: "/assets/pills/reactsvh.svg", baseWidth: 100, baseHeight: 100, scale: 1 },
-            { texture: "/assets/pills/world.svg", baseWidth: 200, baseHeight: 200, scale: 1.5 }
+            { texture: "/assets/pills/react.svg", baseWidth: 100, baseHeight: 100, scale: 1 },
+            { texture: "/assets/pills/world.svg", baseWidth: 200, baseHeight: 180, scale: 1.5 }
         ];
 
 
@@ -268,8 +268,8 @@ function Footer() {
                 { x: canvasWidth * 0.1, y: 480 }, // Coffee
                 { x: canvasWidth * 0.4, y: 500 }, // Phone
                 { x: canvasWidth * 0.20, y: 485 }, // Croissant
-                { x: canvasWidth * 0.7, y: 280 }, // Paintbrush
-                { x: canvasWidth * 0.9, y: 320 }, // Atom
+                { x: canvasWidth * 0.7, y: 480 }, // Paintbrush
+                { x: canvasWidth * 0.9, y: 420 }, // Atom
                 { x: canvasWidth * 0.8, y: 450 }, // Earth
             ];
 
@@ -289,13 +289,13 @@ function Footer() {
                 } else if (screenWidth > 440) {
                     adjustedScale = scale * 0.5; // Reduce to 75% for medium screens
                 } else {
-                    adjustedScale = scale * 0.35; // Reduce to 50% for small screens
+                    adjustedScale = scale * 0.45; // Reduce to 50% for small screens
                 }
 
                 let adjustedBaseWidth, adjustedBaseHeight;
                 if (screenWidth > 1560) {
-                    adjustedBaseWidth = baseWidth * 1.1;
-                    adjustedBaseHeight = baseHeight * 1.1;
+                    adjustedBaseWidth = baseWidth * 1.2;
+                    adjustedBaseHeight = baseHeight * 1.2;
                 } else if (screenWidth > 1320) {
                     adjustedBaseWidth = baseWidth;
                     adjustedBaseHeight = baseHeight;
@@ -309,8 +309,8 @@ function Footer() {
                     adjustedBaseWidth = baseWidth * 0.5;
                     adjustedBaseHeight = baseHeight * 0.5;
                 } else {
-                    adjustedBaseWidth = baseWidth * 0.25;
-                    adjustedBaseHeight = baseHeight * 0.25;
+                    adjustedBaseWidth = baseWidth * 0.3;
+                    adjustedBaseHeight = baseHeight * 0.4;
                 }
 
                 // Use predefined positions, or default to center if out of bounds
@@ -486,20 +486,44 @@ function Footer() {
             }
         };
 
+        // const touchStartRef = { current: 0 };
+        // const handleTouchStart = (event) => {
+        //     touchStartRef.current = event.touches[0].clientY;
+        // };
+
+        // // Handle touch move for mobile scrolling
+        // const handleTouchMove = (event) => {
+        //     if (!mouseConstraint.body) {
+        //         const touch = event.touches[0];
+        //         const deltaY = touch.clientY - touchStartRef.current;
+        //         window.scrollBy(0, -deltaY); // Adjust scroll position
+        //         touchStartRef.current = touch.clientY; // Update reference
+        //     }
+        // };
         const touchStartRef = { current: 0 };
+        const touchDeltaY = { current: 0 };
+
         const handleTouchStart = (event) => {
             touchStartRef.current = event.touches[0].clientY;
+            touchDeltaY.current = 0;
         };
 
-        // Handle touch move for mobile scrolling
         const handleTouchMove = (event) => {
             if (!mouseConstraint.body) {
                 const touch = event.touches[0];
-                const deltaY = touch.clientY - touchStartRef.current;
-                window.scrollBy(0, -deltaY); // Adjust scroll position
-                touchStartRef.current = touch.clientY; // Update reference
+                touchDeltaY.current = touch.clientY - touchStartRef.current;
+
+                requestAnimationFrame(() => {
+                    window.scrollBy({
+                        top: -touchDeltaY.current,
+                        behavior: "smooth",
+                    });
+                });
+
+                touchStartRef.current = touch.clientY;
             }
         };
+
 
         // handle resize
         const handleResize = () => {
@@ -544,6 +568,8 @@ function Footer() {
         window.addEventListener("resize", handleResize);
         handleResize();
 
+        document.addEventListener("touchstart", handleTouchStart, { passive: false });
+        document.addEventListener("touchmove", handleTouchMove, { passive: false });
 
         canvas.addEventListener("wheel", handleWheel); // For desktop
         canvas.addEventListener("touchstart", handleTouchStart);
