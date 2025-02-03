@@ -67,9 +67,10 @@ function Footer() {
         // set inline style to override canvas' inline style
         canvas.style.width = `${width}px`;
         canvas.style.height = `${height}px`;
-        const pixelRatio = window.devicePixelRatio
+        const pixelRatio = window.devicePixelRatio || 1
         canvas.width = width * pixelRatio;
         canvas.height = height * pixelRatio;
+
 
         // Create a renderer
         const render = Render.create({
@@ -201,85 +202,18 @@ function Footer() {
         //         });
         //     });
 
-        //     const coffee = '/assets/pills/coffee.svg';
-        //     const phone = '/assets/pills/phone.svg';
-        //     const bread = '/assets/pills/bread.svg';
-        //     const paint = '/assets/pills/paint.svg';
-        //     const react = '/assets/pills/react.svg';
-
-        //     const coffeeBody = Bodies.rectangle(canvasWidth / 2, 100, 200, 300, {
-        //         restitution: 0.8,
-        //         friction: .8,
-        //         label: "custom",
-        //         render: {
-        //             sprite: {
-        //                 texture: coffee,
-        //                 xScale: 2,
-        //                 yScale: 2
-        //             },
-        //         },
-        //     });
-        //     const phoneBody = Bodies.rectangle(canvasWidth / 2, 200, 200, 300, {
-        //         restitution: 0.5,
-        //         friction: 0.6,
-        //         label: "custom",
-        //         render: {
-        //             sprite: {
-        //                 texture: phone,
-        //                 xScale: 1.5,
-        //                 yScale: 1.5
-        //             },
-        //         },
-        //     });
-        //     const breadBody = Bodies.rectangle(canvasWidth / 2, 200, 150, 200, {
-        //         restitution: 0.5,
-        //         friction: 0.6,
-        //         label: "custom",
-        //         render: {
-        //             sprite: {
-        //                 texture: bread,
-        //                 xScale: 1,
-        //                 yScale: 1
-        //             },
-        //         },
-        //     });
-        //     const paintBody = Bodies.rectangle(canvasWidth / 2, 200, 150, 200, {
-        //         restitution: 0.5,
-        //         friction: 0.6,
-        //         label: "custom",
-        //         render: {
-        //             sprite: {
-        //                 texture: paint,
-        //                 xScale: 1.2,
-        //                 yScale: 1.2
-        //             },
-        //         },
-        //     });
-        //     const reactBody = Bodies.rectangle(canvasWidth / 2, 100, 100, 200, {
-        //         restitution: 0.5,
-        //         friction: 0.6,
-        //         label: "custom",
-        //         render: {
-        //             sprite: {
-        //                 texture: react,
-        //                 xScale: .3,
-        //                 yScale: .3
-        //             },
-        //         },
-        //     });
-
-        //     pills.push(coffeeBody, phoneBody, breadBody, paintBody, reactBody);
         //     return pills;
         // };
 
         const textures = [
-            { texture: "/assets/pills/coffee.svg", baseWidth: 100, baseHeight: 150, scale: 1.7 },
-            { texture: "/assets/pills/phone.svg", baseWidth: 150, baseHeight: 150, scale: 1.2 },
-            { texture: "/assets/pills/bread.svg", baseWidth: 120, baseHeight: 120, scale: .8 },
-            { texture: "/assets/pills/paint.svg", baseWidth: 180, baseHeight: 150, scale: .8 },
-            { texture: "/assets/pills/reactsvg.svg", baseWidth: 300, baseHeight: 300, scale: 0.35 },
-            { texture: "/assets/pills/earth.svg", baseWidth: 150, baseHeight: 150, scale: 1 }
-        ]
+            { texture: "/assets/pills/coffee.svg", baseWidth: 100, baseHeight: 150, scale: window.innerWidth > 1440 ? 1.7 : window.innerWidth < 768 ? 1 : 1.1 },
+            { texture: "/assets/pills/phone.svg", baseWidth: 150, baseHeight: 150, scale: window.innerWidth > 1440 ? 1.2 : window.innerWidth < 768 ? 0.9 : 1 },
+            { texture: "/assets/pills/bread.svg", baseWidth: 120, baseHeight: 120, scale: window.innerWidth > 1440 ? 0.8 : window.innerWidth < 768 ? 0.6 : 0.7 },
+            { texture: "/assets/pills/paint.svg", baseWidth: 180, baseHeight: 150, scale: window.innerWidth > 1440 ? 0.8 : window.innerWidth < 768 ? 0.6 : 0.7 },
+            { texture: "/assets/pills/reactsvg.svg", baseWidth: 300, baseHeight: 300, scale: window.innerWidth > 1440 ? 0.35 : window.innerWidth < 768 ? 0.25 : 0.3 },
+            { texture: "/assets/pills/earth.svg", baseWidth: 150, baseHeight: 150, scale: window.innerWidth > 1440 ? 1 : window.innerWidth < 768 ? 0.8 : 0.9 }
+        ];
+
 
         const texturePaths = Object.keys(textures); // Extract file paths
         console.log("Extracted Texture Paths:", texturePaths);
@@ -448,6 +382,24 @@ function Footer() {
         //         // markers: true,
         //     });
         // }
+        // ScrollTrigger.scrollerProxy(containerRef.current, {
+        //     scrollTop(value) {
+        //         if (arguments.length) {
+        //             containerRef.current.scrollTop = value;
+        //         }
+        //         return containerRef.current.scrollTop;
+        //     },
+        //     getBoundingClientRect() {
+        //         return {
+        //             top: 0,
+        //             left: 0,
+        //             width: window.innerWidth,
+        //             height: window.innerHeight,
+        //         };
+        //     },
+        //     pinType: containerRef.current.style.transform ? "transform" : "fixed",
+        // });
+
         let timeoutId;
 
         ScrollTrigger.create({
@@ -472,7 +424,7 @@ function Footer() {
                     //         Composite.remove(world, body);
                     //     }
                     // });
-                }, 100);
+                }, 300);
             },
         });
 
@@ -549,7 +501,7 @@ function Footer() {
                 { x: 0, y: height },
             ]);
 
-            Matter.Body.setPosition(wallLeft, { x: -28, y: height });
+            Matter.Body.setPosition(wallLeft, { x: -28, y: height / 2 });
             Matter.Body.setPosition(wallRight, { x: width + 82, y: height / 2 });
             Matter.Body.setPosition(roof, { x: width / 2, y: -80 });
             //console.log("Right Wall:", wallRight.position, wallRight.vertices);
