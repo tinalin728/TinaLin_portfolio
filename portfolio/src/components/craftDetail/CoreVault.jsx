@@ -1,5 +1,6 @@
 import React from 'react'
 import Lottie from "lottie-react";
+import BackToTop from '../buttons/BackToTop';
 
 import wireframe from '../../../public/assets/corevault/wireframe.png'
 import design from '../../../public/assets/corevault/design.png'
@@ -9,6 +10,8 @@ import lottieEx2 from '../../../public/assets/corevault/expense.json'
 function CoreVault() {
     return (
         <>
+            <BackToTop />
+
             <section className=''>
                 <div className=' content-w'>
                     <div className='py-10 border-b-2 border-light-grey border-dashed '>

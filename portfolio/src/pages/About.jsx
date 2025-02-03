@@ -333,8 +333,8 @@ function About() {
                         </div>
 
                         <div className='flex flex-col justify-between gap-10 w-full md:flex-row flex-wrap'>
-                            <div className='rounded-2xl p-6 border-2 flex flex-col w-full relative overflow-hidden min-h-[35vh] md:min-w-[20rem] shadow-charcoal flex-1'>
-                                <div className='relative z-10'>
+                            <div className='rounded-2xl p-6 border-2 w-full relative overflow-hidden  shadow-charcoal flex-1  md:min-w-[20rem] lg:min-w-[25rem]'>
+                                <div className='relative z-10 flex flex-col'>
                                     <p className='font-roundo-medium text-md'>How I Craft Experiences</p>
                                     <ul className='flex flex-wrap gap-y-4 gap-x-6 text-nowrap mt-4'>
                                         {ux.map((item, index) => (
@@ -343,9 +343,9 @@ function About() {
                                     </ul>
                                 </div>
                             </div>
-                            <div className='flex-1 rounded-2xl p-6 border-2 flex flex-col w-full min-h-[35vh] md:min-w-[30rem] shadow-charcoal relative overflow-hidden'>
+                            <div className='flex-1 rounded-2xl p-6 border-2 flex flex-col w-full min-h-[35vh] shadow-charcoal relative overflow-hidden md:min-w-[25rem] lg:min-w-[25rem]'>
                                 <p className='font-roundo-medium text-md mb-4'>Where Visual Magic Happens</p>
-                                <div className='flex flex-wrap gap-y-4 gap-x-6'>
+                                <div className='flex flex-wrap gap-y-4 gap-x-6 '>
                                     {design.map((item, index) => (
                                         <div key={index} className=''>
                                             <img src={item} alt="" width={70} />
@@ -354,7 +354,7 @@ function About() {
                                 </div>
                             </div>
 
-                            <div className='rounded-2xl p-6 border-2 flex flex-col w-full relative min-h-[35vh] md:min-w-[30rem]  overflow-hidden shadow-charcoal flex-1'>
+                            <div className='rounded-2xl p-6 border-2 flex flex-col w-full relative min-h-[35vh]  overflow-hidden shadow-charcoal flex-1 md:min-w-[30rem] lg:min-w-[25rem]'>
                                 <div className='relative z-10'>
                                     <p className='font-roundo-medium text-md'>How I Build My Playground</p>
                                     <ul className='flex flex-wrap gap-y-4 gap-x-6 text-nowrap mt-4'>
