@@ -486,20 +486,37 @@ function Footer() {
             }
         };
 
-        // const touchStartRef = { current: 0 };
-        // const handleTouchStart = (event) => {
-        //     touchStartRef.current = event.touches[0].clientY;
-        // };
+        const touchStartRef = { current: 0 };
+        const handleTouchStart = (event) => {
+            touchStartRef.current = event.touches[0].clientY;
+        };
 
-        // // Handle touch move for mobile scrolling
-        // const handleTouchMove = (event) => {
-        //     if (!mouseConstraint.body) {
-        //         const touch = event.touches[0];
-        //         const deltaY = touch.clientY - touchStartRef.current;
-        //         window.scrollBy(0, -deltaY); // Adjust scroll position
-        //         touchStartRef.current = touch.clientY; // Update reference
-        //     }
-        // };
+        // Handle touch move for mobile scrolling
+        const handleTouchMove = (event) => {
+            if (!mouseConstraint.body) { // Only scroll if not dragging a Matter.js body
+                event.preventDefault(); // Prevent default browser behavior
+
+                const touch = event.touches[0];
+                const deltaY = touch.clientY - touchStartRef.current;
+
+                // Smooth out the scrolling behavior
+                if (!isScrolling) {
+                    isScrolling = true;
+                    requestAnimationFrame(() => {
+                        window.scrollBy({ top: -deltaY, behavior: "smooth" });
+                        isScrolling = false;
+                    });
+                }
+
+                // Prevent tiny movements from causing unnecessary updates
+                if (Math.abs(deltaY) > 2) {
+                    touchStartRef.current = touch.clientY;
+                }
+
+                lastDeltaY = deltaY; // Store last movement
+            }
+        };
+
 
         // handle resize
         const handleResize = () => {
@@ -546,8 +563,8 @@ function Footer() {
 
 
         canvas.addEventListener("wheel", handleWheel); // For desktop
-        // canvas.addEventListener("touchstart", handleTouchStart);
-        // canvas.addEventListener("touchmove", handleTouchMove);
+        canvas.addEventListener("touchstart", handleTouchStart);
+        canvas.addEventListener("touchmove", handleTouchMove);
 
         // Engine.run(engine);
         Render.run(render);
@@ -558,8 +575,8 @@ function Footer() {
             Matter.Engine.clear(engine);
             //Composite.remove(world, body);
             canvas.removeEventListener("wheel", handleWheel);
-            // canvas.removeEventListener("touchstart", handleTouchStart);
-            // canvas.removeEventListener("touchmove", handleTouchMove);
+            canvas.removeEventListener("touchstart", handleTouchStart);
+            canvas.removeEventListener("touchmove", handleTouchMove);
             ScrollTrigger.killAll();
         };
 
