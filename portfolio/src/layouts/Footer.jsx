@@ -500,30 +500,6 @@ function Footer() {
         //         touchStartRef.current = touch.clientY; // Update reference
         //     }
         // };
-        const touchStartRef = { current: 0 };
-        const touchDeltaY = { current: 0 };
-
-        const handleTouchStart = (event) => {
-            touchStartRef.current = event.touches[0].clientY;
-            touchDeltaY.current = 0;
-        };
-
-        const handleTouchMove = (event) => {
-            if (!mouseConstraint.body) {
-                const touch = event.touches[0];
-                touchDeltaY.current = touch.clientY - touchStartRef.current;
-
-                requestAnimationFrame(() => {
-                    window.scrollBy({
-                        top: -touchDeltaY.current,
-                        behavior: "smooth",
-                    });
-                });
-
-                touchStartRef.current = touch.clientY;
-            }
-        };
-
 
         // handle resize
         const handleResize = () => {
@@ -568,12 +544,10 @@ function Footer() {
         window.addEventListener("resize", handleResize);
         handleResize();
 
-        document.addEventListener("touchstart", handleTouchStart, { passive: false });
-        document.addEventListener("touchmove", handleTouchMove, { passive: false });
 
         canvas.addEventListener("wheel", handleWheel); // For desktop
-        canvas.addEventListener("touchstart", handleTouchStart);
-        canvas.addEventListener("touchmove", handleTouchMove);
+        // canvas.addEventListener("touchstart", handleTouchStart);
+        // canvas.addEventListener("touchmove", handleTouchMove);
 
         // Engine.run(engine);
         Render.run(render);
@@ -584,8 +558,8 @@ function Footer() {
             Matter.Engine.clear(engine);
             //Composite.remove(world, body);
             canvas.removeEventListener("wheel", handleWheel);
-            canvas.removeEventListener("touchstart", handleTouchStart);
-            canvas.removeEventListener("touchmove", handleTouchMove);
+            // canvas.removeEventListener("touchstart", handleTouchStart);
+            // canvas.removeEventListener("touchmove", handleTouchMove);
             ScrollTrigger.killAll();
         };
 
