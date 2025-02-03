@@ -71,6 +71,7 @@ function Footer() {
         canvas.width = width * pixelRatio;
         canvas.height = height * pixelRatio;
 
+        console.log('Device Pixel Ratio:', window.devicePixelRatio);
 
         // Create a renderer
         const render = Render.create({
@@ -206,12 +207,12 @@ function Footer() {
         // };
 
         const textures = [
-            { texture: "/assets/pills/coffee.svg", baseWidth: 200, baseHeight: 270, scale: 2.1 },
-            { texture: "/assets/pills/phone.svg", baseWidth: 250, baseHeight: 230, scale: 1.8 },
-            { texture: "/assets/pills/bread.svg", baseWidth: 120, baseHeight: 120, scale: 1 },
-            { texture: "/assets/pills/paint.svg", baseWidth: 100, baseHeight: 120, scale: 1 },
-            { texture: "/assets/pills/reactsvg.svg", baseWidth: 150, baseHeight: 150, scale: .4 },
-            { texture: "/assets/pills/earth.svg", baseWidth: 230, baseHeight: 230, scale: 1.8 }
+            { texture: "/assets/pills/cup.svg", baseWidth: 200, baseHeight: 240, scale: 1.5 },
+            { texture: "/assets/pills/tele.svg", baseWidth: 220, baseHeight: 180, scale: 1.4 },
+            { texture: "/assets/pills/croissant.svg", baseWidth: 120, baseHeight: 120, scale: 1 },
+            { texture: "/assets/pills/paintbrush.svg", baseWidth: 100, baseHeight: 100, scale: 1 },
+            { texture: "/assets/pills/reactsvh.svg", baseWidth: 100, baseHeight: 100, scale: 1 },
+            { texture: "/assets/pills/world.svg", baseWidth: 200, baseHeight: 200, scale: 1.5 }
         ];
 
 
@@ -277,12 +278,14 @@ function Footer() {
                 const { texture, baseWidth, baseHeight, scale } = textureObj;
 
                 let adjustedScale;
-                if (screenWidth > 1440) {
-                    adjustedScale = scale; // Keep original scale for XL screens
+                if (screenWidth > 1560) {
+                    adjustedScale = scale * 1.1;
+                } else if (screenWidth > 1320) {
+                    adjustedScale = scale;
                 } else if (screenWidth > 1024) {
-                    adjustedScale = scale * 0.9; // Reduce to 90% for large screens
+                    adjustedScale = scale * 0.85; // Reduce to 90% for large screens
                 } else if (screenWidth > 768) {
-                    adjustedScale = scale * 0.75; // Reduce to 75% for medium screens
+                    adjustedScale = scale * 0.7; // Reduce to 75% for medium screens
                 } else if (screenWidth > 440) {
                     adjustedScale = scale * 0.5; // Reduce to 75% for medium screens
                 } else {
@@ -290,8 +293,11 @@ function Footer() {
                 }
 
                 let adjustedBaseWidth, adjustedBaseHeight;
-                if (screenWidth > 1440) {
-                    adjustedBaseWidth = baseWidth; // Keep original size for XL screens
+                if (screenWidth > 1560) {
+                    adjustedBaseWidth = baseWidth * 1.1;
+                    adjustedBaseHeight = baseHeight * 1.1;
+                } else if (screenWidth > 1320) {
+                    adjustedBaseWidth = baseWidth;
                     adjustedBaseHeight = baseHeight;
                 } else if (screenWidth > 1024) {
                     adjustedBaseWidth = baseWidth * 0.9;
