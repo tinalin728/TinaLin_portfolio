@@ -211,7 +211,7 @@ function Footer() {
             { texture: "/assets/pills/tele.svg", baseWidth: 220, baseHeight: 190, scale: 1.4 },
             { texture: "/assets/pills/croissant.svg", baseWidth: 120, baseHeight: 120, scale: 1 },
             { texture: "/assets/pills/paintbrush.svg", baseWidth: 100, baseHeight: 100, scale: 1 },
-            { texture: "/assets/pills/react.svg", baseWidth: 100, baseHeight: 100, scale: 1 },
+            { texture: "/assets/pills/react2.svg", baseWidth: 100, baseHeight: 100, scale: 1 },
             { texture: "/assets/pills/world.svg", baseWidth: 200, baseHeight: 180, scale: 1.5 }
         ];
 
