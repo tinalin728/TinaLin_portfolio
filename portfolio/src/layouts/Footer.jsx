@@ -67,7 +67,7 @@ function Footer() {
         // set inline style to override canvas' inline style
         canvas.style.width = `${width}px`;
         canvas.style.height = `${height}px`;
-        const pixelRatio = window.devicePixelRatio || 1
+        const pixelRatio = window.devicePixelRatio
         canvas.width = width * pixelRatio;
         canvas.height = height * pixelRatio;
 
@@ -207,11 +207,11 @@ function Footer() {
 
         const textures = [
             { texture: "/assets/pills/coffee.svg", baseWidth: 100, baseHeight: 150, scale: window.innerWidth > 1440 ? 1.7 : window.innerWidth < 768 ? 1 : 1.1 },
-            { texture: "/assets/pills/phone.svg", baseWidth: 150, baseHeight: 150, scale: window.innerWidth > 1440 ? 1.2 : window.innerWidth < 768 ? 0.9 : 1 },
-            { texture: "/assets/pills/bread.svg", baseWidth: 120, baseHeight: 120, scale: window.innerWidth > 1440 ? 0.8 : window.innerWidth < 768 ? 0.6 : 0.7 },
-            { texture: "/assets/pills/paint.svg", baseWidth: 180, baseHeight: 150, scale: window.innerWidth > 1440 ? 0.8 : window.innerWidth < 768 ? 0.6 : 0.7 },
-            { texture: "/assets/pills/reactsvg.svg", baseWidth: 300, baseHeight: 300, scale: window.innerWidth > 1440 ? 0.35 : window.innerWidth < 768 ? 0.25 : 0.3 },
-            { texture: "/assets/pills/earth.svg", baseWidth: 150, baseHeight: 150, scale: window.innerWidth > 1440 ? 1 : window.innerWidth < 768 ? 0.8 : 0.9 }
+            { texture: "/assets/pills/phone.svg", baseWidth: 150, baseHeight: 150, scale: window.innerWidth > 1440 ? 1.2 : window.innerWidth < 768 ? 0.5 : .8 },
+            { texture: "/assets/pills/bread.svg", baseWidth: 120, baseHeight: 120, scale: window.innerWidth > 1440 ? 0.8 : window.innerWidth < 768 ? 0.5 : 0.7 },
+            { texture: "/assets/pills/paint.svg", baseWidth: 180, baseHeight: 150, scale: window.innerWidth > 1440 ? 0.8 : window.innerWidth < 768 ? 0.5 : 0.7 },
+            { texture: "/assets/pills/reactsvg.svg", baseWidth: 300, baseHeight: 300, scale: window.innerWidth > 1440 ? 0.35 : 0.3 },
+            { texture: "/assets/pills/earth.svg", baseWidth: 150, baseHeight: 150, scale: window.innerWidth > 1440 ? 1 : window.innerWidth < 768 ? 0.5 : 0.6 }
         ];
 
 
