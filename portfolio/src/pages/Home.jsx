@@ -465,7 +465,7 @@ function Home() {
                             <div className="mx-auto mb-6 lg:mb-12">
                                 <h2 className="craftHeader text-center sub-header">
                                     {Array.from("Crafts").map((letter, index) => (
-                                        <span key={index} className="craft-letter inline-block font-craftwork font-extrabold mt-2 text-light-yellow-bg text-stroke uppercase leading-none -mx-[2px] md:mx-0 md:tracking-wider">
+                                        <span key={index} className="craft-letter inline-block font-craftwork font-extrabold mt-2 text-light-yellow-bg text-stroke uppercase leading-none mx-0 md:tracking-wider">
                                             {letter}
                                         </span>
                                     ))}

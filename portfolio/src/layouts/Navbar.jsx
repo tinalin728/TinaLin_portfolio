@@ -42,8 +42,8 @@ function Navbar() {
             if (isOpen) {
                 // Close the menu
                 gsap.to(menuRef.current, {
-                    x: '-80%',
-                    duration: .3,
+                    x: '-100%',
+                    duration: .5,
                     ease: 'none',
                     overwrite: 'auto',
                     onComplete: () => {
@@ -57,7 +57,7 @@ function Navbar() {
                 setIsOpen(true);
                 gsap.fromTo(
                     menuRef.current,
-                    { x: '80%' },
+                    { x: '-100%' },
                     {
                         x: '0', duration: 0.5, ease: 'power2.out', overwrite: 'auto',
                     }
@@ -71,16 +71,16 @@ function Navbar() {
 
     // animation styles for the hamburger icon 
     const topStyle = isOpen
-        ? { transform: 'translateX(-20px) rotate(45deg)', transition: 'transform 0.8s', transformOrigin: 'center' }
-        : { transform: 'none', transition: 'transform 0.8s', transformOrigin: 'center' };
+        ? { transform: 'translateX(-20px) rotate(45deg)', transition: 'transform 0.5s', transformOrigin: 'center' }
+        : { transform: 'none', transition: 'transform 0.5s', transformOrigin: 'center' };
 
     const middleStyle = isOpen
-        ? { opacity: 0, transition: 'opacity 0.8s' }
-        : { opacity: 1, transition: 'opacity 0.8s' };
+        ? { opacity: 0, transition: 'opacity 0.5s' }
+        : { opacity: 1, transition: 'opacity 0.5s' };
 
     const bottomStyle = isOpen
-        ? { transform: 'translateY(-13px) translateX(0px) rotate(-45deg)', transition: 'transform 0.8s', transformOrigin: 'center', width: '66.67%' }
-        : { transform: 'none', transition: 'transform 0.8s', transformOrigin: 'center', width: '100%' };
+        ? { transform: 'translateY(-13px) translateX(0px) rotate(-45deg)', transition: 'transform 0.5s', transformOrigin: 'center', width: '66.67%' }
+        : { transform: 'none', transition: 'transform 0.5s', transformOrigin: 'center', width: '100%' };
 
 
 
@@ -113,9 +113,9 @@ function Navbar() {
 
                     <div
                         ref={menuRef}
-                        className={`fixed inset-0 h-screen md:relative md:h-auto z-[29] justify-end transition-all ${isOpen
+                        className={`fixed inset-0 h-screen md:relative md:h-auto z-[29] justify-end ${isOpen
                             ? 'translate-x-0 bg-charcoal'
-                            : '-translate-x-full'
+                            : 'translate-x-full'
                             } md:translate-x-0 md:bg-transparent md:justify-end`}
                     >
 
@@ -126,7 +126,7 @@ function Navbar() {
                                         to="/"
                                         onClick={toggleMenu}
                                         className={({ isActive }) =>
-                                            `font-roundo-medium py-6 md:py-8 hover:scale-95 transition-all duration-300 ${isActive ? (isOpen ? 'text-orange text-xl' : 'text-orange') : isOpen ? 'text-light-yellow-bg text-xl' : ''
+                                            `font-roundo-medium py-6 md:py-8 lg:hover:scale-95 lg:transition-all lg:duration-300 ${isActive ? (isOpen ? 'text-orange text-xl' : 'text-orange') : isOpen ? 'text-light-yellow-bg text-xl' : ''
                                             }`
                                         }
                                     >
@@ -136,7 +136,7 @@ function Navbar() {
                                         to="/crafts"
                                         onClick={toggleMenu}
                                         className={({ isActive }) =>
-                                            `font-roundo-medium py-6 md:py-8 hover:scale-95 transition-all duration-300 ${isActive ? (isOpen ? 'text-orange text-xl' : 'text-orange') : isOpen ? 'text-light-yellow-bg text-xl' : ''
+                                            `font-roundo-medium py-6 md:py-8 lg:hover:scale-95 lg:transition-all lg:duration-300 ${isActive ? (isOpen ? 'text-orange text-xl' : 'text-orange') : isOpen ? 'text-light-yellow-bg text-xl' : ''
                                             }`
                                         }
 
@@ -147,7 +147,7 @@ function Navbar() {
                                         to="/about"
                                         onClick={toggleMenu}
                                         className={({ isActive }) =>
-                                            `font-roundo-medium py-6 md:py-8 hover:scale-95 transition-all duration-300 ${isActive ? (isOpen ? 'text-orange text-xl' : 'text-orange') : isOpen ? 'text-light-yellow-bg text-xl' : ''
+                                            `font-roundo-medium py-6 md:py-8 lg:hover:scale-95 lg:transition-all lg:duration-300 ${isActive ? (isOpen ? 'text-orange text-xl' : 'text-orange') : isOpen ? 'text-light-yellow-bg text-xl' : ''
                                             }`
                                         }
 

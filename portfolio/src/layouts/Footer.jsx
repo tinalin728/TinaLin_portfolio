@@ -206,12 +206,12 @@ function Footer() {
         // };
 
         const textures = [
-            { texture: "/assets/pills/coffee.svg", baseWidth: 100, baseHeight: 150, scale: window.innerWidth > 1440 ? 1.7 : window.innerWidth < 768 ? 1 : 1.1 },
-            { texture: "/assets/pills/phone.svg", baseWidth: 150, baseHeight: 150, scale: window.innerWidth > 1440 ? 1.2 : window.innerWidth < 768 ? 0.5 : .8 },
-            { texture: "/assets/pills/bread.svg", baseWidth: 120, baseHeight: 120, scale: window.innerWidth > 1440 ? 0.8 : window.innerWidth < 768 ? 0.5 : 0.7 },
-            { texture: "/assets/pills/paint.svg", baseWidth: 180, baseHeight: 150, scale: window.innerWidth > 1440 ? 0.8 : window.innerWidth < 768 ? 0.5 : 0.7 },
-            { texture: "/assets/pills/reactsvg.svg", baseWidth: 300, baseHeight: 300, scale: window.innerWidth > 1440 ? 0.35 : 0.3 },
-            { texture: "/assets/pills/earth.svg", baseWidth: 150, baseHeight: 150, scale: window.innerWidth > 1440 ? 1 : window.innerWidth < 768 ? 0.5 : 0.6 }
+            { texture: "/assets/pills/coffee.svg", baseWidth: 200, baseHeight: 270, scale: 2.1 },
+            { texture: "/assets/pills/phone.svg", baseWidth: 250, baseHeight: 230, scale: 1.8 },
+            { texture: "/assets/pills/bread.svg", baseWidth: 120, baseHeight: 120, scale: 1 },
+            { texture: "/assets/pills/paint.svg", baseWidth: 100, baseHeight: 120, scale: 1 },
+            { texture: "/assets/pills/reactsvg.svg", baseWidth: 150, baseHeight: 150, scale: .4 },
+            { texture: "/assets/pills/earth.svg", baseWidth: 230, baseHeight: 230, scale: 1.8 }
         ];
 
 
@@ -239,8 +239,7 @@ function Footer() {
                     console.log(" Loaded Image:", textureObj.texture, "Size:", img.naturalWidth, img.naturalHeight);
                     loadedTextures.push({
                         ...textureObj, // Keep all original properties
-                        width: img.naturalWidth,
-                        height: img.naturalHeight
+
                     });
 
                     loadedCount++;
@@ -268,33 +267,61 @@ function Footer() {
                 { x: canvasWidth * 0.1, y: 480 }, // Coffee
                 { x: canvasWidth * 0.4, y: 500 }, // Phone
                 { x: canvasWidth * 0.20, y: 485 }, // Croissant
-                { x: canvasWidth * 0.7, y: 470 }, // Paintbrush
-                { x: canvasWidth * 0.85, y: 420 }, // Atom
-                { x: canvasWidth * 0.9, y: 420 }, // Atom
+                { x: canvasWidth * 0.7, y: 280 }, // Paintbrush
+                { x: canvasWidth * 0.9, y: 320 }, // Atom
+                { x: canvasWidth * 0.8, y: 450 }, // Earth
             ];
 
             return textures.map((textureObj, index) => {
+                console.log("textureObj", textureObj)
                 const { texture, baseWidth, baseHeight, scale } = textureObj;
-                const adjustedWidth = baseWidth * scale * (screenWidth / 1440);
-                const adjustedHeight = baseHeight * scale * (screenWidth / 1440);
+
+                let adjustedScale;
+                if (screenWidth > 1440) {
+                    adjustedScale = scale; // Keep original scale for XL screens
+                } else if (screenWidth > 1024) {
+                    adjustedScale = scale * 0.9; // Reduce to 90% for large screens
+                } else if (screenWidth > 768) {
+                    adjustedScale = scale * 0.75; // Reduce to 75% for medium screens
+                } else if (screenWidth > 440) {
+                    adjustedScale = scale * 0.5; // Reduce to 75% for medium screens
+                } else {
+                    adjustedScale = scale * 0.35; // Reduce to 50% for small screens
+                }
+
+                let adjustedBaseWidth, adjustedBaseHeight;
+                if (screenWidth > 1440) {
+                    adjustedBaseWidth = baseWidth; // Keep original size for XL screens
+                    adjustedBaseHeight = baseHeight;
+                } else if (screenWidth > 1024) {
+                    adjustedBaseWidth = baseWidth * 0.9;
+                    adjustedBaseHeight = baseHeight * 0.9;
+                } else if (screenWidth > 768) {
+                    adjustedBaseWidth = baseWidth * 0.75;
+                    adjustedBaseHeight = baseHeight * 0.75;
+                } else if (screenWidth > 768) {
+                    adjustedBaseWidth = baseWidth * 0.5;
+                    adjustedBaseHeight = baseHeight * 0.5;
+                } else {
+                    adjustedBaseWidth = baseWidth * 0.25;
+                    adjustedBaseHeight = baseHeight * 0.25;
+                }
 
                 // Use predefined positions, or default to center if out of bounds
-                let x = startPositions[index]?.x || canvasWidth / 2;
-                let y = startPositions[index]?.y || 400;
+                let x = startPositions[index]?.x || startX + index * spread + Math.random() * 150 - 10;
+                let y = startPositions[index]?.y || centerY + Math.random() * 50 - 10;
 
-                // Ensure X positions are inside canvas bounds
-                // x = Math.max(adjustedWidth / 2, Math.min(canvasWidth - adjustedWidth / 2, x));
 
-                return Bodies.rectangle(x, y, adjustedWidth, adjustedHeight, {
+                return Bodies.rectangle(x, y, adjustedBaseWidth, adjustedBaseHeight, {
                     restitution: 0.8,
-                    friction: .5,
+                    friction: 0.5,
                     label: "illustration",
                     isStatic: false,
                     render: {
                         sprite: {
                             texture: texture,
-                            xScale: adjustedWidth / baseWidth,
-                            yScale: adjustedHeight / baseHeight,
+                            xScale: adjustedScale, // Use EXACT scale you set
+                            yScale: adjustedScale, // No adjustments needed
                         },
                     },
                 });
@@ -404,16 +431,16 @@ function Footer() {
 
         ScrollTrigger.create({
             trigger: containerRef.current,
-            start: "top center",
+            start: "top 85%",
             end: "bottom top",
-            duration: 1,
+            duration: .5,
             scrub: 1,
             onEnter: () => {
                 if (!pillsDropped) {
                     timeoutId = setTimeout(() => {
                         handlePillsDrop();
                         pillsDropped = true;
-                    }, 150);
+                    }, 300);
                 }
             },
             onLeaveBack: () => {
@@ -506,6 +533,7 @@ function Footer() {
             Matter.Body.setPosition(roof, { x: width / 2, y: -80 });
             //console.log("Right Wall:", wallRight.position, wallRight.vertices);
         };
+
 
         window.addEventListener("resize", handleResize);
         handleResize();
