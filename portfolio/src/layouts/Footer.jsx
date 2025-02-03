@@ -487,6 +487,9 @@ function Footer() {
         };
 
         const touchStartRef = { current: 0 };
+        let lastDeltaY = 0;
+        let isScrolling = false;
+
         const handleTouchStart = (event) => {
             touchStartRef.current = event.touches[0].clientY;
         };
@@ -563,8 +566,8 @@ function Footer() {
 
 
         canvas.addEventListener("wheel", handleWheel); // For desktop
-        canvas.addEventListener("touchstart", handleTouchStart);
-        canvas.addEventListener("touchmove", handleTouchMove);
+        canvas.addEventListener("touchstart", handleTouchStart, { passive: false });
+        canvas.addEventListener("touchmove", handleTouchMove, { passive: false });
 
         // Engine.run(engine);
         Render.run(render);
