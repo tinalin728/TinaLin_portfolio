@@ -1,4 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, Suspense } from 'react'
+import { Canvas } from "@react-three/fiber";
+import { OrbitControls, useFBX } from "@react-three/drei";
 import BackToTop from '../buttons/BackToTop'
 import ProjectNav from './ProjectNav'
 import ImageModal from '../ImageModal'
@@ -58,6 +60,8 @@ function UIUXLayout({ craft }) {
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
+
+
 
     return (
         <>
@@ -301,6 +305,7 @@ function UIUXLayout({ craft }) {
                     )
                 }
 
+
             </section >
 
             {/* design */}
@@ -473,8 +478,13 @@ function UIUXLayout({ craft }) {
                         <>
                             <div id='solution'>
                                 <div className='mb-10'>
-                                    <h3>Onboarding Screens</h3>
-                                    <p>The onboarding process starts with an intuitive sizing tool that guides users step-by-step to input the necessary data to provide accurate sizing. For those unsure of their size, a visual model allows adjustments via sliders. This approach removes the complexity of size charts and guesswork, making the process seamless and user-friendly.</p>
+                                    <h3>No More Confusion! - Onboarding Screens</h3>
+                                    <p>Say goodbye to overwhelming size charts and frustrating measurements! The onboarding process makes finding your perfect fit effortless by offering:</p>
+                                    <ul className='list-disc ml-4'>
+                                        <li> <span>Step-by-Step Sizing Guide:</span>  Simply follow the intuitive prompts to enter your body measurements.</li>
+                                        <li> <span>Adjust with Sliders:</span> Move the sliders to match your body shape and see real-time changes. </li>
+                                        <li> <span>Answer Quick Questions:</span> A short questionnaire refines the recommendations for even better accuracy. </li>
+                                    </ul>
                                 </div>
                                 <div>
                                     <img src={craft.iteration.finalScreen.onboarding.img.src} alt={craft.iteration.finalScreen.onboarding.img.alt} loading="lazy" />
@@ -482,31 +492,36 @@ function UIUXLayout({ craft }) {
                             </div>
 
                             <div>
-                                <div className='content-gap flex flex-col gap-6 md:flex-row md:gap-10 md:items-center'>
-                                    <div className='mb-10 basis-2/3'>
-                                        <h3>Home - Dashboard</h3>
-                                        <p>The Home Screen serves as the main hub where users can easily access the following features: </p>
+                                <div className='content-gap flex flex-col gap-6 lg:flex-row lg:gap-10 lg:items-center'>
+                                    <div className='mb-10 flex-1'>
+                                        <h3>Chat with FitBot for Size Recommendation and access to model</h3>
+                                        <p>Everything you need at a glance:</p>
                                         <ul className='list-decimal ml-3 my-6'>
-                                            <li>FitBot (AI Chat)</li>
-                                            <li>My Size</li>
-                                            <li>Wishlist</li>
+                                            <li> <span className='ml-1'>FitBot (AI Chat): </span> Get instant size advice.</li>
+                                            <li> <span className='ml-1'>My Size:  </span>My Size: Update your measurements anytime.</li>
+                                            <li><span className='ml-1'>Wishlist:</span> Wishlist: Save your picks.</li>
                                         </ul>
-                                        <p> Since the chatbot is the main focus, by centralizing everything in one place, the interface remains clean and simple, ensuring users can quickly navigate to what they need. </p>
+                                        <p> Once your sizing data is in, FitBot tailors recommendations based on your saved size. Just send a product link to FitBot, and it will guide you through size recommendations, comparisons, and brand differences. Ask questions, get quick answers, and shop with confidence—all within the chat.</p>
                                     </div>
-                                    <div className='basis-1/3'>
-                                        <img src={craft.iteration.finalScreen.home.img.src} alt={craft.iteration.finalScreen.home.img.alt} className='max-w-[230px]' loading="lazy" />
+                                    <div className='flex-1'>
+                                        <div className='flex gap-4 w-full'>
+                                            {craft.iteration.finalScreen.home.map((item, index) => (
+                                                <div key={index} className='w-full'>
+                                                    <img src={item.src} alt={item.alt} loading="lazy" />
+                                                </div>
+
+                                            ))}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
 
                             <div className=''>
-                                <div className='content-gap flex flex-col gap-6 md:flex-row-reverse md:gap-10 md:items-center'>
+                                <div className='content-gap flex flex-col gap-6 lg:flex-row-reverse lg:gap-10 lg:items-center'>
                                     <div className='mb-10 flex-1'>
-                                        <h3>Chat with FitBot</h3>
-                                        <p> Once the sizing data is collected, users can engage with FitBot for further recommendations. FitBot goes beyond traditional suggestions by integrating with a realistic 3D AI model that updates in real-time to reflect user measurements. This allows users to visualize how pants will fit key areas such as the waist, hips, and inseam. Combining AI-driven guidance with realistic fit visualization, FitBot creates a seamless and interactive experience tailored to each user.</p>
+                                        <h3>Visual Model: No Guesswork, Just the Perfect Fit</h3>
+                                        <p> FitBot takes it a step further. Instead of just giving size recommendations, it lets you see the fit in real time with a 3D model that adjusts to your measurements.</p>
                                     </div>
-
-
 
                                     <div className='flex-1'>
                                         <div className='flex gap-4'>
@@ -516,6 +531,25 @@ function UIUXLayout({ craft }) {
                                             <div className='w-full'>
                                                 <img src={craft.iteration.finalScreen.model.img.src} alt={craft.iteration.finalScreen.model.img.alt} loading="lazy" />
                                             </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div className='content-gap flex flex-col gap-6 lg:flex-row lg:gap-10'>
+                                    <div className='mb-10 flex-1 h-fit lg:py-10  lg:sticky lg:top-10'>
+                                        <h3>360° Fit Preview – A Complete Fit Experience
+                                        </h3>
+
+                                        <p> Finding the right fit goes beyond numbers. With the 360° Fit Preview, the realistic model rotates to show the fit from the front, side, back, and close up.</p>
+                                    </div>
+                                    <div className='flex-1'>
+                                        <div className='flex gap-4 w-full'>
+                                            {craft.iteration.finalScreen.fullview.map((item, index) => (
+                                                <div key={index} className='w-full'>
+                                                    <img src={item.src} alt={item.alt} loading="lazy" />
+                                                </div>
+                                            ))}
                                         </div>
                                     </div>
                                 </div>

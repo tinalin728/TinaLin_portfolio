@@ -315,7 +315,7 @@ export const craftsData = [
         status: 'completed',
         title: 'FitBot- App for Perfect Jeans',
         media: "image",
-        cover: "/assets/homepage/pm/cover2.jpg",
+        cover: "/assets/pm/fitbot-cover.jpg",
         banner: {
             subHeader: 'FitBot- App for Perfect Pants',
             header: 'Finding the perfect fit for Jeans',
@@ -342,8 +342,8 @@ export const craftsData = [
             challenge: 'Making it easier for people to find pants that fit well when shopping online.',
             solution: 'An app that features an AI chat assistant for personalized size recommendations, paired with a 3D model that aligns with the user\'s size for accurate visualization.',
             media: {
-                type: 'video',
-                src: '/assets/pm/intro.mp4',
+                type: 'image',
+                src: '/assets/pm/sneakpeak.png',
                 altText: "fitbot",
                 caption: 'Sneak Peek',
             },
@@ -586,24 +586,35 @@ export const craftsData = [
                         alt: 'onboarding'
                     }
                 },
-                home: {
-                    img: {
-                        src: "/assets/pm/home.png",
+                home: [
+                    {
+                        src: "/assets/pm/1.home.png",
                         alt: 'homepage'
-                    }
-                },
+                    },
+                    {
+                        src: "/assets/pm/chat2.png",
+                        alt: 'chatbot'
+                    },
+                ],
+
                 fitbot: {
                     img: {
-                        src: "/assets/pm/chat.png",
+                        src: "/assets/pm/chatresult.png",
                         alt: 'chat'
                     }
                 },
                 model: {
                     img: {
-                        src: "/assets/pm/model.png",
+                        src: "/assets/pm/modelnew.png",
                         alt: 'model'
                     }
                 },
+                fullview: [
+                    {
+                        src: "/assets/pm/360model.png",
+                        alt: '360 view model'
+                    }
+                ],
 
             },
 
@@ -859,7 +870,7 @@ export function fetchProductList(dataPath, containerId, productType, callback) {
         status: 'completed',
         title: 'Nomly: Recipe Finder & Grocery List Web App',
         media: "image",
-        cover: "/assets/homepage/nomly/cover.png",
+        cover: "/assets/nomly/cover.jpg",
         banner: {
             subHeader: 'Nomly - Web App',
             header: 'Recipe Discovery & Grocery Planning',

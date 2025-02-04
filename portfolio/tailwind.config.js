@@ -45,7 +45,6 @@ module.exports = withMT({
         blue: '#7BB6D8',
         'yellow-light': '#fff5e4',
         'light-yellow-bg': '#FBF8F0',
-        'light-yellow-bg-copy': '#FBF8F0',
         'darker-bg': '#e1dfd8',
         'light-grey-bg': '#F2F1EC',
         'dark-grey': '#717171',

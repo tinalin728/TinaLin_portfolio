@@ -22,6 +22,8 @@
     "@material-tailwind/react": "^2.1.10",
     "@mui/material": "^6.4.2",
     "@react-hook/intersection-observer": "^3.1.2",
+    "@react-three/drei": "^9.121.4",
+    "@react-three/fiber": "^8.17.14",
     "autoprefixer": "^10.4.20",
     "gsap": "^3.12.5",
     "lenis": "^1.1.16",
@@ -41,7 +43,8 @@
     "react-typed": "^2.0.12",
     "split-type": "^0.3.4",
     "swiper": "^11.1.15",
-    "tailwindcss": "^3.4.14"
+    "tailwindcss": "^3.4.14",
+    "three": "^0.173.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.13.0",
