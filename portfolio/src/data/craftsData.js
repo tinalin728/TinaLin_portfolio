@@ -343,7 +343,7 @@ export const craftsData = [
             solution: 'An app that features an AI chat assistant for personalized size recommendations, paired with a 3D model that aligns with the user\'s size for accurate visualization.',
             media: {
                 type: 'image',
-                src: '/assets/pm/sneakpeak.png',
+                src: '/assets/pm/introchat.png',
                 altText: "fitbot",
                 caption: 'Sneak Peek',
             },
