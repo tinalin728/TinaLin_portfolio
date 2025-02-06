@@ -64,20 +64,33 @@ function Home() {
         { top: "48%", left: "48%" },
     ];
 
+
     useEffect(() => {
+        // Ensure elements start at the correct position immediately
         const elements = [refs.line1.current, refs.line2.current, refs.line3.current, refs.line4.current];
         elements.forEach((element) => {
             if (element) gsap.set(element, { y: -15 });
         });
 
-        setTimeout(() => {
-            setHeroAnimationTriggered(true);
-        }, 500);
+        // Function to trigger animation after the page is fully loaded
+        const handleLoad = () => setHeroAnimationTriggered(true);
+
+        if (document.readyState === "complete") {
+            console.log('page ready!')
+            setTimeout(() => {
+
+                handleLoad();
+            }, 300)
+        } else {
+            window.addEventListener("load", handleLoad);
+        }
+
+        return () => window.removeEventListener("load", handleLoad);
     }, []);
 
     // hero
     useGSAP(() => {
-        if (!heroAnimationTriggered) return; // Wait until delayed trigger
+        if (!heroAnimationTriggered) return;
 
         const elements = [refs.line1.current, refs.line2.current, refs.line3.current, refs.line4.current];
         const rotations = [6, -3, 6, -6];
@@ -95,10 +108,10 @@ function Home() {
                 },
                 {
                     rotate: rotations[index],
-                    duration: .8,
+                    duration: 1,
                     y: 0,
                     ease: "bounce.out",
-                    delay: index * 0.14,
+                    delay: index * 0.15,
                     onComplete: () => {
                         setHeroAnimationTriggered(true)
                         setAnimationComplete(true)
