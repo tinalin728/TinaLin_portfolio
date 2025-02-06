@@ -99,7 +99,10 @@ function Home() {
                     y: 0,
                     ease: "bounce.out",
                     delay: index * 0.14,
-                    onComplete: () => setHeroAnimationTriggered(true)
+                    onComplete: () => {
+                        setHeroAnimationTriggered(true)
+                        setAnimationComplete(true)
+                    }
                 },
                 "<"
             );
