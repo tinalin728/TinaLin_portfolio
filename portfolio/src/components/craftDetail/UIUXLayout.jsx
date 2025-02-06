@@ -456,21 +456,34 @@ function UIUXLayout({ craft }) {
                     {craft.iteration.system && (
                         <div className='content-gap'>
                             <h2> Hi-Fi Design</h2>
-                            {craft.iteration.system.map((item, index) => (
-                                <>
-                                    <div key={index} className='mt-10'>
-                                        <div className={`flex flex-col gap-10 md:flex-row md:items-center ${index === 1 ? 'md:flex-row-reverse' : ''}`}>
-                                            <div>
-                                                <h3>{item.header}</h3>
-                                                <p>{item.content}</p>
-                                            </div>
-                                            <div className='p-2 bg-white bg-opacity-50 rounded-xl shadow-md'>
-                                                <img src={item.src} alt={item.alt} loading="lazy" />
-                                            </div>
-                                        </div>
+                            <div className='flex gap-10 mt-4'>
+                                <div className='flex-1'>
+                                    <h3>Design Guide</h3>
+                                    <p> I put together a simple design guide to keep everything consistent and easy to scale. It covers typography, colors, and reusable components like buttons, sliders, and icons. This makes the app look polished and keeps the design process smooth..</p>
+                                </div>
+
+                                <div className='flex-1 p-2 rounded-xl bg-white bg-opacity-50 shadow-md'>
+                                    <div className='w-auto mx-auto h-[400px] border border-gray-400 rounded-md overflow-hidden'>
+                                        <img src={craft.iteration.system.src}
+                                            alt={craft.iteration.system.alt}
+                                            className='w-full h-auto object-contain object-center'
+                                            loading="lazy"
+                                            onClick={() => handleImgClick({
+                                                src: craft.iteration.system.src,
+                                                alt: craft.iteration.system.src
+                                            })} />
                                     </div>
-                                </>
-                            ))}
+
+                                    <p className='text-center mt-2 text-dark-grey italic text-sm'>Click to view design guide</p>
+
+                                    <ImageModal
+                                        isOpen={modalData.isOpen}
+                                        src={modalData.src}
+                                        alt={modalData.alt}
+                                        onClose={closeModal}
+                                    />
+                                </div>
+                            </div>
                         </div>
                     )}
 

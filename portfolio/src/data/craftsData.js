@@ -564,20 +564,10 @@ export const craftsData = [
             title: 'iteration',
             content: 'Based on the feedback, I improved homepage labels for clarity and enhanced the FitModel page with full-body views and better product details. After making these changes, I moved on to designing high-fidelity prototypes to further refine the experience.',
 
-            system: [
-                {
-                    header: 'Color Palette',
-                    content: "For the color palette, I’m using gradients made of purple and blue to convey a sense of trust, modernity, and technology. These colors provide a futuristic feel while remaining approachable and calming.",
-                    src: "/assets/pm/color.png",
-                    alt: 'color palette'
-                },
-                {
-                    header: 'Typography',
-                    content: "For the fonts, I chose Nunito Sans for headers to create a modern and approachable feel, and Lato for body text to ensure clarity and professionalism. Together, they keep the design clean, readable, and contemporary.",
-                    src: "/assets/pm/font.png",
-                    alt: 'font'
-                }
-            ],
+            system: {
+                src: "/assets/pm/design-system.png",
+                alt: 'design system'
+            },
 
             finalScreen: {
                 onboarding: {

@@ -71,7 +71,7 @@ function Footer() {
         canvas.width = width * pixelRatio;
         canvas.height = height * pixelRatio;
 
-        console.log('Device Pixel Ratio:', window.devicePixelRatio);
+        // console.log('Device Pixel Ratio:', window.devicePixelRatio);
 
         // Create a renderer
         const render = Render.create({
@@ -217,7 +217,7 @@ function Footer() {
 
 
         const texturePaths = Object.keys(textures); // Extract file paths
-        console.log("Extracted Texture Paths:", texturePaths);
+        // console.log("Extracted Texture Paths:", texturePaths);
 
         const preloadImages = (textures, callback) => {
             let loadedCount = 0;
@@ -230,14 +230,14 @@ function Footer() {
                 return;
             }
 
-            console.log("🔄 Preloading Images:", textures.map(t => t.texture)); // Debugging
+            // console.log("🔄 Preloading Images:", textures.map(t => t.texture)); // Debugging
 
             textures.forEach((textureObj) => {
                 const img = new Image();
                 img.src = textureObj.texture;
 
                 img.onload = () => {
-                    console.log(" Loaded Image:", textureObj.texture, "Size:", img.naturalWidth, img.naturalHeight);
+                    // console.log(" Loaded Image:", textureObj.texture, "Size:", img.naturalWidth, img.naturalHeight);
                     loadedTextures.push({
                         ...textureObj, // Keep all original properties
 
@@ -245,7 +245,7 @@ function Footer() {
 
                     loadedCount++;
                     if (loadedCount === total) {
-                        console.log("All images preloaded:", loadedTextures);
+                        // console.log("All images preloaded:", loadedTextures);
                         callback(loadedTextures);
                     }
                 };
@@ -274,7 +274,7 @@ function Footer() {
             ];
 
             return textures.map((textureObj, index) => {
-                console.log("textureObj", textureObj)
+                // console.log("textureObj", textureObj)
                 const { texture, baseWidth, baseHeight, scale } = textureObj;
 
                 let adjustedScale;

@@ -315,7 +315,7 @@ function About() {
                                     <div className='mt-10'>
                                         <PrimaryBtn
                                             text='resume'
-                                            href='/Resume.pdf'
+                                            href='/tina-resume.pdf'
                                             bgColor='bg-yellow'
                                             icon={iconDownload}
                                             reverseOrder='true'

@@ -27,6 +27,15 @@ import FeatureCraftCard from '../components/FeatureCraftCard';
 
 function Home() {
     const [crafts, setCrafts] = useState([]);
+    const [heroAnimationTriggered, setHeroAnimationTriggered] = useState(false);
+    const [animationComplete, setAnimationComplete] = useState(false);
+    const [isMouseInside, setIsMouseInside] = useState(false);
+    const [isLoaded, setIsLoaded] = useState(false);
+
+    const heroRef = useRef(null);
+    const glitchRefs = useRef([]);
+    const craftRef = useRef(null);
+
     const windowWidth = WindowWidth();
     const isMobile = windowWidth < 768;
 
@@ -37,32 +46,38 @@ function Home() {
         setCrafts(crafts);
     }, []);
 
-    useEffect(() => {
-        const updateTime = () => {
-            const now = new Date();
-            const options = { hour: "2-digit", minute: "2-digit", hour12: true, timeZone: "America/Los_Angeles" };
-            const localTime = now.toLocaleTimeString("en-US", options);
-            setTime(localTime);
-        };
-
-        updateTime(); // Initialize the time immediately
-        const interval = setInterval(updateTime, 1000); // Update every second
-
-        return () => clearInterval(interval); // Cleanup on unmount
-    }, []);
-
-
-
+    //for hero tagline
     const refs = {
         line1: useRef(null),
         line2: useRef(null),
         line3: useRef(null),
         line4: useRef(null),
     }
-    const cursorRef = useRef(null);
 
-    // animation for hero section
+    //position for the background logo image
+    const positions = [
+        { top: "53%", left: "53%" },
+        { top: "52%", left: "52%" },
+        { top: "51%", left: "51%" },
+        { top: "50%", left: "50%" },
+        { top: "49%", left: "49%" },
+        { top: "48%", left: "48%" },
+    ];
+
+    useEffect(() => {
+        const elements = [refs.line1.current, refs.line2.current, refs.line3.current, refs.line4.current];
+        elements.forEach((element) => {
+            if (element) gsap.set(element, { y: -15 });
+        });
+
+        setTimeout(() => {
+            setHeroAnimationTriggered(true);
+        }, 500);
+    }, []);
+
+    // hero
     useGSAP(() => {
+        if (!heroAnimationTriggered) return; // Wait until delayed trigger
 
         const elements = [refs.line1.current, refs.line2.current, refs.line3.current, refs.line4.current];
         const rotations = [6, -3, 6, -6];
@@ -76,35 +91,21 @@ function Home() {
                 element,
                 {
                     rotate: 0, // Start with no rotation
-                    y: -10,
+                    y: -15,
                 },
                 {
-                    rotate: rotations[index], // Apply unique rotation
+                    rotate: rotations[index],
                     duration: .8,
                     y: 0,
                     ease: "bounce.out",
-                    delay: index * 0.15, // Stagger delay for each element
-                    onComplete: () => setAnimationComplete(true)
+                    delay: index * 0.14,
+                    onComplete: () => setHeroAnimationTriggered(true)
                 },
                 "<"
             );
         });
-    }, []);
+    }, [heroAnimationTriggered]); // Runs when heroAnimationTriggered changes
 
-
-    const [animationComplete, setAnimationComplete] = useState(false);
-    const [isMouseInside, setIsMouseInside] = useState(false);
-    const heroRef = useRef(null);
-    const glitchRefs = useRef([]);
-    //position for the background image
-    const positions = [
-        { top: "53%", left: "53%" },
-        { top: "52%", left: "52%" },
-        { top: "51%", left: "51%" },
-        { top: "50%", left: "50%" },
-        { top: "49%", left: "49%" },
-        { top: "48%", left: "48%" },
-    ];
 
     //hook responsible for tracking mouse position
     const useMousePosition = (enabled) => {
@@ -244,18 +245,14 @@ function Home() {
     }, [mousePosition, animationComplete]);
 
 
-    const craftRef = useRef(null);
-    const [isLoaded, setIsLoaded] = useState(false);
-
     useEffect(() => {
         setTimeout(() => {
             if (document.querySelectorAll(".craftCard").length > 0) {
-                console.log(".craftCard elements found! Running GSAP...");
+                // console.log(".craftCard elements found! Running GSAP...");
                 setIsLoaded(true);
             }
         }, 200);
     }, []);
-
 
     useGSAP(() => {
 
@@ -414,14 +411,14 @@ function Home() {
 
                     <div className='relative max-w-container w-full h-full flex flex-col items-center justify-center'>
                         <div className='-mt-20 inline-flex flex-col items-center justify-center gap-2 md:-mt-14'>
-                            <div ref={refs.line1} className='inline-block px-4 py-2 md:px-8 lg:px-10 lg:py-3 xl:py-5 bg-charcoal rounded-md w-fit rotate-6 -translate-x-2'>
+                            <div ref={refs.line1} className='inline-block px-4 py-2 md:px-8 lg:px-10 lg:py-3 xl:py-5 bg-charcoal rounded-md w-fit -translate-x-2'>
                                 <h1 className='text-white big-header'>The</h1>
                             </div>
-                            <div ref={refs.line2} className='inline-block px-4 py-2 md:px-6 lg:px-10 lg:py-3 xl:py-5 bg-charcoal rounded-md w-fit -rotate-4 translate-x-0'>
+                            <div ref={refs.line2} className='inline-block px-4 py-2 md:px-6 lg:px-10 lg:py-3 xl:py-5 bg-charcoal rounded-md w-fit translate-x-0'>
                                 <h1 className='text-white big-header'> Product &</h1>
                             </div>
 
-                            <div ref={refs.line3} className='inline-block px-4 py-2 md:px-6 lg:px-10 lg:py-3 xl:py-5 mt-2 md:mt-4 bg-charcoal rounded-md  w-fit rotate-4 translate-y-1 -translate-x-2 md:-translate-x-4 lg:-translate-x-[12%]'>
+                            <div ref={refs.line3} className='inline-block px-4 py-2 md:px-6 lg:px-10 lg:py-3 xl:py-5 mt-2 md:mt-4 bg-charcoal rounded-md  w-fit translate-y-1 -translate-x-2 md:-translate-x-4 lg:-translate-x-[12%]'>
                                 <h1 className='text-white big-header'>Design of</h1>
                             </div>
                             <div ref={refs.line4} className='inline-block px-4 py-2 md:px-6 lg:px-10 lg:py-3 xl:py-5 mt-2 md:mt-4 bg-charcoal rounded-md w-fit -rotate-4 translate-x-10 relative'>
