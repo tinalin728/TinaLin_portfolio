@@ -15,14 +15,12 @@ function CraftCard({ title, src, mediaType, skills, id, content, status }) {
                 // Clickable card for complete projects
                 <Link
                     to={`/crafts/${id}`}
-                    className="relative font-bold leading-normal capitalize w-full h-full box group overflow-hidden group transition-all duration-300 rounded-2xl border-2 lg:hover:border-[3px]"
+                    className="relative font-bold leading-normal capitalize w-full h-full box group overflow-hidden transition-all duration-300 rounded-2xl border-2 lg:hover:border-[3px]"
                     onMouseMove={handleMouseMove}
                     onMouseOut={handleMouseOut}
                 >
                     <div className="flex flex-col p-3">
-
                         <div className="overflow-hidden rounded-lg border border-black border-opacity-55">
-
                             <img
                                 src={src}
                                 alt="project"
@@ -30,12 +28,10 @@ function CraftCard({ title, src, mediaType, skills, id, content, status }) {
                                 loading="lazy"
                                 style={{ transform: `scale(${scale})` }}
                             />
-
-
                         </div>
 
                         {/* Content Section */}
-                        <div className="flex flex-col gap-4 p-4">
+                        <div className="flex flex-col gap-2 p-4">
                             <div className="flex flex-wrap gap-2">
                                 {skills.map((skill, index) => (
                                     <div className="inline-block" key={index}>
@@ -45,9 +41,15 @@ function CraftCard({ title, src, mediaType, skills, id, content, status }) {
                                     </div>
                                 ))}
                             </div>
-                            <div>
-                                <h3 className="transition-all duration-300 ease-in text-brown-800">{title}</h3>
-                                {/* <p className="opacity-0 tracking-wide group-hover:opacity-100">{content}</p> */}
+
+                            <div className="mt-2">
+                                <h3>{title}</h3>
+                                <p className="tracking-wide mb-2">{content}</p>
+                            </div>
+                            <div className="">
+                                <button className="inline-block w-fit group tracking-wide font-roundo-medium px-4 border-l border-orange group-hover:text-orange ">
+                                    Read Now <span className="inline-block transition-transform duration-300 ease-in-out group-hover:scale-x-150 group-hover:translate-x-2">→</span>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -99,7 +101,7 @@ function CraftCard({ title, src, mediaType, skills, id, content, status }) {
                             </div>
                             <div>
                                 <h3 className="transition-all duration-300 ease-in">{title}</h3>
-                                {/* <p className="tracking-wide">{content}</p> */}
+                                <p className="tracking-wide">{content}</p>
                             </div>
                         </div>
                     </div>

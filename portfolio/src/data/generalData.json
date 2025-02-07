@@ -29,7 +29,7 @@
         {
             "id": 5,
             "type": "corevault",
-            "title": "CoreVault: SaaS Promotional landing page",
+            "title": "CoreVault: SaaS",
             "media": "image",
             "src": "/assets/homepage/corevault/cover.jpg",
             "skills": [
@@ -37,13 +37,13 @@
                 "React.JS",
                 "Tailwind"
             ],
-            "content": "Branding for an online dessert store",
+            "content": "Web Design and development for a promotional landing page",
             "status": "complete"
         },
         {
             "id": 3,
             "type": "UXUI",
-            "title": "FitBot - App for finding the perfect pants online",
+            "title": "FitBot",
             "media": "image",
             "src": "/assets/pm/fitbot-cover.jpg",
             "skills": [
@@ -55,7 +55,7 @@
         {
             "id": 2,
             "type": "agile",
-            "title": "Basics. - apparel store website",
+            "title": "Basics.",
             "media": "image",
             "src": "/assets/homepage/basics/cover.jpg",
             "skills": [

@@ -198,9 +198,6 @@ function Crafts() {
                         />
                     ))}
 
-
-
-
                     <div className="relative grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
                         {filteredCrafts.slice(2, 6).map((craft) => {
                             return (
