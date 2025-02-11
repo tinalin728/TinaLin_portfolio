@@ -27,20 +27,6 @@
             "status": "complete"
         },
         {
-            "id": 5,
-            "type": "corevault",
-            "title": "CoreVault: SaaS",
-            "media": "image",
-            "src": "/assets/homepage/corevault/cover.jpg",
-            "skills": [
-                "Web Development",
-                "React.JS",
-                "Tailwind"
-            ],
-            "content": "Web Design and development for a promotional landing page",
-            "status": "complete"
-        },
-        {
             "id": 3,
             "type": "UXUI",
             "title": "FitBot",
