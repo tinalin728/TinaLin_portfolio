@@ -121,7 +121,7 @@
 
     .sub-header {
         /* font-size: clamp(3.8rem, 2.607rem + 2.2099vw, 4rem); */
-        @apply font-roundo-bold tracking-normal leading-[1.2] text-[4px] md:text-[50px] lg:text-[60px]
+        @apply font-roundo-bold tracking-normal leading-[1.2] text-[55px] md:text-[60px] lg:text-[65px]
     }
 
     .footer-header {
