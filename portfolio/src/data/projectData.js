@@ -272,7 +272,7 @@ export const projectData = [
                         original: '/assets/tims/detail_new.png',
                         ori_caption: 'Offer Details',
                         new: '/assets/tims/menu_new.png',
-                        new_caption: 'Offer Menu',
+                        new_caption: 'Offer Menu with default selection based on user\'s preference ',
                     },
                     {
                         header: "New Features: Edit Button & Error Message for Offers",

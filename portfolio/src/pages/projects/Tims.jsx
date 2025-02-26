@@ -98,7 +98,7 @@ export default function Tims() {
 
                                     <p className='' dangerouslySetInnerHTML={{ __html: project.overview.challenge }} />
 
-                                    <PrototypeCta protoLink="View Prototype" />
+                                    <PrototypeCta inPageLink="View Prototype" scrollToId='prototype' />
 
                                 </div>
 
@@ -137,7 +137,9 @@ export default function Tims() {
                                         <div className="basis-[46%] grid gap-8 lg:gap-0">
                                             {project.research.survey.imgRow1.map((img, index) => (
                                                 <div key={index}>
-                                                    <img src={img.src} alt={img.alt} className="w-full h-auto" />
+                                                    <img src={img.src} alt={img.alt}
+                                                        loading='lazy'
+                                                        className="w-full h-auto" />
                                                 </div>
                                             ))}
                                         </div>
@@ -145,7 +147,9 @@ export default function Tims() {
                                         <div className="basis-[54%] grid gap-8 lg:translate-y-[8rem]">
                                             {project.research.survey.imgRow2.map((img, index) => (
                                                 <div key={index}>
-                                                    <img src={img.src} alt={img.alt} className="w-full h-auto" />
+                                                    <img src={img.src} alt={img.alt}
+                                                        loading='lazy'
+                                                        className="w-full h-auto" />
                                                 </div>
                                             ))}
                                         </div>
@@ -165,7 +169,9 @@ export default function Tims() {
                                                     <div className='w-full h-[220px] px-6 pt-14 bg-white relative mx-auto overflow-hidden'>
                                                         <p className='capitalize text-base mb-2 absolute top-4 bg-orange text-white left-0 px-4 z-10'>{user.type}</p>
                                                         <div className='relative z-0 w-full h-full '>
-                                                            <img src={user.img} alt={user.type} className='object-scale-down w-full h-full' />
+                                                            <img src={user.img} alt={user.type}
+                                                                loading='lazy'
+                                                                className='object-scale-down w-full h-full' />
                                                         </div>
                                                     </div>
                                                     <div className='px-4'>
@@ -209,7 +215,7 @@ export default function Tims() {
                                                 })} />
                                         </div>
 
-                                        <p className='text-center mt-2 text-grey italic text-sm'>{project.research.flowAnalysis.image.caption}</p>
+                                        <p className='text-center mt-2 text-grey italic font-patrick'>{project.research.flowAnalysis.image.caption}</p>
 
                                         <ImageModal
                                             isOpen={modalData.isOpen}
@@ -229,17 +235,23 @@ export default function Tims() {
                                     <div className='flex flex-col-reverse items-center md:flex-row gap-4 md:gap-8 md:mt-4 lg:gap-12 lg:mt-6'>
                                         <div className='flex-1 flex gap-6'>
                                             <div className='max-w-[300px]'>
-                                                <img src={project.research.problems.issue1.screenSrc} alt='screen' className='w-full' />
+                                                <img src={project.research.problems.issue1.screenSrc} alt='screen'
+                                                    loading='lazy'
+                                                    className='w-full' />
                                                 <p className='text-center mt-2 font-patrick text-dark leading-[1.2] px-2'>Directed to full menu after clicking an offer</p>
                                             </div>
                                             <div className='max-w-[300px]'>
-                                                <img src={project.research.problems.issue1.screenSrc2} alt='screen' className='w-full' />
+                                                <img src={project.research.problems.issue1.screenSrc2} alt='screen'
+                                                    loading='lazy'
+                                                    className='w-full' />
                                                 <p className='text-center mt-2 font-patrick text-dark leading-[1.2]'>No sign of offer indication</p>
                                             </div>
                                         </div>
                                         <div className='flex-1 w-full h-fit bg-white/50 p-2 rounded-2xl shadow-md'>
                                             <div className='flex flex-col gap-3 bg-white border border-gray-400  p-4 h-full rounded-xl'>
-                                                <img src={project.research.problems.issue1.iconSrc} alt={project.research.problems.issue1.altText} className='w-[54px] object-contain' />
+                                                <img src={project.research.problems.issue1.iconSrc} alt={project.research.problems.issue1.altText}
+                                                    loading='lazy'
+                                                    className='w-[54px] object-contain' />
                                                 <p className='text-[20px] border-b py-2 border-dashed border-gray-400 text-orange font-roundo-medium'>
                                                     {project.research.problems.issue1.header}
                                                 </p>
@@ -252,7 +264,9 @@ export default function Tims() {
                                     <div className='mt-20 flex flex-col items-center justify-end gap-4 md:flex-row md:gap-8 lg:gap-12 '>
                                         <div className='flex-1 w-full h-fit bg-white/50 p-2 rounded-2xl shadow-md'>
                                             <div className='flex flex-col gap-3 bg-white border border-gray-400 p-4 h-full rounded-xl'>
-                                                <img src={project.research.problems.issue2.iconSrc} alt={project.research.problems.issue2.altText} className='w-[54px] object-contain' />
+                                                <img src={project.research.problems.issue2.iconSrc} alt={project.research.problems.issue2.altText}
+                                                    loading='lazy'
+                                                    className='w-[54px] object-contain' />
                                                 <p className='text-[20px] border-b py-2 border-dashed border-gray-400 text-orange font-roundo-medium'>
                                                     {project.research.problems.issue2.header}
                                                 </p>
@@ -261,11 +275,15 @@ export default function Tims() {
                                         </div>
                                         <div className='flex-1 flex gap-6'>
                                             <div className='max-w-[300px]'>
-                                                <img src={project.research.problems.issue2.screenSrc} alt='screen' className='w-full' />
+                                                <img src={project.research.problems.issue2.screenSrc} alt='screen'
+                                                    loading='lazy'
+                                                    className='w-full' />
                                                 <p className='text-center mt-2 font-patrick text-dark leading-[1.2]'>Activate buttons necessary?</p>
                                             </div>
                                             <div className='max-w-[300px]'>
-                                                <img src={project.research.problems.issue2.screenSrc2} alt='screen' className='w-full' />
+                                                <img src={project.research.problems.issue2.screenSrc2} alt='screen'
+                                                    loading='lazy'
+                                                    className='w-full' />
                                                 <p className='text-center mt-2 font-patrick-hand text-dark leading-[1.2]'></p>
                                             </div>
                                         </div>
@@ -274,12 +292,16 @@ export default function Tims() {
                                     {/* issue 3 */}
                                     <div className='my-20 flex flex-col-reverse items-center gap-4 md:flex-row  md:gap-8 lg:gap-12 '>
                                         <div className='max-w-[280px] p-3'>
-                                            <img src={project.research.problems.issue3.screenSrc} alt='screen' className=' w-full' />
+                                            <img src={project.research.problems.issue3.screenSrc}
+                                                loading='lazy'
+                                                alt='screen' className='w-full' />
                                             <p className='text-center mt-2 font-patrick text-dark leading-[1.2]'>No edit button</p>
                                         </div>
                                         <div className='w-full h-fit bg-white/50 p-2 rounded-2xl shadow-md'>
                                             <div className='flex flex-col gap-3 border border-gray-400 bg-white  p-4 h-full rounded-xl'>
-                                                <img src={project.research.problems.issue3.iconSrc} alt={project.research.problems.issue3.altText} className='w-[54px] object-contain' />
+                                                <img src={project.research.problems.issue3.iconSrc} alt={project.research.problems.issue3.altText}
+                                                    loading='lazy'
+                                                    className='w-[54px] object-contain' />
                                                 <p className='text-[20px] border-b py-2 border-dashed text-orange border-gray-400 font-roundo-medium'>
                                                     {project.research.problems.issue3.header}
                                                 </p>
@@ -288,17 +310,8 @@ export default function Tims() {
                                         </div>
                                     </div>
 
-                                    <div className='inline-flex justify-center items-center bg-black hover:scale-[.99] transition duration-300 ease-in-out rounded-lg'>
-                                        <a href='#solution'
-                                            onClick={(e) => {
-                                                e.preventDefault();
-                                                document.getElementById("solution")?.scrollIntoView({ behavior: "smooth" });
-                                            }}
-                                            className="my-2 tracking-wider px-4 text-white capitalize flex items-center gap-2">
-                                            Jump to solutions
-                                            <div className='-rotate-90 text-xl'>⇜</div>
-                                        </a>
-                                    </div>
+                                    <PrototypeCta inPageLink="Skip to Solutions" scrollToId='solution' />
+
                                 </div>
 
                             </div>
@@ -330,7 +343,7 @@ export default function Tims() {
                                                     alt: project.research.competitor.img.altText
                                                 })} />
                                         </div>
-                                        <p className='text-center mt-2 text-grey italic text-sm'>{project.research.competitor.img.caption}</p>
+                                        <p className='text-center mt-2 text-grey italic  font-patrick'>{project.research.competitor.img.caption}</p>
 
                                         <ImageModal
                                             isOpen={modalData.isOpen}
@@ -346,14 +359,19 @@ export default function Tims() {
                             <div className='content-gap'>
                                 <h3 className='mb-2'>{project.define.persona.header}</h3>
                                 <p className='mb-10' dangerouslySetInnerHTML={{ __html: project.define.persona.content }} />
-                                <img src={project.define.persona.src} alt={project.define.persona.altText} className='shadow-md rounded-2xl' />
+                                <img
+                                    src={project.define.persona.src}
+                                    alt={project.define.persona.altText}
+                                    loading='lazy'
+                                    className='shadow-md rounded-2xl' />
                             </div>
 
                             {/* journey-map */}
                             <div className='content-gap'>
                                 <h3 className='mb-2'>{project.define.journey.header}</h3>
                                 <p className='mb-10'> {project.define.journey.content}</p>
-                                <img src={project.define.journey.src} alt={project.define.journey.altText} className='shadow-md rounded-2xl' />
+                                <img src={project.define.journey.src} alt={project.define.journey.altText} loading='lazy'
+                                    className='shadow-md rounded-2xl' />
                             </div>
                         </div>
                     </section>
@@ -462,7 +480,7 @@ export default function Tims() {
                                         <div className='rounded-lg py-6 mx-auto bg-darker-bg border border-default/20 overflow-hidden px-4'>
                                             <img src={img.src} alt={img.altText} loading="lazy" className='object-cover w-full' />
                                         </div>
-                                        <p className="text-center mt-2 text-grey text-sm">
+                                        <p className="text-center mt-2 text-grey font-patrick">
                                             Major changes on offer details and menu screen
                                         </p>
                                     </div>
@@ -484,13 +502,15 @@ export default function Tims() {
                                             </div>
 
                                             <div className="flex-1">
-                                                <div className="flex flex-row justify-center items-center gap-4">
+                                                <div className="flex flex-row justify-center items-center gap-4 md:items-start">
                                                     <div className='max-w-[300px]'>
                                                         <img src={item.original} alt="Original Design" loading="lazy" />
                                                         <p className='text-center mt-2 font-patrick text-grey leading-[1.2]'>{item.ori_caption}</p>
                                                     </div>
                                                     <div className='max-w-[300px]'>
-                                                        <img src={item.new} alt="New Design" />
+                                                        <img src={item.new} alt="New Design"
+                                                            loading='lazy'
+                                                        />
                                                         <p className='font-patrick text-center mt-2 font-patrick-hand text-grey leading-[1.2]'>{item.new_caption}</p>
                                                     </div>
                                                 </div>

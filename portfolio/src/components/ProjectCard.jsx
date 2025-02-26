@@ -16,7 +16,9 @@ export default function ProjectCard({ project }) {
                 to={`/crafts/${project.id}`}>
                 <div className="border border-default/20 relative overflow-hidden w-full rounded-xl">
                     <div className="h-[300px] w-full md:h-full">
-                        <img src={project.cover} alt={project.title} className="w-full object-cover h-full transition duration-500 ease-in-out overflow-hidden"
+                        <img src={project.cover} alt={project.title}
+                            loading="lazy"
+                            className="w-full object-cover h-full transition duration-500 ease-in-out overflow-hidden"
                             style={{ transform: `scale(${scale})` }}
                         />
                     </div>
@@ -30,7 +32,7 @@ export default function ProjectCard({ project }) {
                     <div className="flex flex-wrap gap-2 mt-3 md:mt-5">
                         {project.skills.map((skill, index) => (
                             <div className="inline-block" key={index}>
-                                <span className="text-base px-3 py-[2px] bg-darker-bg text-grey rounded-lg font-patrick tracking-[1.5px] text-nowrap font-bold normal-case">
+                                <span className="text-base px-3 py-[2px] bg-darker-bg text-brown rounded-lg font-patrick tracking-[1.5px] text-nowrap font-bold normal-case">
                                     {skill}
                                 </span>
                             </div>

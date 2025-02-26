@@ -6,7 +6,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 @layer base {
 
     * {
@@ -16,7 +15,7 @@
     }
 
     h1 {
-        @apply text-[2.2rem] md:text-2xl font-roundo-bold capitalize tracking-wide leading-[1.6]
+        @apply text-[2.5rem] md:text-2xl lg:text-3xl font-roundo-bold capitalize tracking-wide leading-[1.35]
     }
 
     h2 {
@@ -24,7 +23,7 @@
     }
 
     h3 {
-        @apply text-xl font-roundo-semibold capitalize mb-2 leading-[2]
+        @apply text-xl font-roundo-semibold capitalize mb-2 leading-[1.5]
     }
 
     h4 {
@@ -76,7 +75,7 @@
     }
 
     .content-gap {
-        @apply py-8 md:py-[4rem];
+        @apply py-10 md:py-[4rem];
     }
 
     .section-gap {
@@ -121,7 +120,7 @@
 
     .sub-header {
         /* font-size: clamp(3.8rem, 2.607rem + 2.2099vw, 4rem); */
-        @apply font-roundo-bold tracking-normal leading-[1.2] text-[55px] md:text-[60px] lg:text-[65px]
+        @apply font-roundo-bold tracking-normal leading-[1.2] text-[50px] md:text-[60px] lg:text-[65px]
     }
 
     .footer-header {

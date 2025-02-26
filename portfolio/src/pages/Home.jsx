@@ -436,7 +436,6 @@ function Home() {
                             <div ref={refs.line4} className='inline-block px-4 py-2 md:px-6 lg:px-10 lg:py-3 xl:py-5 mt-2 md:mt-4 bg-charcoal rounded-md w-fit -rotate-4 translate-x-10 relative'>
                                 <h1 className='text-white big-header'>Tina Lin</h1>
                             </div>
-
                         </div>
 
                         <div className='absolute left-1/2 -translate-x-1/2 text-nowrap md:left-[18%] md:bottom-[2%] lg:left-[12%] bottom-5'>
@@ -458,7 +457,6 @@ function Home() {
                                 <p className='text-base tracking-[1.5px] font-roundo-medium uppercase flex items-center text-nowrap'> Vancouver, BC
                                 </p>
                             </div>
-
                         </div>
                     </div>
                 </section >
@@ -507,7 +505,7 @@ function Home() {
                         <div className='flex flex-col w-full px-6 py-12 md:p-10 bg-white border-2 rounded-2xl relative shadow-card'
                             style={{ backgroundImage: `url(${grain})` }}
                         >
-                            <h2 className='sub-header'> A <br /> <span className='text-[45px] md:text-[50px] lg:text-[60px] text-orange font-patrick font-normal leading-none'>brief</span>  Linstory</h2>
+                            <h2 className='sub-header'> A <br /> <span className='leading-[1.2] text-[50px] md:text-[60px] lg:text-[65px] text-orange font-patrick font-normal'>brief</span>  Linstory</h2>
                             <div>
                                 <img src={line} alt="" width={250} />
                             </div>

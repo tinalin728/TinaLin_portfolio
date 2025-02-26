@@ -1,19 +1,18 @@
 import React from 'react'
 import browse from '../../public/assets/icons/browse.svg'
 
-export default function PrototypeCta({ protoLink, webLink }) {
+export default function PrototypeCta({ inPageLink, scrollToId, webLink }) {
     return (
-        <div className='mt-10 rounded-xl border-2 px-4 py-1 group w-fit'>
-            {protoLink ? (
+        <div className='mt-10 rounded-xl border-2 px-4 py-1 group w-fit shadow-button hover:shadow-none hover:translate-y-[2px] transition-all duration-150 ease-in-out'>
+            {inPageLink ? (
                 <div className='flex gap-1 items-center justify-center'>
                     <a href="#prototype"
                         onClick={(e) => {
                             e.preventDefault();
-                            document.getElementById("prototype")?.scrollIntoView({ behavior: "smooth" });
+                            document.getElementById(scrollToId)?.scrollIntoView({ behavior: "smooth" });
                         }}
                         className='relative z-10 h-full group-hover:text-black normal-case tracking-normal'>
-                        {protoLink}
-
+                        {inPageLink}
                     </a>
                     <div className='-rotate-90 text-xl'>⇜</div>
                 </div>

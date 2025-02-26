@@ -98,8 +98,7 @@ export default function FitMe() {
                                     <p>FitMe app that suggests clothing based on body measurements, eliminating the need for size charts and helping users find the best fit across brands with ease.
                                     </p>
 
-                                    <PrototypeCta protoLink="View Prototype" />
-
+                                    <PrototypeCta inPageLink="View Prototype" scrollToId='prototype' />
                                 </div>
 
                                 <div className='flex-1 w-full h-full mx-auto'>
@@ -144,23 +143,18 @@ export default function FitMe() {
                                         {project.research.problems.icons.map((issue, index) => (
                                             <div key={index} className='bg-white/50 p-2 rounded-2xl shadow-md'>
                                                 <div className='flex flex-col gap-3 border  border-gray-400 bg-white p-4 h-full rounded-xl'>
-                                                    <img src={issue.src} alt={issue.altText} className='w-[54px] object-contain' />
+                                                    <img
+                                                        src={issue.src}
+                                                        alt={issue.altText}
+                                                        loading="lazy"
+                                                        className='w-[54px] object-contain' />
                                                     <p className='text-[20px] border-b py-2 border-dashed border-gray-400 text-orange font-roundo-medium'> {issue.header}</p>
                                                     <p>{issue.caption}</p>
                                                 </div>
                                             </div>
                                         ))}
                                     </div>
-                                    <div className='inline-flex justify-center items-center bg-black hover:scale-[.99] transition duration-300 ease-in-out rounded-xl'>
-                                        <a href='#solution'
-                                            onClick={(e) => {
-                                                e.preventDefault();
-                                                document.getElementById("solution")?.scrollIntoView({ behavior: "smooth" });
-                                            }}
-                                            className="my-2 tracking-wider px-4 text-white capitalize flex items-center gap-2 cursor-pointer">
-                                            Jump to solutions <div className='-rotate-90 text-xl'>⇜</div>
-                                        </a>
-                                    </div>
+                                    <PrototypeCta inPageLink="Skip to Solutions" scrollToId='solution' />
                                 </div>
                             </div>
                         </div>
@@ -203,8 +197,11 @@ export default function FitMe() {
 
                                         <div className='flex-1 p-2  bg-white/60 h-full shadow-md rounded-2xl'>
                                             <div className='mx-auto overflow-hidden border border-gray-400/50 rounded-xl'>
-                                                <img src={project.research.competitor.img.src}
+                                                <img
+                                                    src={project.research.competitor.img.src}
+
                                                     alt={project.research.competitor.img.altText}
+
                                                     className='h-full object-cover'
                                                     loading="lazy"
                                                     onClick={() => handleImgClick({
@@ -230,12 +227,16 @@ export default function FitMe() {
 
                                     <div className='flex gap-12 flex-col lg:flex-row'>
                                         <div>
-                                            <img src={project.define.liz.src} alt={project.define.liz.altText} className=' shadow-md rounded-xl' />
+                                            <img src={project.define.liz.src} alt={project.define.liz.altText}
+                                                loading="lazy"
+                                                className=' shadow-md rounded-xl' />
 
                                             <p className='mt-4'> <span className='font-medium text-orange'>User Story 1:</span> As a frequent online shoppers, I want to quickly find pants that fit me without comparing size charts, so that I can shop with confidence and avoid returns. </p>
                                         </div>
                                         <div>
-                                            <img src={project.define.jamie.src} alt={project.define.jamie.altText} className=' shadow-md rounded-xl' />
+                                            <img src={project.define.jamie.src} alt={project.define.jamie.altText}
+                                                loading="lazy"
+                                                className=' shadow-md rounded-xl' />
 
                                             <p className='mt-4'><span className='font-medium text-orange'>User Story 2:</span>  As a working professional with limited time, I want to get accurate size recommendations instantly, so that I can shop efficiently and avoid returns. </p>
                                         </div>
@@ -247,7 +248,7 @@ export default function FitMe() {
                                 <div className='content-gap'>
                                     <h3> Narrative Arc</h3>
                                     <p className='mt-4'>With these insights, I mapped their journey to understand their struggles and design the best solution.</p>
-                                    <img src={project.define.arc.src} alt={project.define.arc.altText} />
+                                    <img src={project.define.arc.src} alt={project.define.arc.altText} loading="lazy" />
                                 </div>
                             </div>
                         </div>
@@ -300,11 +301,15 @@ export default function FitMe() {
                                 <div className='flex-1 flex flex-col gap-10 md:flex-row mt-10'>
                                     <div>
                                         <img src={project.design.change1.src}
-                                            alt={project.design.change1.altText} />
+                                            alt={project.design.change1.altText}
+                                            loading='lazy'
+                                        />
                                     </div>
                                     <div>
                                         <img src={project.design.change2.src}
-                                            alt={project.design.change2.altText} />
+                                            alt={project.design.change2.altText}
+                                            loading='lazy'
+                                        />
                                     </div>
                                 </div>
                             </div>
@@ -323,7 +328,9 @@ export default function FitMe() {
 
                                 <div className=' overflow-hidden rounded-2xl shadow-md'>
                                     <img src={project.final.system.src}
-                                        alt={project.final.system.alt} />
+                                        alt={project.final.system.alt}
+                                        loading='lazy'
+                                    />
                                 </div>
                             </div>
                             <div id='solution' >
@@ -337,7 +344,9 @@ export default function FitMe() {
                                     </ul>
                                     <div>
                                         <img src={project.final.onboarding.src}
-                                            alt={project.final.onboarding.alt} />
+                                            alt={project.final.onboarding.alt}
+                                            loading='lazy'
+                                        />
                                     </div>
                                 </div>
 
@@ -351,11 +360,15 @@ export default function FitMe() {
                                     <div className='flex-1 flex gap-5 items-center'>
                                         <div className='shadow-md'>
                                             <img src={project.final.home.src}
-                                                alt={project.final.home.alt} />
+                                                alt={project.final.home.alt}
+                                                loading='lazy'
+                                            />
                                         </div>
                                         <div className='shadow-md'>
                                             <img src={project.final.search.src}
-                                                alt={project.final.search.alt} />
+                                                alt={project.final.search.alt}
+                                                loading='lazy'
+                                            />
                                         </div>
                                     </div>
                                 </div>
@@ -369,11 +382,15 @@ export default function FitMe() {
                                     <div className='flex-1 flex gap-5 items-center'>
                                         <div className='shadow-md'>
                                             <img src={project.final.detail.src}
-                                                alt={project.final.detail.alt} />
+                                                alt={project.final.detail.alt}
+                                                loading='lazy'
+                                            />
                                         </div>
                                         <div className='shadow-md'>
                                             <img src={project.final.review.src}
-                                                alt={project.final.review.alt} />
+                                                alt={project.final.review.alt}
+                                                loading='lazy'
+                                            />
                                         </div>
                                     </div>
                                 </div>
@@ -393,11 +410,15 @@ export default function FitMe() {
                                     <div className='flex-1 flex gap-5 items-center'>
                                         <div className='shadow-md'>
                                             <img src={project.final.fav.src}
-                                                alt={project.final.fav.alt} />
+                                                alt={project.final.fav.alt}
+                                                loading='lazy'
+                                            />
                                         </div>
                                         <div className='shadow-md'>
                                             <img src={project.final.edit.src}
-                                                alt={project.final.edit.alt} />
+                                                alt={project.final.edit.alt}
+                                                loading='lazy'
+                                            />
                                         </div>
                                     </div>
                                 </div>

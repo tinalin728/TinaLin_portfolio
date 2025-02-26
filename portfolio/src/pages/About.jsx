@@ -225,7 +225,7 @@ function About() {
                                         <img src={profilePic} alt="profile" className='object-cover w-full h-full' />
                                     </div>
                                     <div className='text-center pt-2'>
-                                        <p className='font-patrick-hand text-dark italic'>say hi</p>
+                                        <p className='font-patrick text-dark-grey italic tracking-wider'>Say hi</p>
                                     </div>
                                 </div>
                                 <div className='relative z-0 w-full bg-white flex flex-col p-4 md:translate-y-4 md:max-w-[350px] lg:-translate-x-10 lg:hover:rotate-3 transition-all duration-300 rounded-2xl border-2 shadow-card'
@@ -234,7 +234,7 @@ function About() {
                                         <img src={workPic} alt="work photo" className='object-cover w-full h-full' />
                                     </div>
                                     <div className='text-center pt-2'>
-                                        <p className='font-patrick-hand text-dark italic'>life as Miss Lin</p>
+                                        <p className='font-patrick text-dark-grey italic tracking-wider'>life as Miss Lin</p>
                                     </div>
                                 </div>
                             </div>

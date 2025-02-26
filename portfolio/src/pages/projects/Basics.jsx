@@ -107,7 +107,7 @@ export default function Basics() {
                                     <h4 className='mb-10 text-brown font-patrick-hand italic tracking-wider'>{project.overview.headline} </h4>
                                     <p className='mb-10' dangerouslySetInnerHTML={{ __html: project.overview.content }} />
 
-                                    <p className='uppercase tracking-wider underline underline-offset-[4px] text-accent'>The Challenge</p>
+                                    <p className='uppercase tracking-wider underline underline-offset-[4px] text-orange font-roundo-medium'>The Challenge</p>
 
                                     <p dangerouslySetInnerHTML={{ __html: project.overview.challenge }} />
 
@@ -142,15 +142,17 @@ export default function Basics() {
                                     <p dangerouslySetInnerHTML={{ __html: project.contribution.backlog.content }} />
                                 </div>
 
-                                <div className='flex-1 p-2  bg-white/50 h-full'>
+                                <div className='flex-1 p-2  bg-white/60 h-full rounded-2xl shadow-md'>
                                     <img src={project.contribution.backlog.image.src} alt={project.contribution.backlog.image.altText}
-                                        className='w-full h-full max-h-[400px] object-cover border border-gray-400 '
+                                        loading="lazy"
+
+                                        className='w-full h-full max-h-[400px] object-cover border border-gray-400 rounded-xl'
                                         onClick={() => handleImgClick({
                                             src: project.contribution.backlog.image.src,
                                             alt: project.contribution.backlog.image.altText
                                         })}
                                     />
-                                    <p className='text-center italic text-sm text-dark-grey pt-2'>{project.contribution.backlog.image.caption}</p>
+                                    <p className='text-center italic font-patrick text-dark-grey pt-2'>{project.contribution.backlog.image.caption}</p>
                                 </div>
                                 <ImageModal
                                     isOpen={modalData.isOpen}
@@ -165,8 +167,11 @@ export default function Basics() {
                                     <h3 className='mb-4'>User Stories</h3>
                                     <p>{project.contribution.stories.content}</p>
                                 </div>
-                                <div className='flex-1'>
-                                    <img src={project.contribution.stories.image.src} alt={project.contribution.stories.image.altText} />
+                                <div className='flex-1 shadow-md rounded-2xl'>
+                                    <img
+                                        src={project.contribution.stories.image.src} alt={project.contribution.stories.image.altText}
+                                        loading="lazy"
+                                    />
                                 </div>
                             </div>
                         </div>
@@ -176,7 +181,7 @@ export default function Basics() {
                         <div className='section-gap section-gap border-t-2 border-light-grey border-dashed'>
                             <div>
                                 <span className='text-dark-grey uppercase font-roundo tracking-wider'>Sprint 1 & 2</span>
-                                <h1 className='mt-2'>Design</h1>
+                                <h2 className='mt-2'>Design</h2>
                             </div>
 
                             <div className='content-gap flex flex-col md:flex-row gap-10'>
@@ -185,15 +190,16 @@ export default function Basics() {
                                     <p>{project.contribution.sitemap.content}</p>
                                 </div>
 
-                                <div className='flex-1 p-2 bg-white/50 '>
+                                <div className='flex-1 p-2 bg-white/60 shadow-md rounded-2xl'>
                                     <img src={project.contribution.sitemap.image.src} alt={project.contribution.sitemap.image.altText}
-                                        className=' border border-gray-400'
+                                        loading="lazy"
+                                        className=' border border-gray-400 rounded-xl'
                                         onClick={() => handleImgClick({
                                             src: project.contribution.sitemap.image.src,
                                             alt: project.contribution.sitemap.image.altText
                                         })}
                                     />
-                                    <p className='text-center italic text-sm text-dark-grey pt-2'>{project.contribution.sitemap.image.caption}</p>
+                                    <p className='text-center italic text-dark-grey pt-2 font-patrick'>{project.contribution.sitemap.image.caption}</p>
                                 </div>
                                 <ImageModal
                                     isOpen={modalData.isOpen}
@@ -209,15 +215,16 @@ export default function Basics() {
                                     <p>{project.contribution.wireframe.content}</p>
                                 </div>
 
-                                <div className='flex-1 p-2 bg-white/50 '>
+                                <div className='flex-1 p-2 bg-white/60 rounded-2xl shadow-md'>
                                     <img src={project.contribution.wireframe.image.src} alt={project.contribution.wireframe.image.altText}
-                                        className=' border border-gray-400'
+                                        loading="lazy"
+                                        className=' border border-gray-400 rounded-xl'
                                         onClick={() => handleImgClick({
                                             src: project.contribution.wireframe.image.src,
                                             alt: project.contribution.wireframe.image.altText
                                         })}
                                     />
-                                    <p className='text-center italic text-sm text-dark-grey pt-2'>{project.contribution.wireframe.image.caption}</p>
+                                    <p className='text-center italic font-patrick text-dark-grey pt-2'>{project.contribution.wireframe.image.caption}</p>
                                 </div>
                                 <ImageModal
                                     isOpen={modalData.isOpen}
@@ -230,19 +237,21 @@ export default function Basics() {
                     </section>
 
                     <section id='develop'>
-                        <div className='section-gap section-gap border-t-2 border-light-grey border-dashed'>
+                        <div className='section-gap border-t-2 border-light-grey border-dashed'>
                             <span className='text-dark-grey uppercase font-roundo tracking-wider'>Sprint 3 & 4 / Revision</span>
-                            <h1>Develop</h1>
+                            <h2>Develop</h2>
 
-                            <div className='mt-10'>
-                                <div className='content-w'>
+                            <div className='content-gap'>
+                                <div>
                                     <h3 className='mb-4' >Deliverables</h3 >
                                     <p>During sprint 3, we met with our instructor, who acted as a stakeholder, and she suggested adding elements to reflect the company’s philosophy and values, such as sustainability. To address this, the design team prioritized refining the original pages and added a new product homepage, postponing the cart page development. By the end of sprint 4, I developed a five-page website that followed the wireframe design.</p>
                                 </div>
                                 <div className='mt-10 px-8 grid grid-cols-1 gap-4 md:grid-cols-3 place-content-center'>
                                     {project.dev.screens.map((item, index) => (
                                         <div key={index}>
-                                            <img src={item.src} alt={item.altText} />
+                                            <img src={item.src} alt={item.altText}
+                                                loading="lazy"
+                                            />
                                             <p className='font-roundo-medium text-center text-sm mt-2 text-dark-grey'>{item.caption}</p>
                                         </div>
                                     ))}
@@ -250,19 +259,20 @@ export default function Basics() {
                             </div>
 
                             <div className='content-gap'>
-                                <div className='content-w flex flex-col gap-10 items-center lg:flex-row'>
+                                <div className='flex flex-col gap-10 items-center lg:flex-row'>
                                     <div className='flex-1'>
                                         <h3 className='mb-4'>{project.dev.tailwind.title}</h3>
                                         <p dangerouslySetInnerHTML={{ __html: project.dev.tailwind.content }} className='mb-4' />
                                     </div>
                                     <div className='flex-1'>
-                                        <img src={project.dev.tailwind.image.src} alt={project.dev.tailwind.image.altText} className='w-[80%]' />
+                                        <img
+                                            loading="lazy"
+                                            src={project.dev.tailwind.image.src} alt={project.dev.tailwind.image.altText} className='w-[80%]' />
                                     </div>
                                 </div>
                             </div>
 
                             <div className='content-gap'>
-
                                 <h3 className='mb-4'>{project.dev.component.header}</h3>
                                 <p className='mb-6'>{project.dev.component.content}</p>
 
@@ -272,7 +282,7 @@ export default function Basics() {
                                             key={index}
                                             open={open === index}
                                             icon={<Icon id={index} open={open} />}
-                                            className='border  px-4 py-1 shadow-md max-w-full'
+                                            className='border  px-4 py-1 shadow-md max-w-full rounded-2xl'
                                         >
                                             <AccordionHeader
                                                 onClick={() => handleOpen(index)}
@@ -304,6 +314,21 @@ export default function Basics() {
                         </div>
                     </section>
 
+                    <section id='reflection'>
+                        <div className='section-gap border-t-2 border-light-grey border-dashed'>
+                            <h2>Reflection</h2>
+
+                            <div className='content-gap'>
+                                <p>
+                                    This was my first time juggling both Product Owner and Front-End Developer roles. Balancing everything within a 5-week timeline—on top of other coursework—was tough, but it pushed me to manage time better and stay organized.
+                                </p>
+                                <p className='my-8'> The biggest challenge was keeping everything aligned with Agile while building the site from scratch. I had to prioritize user stories, coordinate with my team, and still get hands-on with development. It was a lot, but I learned how to adapt, communicate better, and keep things moving.
+                                </p>
+                                <p>Looking back, I’d refine the workflow and set clearer milestones, but overall, this project reinforced my passion for creating clean, functional designs while handling real-world constraints.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
                 </div>
             </div>
 

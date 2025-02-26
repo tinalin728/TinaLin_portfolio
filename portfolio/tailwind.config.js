@@ -7,7 +7,6 @@ module.exports = withMT({
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
-  safelist: ['text-orange'],
 
   theme: {
     extend: {
@@ -28,8 +27,8 @@ module.exports = withMT({
         md: ['1.25rem'],
         lg: ['1.375rem'],
         xl: ['1.618rem'],
-        '2xl': ['2.618rem', { lineHeight: '3.8rem' }],
-        '3xl': ['4.236rem', { lineHeight: '5rem' }],
+        '2xl': ['2.618rem', { lineHeight: '3.5rem' }],
+        '3xl': ['3.4rem', { lineHeight: '4.5rem' }],
         '4xl': ['6.854rem', { lineHeight: '7.5rem', letterSpacing: '2px' }],
         '5xl': ['53.75px', { lineHeight: '113.4px', letterSpacing: '7.56px', }],
         '6xl': ['122.4px', { lineHeight: '183.6px', letterSpacing: '0', }],

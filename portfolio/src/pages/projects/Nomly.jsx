@@ -87,7 +87,6 @@ export default function Nomly() {
                                         <img
                                             src={project.overview.media.src}
                                             alt={project.overview.media.altText}
-                                            className=""
                                             loading='lazy'
                                         />
                                     </div>
@@ -104,7 +103,9 @@ export default function Nomly() {
 
                             <div className='content-gap flex flex-col items-center gap-10'>
                                 <div className='h-full p-2 bg-white/40 shadow-md'>
-                                    <img src={api} alt="" className='object-cover h-full w-full' />
+                                    <img src={api} alt="api"
+                                        loading='lazy'
+                                        className='object-cover h-full w-full' />
                                 </div>
 
                                 <div className=' flex-1'>
@@ -247,7 +248,9 @@ export default fetchRecipes;
 
                             <div className='flex flex-col gap-10 content-gap lg:flex-row-reverse'>
                                 <div className='lg:basis-[60%] p-2 bg-white/40 shadow-md '>
-                                    <img src={data} alt="shopping list" className='object-cover border border-dark/20' />
+                                    <img src={data} alt="shopping list"
+                                        loading='lazy'
+                                        className='object-cover border border-dark/20' />
                                 </div>
 
                                 <div className='lg:basis-[40%]'>
@@ -356,10 +359,14 @@ export default App
                             <div className='content-gap'>
                                 <div className='flex gap-4 justify-center items-center'>
                                     <div>
-                                        <img src={lightMode} alt="" className='p-2 bg-white/40 shadow-md max-w-full' />
+                                        <img src={lightMode} alt="light-mode"
+                                            loading='lazy'
+                                            className='p-2 bg-white/40 shadow-md max-w-full' />
                                     </div>
                                     <div>
-                                        <img src={darkMode} alt="" className='p-2 bg-white/40 shadow-md  h-auto z-10' />
+                                        <img src={darkMode} alt="dark-mode"
+                                            loading='lazy'
+                                            className='p-2 bg-white/40 shadow-md  h-auto z-10' />
                                     </div>
                                 </div>
                                 <div className='mt-10'>
