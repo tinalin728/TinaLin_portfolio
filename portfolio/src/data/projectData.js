@@ -310,7 +310,7 @@ export const projectData = [
             "TailwindCSS",
             "Api"
         ],
-        cover: "/assets/nomly/cover.jpg",
+        cover: "/assets/nomly/cover1.jpg",
         banner: {
             subHeader: 'Nomly - Web App',
             header: 'Recipe Discovery & Grocery Planning',
