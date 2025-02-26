@@ -113,7 +113,7 @@
 
 
     .big-header {
-        font-size: clamp(2.5rem, 1.1592rem + 3.5874vw, 5rem);
+        font-size: clamp(2.7rem, 1.747rem + 4.0663vw, 5rem);
 
         @apply font-roundo font-normal uppercase text-nowrap;
     }
@@ -121,7 +121,7 @@
 
     .sub-header {
         /* font-size: clamp(3.8rem, 2.607rem + 2.2099vw, 4rem); */
-        @apply font-roundo-bold tracking-normal leading-[1.2] text-[45px] md:text-[50px] lg:text-[60px]
+        @apply font-roundo-bold tracking-normal leading-[1.2] text-[4px] md:text-[50px] lg:text-[60px]
     }
 
     .footer-header {
