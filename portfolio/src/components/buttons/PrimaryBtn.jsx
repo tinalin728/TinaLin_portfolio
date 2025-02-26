@@ -7,24 +7,24 @@ function PrimaryBtn({ to, text, icon, href, reverseOrder = false }) {
     const isExternal = href && !to;
 
 
-    const commonClasses = 'group relative inline-flex items-center justify-center border-2 border rounded-full shadow-charcoal overflow-hidden hover:shadow-charcoal-hover hover:translate-x-[.5%] transition-all duration-500 bg-light-yellow-bg'
+    const commonClasses = 'group relative inline-flex items-center justify-center border-2 border rounded-2xl shadow-button overflow-hidden hover:shadow-none hover:translate-x-[.5%] transition-all duration-200 bg-light-yellow-bg'
 
     const btnContent = (
-        <div className='relative inline-flex items-center gap-4 px-6 py-3 transition duration-300 ease-in z-10'>{
+        <div className='relative inline-flex items-center gap-2 px-4 py-2 transition duration-300 ease-in z-10'>{
 
             reverseOrder ? (
                 <>
                     <div>
-                        <img src={icon} alt="" width={30} />
+                        <img src={icon} alt="" width={20} />
                     </div>
-                    <span className="font-roundo-medium text-base lg:tracking-[2px]">{text}</span>
+                    <span className="normal-case">{text}</span>
                 </>
 
             ) : (
                 <>
-                    <span className="font-roundo-medium text-base lg:tracking-[2px]">{text}</span>
+                    <span className="normal-case">{text}</span>
                     <div className='group-hover:-rotate-[15deg] transition duration-500'>
-                        <img src={icon} alt="icon" width={30} />
+                        <img src={icon} alt="icon" width={20} />
                     </div>
                 </>
             )

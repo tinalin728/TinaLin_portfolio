@@ -11,22 +11,20 @@ function Layout() {
     const isCraftDetails = matchPath('/crafts/:id', location.pathname)
 
     const pageTitles = {
-        '/': "Tina Lin- UX/UI Designer & Front-End Developer",
-        '/about': "About Tina Lin - UX/UI Designer & Front-End Developer",
-        '/crafts': "Crafts- Tina Lin's Projects, UX/UI Designer & Front-End Developer"
+        '/': "Tina Lin - Design & Dev Portfolio",
+        '/about': "About Tina Lin - Design & Dev Portfolio",
+        '/crafts': "Projects- Tina Lin - Design & Dev Portfolio"
     };
 
-    const defaultTitle = "Tina Lin's Portfolio - UX/UI Designer & Front-End Developer";
+    const defaultTitle = "Tina Lin - Design & Dev Portfolio";
     const currentTitle = pageTitles[location.pathname] || defaultTitle;
 
     return (
         <>
             <Helmet>
                 <title>{currentTitle}</title>
-                <meta
-                    name="description"
-                    content="Tina Lin is a UX/UI designer and front-end developer creating intuitive and user-centered designs with modern web technologies."
-                />
+                <meta name="description" content="Tina Lin is a UX/UI designer and front-end developer specializing in creating user-centered websites, intuitive UI designs, and modern web experiences. See her portfolio." />
+
                 <meta
                     name="keywords"
                     content="Tina Lin, UX/UI Designer, Web Designer, Front-End Developer, Web Development, UX/UI Design, React, GSAP, Portfolio"
@@ -46,7 +44,7 @@ function Layout() {
                 <Outlet />
             </main>
 
-            {!isCraftDetails && <Footer />}
+            <Footer />
         </>
     )
 }

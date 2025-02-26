@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useRef, useLayoutEffect, forwardRef } from 'react'
-import { Link } from 'react-router-dom';
-import { Parallax } from 'react-scroll-parallax';
+import React, { useState, useEffect, useRef } from 'react'
+import { Link, useLocation } from 'react-router-dom';
 import Marquee from "react-fast-marquee";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
@@ -9,24 +8,25 @@ import { useGSAP } from '@gsap/react';
 gsap.registerPlugin(useGSAP);
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faInfo } from "@fortawesome/free-solid-svg-icons"
-import { faUser } from "@fortawesome/free-regular-svg-icons"
-
 
 import CraftCard from '../components/CraftCard';
 import PrimaryBtn from '../components/buttons/PrimaryBtn';
-import HorizontalScroll from '../components/HorizontalScroll';
 import WindowWidth from '../hooks/WindowWidth';
-import arrow from '../../public/assets/icons/arrow.svg';
+import mouse from '../../public/assets/homepage/mouse.svg';
 import outline from '../../public/assets/homepage/outlineLogo.svg'
 
-import data from '../data/generalData.json';
 import FeatureCraftCard from '../components/FeatureCraftCard';
+import { projectData } from "../data/projectData";
+import ProjectCard from "../components/ProjectCard"
+import baby from "../../public/assets/homepage/baby.jpg"
+import cloud from "../../public/assets/homepage/cloud.png"
+import grain from "../../public/assets/about/grain.png"
+import PrimaryCta from '../components/PrimaryCta';
+import location from "../../public/assets/icons/location.svg"
+import line from "../../public/assets/icons/line.svg"
 
 
 function Home() {
-    const [crafts, setCrafts] = useState([]);
     const [heroAnimationTriggered, setHeroAnimationTriggered] = useState(false);
     const [animationComplete, setAnimationComplete] = useState(false);
     const [isMouseInside, setIsMouseInside] = useState(false);
@@ -41,10 +41,6 @@ function Home() {
 
     const [time, setTime] = useState('');
 
-    useEffect(() => {
-        const { about, crafts } = data;
-        setCrafts(crafts);
-    }, []);
 
     //for hero tagline
     const refs = {
@@ -237,7 +233,7 @@ function Home() {
                 const screenWidth = window.innerWidth;
                 const dynamicScale =
                     screenWidth > 1920
-                        ? 1.25
+                        ? 1.2
                         : screenWidth > 1440
                             ? 1.1 + (0.15 * (screenWidth - 1490)) / (1920 - 1490)
                             : 1.1;
@@ -290,7 +286,7 @@ function Home() {
                 ".recent",
                 { y: -50, rotate: 0, opacity: 0 },
                 {
-                    y: 10,
+                    y: -10,
                     rotate: -6,
                     opacity: 1,
                     duration: 1,
@@ -318,7 +314,7 @@ function Home() {
                         5.5px 5.5px 0 #342A1A,
                         6px 6px 0 #342A1A`,
                     duration: .8,
-                    ease: "elastic.inOut",
+                    ease: "power3.inOut",
                     stagger: .05,
                     scrollTrigger: { ...scrollTriggerConfig },
                 }
@@ -368,7 +364,7 @@ function Home() {
                             10px 10px 0 #342A1A
                             `,
                         duration: 0.2,
-                        ease: "elastic.out",
+                        ease: "power3.out",
                     });
                 });
 
@@ -410,7 +406,7 @@ function Home() {
     return (
         <>
             <div className='relative'>
-                <section ref={heroRef} className='h-[85vh] w-full outer-container relative'>
+                <section ref={heroRef} className='h-[85vh] w-full outer-container relative mb-14 md:mb-20'>
                     {positions.map((pos, index) => {
                         return (
                             <div
@@ -426,16 +422,16 @@ function Home() {
 
 
                     <div className='relative max-w-container w-full h-full flex flex-col items-center justify-center'>
-                        <div className='-mt-20 inline-flex flex-col items-center justify-center gap-2 md:-mt-14'>
+                        <div className='-mt-20 inline-flex flex-col items-center justify-center gap-2 md:-mt-14 relative'>
                             <div ref={refs.line1} className='inline-block px-4 py-2 md:px-8 lg:px-10 lg:py-3 xl:py-5 bg-charcoal rounded-md w-fit -translate-x-2'>
-                                <h1 className='text-white big-header'>The</h1>
+                                <h1 className='text-white big-header font-patrick tracking-wider'>The</h1>
                             </div>
                             <div ref={refs.line2} className='inline-block px-4 py-2 md:px-6 lg:px-10 lg:py-3 xl:py-5 bg-charcoal rounded-md w-fit translate-x-0'>
-                                <h1 className='text-white big-header'> Product &</h1>
+                                <h1 className='text-white big-header'> Product <span className='font-patrick'>&</span> </h1>
                             </div>
 
                             <div ref={refs.line3} className='inline-block px-4 py-2 md:px-6 lg:px-10 lg:py-3 xl:py-5 mt-2 md:mt-4 bg-charcoal rounded-md  w-fit translate-y-1 -translate-x-2 md:-translate-x-4 lg:-translate-x-[12%]'>
-                                <h1 className='text-white big-header'>Design of</h1>
+                                <h1 className='text-white big-header'>Design  <span className='font-patrick tracking-wider'>of</span></h1>
                             </div>
                             <div ref={refs.line4} className='inline-block px-4 py-2 md:px-6 lg:px-10 lg:py-3 xl:py-5 mt-2 md:mt-4 bg-charcoal rounded-md w-fit -rotate-4 translate-x-10 relative'>
                                 <h1 className='text-white big-header'>Tina Lin</h1>
@@ -443,78 +439,95 @@ function Home() {
 
                         </div>
 
-                        <div className='mt-10 absolute left-8 md:left-14 bottom-[2%]'>
-                            <div className='flex flex-col'>
-                                <p className='text-base tracking-[3px] font-roundo-medium uppercase'>A UX / UI Designer <br /> who enjoys coding</p>
-                                <Link to='/about' className="mt-2 block tracking-wider font-roundo-medium group  hover:text-orange transition-transform duration-300 ease-in-out px-4 border-l border-orange">
-                                    More about me <span className="inline-block transition-transform duration-300 ease-in-out group-hover:scale-x-150 group-hover:translate-x-2">→</span>
-                                </Link>
+                        <div className='absolute left-1/2 -translate-x-1/2 text-nowrap md:left-[18%] md:bottom-[2%] lg:left-[12%] bottom-5'>
+                            <div className=''>
+                                <a href='#crafts'
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        document.getElementById("crafts")?.scrollIntoView({ behavior: "smooth" });
+                                    }}
+                                    className='text-base tracking-[1.5px] font-roundo-medium uppercase flex items-end gap-2'>
+                                    <div><img src={mouse} alt="mouse icon" width={25} className='shake-animation' /> </div>
+                                    Scroll More
+                                </a>
                             </div>
                         </div>
-                        <div className='hidden md:block md:absolute md:right-14 md:bottom-[2%]'>
-                            <div className='flex gap-3 items-start'>
-                                <div className='flex flex-col items-end'>
-                                    <a href='#footer'
-                                        onClick={(e) => {
-                                            e.preventDefault();
-                                            document.getElementById("footer")?.scrollIntoView({ behavior: "smooth" });
-                                        }}
-                                        className="mt-2 tracking-wider font-roundo-medium group  hover:text-orange transition-all duration-500 ease-in-out flex justify-center items-center">
-                                        <span className="inline-block transition-all duration-300 ease-in-out group-hover:text-orange pr-2 text-xl leading-none">☻</span>Connect with me
-                                    </a>
-                                    <p className='text-base tracking-[3px] font-roundo-medium uppercase'>Based in Vancouver, BC</p>
+                        <div className='absolute right-1/2 bottom-[13%] translate-x-1/2 md:right-[20%] lg:right-[11%] md:bottom-[2%]'>
+                            <div className='flex gap-2'>
+                                <div><img src={location} alt="" width={23} /></div>
+                                <p className='text-base tracking-[1.5px] font-roundo-medium uppercase flex items-center text-nowrap'> Vancouver, BC
+                                </p>
+                            </div>
+
+                        </div>
+                    </div>
+                </section >
+
+                <section ref={craftRef} id='crafts' className="relative h-full py-16 md:py-20 bg-primary w-full">
+                    <div className='max-w-container relative'>
+                        <div className='relative flex flex-col items-center md:items-start md:flex-row-reverse justify-between'>
+                            <div className='h-fit pb-4 md:pb-[20rem] md:sticky md:top-20'>
+                                <div className='inline-flex items-center justify-center mx-auto flex-col md:basis-[40%]  md:justify-end md:items-end'>
+                                    <h2 className='w-fit text-center md:text-end sub-header font-black'> I <span className='sub-header '>Design</span> <br /> <span className='text-orange font-patrick font-thin'> &</span> Code</h2>
+                                    <div>
+                                        <img src={line} alt="" width={250} />
+                                    </div>
+
+                                    <p className='mt-4'> Some of my selected crafts</p>
+
+                                    <div className='hidden md:block mt-14'>
+                                        <PrimaryCta to="/crafts" text="View More" />
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </section >
 
-                <section ref={craftRef} id='crafts' className="relative h-full my-[10rem] bg-light-yellow-bg w-full">
-                    <div className='max-w-container relative'>
-                        <div className='relative'>
-                            <div className='recent flex mx-auto w-fit bg-charcoal rounded-md px-4 py-2 rotate-6'>
-                                <span className="tracking-widest uppercase text-white text-sm md:text-base text-nowrap">Featured</span >
-                            </div >
-                            <div className="mx-auto mb-6 lg:mb-12">
-                                <h2 className="craftHeader text-center sub-header">
-                                    {Array.from("Crafts").map((letter, index) => (
-                                        <span key={index} className="craft-letter inline-block font-craftwork font-extrabold mt-2 text-light-yellow-bg text-stroke uppercase leading-none mx-0 md:tracking-wider">
-                                            {letter}
-                                        </span>
-                                    ))}
-                                </h2>
+                            <div className="md:basis-[60%]">
+                                <div className='flex flex-col gap-10 md:gap-20'>
+                                    {projectData.slice(0, 2).map((project) => {
+                                        return (
+                                            <ProjectCard
+                                                key={project.id} project={project}
+                                            />
+                                        )
+                                    })}
+                                </div>
                             </div>
-
-                            <div className="craftCard relative grid grid-cols-1 mb-10 gap-8">
-                                {crafts.slice(0, 2).map((craft) => {
-                                    return (
-                                        <FeatureCraftCard
-                                            key={craft.id}
-                                            id={craft.id}
-                                            title={craft.title}
-                                            mediaType={craft.media}
-                                            src={craft.src}
-                                            skills={craft.skills}
-                                            content={craft.content}
-                                            status={craft.status}
-                                        />
-                                    )
-                                })}
-                            </div>
-
-
-                            <div className='flex items-center justify-center'>
-                                <PrimaryBtn
-                                    to='/crafts'
-                                    text='More Crafts'
-                                    icon={arrow}
-                                />
+                            <div className='mt-10 md:hidden'>
+                                <PrimaryCta to="/crafts" text="View More" />
                             </div>
                         </div>
                     </div>
                 </section >
 
+                <section className='max-w-container h-full relative pt-16 md:pt-20 pb-20 md:pb-[10rem] lg:pb-[15rem]'>
+                    <div className='absolute z-0 rotate-[20deg] top-10 right-0'>
+                        <img src={cloud} alt="icon" />
+                    </div>
+                    <div className='flex flex-col gap-10 md:flex-row md:justify-between md:gap-20'>
+                        <div className='flex flex-col w-full px-6 py-12 md:p-10 bg-white border-2 rounded-2xl relative shadow-card'
+                            style={{ backgroundImage: `url(${grain})` }}
+                        >
+                            <h2 className='sub-header'> A <br /> <span className='text-[45px] md:text-[50px] lg:text-[60px] text-orange font-patrick font-normal leading-none'>brief</span>  Linstory</h2>
+                            <div>
+                                <img src={line} alt="" width={250} />
+                            </div>
 
+                            <p className='max-w-[35rem] pb-10 pt-4'>From crayons to pixels, my teaching background gives me unique perspectives to design with empathy and creativity.</p>
+
+                            <PrimaryCta to="/about" text="Read More" />
+                        </div>
+
+                        <div className='h-full w-full max-w-[300px] mx-auto bg-white flex flex-col p-4 rotate-[4deg] md:max-w-[350px] border-2 rounded-xl shadow-card'
+                        >
+                            <div className='h-[320px] md:h-[380px] w-full rounded-xl overflow-hidden'>
+                                <img src={baby} alt="" className='object-cover h-full w-full' />
+                            </div>
+                            <div className='text-center py-2'>
+                                <p className='px-6 font-patrick leading-[1.25] text-dark-grey italic'>Why complicate things when life’s hard enough?</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
             </div >
         </>
     )

@@ -17,14 +17,14 @@ module.exports = withMT({
         'roundo-medium': ['Roundo-Medium', 'sans-serif'],
         'roundo-semibold': ['Roundo-SemiBold', 'sans-serif'],
         'roundo-bold': ['Roundo-Bold', 'sans-serif'],
-
+        patrick: ["Patrick Hand", "cursive"],
         craftwork: ['Craftwork Grotesk', 'sans-serif'],
       },
 
       fontSize: {
         xs: ['0.75rem', { lineHeight: '1rem' }],
-        sm: ['0.875rem', { lineHeight: '1.25rem' }],
-        base: ['1rem', { lineHeight: '35px' }],
+        sm: ['17px', { lineHeight: '30px' }],
+        base: ['18px', { lineHeight: '35px' }],
         md: ['1.25rem'],
         lg: ['1.375rem'],
         xl: ['1.618rem'],
@@ -43,14 +43,13 @@ module.exports = withMT({
         orange: '#E36A46',
         yellow: '#FCC764',
         blue: '#7BB6D8',
-        'yellow-light': '#fff5e4',
-        'light-yellow-bg': '#FBF8F0',
-        'darker-bg': '#e1dfd8',
-        'light-grey-bg': '#F2F1EC',
+        'primary': '#FBF8F0',
+        'darker-bg': '#E6E2DC',
+        'sec-bg': '#E5E0DC',
         'dark-grey': '#717171',
         'light-grey': '#B3B3B3',
         'charcoal': '#1e1e1e',
-        'off-white': '#FAF9F6',
+        'default': '#292C2F',
         'brown': '#342A1A'
       },
 
@@ -58,21 +57,22 @@ module.exports = withMT({
         DEFAULT: '#1e1e1e',
       },
 
+
       boxShadow: {
         'inner': 'inset -1px -1px 3px -1px rgb(0 0 0 / 0.1)',
 
-        'charcoal': '2px 3px 0 #1e1e1e',
+        'button': '0px 3px 0 #1e1e1e',
+        'card': '0px 5px 0 #1e1e1e',
         'charcoal-right': '-3px -4px 0 #1e1e1e',
         'charcoal-hover': '1.2px 1.2px 0 #1e1e1e',
 
-        'white': '2px 3px 0 #FBF8F0',
+        'white': '0px 3px 0 #FBF8F0',
         'orange': '2px 3px 0 #E36A46',
-        'white-hover': '1.2px 1.2px 0 #FBF8F0',
 
         'grey': '2px 4px 0 #717171',
 
-        'card': '6px 8px 0 #B3B3B3',
       },
+
 
       animation: {
 
