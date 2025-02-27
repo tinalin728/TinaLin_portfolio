@@ -345,7 +345,49 @@ export const projectData = [
 
     },
 
+    // {
+    //     id: "furry-tales",
+    //     status: 'completed',
+    //     title: 'FurryTales - Website Redesign',
+    //     media: "image",
+    //     skills: [
+    //         "UXUI",
+    //         "Hackathon"
+    //     ],
+    //     cover: "/assets/furry/cover.jpg",
+    //     banner: {
+    //         subHeader: 'Hackathon',
+    //         header: 'FurryTales - Website Redesign',
+    //         image: {
+    //             src: '/assets/furry/cover.jpg',
+    //             altText: 'Nomly banner',
+    //             classes: 'scale-125'
+    //         },
+    //     },
 
+
+    //     overview: {
+    //         user: {
+    //             title: 'Tools',
+    //             content: 'Figma, illustrator, photoshop'
+    //         },
+    //         process: {
+    //             header: 'Process',
+    //             content: 'Research, Design'
+    //         },
+    //         role: 'Researcher, UX/UI Designer',
+    //         duration: '3 days - Feb, 2025',
+
+    //         media: {
+    //             type: 'image',
+    //             src: '/assets/nomly/intro.png',
+    //             altText: "Nomly",
+    //             caption: 'Sneak Peek',
+    //         },
+
+    //     },
+
+    // },
 
 
 

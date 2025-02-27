@@ -60,7 +60,7 @@ export default function Furry() {
                     <section id='research' className='pb-0'>
                         <div>
                             <div className='section-gap border-t-2 border-light-grey border-dashed'>
-                                <h2>Research</h2>
+                                <h2>Problems</h2>
                                 <div className='content-gap'>
 
                                 </div>

@@ -495,7 +495,7 @@ function Home() {
                                 </div>
                             </div>
                             <div className='mt-10 md:hidden'>
-                                <PrimaryCta to="/crafts" text="View More" />
+                                <PrimaryCta to="/projects" text="View More" />
                             </div>
                         </div>
                     </div>

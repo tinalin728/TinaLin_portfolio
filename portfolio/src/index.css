@@ -112,7 +112,7 @@
 
 
     .big-header {
-        font-size: clamp(2.7rem, 1.8901rem + 3.4554vw, 4.6rem);
+        font-size: clamp(3.2rem, 1.8901rem + 3.4554vw, 4.6rem);
 
         @apply font-roundo font-normal tracking-[1.2px] uppercase text-nowrap leading-none;
     }
