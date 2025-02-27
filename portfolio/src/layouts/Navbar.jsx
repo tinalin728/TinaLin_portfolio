@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
 
+import logo from '../../public/assets/logo.svg'
 import { gsap } from "gsap";
 import { useGSAP } from '@gsap/react';
 gsap.registerPlugin(useGSAP);
@@ -68,7 +69,7 @@ function Navbar() {
                 <div className='flex justify-between items-center w-full'>
                     <div>
                         <NavLink to="/" className="z-[1000] py-6 text-md font-roundo-bold">
-                            <svg
+                            {/* <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 viewBox="-20 -20 202 194"
                                 className="w-14 h-14"
@@ -85,8 +86,8 @@ function Navbar() {
                                         fill="#e36a46"
                                     />
                                 </g>
-                            </svg>
-
+                            </svg> */}
+                            <img src={logo} alt="logo" width={45} />
                         </NavLink>
                     </div>
 

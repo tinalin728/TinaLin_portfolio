@@ -478,7 +478,7 @@ function Home() {
                                     <p className='mt-4'> Some of my selected crafts</p>
 
                                     <div className='hidden md:block mt-14'>
-                                        <PrimaryCta to="/crafts" text="View More" />
+                                        <PrimaryCta to="/projects" text="View More" />
                                     </div>
                                 </div>
                             </div>

@@ -11,6 +11,7 @@ import Tims from "./pages/projects/Tims"
 import Nomly from "./pages/projects/Nomly"
 import FitMe from "./pages/projects/FitMe"
 import Basics from "./pages/projects/Basics"
+import Furry from './pages/projects/Furry'
 
 function App() {
 
@@ -28,6 +29,7 @@ function App() {
           <Route path="/projects/nomly" element={<Nomly />} />
           <Route path="/projects/fitme" element={<FitMe />} />
           <Route path="/projects/basics" element={<Basics />} />
+          {/* <Route path="/projects/furry-tales" element={<Furry />} /> */}
         </Route>
       </Routes>
     </Router>
