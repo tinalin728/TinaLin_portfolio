@@ -13,7 +13,7 @@ export default function ProjectCard({ project }) {
             <Link
                 onMouseMove={handleMouseMove}
                 onMouseOut={handleMouseOut}
-                to={`/crafts/${project.id}`}>
+                to={`/projects/${project.id}`}>
                 <div className="border border-default/20 relative overflow-hidden w-full rounded-xl">
                     <div className="h-[300px] w-full md:h-full">
                         <img src={project.cover} alt={project.title}
@@ -38,7 +38,7 @@ export default function ProjectCard({ project }) {
                             </div>
                         ))}
                     </div>
-                    <h4 className="mt-4 mb-6 capitalize">{project.title}</h4>
+                    <h3 className="mt-4 mb-6 capitalize text-md md:text-lg font-roundo-medium">{project.title}</h3>
                 </div>
             </Link>
         </div>

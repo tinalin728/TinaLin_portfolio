@@ -168,8 +168,6 @@ function Crafts() {
                             key={project.id} project={project}
                         />
                     ))}
-
-
                 </div>
             </section >
 

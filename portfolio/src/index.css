@@ -19,7 +19,7 @@
     }
 
     h2 {
-        @apply text-[2.2rem] md:text-2xl font-roundo-bold capitalize tracking-wide leading-normal
+        @apply text-[2.2rem] md:text-2xl font-roundo-bold capitalize tracking-wide
     }
 
     h3 {
@@ -107,14 +107,14 @@
     }
 
     span {
-        @apply font-roundo-medium
+        @apply font-roundo-medium leading-none
     }
 
 
     .big-header {
-        font-size: clamp(2.7rem, 1.8901rem + 3.4554vw, 5rem);
+        font-size: clamp(2.7rem, 1.8901rem + 3.4554vw, 4.6rem);
 
-        @apply font-roundo font-normal tracking-[1.2px] uppercase text-nowrap;
+        @apply font-roundo font-normal tracking-[1.2px] uppercase text-nowrap leading-none;
     }
 
 

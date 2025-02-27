@@ -13,7 +13,7 @@ function Layout() {
     const pageTitles = {
         '/': "Tina Lin - Design & Dev Portfolio",
         '/about': "About Tina Lin - Design & Dev Portfolio",
-        '/crafts': "Projects- Tina Lin - Design & Dev Portfolio"
+        '/projects': "Projects- Tina Lin - Design & Dev Portfolio"
     };
 
     const defaultTitle = "Tina Lin - Design & Dev Portfolio";

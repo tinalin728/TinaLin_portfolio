@@ -91,7 +91,7 @@ function Navbar() {
                     </div>
 
                     <div className='flex gap-6 md:gap-8'>
-                        <NavLink to="/crafts"
+                        <NavLink to="/projects"
                             className={({ isActive }) =>
                                 `uppercase tracking-[1.5px] font-roundo-medium  hover:scale-95 transition duration-300 ${isActive ? "text-orange" : ""
                                 }`

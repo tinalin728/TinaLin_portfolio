@@ -424,16 +424,16 @@ function Home() {
                     <div className='relative max-w-container w-full h-full flex flex-col items-center justify-center'>
                         <div className='-mt-20 inline-flex flex-col items-center justify-center gap-2 md:-mt-14 relative'>
                             <div ref={refs.line1} className='inline-block px-4 py-2 md:px-8 md:py-4 lg:px-10 lg:py-3 xl:py-5 bg-charcoal rounded-md w-fit -translate-x-2'>
-                                <h1 className='text-white big-header font-patrick tracking-widest'>The</h1>
+                                <h2 className='text-white big-header font-patrick tracking-widest'>The</h2>
                             </div>
                             <div ref={refs.line2} className='inline-block px-4 py-2 md:px-6 md:py-4  lg:px-10 lg:py-3 xl:py-5 bg-charcoal rounded-md w-fit translate-x-0'>
-                                <h1 className='text-white big-header'> Product
+                                <h2 className='text-white big-header'> Product
                                     <span className='font-patrick pl-4'>&</span>
-                                </h1>
+                                </h2>
                             </div>
 
                             <div ref={refs.line3} className='inline-block px-4 py-2 md:px-6 md:py-4 lg:px-8 xl:px-10 xl:py-5 mt-2 md:mt-4 bg-charcoal rounded-md  w-fit translate-y-1 -translate-x-2 md:-translate-x-4 lg:-translate-x-[12%]'>
-                                <h1 className='big-header font-patrick tracking-widest text-white'> Design <span className='text-white tracking-normal font-roundo '> of</span> </h1>
+                                <h2 className='big-header font-patrick tracking-widest text-white'> Design <span className='text-white tracking-normal font-roundo'> of</span> </h2>
                             </div>
                             <div ref={refs.line4} className='inline-block px-4 py-2 md:px-6 md:py-4  lg:px-10 lg:py-3 xl:py-5 mt-2 md:mt-4 bg-charcoal rounded-md w-fit -rotate-4 translate-x-10 relative'>
                                 <h1 className='text-white big-header'>
