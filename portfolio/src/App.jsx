@@ -29,7 +29,7 @@ function App() {
           <Route path="/projects/nomly" element={<Nomly />} />
           <Route path="/projects/fitme" element={<FitMe />} />
           <Route path="/projects/basics" element={<Basics />} />
-          {/* <Route path="/projects/furry-tales" element={<Furry />} /> */}
+          <Route path="/projects/furry-tales" element={<Furry />} />
         </Route>
       </Routes>
     </Router>
