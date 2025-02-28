@@ -52,7 +52,7 @@ function Cursor() {
 
         // Reset cursor image when leaving elements
         const handleMouseOut = (e) => {
-            const element = e.target.closest('a, button, [data-cursor, .sidebar');
+            const element = e.target.closest('a, button, [data-cursor], .sidebar');
             if (element) {
                 setCursorImage(defaultCursor); // Reset to default cursor
             }

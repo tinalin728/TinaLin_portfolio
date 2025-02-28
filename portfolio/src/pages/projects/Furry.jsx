@@ -6,8 +6,7 @@ import Sidebar from '../../components/Sidebar';
 import PrototypeCta from '../../components/PrototypeCta';
 
 const project = projectData[2]
-console.log(projectData); // Check the whole data array
-console.log(projectData[2]); // See if index 5 exists
+
 
 export default function Furry() {
 

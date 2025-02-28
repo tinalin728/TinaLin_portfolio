@@ -254,7 +254,7 @@ function About() {
                                         My aha! moment came when I discovered AAC devices at work. Seeing how design and tech could bridge communication gaps led me to New Media Design at BCIT where I discovered my passion for both design and code. I enjoy making designs that bring warmth and connection, and turning them into life.
                                     </p>
                                     <div className='mt-10'>
-                                        <a href="/tina-resume.pdf"
+                                        <a href="/resume.pdf"
                                             target="_blank"
                                             rel="noopener noreferrer"
                                             className="primary-cta group w-fit flex items-center justify-center cursor-pointer leading-none ">
