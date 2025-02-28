@@ -32,7 +32,7 @@ const Sidebar = ({ sections }) => {
                     const isSolutions = section.label.toLowerCase() === "solutions";
 
                     return (
-                        <li key={section.id} className="flex items-center gap-[5px]">
+                        <li key={section.id} className="flex items-center gap-[5px] sidebar">
                             {/* Bullet Point */}
                             <span
                                 className={`w-4 h-[3px] transition-all duration-500 ${activeSection === section.id ? "bg-orange ml-2" : "bg-transparent"
@@ -42,7 +42,7 @@ const Sidebar = ({ sections }) => {
                             {/* Sidebar Link */}
                             <a
                                 href={`#${section.id}`}
-                                className={`normal-case text-[16px] tracking-wider transition-all duration-300 hover:text-black text-nowrap 
+                                className={`sidebar normal-case text-[16px] tracking-wider text-dark-grey hover:text-black transition-all duration-300 text-nowrap 
                                 ${activeSection === section.id
                                         ? isProblems
                                             ? "text-orange font-medium"

@@ -30,12 +30,14 @@ function Cursor() {
 
         // Change cursor image on hover
         const handleMouseOver = (e) => {
-            const element = e.target.closest('a, button, [data-cursor]');
+            const element = e.target.closest('a, button, [data-cursor], .sidebar');
             if (element) {
                 const cursorType = element.getAttribute('data-cursor');
 
                 if (cursorType === 'sticky-nav') {
                     setCursorImage(stickyPoint);
+                } else if (element.classList.contains('sidebar')) {
+                    setCursorImage(defaultCursor);
                 } else if (cursorType === 'hover') {
                     setCursorImage(thumbCursor);
                 } else if (element.tagName === 'A') {
@@ -50,7 +52,7 @@ function Cursor() {
 
         // Reset cursor image when leaving elements
         const handleMouseOut = (e) => {
-            const element = e.target.closest('a, button, [data-cursor]');
+            const element = e.target.closest('a, button, [data-cursor, .sidebar');
             if (element) {
                 setCursorImage(defaultCursor); // Reset to default cursor
             }
@@ -100,8 +102,8 @@ function Cursor() {
                 backgroundSize: 'contain',
                 backgroundRepeat: 'no-repeat',
                 pointerEvents: 'none',
-                width: '40px',
-                height: '40px',
+                width: '38px',
+                height: '38px',
                 position: 'fixed',
                 transform: 'translate(-50%, -50%)',
                 zIndex: 9999,

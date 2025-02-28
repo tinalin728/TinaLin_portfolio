@@ -19,7 +19,7 @@
     }
 
     h2 {
-        @apply text-[2.2rem] md:text-2xl font-roundo-bold capitalize tracking-wide
+        @apply text-[2.2rem] md:text-2xl font-roundo-bold capitalize
     }
 
     h3 {
@@ -31,7 +31,7 @@
     }
 
     p {
-        @apply text-sm md:text-base font-roundo tracking-wide
+        @apply text-sm md:text-base font-roundo
     }
 
     a {
