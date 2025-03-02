@@ -8,7 +8,7 @@ export const projectData = [
             "UX/UI",
         ],
         status: 'completed',
-        title: 'Tim Horton\'s App Redesign: Perfecting the offer redemption',
+        title: 'Tim Horton\'s App Redesign: Perfecting the offer redemption process',
         media: "image",
         cover: "/assets/tims/cover.jpg",
         banner: {
