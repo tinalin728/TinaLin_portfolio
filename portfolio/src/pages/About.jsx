@@ -274,9 +274,9 @@ function About() {
                         <div className='flex flex-col items-center justify-center lg:flex-row lg:items-stretch gap-10'>
                             <div className='flex-1 border-2 shadow-card rounded-2xl relative w-full md:max-w-[400px]'>
                                 <div className='h-3 w-3 bg-orange rounded-full border-2 absolute top-4 left-4'></div>
-                                <h4 className=' font-patrick py-4 border-b-2 text-center'>How I craft experieces</h4>
+                                <h4 className=' font-patrick py-4 border-b-2 text-center tracking-wide'>How I craft experieces</h4>
 
-                                <ul className='flex flex-wrap justify-center gap-3 text-nowrap py-6 px-2'>
+                                <ul className='flex flex-wrap justify-center gap-3 text-nowrap py-4 px-2'>
                                     {ux.map((item, index) => (
                                         <li key={index} className='text-sm tracking-wide border list-none border-dashed border-light-grey bg-darker-bg/60 rounded-lg w-fit px-4'> {item}</li>
                                     ))}
@@ -284,7 +284,7 @@ function About() {
                             </div>
 
                             <div className='flex-1 border-2 shadow-card rounded-2xl relative w-full md:max-w-[400px]'>
-                                <h4 className=' font-patrick h-fit py-4 border-b-2 text-center'> Where visual magic happens</h4>
+                                <h4 className=' font-patrick h-fit py-4 border-b-2 text-center tracking-wide'> Where visual magic happens</h4>
                                 <div className='h-3 w-3 bg-orange rounded-full border-2 absolute top-4 left-4'></div>
                                 <div className='flex flex-wrap justify-center gap-4 py-4 px-5'>
                                     {design.map((item, index) => (
@@ -295,7 +295,7 @@ function About() {
                                 </div>
                             </div>
                             <div className='flex-1 border-2 shadow-card rounded-2xl relative w-full md:max-w-[400px]'>
-                                <h4 className=' font-patrick h-fit py-4 border-b-2 text-center'>How I build my playground</h4>
+                                <h4 className=' font-patrick h-fit py-4 border-b-2 text-center tracking-wide'>How I build my playground</h4>
                                 <div className='h-3 w-3 bg-orange rounded-full border-2 absolute top-4 left-4'></div>
 
                                 <ul className='flex flex-wrap justify-center gap-3 text-nowrap py-4 px-2'>

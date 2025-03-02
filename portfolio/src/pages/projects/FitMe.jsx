@@ -9,7 +9,8 @@ import Box from '@mui/material/Box';
 import ImageModal from '../../components/ImageModal';
 import Sidebar from '../../components/Sidebar';
 
-const project = projectData[2]
+const project = projectData[3]
+console.log("Current Project Data:", project);
 
 // tabs
 function CustomTabPanel({ children, value, index, ...other }) {
@@ -88,7 +89,7 @@ export default function FitMe() {
                             <h2 className=''>Overview</h2>
                             <div className='content-gap flex flex-col-reverse gap-10 lg:flex-row'>
                                 <div className='flex-1'>
-                                    <h4 className='mb-10 text-dark font-patrick-hand italic tracking-wider'>{project.overview.headline} </h4>
+                                    <h4 className='mb-10 text-dark font-patrick italic tracking-wider'>{project.overview.headline} </h4>
                                     <p className='mb-10' dangerouslySetInnerHTML={{ __html: project.overview.content }} />
                                     <p className='uppercase tracking-wider underline underline-offset-[4px] font-roundo-medium text-orange'>The Challenge</p>
 
@@ -168,21 +169,21 @@ export default function FitMe() {
                                     <div className='flex-1'>
                                         <h3 className='mb-4'>What If?: Exploring solutions</h3>
                                         <p>Starting from mind mapping, I quickly jotted down all possible solutions, everything from AI body scans to quiz-based recommendations. Through this process, I narrowed it down to <span className='underline underline-offset-2'>two key solutions</span>  that would have the biggest impact:</p>
-                                        <ul className="grid gap-6 mt-10 place-content-center md:grid-cols-2">
+                                        <div className="grid gap-6 mt-10 place-content-center md:grid-cols-2">
                                             {project.define.insights.solution.map((item, index) => (
-                                                <li key={index} className="flex-1 bg-white/70 p-2  h-fit rounded-2xl shadow-md">
+                                                <div key={index} className="flex-1 bg-white/70 p-2  h-fit rounded-2xl shadow-md">
                                                     <div className='bg-white p-4 border border-gray-400 rounded-xl'>
                                                         <div className=''>
-                                                            <p className="text-[35px]">{item.icon}</p>
+                                                            <span className="text-[35px]">{item.icon}</span>
                                                         </div>
                                                         <p className="mt-2 text-[20px] font-roundo-medium text-orange border-b border-dashed border-gray-400 pb-2">
                                                             {item.title}
                                                         </p>
                                                         <p className="mt-4">{item.description}</p>
                                                     </div>
-                                                </li>
+                                                </div>
                                             ))}
-                                        </ul>
+                                        </div>
                                     </div>
                                 </div>
                                 {/* competitor analysis */}
@@ -426,7 +427,7 @@ export default function FitMe() {
                                     <h3 className='mb-10'>Try It Yourself!</h3>
                                     <iframe
                                         src="https://embed.figma.com/proto/ZpCd26RV2lSW6tLaogLtTC/pants?page-id=1064%3A7346&node-id=1078-13571&viewport=75%2C-3073%2C0.18&scaling=scale-down&content-scaling=fixed&starting-point-node-id=1066%3A10263&show-proto-sidebar=1&embed-host=share"
-                                        allowfullscreen
+                                        allowfullScreen
                                         className="w-full h-[800px]"
                                     ></iframe>
                                 </div>
@@ -442,18 +443,15 @@ export default function FitMe() {
                             <div className='content-gap'>
                                 <h3>What I learned</h3>
 
-                                <p>
-                                    <ul className='list-disc ml-4 mt-4 flex flex-col gap-4'>
-                                        <li>
-                                            <span>User & market research shaped my focus</span>: Throughout this project, I started by understanding user frustrations, which helped me uncover key pain points in the shopping experience. From there, I brainstormed various possible solutions, exploring different ways to improve the fit recommendation process. Analyzing market gaps was crucial—it guided me in narrowing down my ideas and focusing on what would truly make a difference. This process reinforced the importance of both user and market research in shaping a clear and effective design direction.
-                                        </li>
-                                        <li>
-                                            <span>Early user testing made a HUGE Difference</span>:  Testing helped me catch small but important issues, like missing visual cues and unclear offer details. Without feedback, I might not have noticed them.
-                                        </li>
-                                    </ul>
+                                <ul className='list-disc ml-4 mt-4 flex flex-col gap-4'>
+                                    <li>
+                                        <span>User & market research shaped my focus</span>: Throughout this project, I started by understanding user frustrations, which helped me uncover key pain points in the shopping experience. From there, I brainstormed various possible solutions, exploring different ways to improve the fit recommendation process. Analyzing market gaps was crucial—it guided me in narrowing down my ideas and focusing on what would truly make a difference. This process reinforced the importance of both user and market research in shaping a clear and effective design direction.
+                                    </li>
+                                    <li>
+                                        <span>Early user testing made a HUGE Difference</span>:  Testing helped me catch small but important issues, like missing visual cues and unclear offer details. Without feedback, I might not have noticed them.
+                                    </li>
+                                </ul>
 
-
-                                </p>
                             </div>
                         </div>
 

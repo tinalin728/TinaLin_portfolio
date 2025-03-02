@@ -13,6 +13,7 @@ import CraftCard from '../components/CraftCard'
 import FeatureCraftCard from '../components/FeatureCraftCard';
 import ProjectCard from '../components/ProjectCard';
 import line from "../../public/assets/icons/line.svg"
+import mockup from "../../public/assets/mockup.jpg"
 
 function Crafts() {
 
@@ -168,6 +169,40 @@ function Crafts() {
                             key={project.id} project={project}
                         />
                     ))}
+
+                    <div className='hidden md:block'>
+                        <div className="rounded-2xl border-2 shadow-card h-full w-full p-4 transition duration-500 group  md:hover:shadow-none md:hover:translate-y-1">
+                            <div>
+                                <div className="border border-default/20 relative overflow-hidden w-full rounded-xl">
+                                    <div className="h-[300px] w-full md:h-full">
+                                        <img src={mockup} alt=""
+                                            loading="lazy"
+                                            className="w-full object-cover h-full transition duration-500 ease-in-out overflow-hidden"
+
+                                        />
+                                    </div>
+                                    <div className="bg-default/60 backdrop-blur-md absolute left-0 w-full bottom-[-20%] md:group-hover:bottom-0 transition-all ease-in-out duration-500 md:py-2">
+                                        <p className="text-center text-white uppercase tracking-[1.5px] ">Coming Soon</p>
+                                    </div>
+
+                                </div>
+
+                                <div className="">
+
+                                    <div className="flex flex-wrap gap-2 mt-3 md:mt-5">
+                                        {skills.map((skill, index) => (
+                                            <div className="inline-block" key={index}>
+                                                <span className="text-base px-3 py-[2px] bg-darker-bg text-brown rounded-lg font-patrick tracking-[1.5px] text-nowrap font-bold normal-case">
+                                                    {skill}
+                                                </span>
+                                            </div>
+                                        ))}
+                                    </div>
+                                    <h3 className="mt-4 mb-6 capitalize text-md md:text-lg font-roundo-medium">More Projects Coming Soon!</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </section >
 
@@ -176,3 +211,9 @@ function Crafts() {
 }
 
 export default Crafts
+
+const skills = [
+    "UX/UI",
+    "Web Design",
+    "Web Development",
+]

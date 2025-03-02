@@ -485,7 +485,7 @@ function Home() {
 
                             <div className="md:basis-[60%]">
                                 <div className='flex flex-col gap-10 md:gap-20'>
-                                    {projectData.slice(0, 2).map((project) => {
+                                    {projectData.slice(0, 3).map((project) => {
                                         return (
                                             <ProjectCard
                                                 key={project.id} project={project}

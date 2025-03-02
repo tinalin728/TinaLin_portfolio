@@ -31,7 +31,7 @@ export const projectData = [
                 header: 'process',
                 content: 'Research → Ideation → Design → Testing → Iteration → Reflection'
             },
-            role: 'Researcher , UX/UI designer',
+            role: ['Researcher , UX/UI designer'],
             duration: '4 weeks - July 2024',
             headline: 'Tim Horton\'s is a Canadian favorite, but its app wasn’t as easy to use as its coffee is to enjoy.',
             content: "As a weekly Tim Horton's app user, I expected a smooth and easy experience. But even after the app’s redesign, small usability issues persisted.  I kept running into small frustrations that made me always wonder - <span> Why isn’t this simpler? </span> That’s when I decided to take a closer look.",
@@ -331,7 +331,7 @@ export const projectData = [
                 header: 'Features',
                 content: 'Explore Recipes, Add to Favorites, Create shopping list, dark mode'
             },
-            role: 'Web Designer, Front-end developer',
+            role: ['Web Designer, Front-end developer'],
             duration: '2 weeks - Dec, 2024',
 
             media: {
@@ -345,49 +345,50 @@ export const projectData = [
 
     },
 
-    // {
-    //     id: "furry-tales",
-    //     status: 'completed',
-    //     title: 'FurryTales - Website Redesign',
-    //     media: "image",
-    //     skills: [
-    //         "UXUI",
-    //         "Hackathon"
-    //     ],
-    //     cover: "/assets/furry/cover.jpg",
-    //     banner: {
-    //         subHeader: 'Hackathon',
-    //         header: 'FurryTales - Website Redesign',
-    //         image: {
-    //             src: '/assets/furry/cover.jpg',
-    //             altText: 'Nomly banner',
-    //             classes: 'scale-125'
-    //         },
-    //     },
+    {
+        id: "furry-tales",
+        status: 'completed',
+        title: 'Furrytales Pet- Website Redesign',
+        media: "image",
+        skills: [
+            "UXUI",
+            "Hackathon"
+        ],
+        cover: "/assets/furry/cover.jpg",
+        banner: {
+            subHeader: 'FLUI Hackathon',
+            header: 'Furrytales Pet - Website Redesign',
+            image: {
+                src: '/assets/furry/banner.png',
+                altText: 'banner',
+                classes: 'scale-125'
+            },
+        },
 
 
-    //     overview: {
-    //         user: {
-    //             title: 'Tools',
-    //             content: 'Figma, illustrator, photoshop'
-    //         },
-    //         process: {
-    //             header: 'Process',
-    //             content: 'Research, Design'
-    //         },
-    //         role: 'Researcher, UX/UI Designer',
-    //         duration: '3 days - Feb, 2025',
+        overview: {
+            user: {
+                title: 'Tools',
+                content: 'Figma, illustrator, photoshop'
+            },
+            process: {
+                header: 'Process',
+                content: 'Research → UX Audit → Wireframes → UI Design → Prototype → Iteration '
+            },
+            role: ['🐾 UX/UI Designer - Me & Suin', '🐾 Project Manager - Yungi', '🐾 Researcher - Kritika',],
 
-    //         media: {
-    //             type: 'image',
-    //             src: '/assets/nomly/intro.png',
-    //             altText: "Nomly",
-    //             caption: 'Sneak Peek',
-    //         },
+            duration: '72 hours - Feb, 2025',
 
-    //     },
+            media: {
+                type: 'image',
+                src: '/assets/nomly/intro.png',
+                altText: "Nomly",
+                caption: 'Sneak Peek',
+            },
 
-    // },
+        },
+
+    },
 
 
 
@@ -420,7 +421,7 @@ export const projectData = [
                 header: 'Process',
                 content: 'Research → Ideation → Design → Testing → Iteration → Reflection'
             },
-            role: 'Researcher , UX/UI designer',
+            role: ['Researcher , UX/UI designer'],
             duration: '4 weeks - May 2024',
             headline: 'Finding pants that fit online is always a struggle..',
             content: "As a petite shopper, I know how frustrating it is to buy pants online. Size charts are confusing, and trying to guess the right fit leads to wasted time and returns. Even with so many options, there’s no easy way to see how pants will actually fit before buying.",
@@ -664,7 +665,7 @@ export const projectData = [
             "HTML",
             "TailwindCSS",
             "JS",
-            "Team Collab",
+            "Project Management",
         ],
         title: 'Basics. - Online Apparel Store',
         media: "image",
@@ -678,32 +679,7 @@ export const projectData = [
                 classes: "scale-150"
             },
         },
-        stickyNav: [
-            {
-                id: "planning",
-                step: "01",
-                label: "Planning",
-                color: "text-orange",
-            },
-            {
-                id: "design",
-                step: "02",
-                label: "Design",
-                color: "text-orange",
-            },
-            {
-                id: "develop",
-                step: "03",
-                label: "Develop",
-                color: "text-orange",
-            },
-            {
-                id: "prototype",
-                step: "04",
-                label: "Final",
-                color: "text-orange",
-            },
-        ],
+
 
         overview: {
             user: {
@@ -714,7 +690,12 @@ export const projectData = [
                 header: 'Process',
                 content: 'Planning → Design → Develop → Final'
             },
-            role: 'Product Owner, Front-end developer',
+            role: [
+                '⇝ Web Developer/Product Owner - Me',
+                '⇝ UX writer/Scrum Master - Rana',
+                '⇝ Web Designer - Kurtis',
+                '⇝ Visual Designer - Vahan',
+            ],
             duration: '5 weeks - May, 2024 (Project itself) , 3 weeks - Oct, 2024 (Revision)',
             headline: 'Creating a minimalist e-commerce experience that blends style and functionality...',
             content: "For the Basics project, I worked with a team of four to design and develop an e-commerce platform for minimalist apparels. The project aimed to simulate a real-world team environment while implementing Agile methodologies for efficient project management. As both the Product Owner and Front-End Developer, I oversaw the project timeline while building the website from scratch.",
@@ -734,14 +715,13 @@ export const projectData = [
 
         contribution: {
             backlog: {
-                title: 'Project Backlog Creation',
-                content: 'In the Basics project, the product backlog served as the foundation for our Agile workflow. As the Product Owner, I was responsible for <span> creating and maintaining the backlog </span>. The backlog included all key tasks, such as wireframe development, front-end implementation, content creation, and stakeholder reviews. Each item was prioritized based on its importance to the project timeline and deliverables.',
                 image: {
                     src: '/assets/basics/backlog.png',
                     altText: 'backlog',
                     caption: 'backlog on Figma'
                 }
             },
+
             stories: {
                 content: 'User stories were key to guiding the project. As a group, we created several user stories and selected the most important ones. We broke each one down into its related page categories and set the order of page development priorities.',
                 image: {

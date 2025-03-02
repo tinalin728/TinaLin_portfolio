@@ -91,7 +91,7 @@ export default function Tims() {
                             <h2 className=''>Overview</h2>
                             <div className='content-gap flex flex-col-reverse items-center gap-10 lg:flex-row'>
                                 <div className='flex-1'>
-                                    <h4 className='mb-10 text-dark  italic tracking-wider'>{project.overview.headline} </h4>
+                                    <h4 className='mb-10 text-dark font-patrick italic tracking-wider'>{project.overview.headline} </h4>
                                     <p className='mb-10' dangerouslySetInnerHTML={{ __html: project.overview.content }} />
 
                                     <p className='uppercase tracking-wider underline underline-offset-[4px] font-roundo-medium text-orange'>The Challenge</p>
@@ -133,7 +133,7 @@ export default function Tims() {
                                         <p className='font-roundo-medium'>{project.research.survey.question} </p>
                                         <p dangerouslySetInnerHTML={{ __html: project.research.survey.content }} />
                                     </div >
-                                    <div className='flex flex-col gap-8 mt-10 lg:flex-row'>
+                                    <div className='flex flex-col gap-8 mt-10 md:flex-row'>
                                         <div className="basis-[46%] grid gap-8 lg:gap-0">
                                             {project.research.survey.imgRow1.map((img, index) => (
                                                 <div key={index}>
@@ -186,8 +186,8 @@ export default function Tims() {
                                                     {user.time && (
                                                         <p dangerouslySetInnerHTML={{ __html: user.time }} className='px-4' />
                                                     )}
-                                                    <div className='p-4'>
-                                                        <p className='font-patrick-hand italic leading-normal text-darkgrey  text-[15px]'>"
+                                                    <div className='py-5 px-4'>
+                                                        <p className='font-patrick tracking-wide italic leading-[1.2] text-dark-grey'>"
                                                             {user.quote} "
                                                         </p>
                                                     </div>
@@ -232,7 +232,7 @@ export default function Tims() {
                                     <p className='pb-4'>{project.research.problems.content}</p>
 
                                     {/* issue 1 */}
-                                    <div className='flex flex-col-reverse items-center md:flex-row gap-4 md:gap-8 md:mt-4 lg:gap-12 lg:mt-6'>
+                                    <div className='flex flex-col-reverse items-center lg:flex-row gap-4 md:gap-8 md:mt-4 lg:gap-12 lg:mt-6'>
                                         <div className='flex-1 flex gap-6'>
                                             <div className='max-w-[300px]'>
                                                 <img src={project.research.problems.issue1.screenSrc} alt='screen'
@@ -261,7 +261,7 @@ export default function Tims() {
                                     </div>
 
                                     {/* issue 2 */}
-                                    <div className='mt-20 flex flex-col items-center justify-end gap-4 md:flex-row md:gap-8 lg:gap-12 '>
+                                    <div className='mt-20 flex flex-col items-center justify-end gap-4 lg:flex-row md:gap-8 lg:gap-12 '>
                                         <div className='flex-1 w-full h-fit bg-white/50 p-2 rounded-2xl shadow-md'>
                                             <div className='flex flex-col gap-3 bg-white border border-gray-400 p-4 h-full rounded-xl'>
                                                 <img src={project.research.problems.issue2.iconSrc} alt={project.research.problems.issue2.altText}
@@ -290,7 +290,7 @@ export default function Tims() {
                                     </div>
 
                                     {/* issue 3 */}
-                                    <div className='my-20 flex flex-col-reverse items-center gap-4 md:flex-row  md:gap-8 lg:gap-12 '>
+                                    <div className='my-20 flex flex-col-reverse items-center gap-4 lg:flex-row  md:gap-8 lg:gap-12 '>
                                         <div className='max-w-[280px] p-3'>
                                             <img src={project.research.problems.issue3.screenSrc}
                                                 loading='lazy'
@@ -493,7 +493,7 @@ export default function Tims() {
                                     {project.iteration.final.screens.map((item, index) => (
                                         <div
                                             key={index}
-                                            className={`flex flex-col gap-4 justify-center md:gap-12 md:items-center ${index % 2 !== 0 ? "md:flex-row-reverse" : "md:flex-row"
+                                            className={`flex flex-col gap-4 justify-center md:gap-12 md:items-center ${index % 2 !== 0 ? "lg:flex-row-reverse" : "lg:flex-row"
                                                 }`}
                                         >
                                             <div className="flex-1">

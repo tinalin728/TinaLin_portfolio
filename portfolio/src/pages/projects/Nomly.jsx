@@ -62,7 +62,7 @@ export default function Nomly() {
                             <h2 className='mt-[5rem]'>Overview</h2>
                             <div className='content-gap flex flex-col-reverse items-start gap-10 lg:flex-row'>
                                 <div className='basis-[60%]'>
-                                    <h4 className='mb-10 text-dark font-patrick-hand italic tracking-wider'>
+                                    <h4 className='mb-10 font-patrick italic tracking-wider'>
                                         Cooking Alone Can Be a Challenge.
                                     </h4>
                                     <p className='mb-10'>

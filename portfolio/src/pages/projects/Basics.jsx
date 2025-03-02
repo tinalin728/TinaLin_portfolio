@@ -42,7 +42,7 @@ const CUSTOM_ANIMATION = {
     unmount: { scale: .9 },
 };
 
-const project = projectData[3]
+const project = projectData[4]
 
 
 export default function Basics() {
@@ -104,7 +104,7 @@ export default function Basics() {
                             <h2 className='mt-[5rem]'>Overview</h2>
                             <div className='content-gap flex flex-col-reverse items-start gap-10 lg:flex-row'>
                                 <div className='flex-1'>
-                                    <h4 className='mb-10 text-brown font-patrick-hand italic tracking-wider'>{project.overview.headline} </h4>
+                                    <h4 className='mb-10 text-dark font-patrick italic tracking-wider'>{project.overview.headline} </h4>
                                     <p className='mb-10' dangerouslySetInnerHTML={{ __html: project.overview.content }} />
 
                                     <p className='uppercase tracking-wider underline underline-offset-[4px] text-orange font-roundo-medium'>The Challenge</p>
@@ -136,16 +136,15 @@ export default function Basics() {
                         <div className='section-gap section-gap border-t-2 border-light-grey border-dashed'>
                             <h2>Planning</h2>
 
-                            <div className='content-gap flex flex-col md:flex-row gap-10 '>
+                            <div className='content-gap flex flex-col lg:flex-row gap-10 '>
                                 <div className='flex-1' >
-                                    <h3 className='mb-4'>{project.contribution.backlog.title}</h3>
-                                    <p dangerouslySetInnerHTML={{ __html: project.contribution.backlog.content }} />
+                                    <h3 className='mb-4'>Project Backlog Creation</h3>
+                                    <p>In the Basics project, the product backlog served as the foundation for our Agile workflow. As the Product Owner, I was responsible for <span> creating and maintaining the backlog </span>. The backlog included all key tasks, such as wireframe development, front-end implementation, content creation, and stakeholder reviews. Each item was prioritized based on its importance to the project timeline and deliverables.</p>
                                 </div>
 
                                 <div className='flex-1 p-2  bg-white/60 h-full rounded-2xl shadow-md'>
                                     <img src={project.contribution.backlog.image.src} alt={project.contribution.backlog.image.altText}
                                         loading="lazy"
-
                                         className='w-full h-full max-h-[400px] object-cover border border-gray-400 rounded-xl'
                                         onClick={() => handleImgClick({
                                             src: project.contribution.backlog.image.src,
@@ -162,7 +161,7 @@ export default function Basics() {
                                 />
                             </div>
 
-                            <div className='content-gap flex flex-col gap-6 md:flex-row-reverse'>
+                            <div className='content-gap flex flex-col gap-6 lg:flex-row-reverse'>
                                 <div className='flex-1'>
                                     <h3 className='mb-4'>User Stories</h3>
                                     <p>{project.contribution.stories.content}</p>
@@ -184,7 +183,7 @@ export default function Basics() {
                                 <h2 className='mt-2'>Design</h2>
                             </div>
 
-                            <div className='content-gap flex flex-col md:flex-row gap-10'>
+                            <div className='content-gap flex flex-col lg:flex-row gap-10'>
                                 <div className='flex-1'>
                                     <h3 className='mb-4'>{project.contribution.sitemap.title}</h3>
                                     <p>{project.contribution.sitemap.content}</p>
@@ -209,7 +208,7 @@ export default function Basics() {
                                 />
                             </div>
 
-                            <div className='content-gap flex flex-col md:flex-row-reverse gap-10'>
+                            <div className='content-gap flex flex-col lg:flex-row-reverse gap-10'>
                                 <div className='flex-1'>
                                     <h3 className='mb-4'>{project.contribution.wireframe.title}</h3>
                                     <p>{project.contribution.wireframe.content}</p>
@@ -267,7 +266,7 @@ export default function Basics() {
                                     <div className='flex-1'>
                                         <img
                                             loading="lazy"
-                                            src={project.dev.tailwind.image.src} alt={project.dev.tailwind.image.altText} className='w-[80%]' />
+                                            src={project.dev.tailwind.image.src} alt={project.dev.tailwind.image.altText} className='w-[50%] mx-auto lg:w-[60%]' />
                                     </div>
                                 </div>
                             </div>

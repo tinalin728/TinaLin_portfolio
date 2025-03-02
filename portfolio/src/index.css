@@ -23,11 +23,11 @@
     }
 
     h3 {
-        @apply text-xl font-roundo-semibold capitalize mb-2 leading-[1.75]
+        @apply text-xl font-roundo-semibold capitalize mb-2 leading-[1.75] tracking-[.5px]
     }
 
     h4 {
-        @apply text-md md:text-lg font-roundo-medium mb-2 leading-[1.5]
+        @apply text-md md:text-lg font-roundo-medium mb-2 leading-[1.5] tracking-tight
     }
 
     p {

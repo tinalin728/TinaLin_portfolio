@@ -20,7 +20,7 @@ export default function PrototypeCta({ inPageLink, scrollToId, webLink }) {
                 webLink && webLink.link && (
                     <div className='flex gap-1 items-center justify-center'>
                         <a href={webLink.link} target='__blank' rel="noopener noreferrer"
-                            className='relative z-10 h-full group-hover:text-black'>
+                            className='relative z-10 h-full group-hover:text-black normal-case'>
                             {webLink.text}
                         </a>
                         <div><img src={browse} alt="browse icon" width={22} /></div>
