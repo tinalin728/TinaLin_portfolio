@@ -162,7 +162,7 @@ function Crafts() {
             </section>
 
 
-            <section className='pb-20 md:pb-[10rem] lg:pb-[15rem] craftSection'>
+            <section className='bg-primary pb-20 md:pb-[10rem] lg:pb-[15rem] craftSection'>
                 <div className=' max-w-container grid gap-6 md:grid-cols-2'>
                     {projectData.map((project) => (
                         <ProjectCard
@@ -171,11 +171,11 @@ function Crafts() {
                     ))}
 
                     <div className='hidden md:block'>
-                        <div className="rounded-2xl border-2 shadow-card h-full w-full p-4 transition duration-500 group  md:hover:shadow-none md:hover:translate-y-1">
+                        <div className="rounded-2xl border-2 shadow-none h-full w-full p-4 transition duration-500 group">
                             <div>
                                 <div className="border border-default/20 relative overflow-hidden w-full rounded-xl">
                                     <div className="h-[300px] w-full md:h-full">
-                                        <img src={mockup} alt=""
+                                        <img src={mockup} alt="more projects"
                                             loading="lazy"
                                             className="w-full object-cover h-full transition duration-500 ease-in-out overflow-hidden"
 
@@ -205,7 +205,6 @@ function Crafts() {
                     </div>
                 </div>
             </section >
-
         </>
     )
 }

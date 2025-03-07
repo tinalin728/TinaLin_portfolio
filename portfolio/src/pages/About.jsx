@@ -155,44 +155,13 @@ function About() {
 
     }, [])
 
-    const slides = [
-        { id: 1, image: graphics, content: '#Branding. Swipe ->' },
-        { id: 2, image: uxui, content: '#Wireframing' },
-        { id: 3, image: uxui, content: '#Wireframing' },
-    ];
 
-    const [liked, setLiked] = useState({});
-    const [pulsing, setPulsing] = useState({});
-    const toggleLike = (id) => {
-        console.log(`Toggling button with id: ${id}`); // Debugging
-
-        // Trigger pulsing animation for the specific button
-        setPulsing((prev) => ({
-            ...prev,
-            [id]: true, // Set pulsing to true for this button
-        }));
-
-        setTimeout(() => {
-            setPulsing((prev) => ({
-                ...prev,
-                [id]: false,
-            }));
-        }, 150);
-
-        // Toggle liked state for the specific button
-        setLiked((prev) => ({
-            ...prev,
-            [id]: !prev[id], // Toggle the liked state for this button
-        }));
-
-        // console.log('Updated Liked State:', liked); // Debugging
-    };
 
 
 
     return (
         <>
-            <section className='py-[6rem] p-0 relative lg:py-[8rem]'>
+            <section className='bg-primary py-[6rem] p-0 relative lg:py-[8rem]'>
                 <div className='max-w-container flex flex-col justify-center items-center'>
                     <div className='tag mx-auto py-1 px-4 bg-charcoal w-fit rounded-md -rotate-6'>
                         <p className='tracking-widest font-patrick uppercase text-white text-sm md:text-base text-nowrap'>Journey</p>
@@ -213,13 +182,13 @@ function About() {
 
             </section>
             {/* aboutSection */}
-            <div className=' pb-20'>
+            <div className='aboutSection pb-20 h-full bg-primary relative z-10'>
                 <div className='max-w-container'>
                     {/* image */}
-                    <section className='flex flex-col lg:flex-row gap-10 items-center justify-center pb-16 md:pb-20'>
+                    <section className='bg-primary flex flex-col lg:flex-row gap-10 items-center justify-center pb-16 md:pb-20'>
                         <div className='lg:flex-1'>
                             <div className='flex flex-row relative'>
-                                <div className='absolute bottom-0 z-10 md:relative md:bottom-0 md:max-w-[350px] w-full -rotate-3 bg-white flex flex-col p-4 lg:hover:-translate-y-2 lg:hover:-rotate-1 transition-all duration-300 rounded-2xl border-2 shadow-card'
+                                <div className='absolute bottom-0 z-10 md:relative md:bottom-0 md:max-w-[350px] w-full -rotate-3 bg-white flex flex-col p-4 lg:hover:-translate-y-2 lg:hover:-rotate-1 transition-all duration-300 rounded-2xl border-2'
                                 >
                                     <div className='h-[320px] md:h-[380px] w-full rounded-xl overflow-hidden'>
                                         <img src={profilePic} alt="profile" className='object-cover w-full h-full' />
@@ -228,7 +197,7 @@ function About() {
                                         <p className='font-patrick text-dark-grey italic tracking-wider'>Say hi</p>
                                     </div>
                                 </div>
-                                <div className='relative z-0 w-full bg-white flex flex-col p-4 md:translate-y-4 md:max-w-[350px] lg:-translate-x-10 lg:hover:rotate-3 transition-all duration-300 rounded-2xl border-2 shadow-card'
+                                <div className='relative z-0 w-full bg-white flex flex-col p-4 md:translate-y-4 md:max-w-[350px] lg:-translate-x-10 lg:hover:rotate-3 transition-all duration-300 rounded-2xl border-2'
                                 >
                                     <div className='h-[320px] md:h-[380px] w-full rounded-xl overflow-hidden'>
                                         <img src={workPic} alt="work photo" className='object-cover w-full h-full' />
@@ -257,10 +226,10 @@ function About() {
                                         <a href="/resume.pdf"
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="primary-cta group w-fit flex items-center justify-center cursor-pointer leading-none ">
+                                            className="border-2 rounded-full px-4 py-3 group w-fit flex items-center justify-center cursor-pointer leading-none shadow-button hover:shadow-none hover:translate-y-1 transition-all duration-200 ease-in-out">
+                                            <div className="mr-2"><img src={iconDownload} alt="" width={25} /></div>
                                             <div className="relative z-10 transition duration-100 ease-in-out h-full text-dark group-hover:text-black flex items-center justify-center">Resume
                                             </div>
-                                            <div className="text-xl ml-1 scale-[.9] group-hover:scale-100 group-hover:translate-x-[3px] transition-all duration-200 ease-in-out mr-1"><img src={iconDownload} alt="" width={20} /></div>
                                         </a>
                                     </div>
                                 </div>
@@ -268,13 +237,13 @@ function About() {
                         </div>
                     </section>
 
-                    <section className='py-16 md:py-20'>
+                    <section className='bg-primary py-16 md:py-20'>
                         <h3 className='leading-none normal-case mb-10 text-center'>The <span className='font-patrick text-orange tracking-wider px-1 border border-dashed border-light-grey rounded-lg mx-1'> tools</span> behind my creations</h3>
 
                         <div className='flex flex-col items-center justify-center lg:flex-row lg:items-stretch gap-10'>
-                            <div className='flex-1 border-2 shadow-card rounded-2xl relative w-full md:max-w-[400px]'>
+                            <div className='flex-1 border-2 rounded-2xl relative w-full md:max-w-[400px]  overflow-hidden'>
                                 <div className='h-3 w-3 bg-orange rounded-full border-2 absolute top-4 left-4'></div>
-                                <h4 className=' font-patrick py-4 border-b-2 text-center tracking-wide'>How I craft experieces</h4>
+                                <h4 className=' font-patrick py-3 border-b-2 text-center tracking-wide'>How I craft experieces</h4>
 
                                 <ul className='flex flex-wrap justify-center gap-3 text-nowrap py-4 px-2'>
                                     {ux.map((item, index) => (
@@ -283,8 +252,8 @@ function About() {
                                 </ul>
                             </div>
 
-                            <div className='flex-1 border-2 shadow-card rounded-2xl relative w-full md:max-w-[400px]'>
-                                <h4 className=' font-patrick h-fit py-4 border-b-2 text-center tracking-wide'> Where visual magic happens</h4>
+                            <div className='flex-1 border-2 rounded-2xl relative w-full md:max-w-[400px]'>
+                                <h4 className=' font-patrick h-fit py-3 border-b-2 text-center tracking-wide'> Where visual magic happens</h4>
                                 <div className='h-3 w-3 bg-orange rounded-full border-2 absolute top-4 left-4'></div>
                                 <div className='flex flex-wrap justify-center gap-4 py-4 px-5'>
                                     {design.map((item, index) => (
@@ -294,8 +263,8 @@ function About() {
                                     ))}
                                 </div>
                             </div>
-                            <div className='flex-1 border-2 shadow-card rounded-2xl relative w-full md:max-w-[400px]'>
-                                <h4 className=' font-patrick h-fit py-4 border-b-2 text-center tracking-wide'>How I build my playground</h4>
+                            <div className='flex-1 border-2 rounded-2xl relative w-full md:max-w-[400px]'>
+                                <h4 className=' font-patrick h-fit py-3 border-b-2 text-center tracking-wide'>How I build my playground</h4>
                                 <div className='h-3 w-3 bg-orange rounded-full border-2 absolute top-4 left-4'></div>
 
                                 <ul className='flex flex-wrap justify-center gap-3 text-nowrap py-4 px-2'>
@@ -307,7 +276,7 @@ function About() {
                         </div>
                     </section >
 
-                    <section className='max-w-container py-16 md:py-20'>
+                    <section className='bg-primary max-w-container py-16 md:py-20'>
                         <h3 className='text-center'>What I also<span className='font-patrick text-orange tracking-wider px-1 border border-dashed border-light-grey rounded-lg mx-1'>enjoy</span> </h3>
 
                         <div className='flex flex-col justify-center items-center gap-6 mt-4 md:flex-row md:mt-10 md:items-start'>

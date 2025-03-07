@@ -52,7 +52,7 @@ export default function Nomly() {
         <>
             <BackToTop />
             <ProjectBanner project={project} />
-            <div className='max-w-container md:flex md:gap-8 lg:gap-14'>
+            <div className='max-w-container md:flex md:gap-8 lg:gap-14 bg-primary relative z-10'>
                 <Sidebar sections={sections} />
 
                 <div className='overflow-hidden'>

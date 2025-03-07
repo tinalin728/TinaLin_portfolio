@@ -94,7 +94,7 @@ export default function Basics() {
             <ProjectBanner project={project} />
 
             <BackToTop />
-            <div className='max-w-container md:flex md:gap-8 lg:gap-14'>
+            <div className='max-w-container md:flex md:gap-8 lg:gap-14 relative z-10 bg-primary'>
                 <Sidebar sections={sections} />
 
                 <div className='overflow-hidden'>

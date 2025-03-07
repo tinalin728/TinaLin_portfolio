@@ -45,7 +45,7 @@ export default function Furry() {
         <>
             <ProjectBanner project={project} />
             <BackToTop />
-            <div className='max-w-container md:flex md:gap-10 lg:gap-14'>
+            <div className='max-w-container md:flex md:gap-10 lg:gap-14 bg-primary relative z-10'>
                 <Sidebar sections={sections} />
                 <div className='overflow-hidden'>
                     {/* overview */}

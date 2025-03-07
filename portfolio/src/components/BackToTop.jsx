@@ -32,7 +32,7 @@ function BackToTop() {
                 transform: showBtn ? 'scale(1)' : 'scale(0.9)',
             }}
 
-            className='fixed flex bottom-10 left-1/2 -translate-x-1/2 items-center h-[50px] w-[50px] justify-center z-[50] bg-charcoal bg-opacity-[.8] shadow-md rounded-xl cursor-pointer'
+            className='fixed flex bottom-10 left-1/2 -translate-x-1/2 items-center h-[50px] w-[50px] justify-center z-[50] rounded-full border-2 bg-primary cursor-pointer shadow-button hover:shadow-none hover:bottom-[2.4rem] transition-all duration-200 ease-in-out'
             onClick={scrollToTop}
         >
             <svg
@@ -40,7 +40,7 @@ function BackToTop() {
                 height={24}
                 viewBox="0 0 24 24"
                 fill="none"
-                stroke="#ffffff"
+                stroke="#000000"
                 strokeWidth={2}
                 strokeLinecap="round"
                 strokeLinejoin="round"

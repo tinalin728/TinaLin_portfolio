@@ -3,20 +3,14 @@ import SocialIcon from '../components/buttons/SocialIcon';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Matter from 'matter-js'
-import { ReactLenis, useLenis } from 'lenis/react'
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faLinkedinIn, faGithub } from "@fortawesome/free-brands-svg-icons"
-import { faEnvelope } from "@fortawesome/free-regular-svg-icons"
-
-import WindowWidth from '../hooks/WindowWidth';
 
 import coffee from '../../public/assets/icons/coffee-white.png'
-import { useGSAP } from '@gsap/react';
 
 import mail from "../../public/assets/icons/mail.svg"
 import github from "../../public/assets/icons/github.svg"
 import linkedin from "../../public/assets/icons/linkedin.svg"
+import lineWhite from "../../public/assets/icons/line-white.svg"
+
 
 function Footer() {
 
@@ -402,51 +396,27 @@ function Footer() {
                         {/* <h2 className='font-craftwork font-extrabold text-light-yellow-bg text-shadow text-stroke text-center footer-header tracking-[5px]'>
                             Say Hello
                         </h2> */}
-                        <div className='text-center text-primary'>
-                            <h2 className='sub-header  md:mx-0 md:tracking-wider'>
+                        <div className='text-center text-primary relative h-full'>
+                            <h2 className='sub-header  md:mx-0 md:tracking-wider leading-snug'>
                                 Send a <span className='font-patrick text-orange'>friendly</span>
                                 <br />Hello ☻
                             </h2>
-                        </div>
 
-                        {/* <p className='text-center font-roundo tracking-normal  text-md md:text-lg relative z-0'> I would love to hear from you! <br />
-                            Feel free to reach out to me about anything and let’s get creative together!</p> */}
-
-
-                        {/* <div className='z-10 flex flex-col gap-4 justify-center items-center md:flex-row'>
-                            <div className='flex gap-4'>
-                                <SocialIcon
-                                    href='https://github.com/tinalin728'
-                                    icon={faGithub}
-                                    additionalClasses='border-light-yellow-bg  shadow-white hover:shadow-white-hover'
-                                />
-                                <SocialIcon
-                                    href='https://www.linkedin.com/in/tina-lin-000613b5/'
-                                    icon={faLinkedinIn}
-                                    additionalClasses='border-light-yellow-bg  text-light-yellow-bg shadow-white hover:shadow-white-hover'
-                                />
-                                <SocialIcon
-                                    href="mailto:contact@tinalin.ca"
-                                    icon={faEnvelope}
-                                    additionalClasses='md:hidden border-light-yellow-bg text-light-yellow-bg shadow-white hover:shadow-white-hover'
-                                />
+                            <div className='absolute bottom-16 md:bottom-[5.5rem] right-0 z-[99] w-[50%]'>
+                                <img src={lineWhite} alt="" />
                             </div>
-
-                            <a href="mailto:contact@tinalin.ca" className='hidden md:inline-block px-5 py-[.55rem] border-2 border-white rounded-full text-white shadow-white text-base hover:shadow-white-hover hover:translate-x-[.5%] transition-all duration-500 font-roundo-semibold tracking-[3px] uppercase '>
-                                contact@tinalin.ca
-                            </a>
-                        </div> */}
+                        </div>
 
                         <div className='flex gap-6 mt-4 items-center'>
                             <a href='https://github.com/tinalin728' target='_blank'>
-                                <img src={github} alt="github icon" className='w-[58px] hover:rotate-3 hover:scale-[.98] transition-all duration-200' />
+                                <img src={github} alt="github icon" className='w-[60px] hover:rotate-3 hover:scale-[.98] transition-all duration-200' />
                             </a>
 
                             <a href='https://www.linkedin.com/in/tina-lin-000613b5/' target='_blank'>
-                                <img src={linkedin} alt="linkedin icon" className='w-[58px] hover:-rotate-3 hover:scale-[.98] transition-all duration-200' />
+                                <img src={linkedin} alt="linkedin icon" className='w-[60px] hover:-rotate-3 hover:scale-[.98] transition-all duration-200' />
                             </a>
                             <a href='mailto:contact@tinalin.ca'>
-                                <img src={mail} alt="email icon" className='w-[58px] hover:rotate-3 hover:scale-[.98] transition-all duration-200' />
+                                <img src={mail} alt="email icon" className='w-[60px] hover:rotate-3 hover:scale-[.98] transition-all duration-200' />
                             </a>
                         </div>
                     </div>
@@ -454,10 +424,10 @@ function Footer() {
             </div>
 
             <div className=' border-t border-primary mt-10'>
-                <div className='max-w-container flex flex-col items-center justify-center md:flex-row md:justify-between py-3'>
-                    <div className='flex items-center gap-3'>
+                <div className='max-w-container flex flex-col items-center justify-center gap-2 md:flex-row md:justify-between py-3'>
+                    <div className='flex flex-col justify-center items-center md:flex-row md:gap-2'>
                         <div><img src={coffee} alt="" className='w-[35px]' /></div>
-                        <span className='text-base tracking-widest text-primary  font-patrick'>Made with shots of espresso</span>
+                        <span className='text-base tracking-widest text-primary  font-patrick text-center leading-normal'>Designed and Developed with shots of espresso</span>
                     </div>
                     <div>
                         <span className='text-base tracking-widest font-patrick text-primary '> &copy; 2024 Tina Lin</span>

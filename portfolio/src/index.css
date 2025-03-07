@@ -35,7 +35,7 @@
     }
 
     a {
-        @apply text-sm md:text-base tracking-[1.5px] font-roundo-medium uppercase cursor-none
+        @apply text-sm md:text-base font-roundo-medium cursor-none
     }
 
 

@@ -406,71 +406,72 @@ function Home() {
     return (
         <>
             <div className='relative'>
-                <section ref={heroRef} className='h-[85vh] w-full outer-container relative -mt-[3rem] md:mt-0 mb-14 md:mb-20'>
-                    {positions.map((pos, index) => {
-                        return (
-                            <div
-                                key={index}
-                                ref={(el) => (glitchRefs.current[index] = el)}
-                                className="glitch-element hidden md:block md:absolute md:-translate-x-1/2 md:-translate-y-1/2 md:origin-center md:-mt-2"
-                                style={{ top: pos.top, left: pos.left }}
-                            >
-                                <img src={outline} loading="lazy" alt="" className="w-full" />
-                            </div>
-                        );
-                    })}
+                <section ref={heroRef} className='sticky top-[90.77px]'>
+                    <div className='h-[85vh] w-full outer-container relative -mt-[3rem] md:mt-0 mb-14 md:mb-20'>
+                        {positions.map((pos, index) => {
+                            return (
+                                <div
+                                    key={index}
+                                    ref={(el) => (glitchRefs.current[index] = el)}
+                                    className="glitch-element hidden md:block md:absolute md:-translate-x-1/2 md:-translate-y-1/2 md:origin-center md:-mt-2"
+                                    style={{ top: pos.top, left: pos.left }}
+                                >
+                                    <img src={outline} loading="lazy" alt="" className="w-full" />
+                                </div>
+                            );
+                        })}
 
+                        <div className='relative max-w-container w-full h-full flex flex-col items-center justify-center'>
+                            <div className='-mt-20 inline-flex flex-col items-center justify-center gap-2 md:-mt-14 relative'>
+                                <div ref={refs.line1} className='inline-block px-4 py-2 md:px-8 md:py-4 lg:px-10 lg:py-3 xl:py-5 bg-charcoal rounded-md w-fit -translate-x-2'>
+                                    <h2 className='text-white big-header font-patrick tracking-widest'>The</h2>
+                                </div>
+                                <div ref={refs.line2} className='inline-block px-4 py-2 md:px-6 md:py-4  lg:px-10 lg:py-3 xl:py-5 bg-charcoal rounded-md w-fit translate-x-0'>
+                                    <h2 className='text-white big-header'> Product
+                                        <span className='font-patrick pl-4'>&</span>
+                                    </h2>
+                                </div>
 
-                    <div className='relative max-w-container w-full h-full flex flex-col items-center justify-center'>
-                        <div className='-mt-20 inline-flex flex-col items-center justify-center gap-2 md:-mt-14 relative'>
-                            <div ref={refs.line1} className='inline-block px-4 py-2 md:px-8 md:py-4 lg:px-10 lg:py-3 xl:py-5 bg-charcoal rounded-md w-fit -translate-x-2'>
-                                <h2 className='text-white big-header font-patrick tracking-widest'>The</h2>
-                            </div>
-                            <div ref={refs.line2} className='inline-block px-4 py-2 md:px-6 md:py-4  lg:px-10 lg:py-3 xl:py-5 bg-charcoal rounded-md w-fit translate-x-0'>
-                                <h2 className='text-white big-header'> Product
-                                    <span className='font-patrick pl-4'>&</span>
-                                </h2>
+                                <div ref={refs.line3} className='inline-block px-4 py-2 md:px-6 md:py-4 lg:px-8 xl:px-10 xl:py-5 mt-2 md:mt-4 bg-charcoal rounded-md  w-fit translate-y-1 -translate-x-2 md:-translate-x-4 lg:-translate-x-[12%]'>
+                                    <h2 className='big-header font-patrick tracking-widest text-white'> Design <span className='text-white tracking-normal font-roundo'> of</span> </h2>
+                                </div>
+                                <div ref={refs.line4} className='inline-block px-4 py-2 md:px-6 md:py-4  lg:px-10 lg:py-3 xl:py-5 mt-2 md:mt-4 bg-charcoal rounded-md w-fit -rotate-4 translate-x-10 relative'>
+                                    <h1 className='text-white big-header'>
+                                        Tina Lin
+                                    </h1>
+                                </div>
                             </div>
 
-                            <div ref={refs.line3} className='inline-block px-4 py-2 md:px-6 md:py-4 lg:px-8 xl:px-10 xl:py-5 mt-2 md:mt-4 bg-charcoal rounded-md  w-fit translate-y-1 -translate-x-2 md:-translate-x-4 lg:-translate-x-[12%]'>
-                                <h2 className='big-header font-patrick tracking-widest text-white'> Design <span className='text-white tracking-normal font-roundo'> of</span> </h2>
+                            <div className='absolute left-1/2 -translate-x-1/2 text-nowrap md:left-[18%] md:bottom-[2%] lg:left-[10%] bottom-5'>
+                                <div className=''>
+                                    <a href='#crafts'
+                                        onClick={(e) => {
+                                            e.preventDefault();
+                                            document.getElementById("crafts")?.scrollIntoView({ behavior: "smooth" });
+                                        }}
+                                        className='text-base tracking-[1.5px] font-roundo-medium uppercase flex items-end gap-2'>
+                                        <div><img src={mouse} alt="mouse icon" width={25} className='shake-animation' /> </div>
+                                        Scroll More
+                                    </a>
+                                </div>
                             </div>
-                            <div ref={refs.line4} className='inline-block px-4 py-2 md:px-6 md:py-4  lg:px-10 lg:py-3 xl:py-5 mt-2 md:mt-4 bg-charcoal rounded-md w-fit -rotate-4 translate-x-10 relative'>
-                                <h1 className='text-white big-header'>
-                                    Tina Lin
-                                </h1>
-                            </div>
-                        </div>
-
-                        <div className='absolute left-1/2 -translate-x-1/2 text-nowrap md:left-[18%] md:bottom-[2%] lg:left-[12%] bottom-5'>
-                            <div className=''>
-                                <a href='#crafts'
-                                    onClick={(e) => {
-                                        e.preventDefault();
-                                        document.getElementById("crafts")?.scrollIntoView({ behavior: "smooth" });
-                                    }}
-                                    className='text-base tracking-[1.5px] font-roundo-medium uppercase flex items-end gap-2'>
-                                    <div><img src={mouse} alt="mouse icon" width={25} className='shake-animation' /> </div>
-                                    Scroll More
-                                </a>
-                            </div>
-                        </div>
-                        <div className='absolute right-1/2 bottom-[13%] translate-x-1/2 md:right-[20%] lg:right-[11%] md:bottom-[2%]'>
-                            <div className='flex gap-2'>
-                                <div><img src={location} alt="" width={23} /></div>
-                                <p className='text-base tracking-[1.5px] font-roundo-medium uppercase flex items-center text-nowrap'> Vancouver, BC
-                                </p>
+                            <div className='absolute right-1/2 bottom-[13%] translate-x-1/2 md:right-[20%] lg:right-[11%] md:bottom-[2%]'>
+                                <div className='flex gap-2'>
+                                    <div><img src={location} alt="" width={23} /></div>
+                                    <p className='text-base tracking-[1.5px] font-roundo-medium uppercase flex items-center text-nowrap'> Vancouver, BC
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </section >
 
-                <section ref={craftRef} id='crafts' className="relative h-full py-16 md:py-20 bg-primary w-full">
+                <section ref={craftRef} id='crafts' className="relative h-full py-16 md:py-20 bg-primary w-full border-t border-dashed">
                     <div className='max-w-container relative'>
-                        <div className='relative flex flex-col items-center md:items-start md:flex-row-reverse justify-between'>
+                        <div className='relative flex flex-col items-center md:items-start md:flex-row justify-between'>
                             <div className='h-fit pb-4 md:pb-[20rem] md:sticky md:top-20'>
-                                <div className='inline-flex items-center justify-center mx-auto flex-col md:basis-[40%]  md:justify-end md:items-end'>
-                                    <h2 className='w-fit text-center md:text-end sub-header font-black'> I <span className='sub-header '>Design</span> <br /> <span className='text-orange font-patrick font-thin'> &</span> Code</h2>
+                                <div className='inline-flex items-center justify-center flex-col md:basis-[40%] md:items-start'>
+                                    <h2 className='w-fit text-center sub-header font-black md:text-left'> I <span className='sub-header '>Design</span> <br /> <span className='text-orange font-patrick font-thin'>&</span> Code</h2>
                                     <div>
                                         <img src={line} alt="" width={250} />
                                     </div>
@@ -501,12 +502,9 @@ function Home() {
                     </div>
                 </section >
 
-                <section className='max-w-container h-full relative pt-16 md:pt-20 pb-20 md:pb-[10rem] lg:pb-[15rem]'>
-                    <div className='absolute z-0 rotate-[20deg] top-10 right-0'>
-                        <img src={cloud} alt="icon" />
-                    </div>
-                    <div className='flex flex-col gap-10 md:flex-row md:justify-between md:gap-20'>
-                        <div className='flex flex-col w-full px-6 py-12 md:p-10 bg-white border-2 rounded-2xl relative shadow-card'
+                <section className='max-w-container h-full relative pt-16 md:pt-20 pb-20 md:pb-[10rem] lg:pb-[15rem] bg-primary'>
+                    <div className='flex flex-col gap-10 md:flex-row md:justify-between md:gap-12 lg:gap-20'>
+                        <div className='flex flex-col w-full px-6 py-12 md:p-10 bg-white border-2 rounded-2xl relative'
                             style={{ backgroundImage: `url(${grain})` }}
                         >
                             <h2 className='sub-header'> A <br /> <span className='leading-[1.2] text-[50px] md:text-[60px] lg:text-[65px] text-orange font-patrick font-normal'>brief</span>  Linstory</h2>
@@ -519,13 +517,17 @@ function Home() {
                             <PrimaryCta to="/about" text="Read More" />
                         </div>
 
-                        <div className='h-full w-full max-w-[300px] mx-auto bg-white flex flex-col p-4 rotate-[4deg] md:max-w-[350px] border-2 rounded-xl shadow-card'
-                        >
-                            <div className='h-[320px] md:h-[380px] w-full rounded-xl overflow-hidden'>
-                                <img src={baby} alt="" className='object-cover h-full w-full' />
+                        <div className='relative w-full max-w-[300px] md:max-w-[350px] h-full'>
+                            <div className='mx-auto h-full bg-white flex flex-col p-4 rotate-[4deg] border-2 rounded-xl relative z-10'>
+                                <div className='h-[320px] md:h-[380px] w-full rounded-xl overflow-hidden relative z-10'>
+                                    <img src={baby} alt="" className='object-cover h-full w-full' />
+                                </div>
+                                <div className='text-center pt-2'>
+                                    <p className='font-patrick text-dark-grey italic tracking-wider'>Let's go for a ride</p>
+                                </div>
                             </div>
-                            <div className='text-center py-2'>
-                                <p className='px-6 font-patrick leading-[1.25] text-dark-grey italic'>Why complicate things when life’s hard enough?</p>
+                            <div className='absolute z-0 rotate-[20deg] -top-[4.5rem] right-[2%]'>
+                                <img src={cloud} alt="icon" />
                             </div>
                         </div>
                     </div>

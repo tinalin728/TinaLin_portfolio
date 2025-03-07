@@ -64,8 +64,8 @@ function Navbar() {
 
 
     return (
-        <header className='overflow-hidden py-6'>
-            <div className='max-w-container relative'>
+        <header className='overflow-hidden py-6 bg-primary sticky top-0 z-0'>
+            <div className='max-w-container'>
                 <div className='flex justify-between items-center w-full'>
                     <div>
                         <NavLink to="/" className="z-[1000] py-6 text-md font-roundo-bold">

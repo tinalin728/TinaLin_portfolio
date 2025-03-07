@@ -81,7 +81,7 @@ export default function Tims() {
             <BackToTop />
             <ProjectBanner project={project} />
 
-            <div className='max-w-container md:flex md:gap-10 lg:gap-14'>
+            <div className='max-w-container md:flex md:gap-10 lg:gap-14 relative bg-primary z-10'>
                 <Sidebar sections={sections} />
 
                 <div className='overflow-hidden'>
@@ -311,7 +311,6 @@ export default function Tims() {
                                     </div>
 
                                     <PrototypeCta inPageLink="Skip to Solutions" scrollToId='solution' />
-
                                 </div>
 
                             </div>

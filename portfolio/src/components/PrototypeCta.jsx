@@ -3,7 +3,7 @@ import browse from '../../public/assets/icons/browse.svg'
 
 export default function PrototypeCta({ inPageLink, scrollToId, webLink }) {
     return (
-        <div className='mt-10 rounded-xl border-2 px-4 py-1 group w-fit shadow-button hover:shadow-none hover:translate-y-[2px] transition-all duration-150 ease-in-out'>
+        <div className='mt-10 rounded-full border-2 px-4 py-1 group w-fit shadow-button hover:shadow-none hover:translate-y-[2px] transition-all duration-150 ease-in-out'>
             {inPageLink ? (
                 <div className='flex gap-1 items-center justify-center'>
                     <a href="#prototype"

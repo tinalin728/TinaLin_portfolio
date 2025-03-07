@@ -9,7 +9,7 @@ export default function ProjectCard({ project }) {
 
 
     return (
-        <div className="rounded-2xl border-2 shadow-card h-full w-full p-4 transition duration-500 group  md:hover:shadow-none md:hover:translate-y-1">
+        <div className="rounded-2xl border-2 h-full w-full p-4 transition duration-500 group  md:hover:shadow-card md:hover:-translate-y-1">
             <Link
                 onMouseMove={handleMouseMove}
                 onMouseOut={handleMouseOut}
