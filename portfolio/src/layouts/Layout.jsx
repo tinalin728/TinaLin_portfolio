@@ -23,17 +23,17 @@ function Layout() {
         <>
             <Helmet>
                 <title>{currentTitle}</title>
-                <meta name="description" content="Tina Lin is a UX/UI designer and front-end developer specializing in creating user-centered websites, intuitive UI designs, and modern web experiences. See her portfolio." />
+                <meta name="description" content="Tina Lin is a digital designer and web developer specializing in creating user-centered websites, intuitive UI designs, and modern web experiences." />
 
                 <meta
                     name="keywords"
-                    content="Tina Lin, UX/UI Designer, Web Designer, Front-End Developer, Web Development, UX/UI Design, React, GSAP, Portfolio"
+                    content="Tina Lin, Digital Designer, UX/UI Designer, Web Designer, Front-End Developer, Web Development, UX/UI Design, React, GSAP, Portfolio"
                 />
                 <meta name="author" content="Tina Lin" />
                 <meta property="og:title" content={currentTitle} />
                 <meta
                     property="og:description"
-                    content="Explore Tina Lin's portfolio featuring innovative product designs and cutting-edge web development projects."
+                    content="Explore Tina Lin's portfolio featuring innovative product designs and web development projects."
                 />
                 <meta property="og:url" content={`https://www.tinalin.ca${location.pathname}`} />
                 <meta property="og:type" content="website" />
