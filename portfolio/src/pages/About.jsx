@@ -30,10 +30,6 @@ import figma from '../../public/assets/about/figma.svg'
 import wordpress from '../../public/assets/about/wordpress.svg'
 import line from "../../public/assets/icons/line.svg"
 
-import uxui from "../../public/assets/about/uxui.jpg"
-import dev from "../../public/assets/about/web-dev.jpg"
-import graphics from "../../public/assets/about/graphics.jpg"
-
 import eggy from "../../public/assets/about/eggy.jpg"
 import coffee from "../../public/assets/about/coffee.jpg"
 import jellycat from "../../public/assets/about/jellycat.jpg"

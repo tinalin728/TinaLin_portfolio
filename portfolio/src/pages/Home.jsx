@@ -72,7 +72,7 @@ function Home() {
         const handleLoad = () => setHeroAnimationTriggered(true);
 
         if (document.readyState === "complete") {
-            console.log('page ready!')
+            // console.log('page ready!')
             setTimeout(() => {
 
                 handleLoad();
@@ -433,7 +433,7 @@ function Home() {
                                 </div>
 
                                 <div ref={refs.line3} className='inline-block px-4 py-2 md:px-6 md:py-4 lg:px-8 xl:px-10 xl:py-5 mt-2 md:mt-4 bg-charcoal rounded-md  w-fit translate-y-1 -translate-x-2 md:-translate-x-4 lg:-translate-x-[12%]'>
-                                    <h2 className='big-header font-patrick tracking-widest text-white'> Design <span className='text-white tracking-normal font-roundo'> of</span> </h2>
+                                    <h2 className='big-header text-white'> <span className='text-white tracking-widest'>Design </span>of </h2>
                                 </div>
                                 <div ref={refs.line4} className='inline-block px-4 py-2 md:px-6 md:py-4  lg:px-10 lg:py-3 xl:py-5 mt-2 md:mt-4 bg-charcoal rounded-md w-fit -rotate-4 translate-x-10 relative'>
                                     <h1 className='text-white big-header'>

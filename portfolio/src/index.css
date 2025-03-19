@@ -1,6 +1,6 @@
 /* font */
 @import url('./assets/fonts.css');
-@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap'); */
 
 @tailwind base;
 @tailwind components;
@@ -20,6 +20,11 @@
 
     h2 {
         @apply text-[2.2rem] md:text-2xl font-roundo-bold capitalize
+    }
+
+    h2 span {
+        font-family: 'Patrick Hand', cursive;
+        font-display: swap;
     }
 
     h3 {
@@ -114,7 +119,9 @@
     .big-header {
         font-size: clamp(3.2rem, 1.8901rem + 3.4554vw, 4.6rem);
 
-        @apply font-roundo font-normal tracking-[1.2px] uppercase text-nowrap leading-none;
+        opacity: 1 !important;
+        visibility: visible !important;
+        @apply font-roundo font-normal tracking-[1.2px] uppercase leading-none;
     }
 
 

@@ -17,7 +17,6 @@ export default function ProjectCard({ project }) {
                 <div className="border border-default/20 relative overflow-hidden w-full rounded-xl">
                     <div className="h-[300px] w-full md:h-full">
                         <img src={project.cover} alt={project.title}
-                            loading="lazy"
                             className="w-full object-cover h-full transition duration-500 ease-in-out overflow-hidden"
                             style={{ transform: `scale(${scale})` }}
                         />
