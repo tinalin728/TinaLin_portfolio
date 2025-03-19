@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from 'react'
 import SocialIcon from '../components/buttons/SocialIcon';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import Matter from 'matter-js'
 
 import coffee from '../../public/assets/icons/coffee-white.png'
 

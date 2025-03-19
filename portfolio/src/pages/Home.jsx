@@ -1,21 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { Link, useLocation } from 'react-router-dom';
-import Marquee from "react-fast-marquee";
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 gsap.registerPlugin(useGSAP);
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
-import CraftCard from '../components/CraftCard';
-import PrimaryBtn from '../components/buttons/PrimaryBtn';
 import WindowWidth from '../hooks/WindowWidth';
 import mouse from '../../public/assets/homepage/mouse.svg';
 import outline from '../../public/assets/homepage/outlineLogo.svg'
 
-import FeatureCraftCard from '../components/FeatureCraftCard';
 import { projectData } from "../data/projectData";
 import ProjectCard from "../components/ProjectCard"
 import baby from "../../public/assets/homepage/baby.jpg"

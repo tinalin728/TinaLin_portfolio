@@ -12,12 +12,10 @@ module.exports = withMT({
     extend: {
       fontFamily: {
         roundo: ['Roundo-Regular', 'sans-serif'],
-        'roundo-light': ['Roundo-ExtraLight', 'sans-serif'],
         'roundo-medium': ['Roundo-Medium', 'sans-serif'],
         'roundo-semibold': ['Roundo-SemiBold', 'sans-serif'],
         'roundo-bold': ['Roundo-Bold', 'sans-serif'],
         patrick: ["Patrick Hand", "cursive"],
-        craftwork: ['Craftwork Grotesk', 'sans-serif'],
       },
 
       fontSize: {

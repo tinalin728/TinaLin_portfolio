@@ -1,16 +1,5 @@
 import React, { useState } from 'react'
 import PrimaryBtn from '../components/buttons/PrimaryBtn'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faInfo } from "@fortawesome/free-solid-svg-icons"
-import { faHeart as faSolidHeart } from '@fortawesome/free-solid-svg-icons';
-import { faBookmark, faPaperPlane, faComment, faHeart as faRegularHeart } from "@fortawesome/free-regular-svg-icons"
-import { Swiper, SwiperSlide } from 'swiper/react';
-
-// Import Swiper styles
-import 'swiper/css';
-import 'swiper/css/effect-cards';
-// import required modules
-import { EffectCards } from 'swiper/modules';
 
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
@@ -20,7 +9,6 @@ gsap.registerPlugin(useGSAP);
 import profilePic from '../../public/assets/about/tina.jpg'
 import workPic from '../../public/assets/about/work.jpeg'
 import iconDownload from '../../public/assets/about/download.png'
-import hobbies from '../../public/assets/about/hobbies.png'
 import ps from '../../public/assets/about/ps.svg'
 import ai from '../../public/assets/about/ai.svg'
 import id from '../../public/assets/about/id.svg'
