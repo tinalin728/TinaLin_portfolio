@@ -6,8 +6,8 @@ import { useGSAP } from '@gsap/react';
 gsap.registerPlugin(useGSAP);
 
 // images
-import profilePic from '../../public/assets/about/tina.jpg'
-import workPic from '../../public/assets/about/work.jpeg'
+import profilePic from '../../public/assets/about/tina.webp'
+import workPic from '../../public/assets/about/work.webp'
 import iconDownload from '../../public/assets/about/download.png'
 import ps from '../../public/assets/about/ps.svg'
 import ai from '../../public/assets/about/ai.svg'
@@ -18,9 +18,9 @@ import figma from '../../public/assets/about/figma.svg'
 import wordpress from '../../public/assets/about/wordpress.svg'
 import line from "../../public/assets/icons/line.svg"
 
-import eggy from "../../public/assets/about/eggy.jpg"
-import coffee from "../../public/assets/about/coffee.jpg"
-import jellycat from "../../public/assets/about/jellycat.jpg"
+import eggy from "../../public/assets/about/eggy.webp"
+import coffee from "../../public/assets/about/coffee.webp"
+import jellycat from "../../public/assets/about/jellycat.webp"
 
 import PrimaryCta from '../components/PrimaryCta';
 
