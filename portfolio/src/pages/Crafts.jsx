@@ -178,7 +178,6 @@ function Crafts() {
                                         <img src={mockup} alt="more projects"
                                             loading="lazy"
                                             className="w-full object-cover h-full transition duration-500 ease-in-out overflow-hidden"
-
                                         />
                                     </div>
                                     <div className="bg-default/60 backdrop-blur-md absolute left-0 w-full bottom-[-20%] md:group-hover:bottom-0 transition-all ease-in-out duration-500 md:py-2">

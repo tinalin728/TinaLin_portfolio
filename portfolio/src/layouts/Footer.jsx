@@ -1,9 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react'
+import { NavLink } from 'react-router-dom';
 import SocialIcon from '../components/buttons/SocialIcon';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 import coffee from '../../public/assets/icons/coffee-white.png'
+import logoWhite from '../../public/assets/logo-white.svg'
 
 import mail from "../../public/assets/icons/mail.svg"
 import github from "../../public/assets/icons/github.svg"
@@ -386,51 +388,73 @@ function Footer() {
 
     return (
         <footer id='footer' ref={containerRef} className='relative h-full overflow-hidden border-t-2 bg-charcoal'>
-            <div ref={wrapperRef} className='max-w-container relative w-full  overflow-hidden h-[60vh] '>
+            <div ref={wrapperRef} className='max-w-container relative w-full  overflow-hidden'>
                 {/* <div className="absolute top-0 left-0 w-full h-full z-10">
                     <canvas ref={canvasRef} className="w-full h-full" />
                 </div> */}
-                <div className='relative py-20 rounded-2xl'>
-                    <div className='flex flex-col justify-center items-center gap-3 md:gap-6 lg:gap-8'>
-                        {/* <h2 className='font-craftwork font-extrabold text-light-yellow-bg text-shadow text-stroke text-center footer-header tracking-[5px]'>
-                            Say Hello
-                        </h2> */}
-                        <div className='text-center text-primary relative h-full'>
-                            <h2 className='sub-header  md:mx-0 md:tracking-wider leading-snug'>
-                                Send a <span className='font-patrick text-orange'>friendly</span>
-                                <br />Hello ☻
-                            </h2>
 
-                            <div className='absolute bottom-16 md:bottom-[5.5rem] right-0 z-[99] w-[50%]'>
-                                <img src={lineWhite} alt="" />
-                            </div>
+                <div className='py-20 flex flex-col gap-14 justify-between items-start md:flex-row'>
+                    <img src={logoWhite} alt="logo" width={45} />
+
+                    <div>
+                        <p className='text-orange font-patrick uppercase tracking-widest mb-2'>Explore</p>
+
+                        <div className='flex flex-col gap-2'>
+                            <NavLink to="/" className="text-white tracking-wider hover:scale-95 transition duration-300">Home
+                            </NavLink>
+                            <NavLink to="/projects" className="text-white tracking-wider hover:scale-95 transition duration-300">Crafts
+                            </NavLink>
+                            <NavLink to="/about" className="text-white tracking-wider hover:scale-95 transition duration-300">About
+                            </NavLink>
+                        </div>
+                    </div>
+
+                    <div>
+                        <p className='text-orange font-patrick uppercase tracking-widest mb-2'>Find Me</p>
+
+                        <div className='flex flex-col gap-2'>
+                            <a href='mailto:contact@tinalin.ca' rel="noopener noreferrer"
+                                className="text-white tracking-wider transition-all ease-in-out duration-300 group flex items-center">
+                                Mail
+                                <span className="text-xl ml-1 scale-[.9] group-hover:scale-100 group-hover:-rotate-[10deg] group-hover:-translate-y-1 transition-all duration-200 ease-in-out -translate-y-[2px] text-primary">⟿</span>
+                            </a>
+
+                            <a href="https://www.linkedin.com/in/tina-lin-000613b5/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-white tracking-wider transition-all ease-in-out duration-300 group flex items-center">
+                                LinkedIn
+                                <span className="inline-block text-xl ml-1 scale-[.9] group-hover:scale-100 group-hover:-rotate-[10deg] group-hover:-translate-y-1 transition-all duration-200 ease-in-out -translate-y-[2px] text-primary">
+                                    ⟿
+                                </span>
+                            </a>
+
+
+                            <a href='https://github.com/tinalin728'
+                                target='_blank'
+                                rel="noopener noreferrer"
+                                className="text-white tracking-wider transition-all ease-in-out duration-300 group flex items-center">
+                                Github
+                                <span className="text-xl ml-1 scale-[.9] group-hover:scale-100 group-hover:-rotate-[10deg] group-hover:-translate-y-1 transition-all duration-200 ease-in-out -translate-y-[2px] text-primary">⟿</span>
+                            </a>
+
                         </div>
 
-                        <div className='flex gap-6 mt-4 items-center'>
-                            <a href='https://github.com/tinalin728' target='_blank'>
-                                <img src={github} alt="github icon" className='w-[60px] hover:rotate-3 hover:scale-[.98] transition-all duration-200' />
-                            </a>
+                    </div>
 
-                            <a href='https://www.linkedin.com/in/tina-lin-000613b5/' target='_blank'>
-                                <img src={linkedin} alt="linkedin icon" className='w-[60px] hover:-rotate-3 hover:scale-[.98] transition-all duration-200' />
-                            </a>
-                            <a href='mailto:contact@tinalin.ca'>
-                                <img src={mail} alt="email icon" className='w-[60px] hover:rotate-3 hover:scale-[.98] transition-all duration-200' />
-                            </a>
-                        </div>
+                    <div>
+                        <div><img src={coffee} alt="coffee" className='w-[35px] mb-2' /></div>
+                        <p className='text-primary tracking-widest font-patrick leading-normal uppercase'>Designed & Developed by Tina Lin. </p>
+                        <p className='text-base tracking-widest text-primary/80  font-patrick leading-normal mt-2'> Made with shots of espresso.</p>
+
                     </div>
                 </div>
+
             </div>
 
-            <div className=' border-t border-primary mt-10'>
-                <div className='max-w-container flex flex-col items-center justify-center gap-2 md:flex-row md:justify-between py-3'>
-                    <div className='flex flex-col justify-center items-center md:flex-row md:gap-2'>
-                        <div><img src={coffee} alt="" className='w-[35px]' /></div>
-                        <span className='text-base tracking-widest text-primary  font-patrick text-center leading-normal'>Designed and Developed with shots of espresso</span>
-                    </div>
-                    <div>
-                        <span className='text-base tracking-widest font-patrick text-primary '> &copy; 2024 Tina Lin</span>
-                    </div>
+            <div className='border-t border-primary'>
+                <div className='max-w-container'>
+                    <p className='text-primary/70 text-center text-[14px] tracking-widest uppercase py-3'> &copy; 2024 All Rights Reserved</p>
                 </div>
             </div>
         </footer >

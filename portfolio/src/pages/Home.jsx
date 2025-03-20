@@ -250,152 +250,6 @@ function Home() {
     }, [mousePosition, animationComplete]);
 
 
-    useEffect(() => {
-        setTimeout(() => {
-            if (document.querySelectorAll(".craftCard").length > 0) {
-                // console.log(".craftCard elements found! Running GSAP...");
-                setIsLoaded(true);
-            }
-        }, 200);
-    }, []);
-
-    useGSAP(() => {
-
-        if (!craftRef.current || !isLoaded) return;
-        const ctx = gsap.context(() => {
-
-            let hoverEnabled = false;
-
-
-            const scrollTriggerConfig = {
-                trigger: craftRef.current,
-                start: "top 50%",
-                toggleActions: "play none none none",
-                // markers: true,
-            };
-
-            // Animate recent text
-            gsap.fromTo(
-                ".recent",
-                { y: -50, rotate: 0, opacity: 0 },
-                {
-                    y: -10,
-                    rotate: -6,
-                    opacity: 1,
-                    duration: 1,
-                    ease: "bounce.out",
-                    scrollTrigger: { ...scrollTriggerConfig },
-                }
-            );
-
-            gsap.fromTo(
-                ".craft-letter",
-                { textShadow: "none" },
-                {
-
-                    textShadow: `
-                        0.5px 0.5px 0 #342A1A,
-                        1px 1px 0 #342A1A,
-                        1.5px 1.5px 0 #342A1A,
-                        2px 2px 0 #342A1A,
-                        2.5px 2.5px 0 #342A1A,
-                        3px 3px 0 #342A1A,
-                        3.5px 3.5px 0 #342A1A,
-                        4px 4px 0 #342A1A,
-                        4.5px 4.5px 0 #342A1A,
-                        5px 5px 0 #342A1A,
-                        5.5px 5.5px 0 #342A1A,
-                        6px 6px 0 #342A1A`,
-                    duration: .8,
-                    ease: "power3.inOut",
-                    stagger: .05,
-                    scrollTrigger: { ...scrollTriggerConfig },
-                }
-            );
-            gsap.fromTo(
-                ".craftCard",
-                { opacity: 0, y: 200 },
-                {
-                    opacity: 1,
-                    y: 0,
-                    duration: 1.5,
-                    ease: "back.inOut",
-                    scrollTrigger: { ...scrollTriggerConfig },
-                    onComplete: () => {
-                        hoverEnabled = true;
-                    }
-                }
-            );
-
-            // hover on the letter
-            const letters = document.querySelectorAll(".craft-letter");
-            letters.forEach((letter) => {
-                let hoverTimeline;
-
-                letter.addEventListener("mouseenter", () => {
-
-                    if (!hoverEnabled) return;
-
-                    // If an existing timeline is active, kill it
-                    if (hoverTimeline) hoverTimeline.kill();
-
-                    // Create a new timeline for the hover effect
-                    hoverTimeline = gsap.timeline();
-                    hoverTimeline.to(letter, {
-                        x: -3,
-                        y: -3,
-                        textShadow: `
-                            1px 1px 0 #342A1A,
-                            2px 2px 0 #342A1A,
-                            3px 3px 0 #342A1A,
-                            4px 4px 0 #342A1A,
-                            5px 5px 0 #342A1A,
-                            6px 6px 0 #342A1A,
-                            7px 7px 0 #342A1A,
-                            8px 8px 0 #342A1A,
-                            9px 9px 0 #342A1A,
-                            10px 10px 0 #342A1A
-                            `,
-                        duration: 0.2,
-                        ease: "power3.out",
-                    });
-                });
-
-                letter.addEventListener("mouseleave", () => {
-                    if (!hoverEnabled) return;
-
-                    // If an existing timeline is active, kill it
-                    if (hoverTimeline) hoverTimeline.kill();
-
-                    // Create a new timeline for resetting the animation
-                    hoverTimeline = gsap.timeline();
-                    hoverTimeline.to(letter, {
-                        x: 0, // Reset position
-                        y: 0, // Reset position
-                        textShadow: `
-                            0.5px 0.5px 0 #342A1A,
-                        1px 1px 0 #342A1A,
-                        1.5px 1.5px 0 #342A1A,
-                        2px 2px 0 #342A1A,
-                        2.5px 2.5px 0 #342A1A,
-                        3px 3px 0 #342A1A,
-                        3.5px 3.5px 0 #342A1A,
-                        4px 4px 0 #342A1A,
-                        4.5px 4.5px 0 #342A1A,
-                        5px 5px 0 #342A1A,
-                        5.5px 5.5px 0 #342A1A,
-                        6px 6px 0 #342A1A`,
-                        duration: 0.2,
-                        ease: "power3.out",
-                    });
-                });
-            });
-            ScrollTrigger.refresh();
-        })
-        return () => ctx.revert();
-
-    }, [isLoaded]);
-
     return (
         <>
             <div className='relative'>
@@ -416,19 +270,19 @@ function Home() {
 
                         <div className='relative max-w-container w-full h-full flex flex-col items-center justify-center'>
                             <div className='-mt-20 inline-flex flex-col items-center justify-center gap-2 md:-mt-14 relative'>
-                                <div ref={refs.line1} className='inline-block px-4 py-2 md:px-8 md:py-4 lg:px-10 lg:py-3 xl:py-5 bg-charcoal rounded-md w-fit -translate-x-2'>
+                                <div ref={refs.line1} className='inline-block px-4 py-3 md:px-8 md:py-4 lg:px-10 lg:py-3 xl:py-5 bg-charcoal rounded-md w-fit -translate-x-2'>
                                     <h2 className='text-white big-header font-patrick tracking-widest'>The</h2>
                                 </div>
-                                <div ref={refs.line2} className='inline-block px-4 py-2 md:px-6 md:py-4  lg:px-10 lg:py-3 xl:py-5 bg-charcoal rounded-md w-fit translate-x-0'>
+                                <div ref={refs.line2} className='inline-block px-4 py-3 md:px-6 md:py-4  lg:px-10 lg:py-3 xl:py-5 bg-charcoal rounded-md w-fit translate-x-0'>
                                     <h2 className='text-white big-header'> Product
                                         <span className='font-patrick pl-4'>&</span>
                                     </h2>
                                 </div>
 
-                                <div ref={refs.line3} className='inline-block px-4 py-2 md:px-6 md:py-4 lg:px-8 xl:px-10 xl:py-5 mt-2 md:mt-4 bg-charcoal rounded-md  w-fit translate-y-1 -translate-x-2 md:-translate-x-4 lg:-translate-x-[12%]'>
+                                <div ref={refs.line3} className='inline-block px-4 py-3 md:px-6 md:py-4 lg:px-8 xl:px-10 xl:py-5 mt-2 md:mt-4 bg-charcoal rounded-md  w-fit translate-y-1 -translate-x-2 md:-translate-x-4 lg:-translate-x-[12%]'>
                                     <h2 className='big-header text-white'> <span className='text-white tracking-widest'>Design </span>of </h2>
                                 </div>
-                                <div ref={refs.line4} className='inline-block px-4 py-2 md:px-6 md:py-4  lg:px-10 lg:py-3 xl:py-5 mt-2 md:mt-4 bg-charcoal rounded-md w-fit -rotate-4 translate-x-10 relative'>
+                                <div ref={refs.line4} className='inline-block px-4 py-3 md:px-6 md:py-4  lg:px-10 lg:py-3 xl:py-5 mt-2 md:mt-4 bg-charcoal rounded-md w-fit -rotate-4 translate-x-10 relative'>
                                     <h1 className='text-white big-header'>
                                         Tina Lin
                                     </h1>
@@ -466,7 +320,7 @@ function Home() {
                                 <div className='inline-flex items-center justify-center flex-col md:basis-[40%] md:items-start'>
                                     <h2 className='w-fit text-center sub-header font-black md:text-left'> I <span className='sub-header '>Design</span> <br /> <span className='text-orange font-patrick font-thin'>&</span> Code</h2>
                                     <div>
-                                        <img src={line} alt="" width={250} />
+                                        <img src={line} alt="line" width={200} />
                                     </div>
 
                                     <p className='mt-4'> Some of my selected crafts</p>
@@ -496,13 +350,14 @@ function Home() {
                 </section >
 
                 <section className='max-w-container h-full relative pt-16 md:pt-20 pb-20 md:pb-[10rem] lg:pb-[15rem] bg-primary'>
-                    <div className='flex flex-col gap-10 md:flex-row md:justify-between md:gap-12 lg:gap-20'>
+                    <div className='flex flex-col-reverse gap-10 md:flex-row md:justify-between md:gap-12 lg:gap-20'>
                         <div className='flex flex-col w-full px-6 py-12 md:p-10 bg-white border-2 rounded-2xl relative'
                             style={{ backgroundImage: `url(${grain})` }}
                         >
-                            <h2 className='sub-header'> A <br /> <span className='leading-[1.2] text-[50px] md:text-[60px] lg:text-[65px] text-orange font-patrick font-normal'>brief</span>  Linstory</h2>
+                            <h2 className='sub-header'> A <br /> <span className='leading-[1.2] text-[50px] md:text-[60px] lg:text-[65px] text-orange font-patrick font-normal'>brief</span> Linstory</h2>
+
                             <div>
-                                <img src={line} alt="" width={250} />
+                                <img src={line} alt="line" width={200} />
                             </div>
 
                             <p className='max-w-[35rem] pb-10 pt-4'>From crayons to pixels, my teaching background gives me unique perspectives to design with empathy and creativity.</p>
@@ -510,7 +365,7 @@ function Home() {
                             <PrimaryCta to="/about" text="Read More" />
                         </div>
 
-                        <div className='relative w-full max-w-[300px] md:max-w-[350px] h-full'>
+                        <div className='relative w-full max-w-[300px] md:max-w-[350px] h-full mx-auto'>
                             <div className='mx-auto h-full bg-white flex flex-col p-4 rotate-[4deg] border-2 rounded-xl relative z-10'>
                                 <div className='h-[320px] md:h-[380px] w-full rounded-xl overflow-hidden relative z-10'>
                                     <img src={baby} alt="" className='object-cover h-full w-full' />
@@ -519,7 +374,7 @@ function Home() {
                                     <p className='font-patrick text-dark-grey italic tracking-wider'>Let's go for a ride</p>
                                 </div>
                             </div>
-                            <div className='absolute z-0 rotate-[20deg] -top-[4.5rem] right-[2%]'>
+                            <div className='absolute z-0 rotate-[20deg] -top-[4.5rem] right-[-3%]'>
                                 <img src={cloud} alt="icon" />
                             </div>
                         </div>

@@ -352,7 +352,7 @@ export const projectData = [
         media: "image",
         skills: [
             "UXUI",
-            "Hackathon"
+            "Web Design"
         ],
         cover: "/assets/furry/cover.jpg",
         banner: {

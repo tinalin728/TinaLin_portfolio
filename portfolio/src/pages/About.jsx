@@ -195,12 +195,10 @@ function About() {
 
                         <div className='lg:flex-1'>
                             <div className=''>
-                                <div className=' w-fit'>
-                                    <h3 className='normal-case leading-none'>From <span className='font-patrick text-orange tracking-wider px-1 border border-dashed border-light-grey rounded-lg mx-1'> education</span> to Tech</h3>
-                                </div>
+                                <h3 className='normal-case leading-none mb-6'>From <span className='font-patrick text-orange tracking-wider mx-1 text-[29px]'> Education</span> to Tech</h3>
 
                                 <div>
-                                    <p className='pt-6 font-patrick text-lg tracking-wider'>Hi! I'm Tina, a digital designer based in Vancouver.</p>
+                                    <p className='font-patrick text-lg tracking-wider'>Hi! I'm Tina, a digital designer based in Vancouver.</p>
 
                                     <p className=''>
                                         With a background in Linguistics and Education, I’ve always found ways to make learning fun—whether through interactive lessons or creative materials.
@@ -211,7 +209,7 @@ function About() {
                                             target="_blank"
                                             rel="noopener noreferrer"
                                             className="border-2 rounded-full px-4 py-3 group w-fit flex items-center justify-center cursor-pointer leading-none shadow-button hover:shadow-none hover:translate-y-1 transition-all duration-200 ease-in-out">
-                                            <div className="mr-2"><img src={iconDownload} alt="" width={25} /></div>
+                                            <div className="mr-3"><img src={iconDownload} alt="" width={25} /></div>
                                             <div className="relative z-10 transition duration-100 ease-in-out h-full text-dark group-hover:text-black flex items-center justify-center">Resume
                                             </div>
                                         </a>
@@ -222,7 +220,7 @@ function About() {
                     </section>
 
                     <section className='bg-primary py-16 md:py-20'>
-                        <h3 className='leading-none normal-case mb-10 text-center'>The <span className='font-patrick text-orange tracking-wider px-1 border border-dashed border-light-grey rounded-lg mx-1'> tools</span> behind my creations</h3>
+                        <h3 className='leading-none normal-case mb-6 text-center'>The <span className='font-patrick text-orange tracking-wider mx-1 text-[29px]'> Tools</span> Behind My Creations</h3>
 
                         <div className='flex flex-col items-center justify-center lg:flex-row lg:items-stretch gap-10'>
                             <div className='flex-1 border-2 rounded-2xl relative w-full md:max-w-[400px]  overflow-hidden'>
@@ -261,26 +259,26 @@ function About() {
                     </section >
 
                     <section className='bg-primary max-w-container py-16 md:py-20'>
-                        <h3 className='text-center'>What I also<span className='font-patrick text-orange tracking-wider px-1 border border-dashed border-light-grey rounded-lg mx-1'>enjoy</span> </h3>
+                        <h3 className='text-center mb-6'>What I Also<span className='font-patrick text-orange tracking-wider mx-2 text-[29px]'>Enjoy</span> </h3>
 
-                        <div className='flex flex-col justify-center items-center gap-6 mt-4 md:flex-row md:mt-10 md:items-start'>
+                        <div className='flex flex-col justify-center items-center gap-6 mt-4 md:flex-row md:items-start'>
                             <div className='md:max-w-[320px]'>
                                 <div className='rounded-2xl overflow-hidden border-2'>
                                     <img src={eggy} alt="doodle" loading="lazy" />
                                 </div>
-                                <p className='mt-2 text-center font-patrick leading-[1.5] tracking-wide text-[20px]'>Hanging out with my niece. She's my doodle inspiration</p>
+                                <p className='mt-2 text-center'>Hanging out with my niece. She's my doodle inspiration</p>
                             </div>
                             <div className='md:max-w-[320px]' >
                                 <div className='rounded-2xl overflow-hidden border-2'>
                                     <img src={jellycat} alt="jelly cat" loading="lazy" />
                                 </div>
-                                <p className='mt-2 text-center font-patrick leading-[1.5] tracking-wide text-[20px]'>Collecting JellyCat</p>
+                                <p className='mt-2 text-center'>Collecting JellyCat</p>
                             </div>
                             <div className='md:max-w-[320px]'>
                                 <div className='rounded-2xl overflow-hidden border-2'>
                                     <img src={coffee} alt="coffee" loading="lazy" />
                                 </div>
-                                <p className='mt-2 text-center font-patrick leading-[1.5] tracking-wide text-[20px]'>Decaf coffee in the afternoon</p>
+                                <p className='mt-2 text-center'>Decaf coffee in the afternoon</p>
                             </div>
                         </div>
                     </section>

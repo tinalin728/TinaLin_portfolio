@@ -62,7 +62,6 @@ function Navbar() {
     // };
 
 
-
     return (
         <header className='overflow-hidden py-6 bg-primary sticky top-0 z-0'>
             <div className='max-w-container'>
