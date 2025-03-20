@@ -368,14 +368,14 @@ function Home() {
                         <div className='relative w-full max-w-[300px] md:max-w-[350px] h-full mx-auto'>
                             <div className='mx-auto h-full bg-white flex flex-col p-4 rotate-[4deg] border-2 rounded-xl relative z-10'>
                                 <div className='h-[320px] md:h-[380px] w-full rounded-xl overflow-hidden relative z-10'>
-                                    <img src={baby} alt="" className='object-cover h-full w-full' />
+                                    <img src={baby} alt="baby photo" className='object-cover h-full w-full' loading='lazy' />
                                 </div>
                                 <div className='text-center pt-2'>
                                     <p className='font-patrick text-dark-grey italic tracking-wider'>Let's go for a ride</p>
                                 </div>
                             </div>
                             <div className='absolute z-0 rotate-[20deg] -top-[4.5rem] right-[-3%]'>
-                                <img src={cloud} alt="icon" />
+                                <img src={cloud} alt="icon" loading='lazy' />
                             </div>
                         </div>
                     </div>

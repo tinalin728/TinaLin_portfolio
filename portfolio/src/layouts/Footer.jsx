@@ -443,7 +443,9 @@ function Footer() {
                     </div>
 
                     <div>
-                        <div><img src={coffee} alt="coffee" className='w-[35px] mb-2' /></div>
+                        <div>
+                            <img src={coffee} alt="coffee" className='w-[35px] mb-2' loading='lazy' />
+                        </div>
                         <p className='text-primary tracking-widest font-patrick leading-normal uppercase'>Designed & Developed by Tina Lin. </p>
                         <p className='text-base tracking-widest text-primary/80  font-patrick leading-normal mt-2'> Made with shots of espresso.</p>
 
