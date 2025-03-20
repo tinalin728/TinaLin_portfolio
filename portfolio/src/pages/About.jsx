@@ -177,7 +177,7 @@ function About() {
                                 <div className='absolute bottom-0 z-10 md:relative md:bottom-0 md:max-w-[350px] w-full -rotate-3 bg-white flex flex-col p-4 lg:hover:-translate-y-2 lg:hover:-rotate-1 transition-all duration-300 rounded-2xl border-2'
                                 >
                                     <div className='h-[320px] md:h-[380px] w-full rounded-xl overflow-hidden'>
-                                        <img src={profilePic} alt="profile" className='object-cover w-full h-full' loading="eager" />
+                                        <img src={profilePic} alt="profile" className='object-cover w-full h-full' loading="lazy" />
                                     </div>
                                     <div className='text-center pt-2'>
                                         <p className='font-patrick text-dark-grey italic tracking-wider'>Say hi</p>
@@ -186,7 +186,7 @@ function About() {
                                 <div className='relative z-0 w-full bg-white flex flex-col p-4 md:translate-y-4 md:max-w-[350px] lg:-translate-x-10 lg:hover:rotate-3 transition-all duration-300 rounded-2xl border-2'
                                 >
                                     <div className='h-[320px] md:h-[380px] w-full rounded-xl overflow-hidden'>
-                                        <img src={workPic} alt="work photo" className='object-cover w-full h-full' loading="eager" />
+                                        <img src={workPic} alt="work photo" className='object-cover w-full h-full' loading="lazy" />
                                     </div>
                                     <div className='text-center pt-2'>
                                         <p className='font-patrick text-dark-grey italic tracking-wider'>life as Miss Lin</p>
@@ -200,9 +200,9 @@ function About() {
                                 <h3 className='normal-case leading-none mb-6'>From <span className='font-patrick text-orange tracking-wider mx-1 text-[29px]'> Education</span> to Tech</h3>
 
                                 <div>
-                                    <p className='font-patrick text-lg tracking-wider'>Hi! I'm Tina, a digital designer based in Vancouver.</p>
+                                    <p className='font-patrick text-md md:text-lg tracking-wider'>Hi! I'm Tina, a digital designer based in Vancouver.</p>
 
-                                    <p className=''>
+                                    <p className='mt-1'>
                                         With a background in Linguistics and Education, I’ve always found ways to make learning fun—whether through interactive lessons or creative materials.
                                         My aha! moment came when I discovered AAC devices at work. Seeing how design and tech could bridge communication gaps led me to New Media Design at BCIT where I discovered my passion for both design and code. I enjoy making designs that bring warmth and connection, and turning them into life.
                                     </p>
@@ -222,7 +222,7 @@ function About() {
                     </section>
 
                     <section className='bg-primary py-16 md:py-20'>
-                        <h3 className='leading-none normal-case mb-6 text-center'>The <span className='font-patrick text-orange tracking-wider mx-1 text-[29px]'> Tools</span> Behind My Creations</h3>
+                        <h3 className='normal-case mb-6 text-center'>The <span className='font-patrick text-orange tracking-wider mx-1 text-[29px]'> Tools</span> Behind My Creations</h3>
 
                         <div className='flex flex-col items-center justify-center lg:flex-row lg:items-stretch gap-10'>
                             <div className='flex-1 border-2 rounded-2xl relative w-full md:max-w-[400px]  overflow-hidden'>
@@ -268,19 +268,19 @@ function About() {
                                 <div className='rounded-2xl overflow-hidden border-2'>
                                     <img src={eggy} alt="doodle" loading="lazy" />
                                 </div>
-                                <p className='mt-2 text-center'>Hanging out with my niece. She's my doodle inspiration</p>
+                                <p className='mt-2 text-center'>Hanging out with my niece. She's my doodle inspiration.</p>
                             </div>
                             <div className='md:max-w-[320px]' >
                                 <div className='rounded-2xl overflow-hidden border-2'>
                                     <img src={jellycat} alt="jelly cat" loading="lazy" />
                                 </div>
-                                <p className='mt-2 text-center'>Collecting JellyCat</p>
+                                <p className='mt-2 text-center'>Collecting JellyCat. I am a big fan of Ricky.</p>
                             </div>
                             <div className='md:max-w-[320px]'>
                                 <div className='rounded-2xl overflow-hidden border-2'>
                                     <img src={coffee} alt="coffee" loading="lazy" />
                                 </div>
-                                <p className='mt-2 text-center'>Decaf coffee in the afternoon</p>
+                                <p className='mt-2 text-center'>Decaf coffee in the afternoon. <br /> No cream, no sugar!</p>
                             </div>
                         </div>
                     </section>

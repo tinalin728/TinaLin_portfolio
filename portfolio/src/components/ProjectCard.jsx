@@ -16,11 +16,25 @@ export default function ProjectCard({ project }) {
                 to={`/projects/${project.id}`}>
                 <div className="border border-default/20 relative overflow-hidden w-full rounded-xl">
                     <div className="h-[300px] w-full md:h-full">
-                        <img src={project.cover} alt={project.title}
+                        <img
+                            src={project.cover}
+                            srcSet={`
+                                ${project.coverSmall} 480w, 
+                                ${project.coverMedium} 768w, 
+                                ${project.coverLarge} 1024w, 
+                                ${project.cover} 1440w
+                            `}
+                            sizes="(max-width: 480px) 100vw, 
+                                (max-width: 768px) 75vw, 
+                                (max-width: 1024px) 50vw, 
+                                1440px"
+                            alt={project.title}
                             className="w-full object-cover h-full rounded-xl transition duration-500 ease-in-out overflow-hidden"
                             style={{ transform: `scale(${scale})` }}
                             loading="lazy"
+                            fetchpriority="high"
                         />
+
                     </div>
                     <div className="bg-default/60 backdrop-blur-md absolute left-0 w-full bottom-[-20%] md:group-hover:bottom-0 transition-all ease-in-out duration-500 md:py-2">
                         <p className="text-center text-white uppercase"> Read Now</p>
