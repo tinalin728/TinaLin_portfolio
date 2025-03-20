@@ -6,7 +6,7 @@ import { useGSAP } from '@gsap/react';
 gsap.registerPlugin(useGSAP);
 
 // images
-import profilePic from '../../public/assets/about/tina.webp'
+import profilePic from '../../public/assets/about/tina.jpg'
 import workPic from '../../public/assets/about/work.webp'
 import iconDownload from '../../public/assets/about/download.png'
 import ps from '../../public/assets/about/ps.svg'
@@ -18,9 +18,9 @@ import figma from '../../public/assets/about/figma.svg'
 import wordpress from '../../public/assets/about/wordpress.svg'
 import line from "../../public/assets/icons/line.svg"
 
-import eggy from "../../public/assets/about/eggy.webp"
-import coffee from "../../public/assets/about/coffee.webp"
-import jellycat from "../../public/assets/about/jellycat.webp"
+import eggy from "../../public/assets/about/eggy.jpg"
+import coffee from "../../public/assets/about/coffee.jpg"
+import jellycat from "../../public/assets/about/jellycat.jpg"
 
 import PrimaryCta from '../components/PrimaryCta';
 
@@ -175,7 +175,7 @@ function About() {
                                 <div className='absolute bottom-0 z-10 md:relative md:bottom-0 md:max-w-[350px] w-full -rotate-3 bg-white flex flex-col p-4 lg:hover:-translate-y-2 lg:hover:-rotate-1 transition-all duration-300 rounded-2xl border-2'
                                 >
                                     <div className='h-[320px] md:h-[380px] w-full rounded-xl overflow-hidden'>
-                                        <img src={profilePic} alt="profile" className='object-cover w-full h-full' />
+                                        <img src={profilePic} alt="profile" className='object-cover w-full h-full' loading="eager" />
                                     </div>
                                     <div className='text-center pt-2'>
                                         <p className='font-patrick text-dark-grey italic tracking-wider'>Say hi</p>
@@ -184,7 +184,7 @@ function About() {
                                 <div className='relative z-0 w-full bg-white flex flex-col p-4 md:translate-y-4 md:max-w-[350px] lg:-translate-x-10 lg:hover:rotate-3 transition-all duration-300 rounded-2xl border-2'
                                 >
                                     <div className='h-[320px] md:h-[380px] w-full rounded-xl overflow-hidden'>
-                                        <img src={workPic} alt="work photo" className='object-cover w-full h-full' />
+                                        <img src={workPic} alt="work photo" className='object-cover w-full h-full' loading="eager" />
                                     </div>
                                     <div className='text-center pt-2'>
                                         <p className='font-patrick text-dark-grey italic tracking-wider'>life as Miss Lin</p>
@@ -200,7 +200,7 @@ function About() {
                                 </div>
 
                                 <div>
-                                    <p className='pt-6 pb-4 font-patrick text-[26px] tracking-wider'>Hi I'm Tina!</p>
+                                    <p className='pt-6 font-patrick text-lg tracking-wider'>Hi! I'm Tina, a digital designer based in Vancouver.</p>
 
                                     <p className=''>
                                         With a background in Linguistics and Education, I’ve always found ways to make learning fun—whether through interactive lessons or creative materials.
@@ -227,7 +227,7 @@ function About() {
                         <div className='flex flex-col items-center justify-center lg:flex-row lg:items-stretch gap-10'>
                             <div className='flex-1 border-2 rounded-2xl relative w-full md:max-w-[400px]  overflow-hidden'>
                                 <div className='h-3 w-3 bg-orange rounded-full border-2 absolute top-4 left-4'></div>
-                                <h4 className=' font-patrick py-3 border-b-2 text-center tracking-wide'>How I craft experieces</h4>
+                                <h4 className=' font-patrick py-3 border-b-2 text-center tracking-wide'>How I craft experiences</h4>
 
                                 <ul className='flex flex-wrap justify-center gap-3 text-nowrap py-4 px-2'>
                                     {ux.map((item, index) => (
@@ -264,21 +264,21 @@ function About() {
                         <h3 className='text-center'>What I also<span className='font-patrick text-orange tracking-wider px-1 border border-dashed border-light-grey rounded-lg mx-1'>enjoy</span> </h3>
 
                         <div className='flex flex-col justify-center items-center gap-6 mt-4 md:flex-row md:mt-10 md:items-start'>
-                            <div className='max-w-[320px]'>
+                            <div className='md:max-w-[320px]'>
                                 <div className='rounded-2xl overflow-hidden border-2'>
-                                    <img src={eggy} alt="doodle" />
+                                    <img src={eggy} alt="doodle" loading="lazy" />
                                 </div>
                                 <p className='mt-2 text-center font-patrick leading-[1.5] tracking-wide text-[20px]'>Hanging out with my niece. She's my doodle inspiration</p>
                             </div>
-                            <div className='max-w-[320px]' >
+                            <div className='md:max-w-[320px]' >
                                 <div className='rounded-2xl overflow-hidden border-2'>
-                                    <img src={jellycat} alt="jelly cat" />
+                                    <img src={jellycat} alt="jelly cat" loading="lazy" />
                                 </div>
                                 <p className='mt-2 text-center font-patrick leading-[1.5] tracking-wide text-[20px]'>Collecting JellyCat</p>
                             </div>
-                            <div className='max-w-[320px]'>
+                            <div className='md:max-w-[320px]'>
                                 <div className='rounded-2xl overflow-hidden border-2'>
-                                    <img src={coffee} alt="coffee" />
+                                    <img src={coffee} alt="coffee" loading="lazy" />
                                 </div>
                                 <p className='mt-2 text-center font-patrick leading-[1.5] tracking-wide text-[20px]'>Decaf coffee in the afternoon</p>
                             </div>
