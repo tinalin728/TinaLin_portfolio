@@ -7,20 +7,27 @@
   <link rel="preload" as="font" href="/fonts/Roundo/Roundo-Regular.woff2" type="font/woff2" crossorigin="anonymous">
   <link rel="preload" as="font" href="/fonts/Roundo/Roundo-Medium.woff2" type="font/woff2" crossorigin="anonymous">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
-
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" as="style">
+  <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet" media="print"
+    onload="this.onload=null;this.removeAttribute('media');">
 
   <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-3CLC9VNXD2"></script>
   <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
+    document.addEventListener("DOMContentLoaded", function () {
+      setTimeout(() => {
+        var gtagScript = document.createElement("script");
+        gtagScript.src = "https://www.googletagmanager.com/gtag/js?id=G-3CLC9VNXD2";
+        gtagScript.async = true;
+        document.head.appendChild(gtagScript);
 
-    gtag('config', 'G-3CLC9VNXD2');
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-3CLC9VNXD2');
+      }, 3000); // Delays by 3 seconds
+    });
   </script>
+
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 

@@ -17,8 +17,9 @@ export default function ProjectCard({ project }) {
                 <div className="border border-default/20 relative overflow-hidden w-full rounded-xl">
                     <div className="h-[300px] w-full md:h-full">
                         <img src={project.cover} alt={project.title}
-                            className="w-full object-cover h-full transition duration-500 ease-in-out overflow-hidden"
+                            className="w-full object-cover h-full rounded-xl transition duration-500 ease-in-out overflow-hidden"
                             style={{ transform: `scale(${scale})` }}
+                            loading="lazy"
                         />
                     </div>
                     <div className="bg-default/60 backdrop-blur-md absolute left-0 w-full bottom-[-20%] md:group-hover:bottom-0 transition-all ease-in-out duration-500 md:py-2">

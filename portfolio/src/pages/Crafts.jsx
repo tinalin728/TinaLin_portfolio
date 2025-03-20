@@ -157,7 +157,10 @@ function Crafts() {
                             ))}
                         </h1>
                     </div>
-                    <img src={line} alt="" width={300} />
+
+                    <div className='w-[250px] md:w-[280px] lg:w-[300px]'>
+                        <img src={line} alt="line" />
+                    </div>
                 </div>
             </section>
 

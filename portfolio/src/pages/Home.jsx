@@ -323,7 +323,7 @@ function Home() {
                                         <img src={line} alt="line" width={200} />
                                     </div>
 
-                                    <p className='mt-4'> Some of my selected crafts</p>
+                                    <p className='mt-4'> Some of my selected crafts.</p>
 
                                     <div className='hidden md:block mt-14'>
                                         <PrimaryCta to="/projects" text="View More" />
