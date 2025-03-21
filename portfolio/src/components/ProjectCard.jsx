@@ -18,16 +18,6 @@ export default function ProjectCard({ project }) {
                     <div className="h-[300px] w-full md:h-full">
                         <img
                             src={project.cover}
-                            srcSet={`
-                                ${project.coverSmall} 480w, 
-                                ${project.coverMedium} 768w, 
-                                ${project.coverLarge} 1024w, 
-                                ${project.cover} 1440w
-                            `}
-                            sizes="(max-width: 480px) 100vw, 
-                                (max-width: 768px) 75vw, 
-                                (max-width: 1024px) 50vw, 
-                                1440px"
                             alt={project.title}
                             className="w-full object-cover h-full rounded-xl transition duration-500 ease-in-out overflow-hidden"
                             style={{ transform: `scale(${scale})` }}
