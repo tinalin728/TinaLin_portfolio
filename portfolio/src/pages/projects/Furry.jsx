@@ -129,7 +129,7 @@ export default function Furry() {
                                     <h3> Defining Current UX Issues</h3>
                                     <p> Before redesigning the website, we conducted an in-depth analysis of its existing structure to understand the client’s strengths and areas for improvement. We identified 4 key pain points:</p>
 
-                                    <div className='mt-10 flex flex-col md:flex-row gap-10'>
+                                    <div className='mt-10 flex flex-col lg:flex-row gap-10'>
                                         <div className='flex-1'>
                                             <div className='flex flex-col gap-4'>
                                                 <div className="bg-white/70 p-2 rounded-2xl shadow-md flex-1" >
@@ -186,15 +186,15 @@ export default function Furry() {
                                     </div>
                                 </div>
 
-                                <div className='content-gap flex flex-col gap-10 md:flex-row'>
-                                    <div className='md:flex-1 lg:basis-1/3'>
+                                <div className='content-gap flex flex-col gap-10 lg:flex-row'>
+                                    <div className='lg:basis-1/3'>
                                         <h3> Competitor Analysis & Moodboard</h3>
                                         <p>
                                             We checked out the competitors our client likes and created a moodboard for inspiration. We also reviewed the company’s social media to better understand the client’s preferences.
                                         </p>
                                     </div>
 
-                                    <div className='md:flex-1 lg:basis-2/3'>
+                                    <div className='lg:basis-2/3'>
 
                                         <div className='rounded-2xl overflow-hidden bg-white/60 p-2 shadow-md'>
                                             <img src={moodboard} alt="Design system" className=' border border-light-grey/50 rounded-xl' />

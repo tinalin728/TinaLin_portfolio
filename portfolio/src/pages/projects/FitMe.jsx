@@ -140,7 +140,7 @@ export default function FitMe() {
                                 <div id="problems" className="mt-4">
                                     <h3 className=''> <span className=' font-roundo-semibold bg-amber-100'>Common Pain Points</span> in Finding the Right Fit
                                     </h3>
-                                    <div className='grid gap-6 md:grid-cols-2 py-10'>
+                                    <div className='grid gap-6 lg:grid-cols-2 py-10'>
                                         {project.research.problems.icons.map((issue, index) => (
                                             <div key={index} className='bg-white/50 p-2 rounded-2xl shadow-md'>
                                                 <div className='flex flex-col gap-3 border  border-gray-400 bg-white p-4 h-full rounded-xl'>
@@ -321,15 +321,16 @@ export default function FitMe() {
                         <div className='section-gap border-t-2 border-light-grey border-dashed'>
                             <h2>Iteration</h2>
 
-                            <div className='content-gap flex gap-10 flex-col md:flex-row'>
+                            <div className='content-gap flex gap-10 flex-col lg:flex-row'>
                                 <div>
                                     <h3>Design system </h3>
                                     <p className='mt-4'>I made a simple design system with reuseable components to ensure that the design is consistent.</p>
                                 </div>
 
-                                <div className=' overflow-hidden rounded-2xl shadow-md'>
+                                <div className=' overflow-hidden rounded-2xl'>
                                     <img src={project.final.system.src}
                                         alt={project.final.system.alt}
+                                        className='w-full'
                                         loading='lazy'
                                     />
                                 </div>
@@ -351,7 +352,7 @@ export default function FitMe() {
                                     </div>
                                 </div>
 
-                                <div className='content-gap flex gap-10 mx-auto flex-col md:flex-row'>
+                                <div className='content-gap flex gap-10 mx-auto flex-col lg:flex-row'>
                                     <div className='flex-1'>
                                         <h3>Browse Products: Eliminating Size Guesswork</h3>
                                         <p className='mt-4'>Instead of switching between pages to compare sizes, FitMe auto-filters products based on the user’s measurements. The Home screen's Fit Profile provides a general size recommendation, while product listings display the best-matching size per brand. This eliminates size guesswork, making shopping faster, more accurate, and frustration-free.
@@ -373,7 +374,7 @@ export default function FitMe() {
                                         </div>
                                     </div>
                                 </div>
-                                <div className='content-gap flex gap-10 mx-auto flex-col md:flex-row-reverse justify-center'>
+                                <div className='content-gap flex gap-10 mx-auto flex-col lg:flex-row-reverse justify-center'>
                                     <div className='flex-1'>
                                         <h3>Product with size recommendation <br /> + Review with similar body types</h3>
                                         <p className='mt-4'>This page makes shopping easier by combining size recommendations and real user reviews so users can find the right fit without the hassle. Instead of scrolling through endless reviews, the system auto-selects reviews from people with similar body types, making it faster and more accurate to judge how the pants will actually fit.
@@ -396,7 +397,7 @@ export default function FitMe() {
                                     </div>
                                 </div>
 
-                                <div className='content-gap flex gap-10 mx-auto flex-col md:flex-row'>
+                                <div className='content-gap flex gap-10 mx-auto flex-col lg:flex-row'>
                                     <div className='flex-1'>
                                         <h3>Additional Features: Favorite and Profile Edit</h3>
                                         <p className='mt-4'>
