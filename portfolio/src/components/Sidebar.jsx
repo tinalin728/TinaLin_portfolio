@@ -25,7 +25,7 @@ const Sidebar = ({ sections }) => {
     }, [sections]);
 
     return (
-        <div className="hidden md:block md:sticky md:top-10 md:h-fit md:py-24 md:pr-4 md:pb-[25rem]">
+        <div className="hidden md:block md:sticky md:top-10 md:h-fit md:py-24 md:pr-4 md:pb-[25rem] lg:pr-10">
             <ul className="flex flex-col">
                 {sections.map((section) => {
                     const isProblems = section.label.toLowerCase() === "problems";
