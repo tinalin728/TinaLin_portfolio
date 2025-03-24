@@ -292,6 +292,7 @@ function Home() {
                             <div className='absolute left-1/2 -translate-x-1/2 text-nowrap md:left-[18%] md:bottom-[2%] lg:left-[10%] bottom-5'>
                                 <div className=''>
                                     <a href='#crafts'
+                                        aria-label="scroll more"
                                         onClick={(e) => {
                                             e.preventDefault();
                                             document.getElementById("crafts")?.scrollIntoView({ behavior: "smooth" });

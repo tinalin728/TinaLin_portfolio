@@ -67,7 +67,9 @@ function Navbar() {
             <div className='max-w-container'>
                 <div className='flex justify-between items-center w-full'>
                     <div>
-                        <NavLink to="/" className="z-[1000] py-6 text-md font-roundo-bold">
+                        <NavLink to="/"
+                            aria-label="Go to homepage"
+                            className="z-[1000] py-6 text-md font-roundo-bold">
 
                             <img src={logo} alt="logo" width={45} />
                         </NavLink>
@@ -75,6 +77,7 @@ function Navbar() {
 
                     <div className='flex gap-6 md:gap-8'>
                         <NavLink to="/projects"
+                            aria-label="Go to projects page"
                             className={({ isActive }) =>
                                 `uppercase tracking-[1.5px] font-roundo-medium  hover:scale-95 transition duration-300 ${isActive ? "text-orange" : ""
                                 }`
@@ -84,6 +87,7 @@ function Navbar() {
                         </NavLink>
 
                         <NavLink to="/about"
+                            aria-label="Go to About page"
                             className={({ isActive }) =>
                                 `uppercase tracking-[1.5px] font-roundo-medium  hover:scale-95 transition duration-300 ${isActive ? "text-orange" : ""
                                 }`

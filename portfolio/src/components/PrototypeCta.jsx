@@ -7,6 +7,8 @@ export default function PrototypeCta({ inPageLink, scrollToId, webLink }) {
             {inPageLink ? (
                 <div className='flex gap-1 items-center justify-center'>
                     <a href="#prototype"
+                        aria-label={`Scroll to ${inPageLink}`}
+
                         onClick={(e) => {
                             e.preventDefault();
                             document.getElementById(scrollToId)?.scrollIntoView({ behavior: "smooth" });
@@ -19,7 +21,9 @@ export default function PrototypeCta({ inPageLink, scrollToId, webLink }) {
             ) : (
                 webLink && webLink.link && (
                     <div className='flex gap-1 items-center justify-center'>
-                        <a href={webLink.link} target='__blank' rel="noopener noreferrer"
+                        <a href={webLink.link} target='__blank'
+                            rel="noopener noreferrer"
+                            aria-label={`Visit ${webLink.text}`}
                             className='relative z-10 h-full group-hover:text-black normal-case'>
                             {webLink.text}
                         </a>

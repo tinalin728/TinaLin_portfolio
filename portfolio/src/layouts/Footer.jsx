@@ -400,11 +400,17 @@ function Footer() {
                         <p className='text-orange font-patrick uppercase tracking-widest mb-2'>Explore</p>
 
                         <div className='flex flex-col gap-2'>
-                            <NavLink to="/" className="text-white tracking-wider hover:scale-95 transition duration-300">Home
+                            <NavLink to="/"
+                                aria-label="Go to Home page"
+                                className="text-white tracking-wider hover:scale-95 transition duration-300">Home
                             </NavLink>
-                            <NavLink to="/projects" className="text-white tracking-wider hover:scale-95 transition duration-300">Crafts
+                            <NavLink to="/projects"
+                                aria-label="Go to projects page"
+                                className="text-white tracking-wider hover:scale-95 transition duration-300">Crafts
                             </NavLink>
-                            <NavLink to="/about" className="text-white tracking-wider hover:scale-95 transition duration-300">About
+                            <NavLink to="/about"
+                                aria-label="Go to About page"
+                                className="text-white tracking-wider hover:scale-95 transition duration-300">About
                             </NavLink>
                         </div>
                     </div>
@@ -413,7 +419,9 @@ function Footer() {
                         <p className='text-orange font-patrick uppercase tracking-widest mb-2'>Find Me</p>
 
                         <div className='flex flex-col gap-2'>
-                            <a href='mailto:contact@tinalin.ca' rel="noopener noreferrer"
+                            <a href='mailto:contact@tinalin.ca'
+                                aria-label="Go to email"
+                                rel="noopener noreferrer"
                                 className="text-white tracking-wider transition-all ease-in-out duration-300 group flex items-center">
                                 Mail
                                 <span className="text-xl ml-1 scale-[.9] group-hover:scale-100 group-hover:-rotate-[10deg] group-hover:-translate-y-1 transition-all duration-200 ease-in-out -translate-y-[2px] text-primary">⟿</span>
@@ -421,6 +429,7 @@ function Footer() {
 
                             <a href="https://www.linkedin.com/in/tina-lin-000613b5/"
                                 target="_blank"
+                                aria-label="Go to Linkedin"
                                 rel="noopener noreferrer"
                                 className="text-white tracking-wider transition-all ease-in-out duration-300 group flex items-center">
                                 LinkedIn
@@ -432,6 +441,7 @@ function Footer() {
 
                             <a href='https://github.com/tinalin728'
                                 target='_blank'
+                                aria-label="Go to github"
                                 rel="noopener noreferrer"
                                 className="text-white tracking-wider transition-all ease-in-out duration-300 group flex items-center">
                                 Github
