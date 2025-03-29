@@ -254,7 +254,7 @@ function Home() {
         <>
             <div className='relative'>
                 <section ref={heroRef} className='sticky top-[90.77px]'>
-                    <div className='h-[85vh] w-full outer-container relative -mt-[3rem] md:mt-0 mb-14 md:mb-20'>
+                    <div className='bg-primary h-[80vh] md:h-[85vh] w-full outer-container relative -mt-[3rem] md:mt-0 mb-14 md:mb-20'>
                         {positions.map((pos, index) => {
                             return (
                                 <div
@@ -289,7 +289,7 @@ function Home() {
                                 </div>
                             </div>
 
-                            <div className='absolute left-1/2 -translate-x-1/2 text-nowrap md:left-[18%] md:bottom-[2%] lg:left-[10%] bottom-5'>
+                            <div className='absolute left-1/2 -translate-x-1/2 text-nowrap bottom-5 md:left-[18%] lg:left-[10%] md:bottom-0 '>
                                 <div className=''>
                                     <a href='#crafts'
                                         aria-label="scroll more"
@@ -303,9 +303,9 @@ function Home() {
                                     </a>
                                 </div>
                             </div>
-                            <div className='absolute right-1/2 bottom-[13%] translate-x-1/2 md:right-[20%] lg:right-[11%] md:bottom-[2%]'>
+                            <div className='absolute right-1/2 bottom-[13%] translate-x-1/2 md:right-[20%] lg:right-[11%] md:bottom-0'>
                                 <div className='flex gap-2'>
-                                    <div><img src={location} alt="" width={23} /></div>
+                                    <div><img src={location} alt="" width={24} /></div>
                                     <p className='text-base tracking-[1.5px] font-roundo-medium uppercase flex items-center text-nowrap'> Vancouver, BC
                                     </p>
                                 </div>

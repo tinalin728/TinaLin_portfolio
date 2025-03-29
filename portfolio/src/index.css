@@ -115,7 +115,7 @@
     }
 
     main {
-        @apply overflow-hidden md:overflow-visible
+        @apply md:overflow-visible
     }
 
     html {
