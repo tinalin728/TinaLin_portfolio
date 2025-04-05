@@ -305,7 +305,7 @@ function Home() {
                             </div>
                             <div className='absolute right-1/2 bottom-[13%] translate-x-1/2 md:right-[20%] lg:right-[11%] md:bottom-0'>
                                 <div className='flex gap-2'>
-                                    <div><img src={location} alt="" width={24} /></div>
+                                    <div><img src={location} alt="" className='w-[23px] h-full' /></div>
                                     <p className='text-base tracking-[1.5px] font-roundo-medium uppercase flex items-center text-nowrap'> Vancouver, BC
                                     </p>
                                 </div>

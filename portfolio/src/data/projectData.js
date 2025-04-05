@@ -3,7 +3,7 @@ import { prototype } from "postcss/lib/previous-map";
 export const projectData = [
     {
         id: "tim-hortons-redesign",
-        type: 'UXUI',
+        type: 'UX/UI',
         skills: [
             "UX/UI",
         ],
@@ -24,8 +24,8 @@ export const projectData = [
 
         overview: {
             user: {
-                title: 'Target Audience',
-                content: 'Tim Horton\'s app users (first-timers, regular users)'
+                title: 'Tools',
+                content: 'Google Survey, Figma'
             },
             process: {
                 header: 'process',
@@ -306,9 +306,8 @@ export const projectData = [
         title: 'Nomly: Recipe Finder & Grocery List Web App',
         media: "image",
         skills: [
-            "React.JS",
-            "TailwindCSS",
-            "Api"
+            "Web Design",
+            "Web Development"
         ],
         cover: "/assets/nomly/cover1.jpg",
         banner: {
@@ -351,7 +350,7 @@ export const projectData = [
         title: 'Furrytales Pet- Website Redesign',
         media: "image",
         skills: [
-            "UXUI",
+            "UX/UI",
             "Web Design"
         ],
         cover: "/assets/furry/cover.jpg",
@@ -414,8 +413,8 @@ export const projectData = [
 
         overview: {
             user: {
-                title: 'Target Audience',
-                content: 'Shoppers struggling to find pants that fit perfectly.'
+                title: 'Tools',
+                content: 'Figma'
             },
             process: {
                 header: 'Process',
@@ -574,7 +573,7 @@ export const projectData = [
             },
 
             onboarding: {
-                src: "/assets/pm/onboarding.png",
+                src: "/assets/pm/onboarding1.png",
                 alt: 'onboarding'
             },
             home: {
@@ -662,9 +661,8 @@ export const projectData = [
         type: 'html',
         status: 'completed',
         skills: [
-            "HTML",
-            "TailwindCSS",
-            "JS",
+            "Web Design",
+            "Web Development",
             "Project Management",
         ],
         title: 'Basics. - Online Apparel Store',
