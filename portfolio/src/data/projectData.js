@@ -663,7 +663,6 @@ export const projectData = [
         skills: [
             "Web Design",
             "Web Development",
-            "Project Management",
         ],
         title: 'Basics. - Online Apparel Store',
         media: "image",

@@ -171,7 +171,7 @@ function About() {
             <div className='aboutSection pb-20 h-full bg-primary relative z-10'>
                 <div className='max-w-container'>
                     {/* image */}
-                    <section className='bg-primary flex flex-col lg:flex-row gap-10 items-center justify-center pb-16 md:pb-20'>
+                    <section className='bg-primary flex flex-col lg:flex-row gap-10 items-start justify-center pb-16 md:pb-20'>
                         <div className='lg:flex-1'>
                             <div className='flex flex-row relative'>
                                 <div className='absolute bottom-0 z-10 md:relative md:bottom-0 md:max-w-[350px] w-full -rotate-3 bg-white flex flex-col p-4 lg:hover:-translate-y-2 lg:hover:-rotate-1 transition-all duration-300 rounded-2xl border-2'
@@ -199,12 +199,14 @@ function About() {
                             <div className=''>
                                 <h3 className='normal-case leading-none mb-6'>From <span className='font-patrick text-orange tracking-wider mx-1 text-[29px]'> Education</span> to Tech</h3>
 
-                                <div>
-                                    <p className='font-patrick text-md md:text-lg tracking-wider'>Hi! I'm Tina, a digital designer based in Vancouver.</p>
-
-                                    <p className='mt-1'>
-                                        With a background in Linguistics and Education, I’ve always found ways to make learning fun—whether through interactive lessons or creative materials.
-                                        My aha! moment came when I discovered AAC devices at work. Seeing how design and tech could bridge communication gaps led me to New Media Design at BCIT where I discovered my passion for both design and code. I enjoy making designs that bring warmth and connection, and turning them into life.
+                                <div className=''>
+                                    <p>
+                                        Hi! I'm Tina, a <span className='font-patrick text-md tracking-wider mx-[1.5px] font-normal'>digital designer</span> based in Vancouver.
+                                        Creativity and art have always played a big part in my journey as a teacher.
+                                        My “aha” moment came when I discovered AAC devices in the classroom. Seeing how design and technology could bridge communication gaps made me realize I wanted to be part of that process.This led me to study New Media Design at BCIT, where I found my passion for both design and code.
+                                    </p>
+                                    <p className='mt-4'>
+                                        Now, I’m focused on UX/UI design, web design, and front-end development, creating digital experiences that are not just functional, but intuitive, inclusive, and emotionally impactful. I love blending logic and creativity to bring warmth and connection into everything I build.
                                     </p>
                                     <div className='mt-10'>
                                         <a href="/resume.pdf"
@@ -274,7 +276,7 @@ function About() {
                                 <div className='rounded-2xl overflow-hidden border-2'>
                                     <img src={jellycat} alt="jelly cat" loading="lazy" />
                                 </div>
-                                <p className='mt-2 text-center'>Collecting JellyCat. I am a big fan of Ricky.</p>
+                                <p className='mt-2 text-center'>Collecting JellyCat. I am a big fan of Ricky Rain Frog.</p>
                             </div>
                             <div className='md:max-w-[320px]'>
                                 <div className='rounded-2xl overflow-hidden border-2'>
