@@ -324,7 +324,7 @@ function Home() {
                                         <img src={line} alt="line" width={200} />
                                     </div>
 
-                                    <p className='mt-4'> Some of my selected crafts.</p>
+                                    <p className='mt-4 text-center md:text-left md:w-[300px] lg:w-[350px]'> Some of my selected crafts in UX/UI, web design, and development.</p>
 
                                     <div className='hidden md:block mt-14'>
                                         <PrimaryCta to="/projects" text="View More" />

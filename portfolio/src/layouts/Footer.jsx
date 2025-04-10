@@ -466,7 +466,7 @@ function Footer() {
 
             <div className='border-t border-primary'>
                 <div className='max-w-container'>
-                    <p className='text-primary/70 text-center text-[14px] tracking-widest uppercase py-3'> &copy; 2024 All Rights Reserved</p>
+                    <p className='text-primary/70 text-center text-[14px] tracking-widest uppercase py-3'> &copy; 2025 All Rights Reserved</p>
                 </div>
             </div>
         </footer >
