@@ -1,0 +1,102 @@
+/* Roundo Variable */
+@font-face {
+    font-family: 'Roundo-ExtraLight';
+    src: url('../../public/fonts/Roundo/Roundo-ExtraLight.woff2') format('woff2'),
+        url('../../public/fonts/Roundo/Roundo-ExtraLight.woff') format('woff'),
+        url('../../public/fonts/Roundo/Roundo-ExtraLight.ttf') format('truetype');
+    font-weight: 200;
+    font-display: swap;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Roundo-Light';
+    src: url('../../public/fonts/Roundo/Roundo-Light.woff2') format('woff2'),
+        url('../../public/fonts/Roundo/Roundo-Light.woff') format('woff'),
+        url('../../public/fonts/Roundo/Roundo-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-display: swap;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Roundo-Regular';
+    src: url('../../public/fonts/Roundo/Roundo-Regular.woff2') format('woff2'),
+        url('../../public/fonts/Roundo/Roundo-Regular.woff') format('woff'),
+        url('../../public/fonts/Roundo/Roundo-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-display: swap;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Roundo-Medium';
+    src: url('../../public/fonts/Roundo/Roundo-Medium.woff2') format('woff2'),
+        url('../../public/fonts/Roundo/Roundo-Medium.woff') format('woff'),
+        url('../../public/fonts/Roundo/Roundo-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-display: swap;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Roundo-SemiBold';
+    src: url('../../public/fonts/Roundo/Roundo-SemiBold.woff2') format('woff2'),
+        url('../../public/fonts/Roundo/Roundo-SemiBold.woff') format('woff'),
+        url('../../public/fonts/Roundo/Roundo-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-display: swap;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Roundo-Bold';
+    src: url('../../public/fonts/Roundo/Roundo-Bold.woff2') format('woff2'),
+        url('../../public/fonts/Roundo/Roundo-Bold.woff') format('woff'),
+        url('../../public/fonts/Roundo/Roundo-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-display: swap;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Craftwork Grotesk';
+    src: url('../../public/fonts/craftwork/CraftworkGrotesk-Regular.woff') format('woff');
+    font-weight: 400;
+    /* Normal */
+    font-style: normal;
+}
+
+
+/* Craftwork Grotesk*/
+@font-face {
+    font-family: 'Craftwork Grotesk';
+    src: url('../../public/fonts/craftwork/CraftworkGrotesk-Medium.woff') format('woff');
+    font-weight: 500;
+    /* Medium */
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Craftwork Grotesk';
+    src: url('../../public/fonts/craftwork/CraftworkGrotesk-SemiBold.woff') format('woff');
+    font-weight: 600;
+    /* Semi Bold */
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Craftwork Grotesk';
+    src: url('../../public/fonts/craftwork/CraftworkGrotesk-Bold.woff') format('woff');
+    font-weight: 700;
+    /* Bold */
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Craftwork Grotesk';
+    src: url('../../public/fonts/craftwork/CraftworkGrotesk-Heavy.woff') format('woff');
+    font-weight: 800;
+    /* extrabold */
+    font-style: normal;
+}
