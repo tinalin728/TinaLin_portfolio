@@ -122,7 +122,7 @@ export default function Home() {
             <>
                 <div className='relative z-10 pb-20 bg-white'>
                     <section id='wrapper' className='relative z-20 overflow-hidden max-w-container'>
-                        <div className="pt-20 md:pt-15 md: w-full flex flex-col h-[90vh] md:h-screen justify-between">
+                        <div className="pt-20 md:pt-15 md: w-full flex flex-col h-screen justify-between">
                             <p id='textItem' className="biggest-header md:text-nowrap md:whitespace-nowrap inline-block h-full" >
                                 Design to Develop
                             </p>
