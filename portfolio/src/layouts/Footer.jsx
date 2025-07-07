@@ -8,8 +8,8 @@ export default function Footer() {
             <div className='relative max-w-container pb-10  h-full overflow-hidden flex flex-col justify-center items-center'>
 
                 <div className='relative'>
-                    <img src={whiteLogo} alt="logo" className='w-[40px] md:w-[55px] absolute top-0 -left-7' />
-                    <h2 className='text-white heading text-center mb-5'>Don't Be Shy</h2>
+                    <img src={whiteLogo} alt="logo" className='w-[40px] md:w-[55px] absolute top-0 -right-8' />
+                    <h2 className='text-white heading text-center mb-5 '>Don't Be Shy</h2>
                 </div>
 
                 <div className='flex gap-4 items-center justify-center flex-col md:flex-row md:gap-2'>
