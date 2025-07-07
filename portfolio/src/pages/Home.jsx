@@ -121,14 +121,13 @@ export default function Home() {
         loading ? <div className="h-screen bg-white"></div> : (
             <>
                 <div className='relative z-10 pb-20 bg-white'>
-                    <section id='wrapper' className='relative z-20 overflow-hidden max-w-container pb-10'>
-                        <div className="pt-20 md:pt-15 md: w-full flex flex-col h-screen justify-between">
-                            <p id='textItem' className="biggest-header md:text-nowrap md:whitespace-nowrap inline-block h-full"
-                            >
+                    <section id='wrapper' className='relative z-20 overflow-hidden max-w-container'>
+                        <div className="pt-20 md:pt-15 md: w-full flex flex-col h-[85vh] md:h-screen justify-between">
+                            <p id='textItem' className="biggest-header md:text-nowrap md:whitespace-nowrap inline-block h-full" >
                                 Design to Develop
                             </p>
 
-                            <div id="heroContent" className='flex flex-col-reverse pb-14 md:pb-16 md:flex-row md:justify-between md:items-end lg:pb-20'>
+                            <div id="heroContent" className='flex flex-col-reverse pb-14 md:flex-row md:justify-between md:items-end lg:pb-20'>
                                 <p className='font-normal md:w-[60%] lg:w-[45%]'>
                                     Hello there! I’m Tina — a digital designer with a soft spot for playful code and thoughtful design.
                                     Whether it’s bold or minimal, quirky or clean, I love uncovering the meaning behind ideas and turning them into intuitive, human-centered experiences — always with a touch of warmth and curiosity.
@@ -149,7 +148,7 @@ export default function Home() {
                                 <hr className='flex-1 w-full' />
                             </div>
 
-                            <div className='py-10 grid gap-8 md:grid-cols-2 md:gap-6'>
+                            <div className='pt-5 pb-10 md:py-10 grid gap-8 md:grid-cols-2 md:gap-6'>
                                 {projectData.slice(0, 4).map((project) => (
                                     <ProjectCard key={project.id} project={project} />
                                 ))}
