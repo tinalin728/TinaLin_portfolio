@@ -129,7 +129,7 @@ export default function Home() {
                             </p>
 
                             <div id="heroContent" className='flex flex-col-reverse pb-14 md:pb-16 md:flex-row md:justify-between md:items-end lg:pb-20'>
-                                <p className='font-normal md:w-[45%]'>
+                                <p className='font-normal md:w-[60%] lg:w-[45%]'>
                                     Hello there! I’m Tina — a digital designer with a soft spot for playful code and thoughtful design.
                                     Whether it’s bold or minimal, quirky or clean, I love uncovering the meaning behind ideas and turning them into intuitive, human-centered experiences — always with a touch of warmth and curiosity.
                                 </p>

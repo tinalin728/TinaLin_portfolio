@@ -65,8 +65,8 @@ export default function TinderCard() {
 
     return (
         <div className="relative w-full h-screen flex justify-center items-center overflow-hidden">
-            <h2 className="text-nowrap text-center font-extralight absolute top-30 left-1/2 -translate-x-1/2 -translate-y-1/2">Pieces about me.</h2>
-            <p className='font-inter italic font-medium text-sm tracking-wide absolute top-[25%] right-10 -translate-x-1/2 -translate-y-1/2 inline-block rotate-14 text-gray-500'>Swipe</p>
+            <h2 className="font-golften heading text-center absolute top-30 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full">Pieces about me</h2>
+            <p className='text-gray-400 font-canela tracking-wider absolute top-[30%] right-10 -translate-x-1/2 -translate-y-1/2 inline-block rotate-14'>Swipe</p>
 
 
             {springs.map(({ x, y, rot, scale }, i) => (
@@ -83,9 +83,9 @@ export default function TinderCard() {
                         touchAction: 'none',
                     }}
                 >
-                    <div className="card max-w-[340px] min-h-[300px] bg-white shadow-md overflow-hidden cursor-grab active:cursor-grabbing rounded-md ">
+                    <div className="card mt-20 max-w-[400px] min-h-[300px] w-full bg-white shadow-md overflow-hidden cursor-grab active:cursor-grabbing rounded-md ">
                         <div
-                            className="h-[250px] max-w-[340px] rounded-md overflow-hidden"
+                            className="h-[250px] w-full rounded-md overflow-hidden"
                             style={{ pointerEvents: 'auto', touchAction: 'none' }}
                         >
                             <img

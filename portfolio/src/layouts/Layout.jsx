@@ -1,7 +1,6 @@
-import { Helmet } from "react-helmet";
-
-
 import React, { useState, useRef, useEffect } from 'react';
+import { Helmet } from "react-helmet";
+import { useLocation } from 'react-router-dom';
 import { Outlet } from 'react-router-dom';
 import Navbar from './Navbar';
 import Footer from './Footer';
@@ -66,11 +65,30 @@ export default function Layout() {
         return () => clearInterval(interval);
     }, []);
 
+    const location = useLocation();
+    const [currentTitle, setCurrentTitle] = useState('Tina Lin | Digital Designer');
+
+    useEffect(() => {
+        let title = 'Tina Lin | Digital Designer';
+        const path = location.pathname;
+
+        if (path === '/') title = 'Tina Lin | Home';
+        else if (path === '/about') title = 'About | Tina Lin';
+        else if (path === '/crafts') title = 'Crafts | Tina Lin';
+        else if (path.includes('/project/tim-hortons-redesign')) title = 'Tim Hortons Redesign - UXUI case study | Tina Lin';
+        else if (path.includes('/project/furrytales-pet-redesign')) title = 'FurryTales Redesign - web redesign case study | Tina Lin';
+        else if (path.includes('/project/nomly')) title = 'Nomly - full stack development | Tina Lin';
+        else if (path.includes('/project/solar-system')) title = 'Solar System - web design & development | Tina Lin';
+        else if (path.includes('/project/fitme')) title = 'FitMe - UXUI case study | Tina Lin';
+
+        document.title = title;
+    }, [location.pathname]);
+
 
 
     return (
         <>
-            {/* <Helmet>
+            <Helmet>
                 <title>{currentTitle}</title>
                 <meta name="description" content="Tina Lin is a digital designer and web developer specializing in creating user-centered websites, intuitive UI designs, and modern web experiences." />
 
@@ -86,7 +104,7 @@ export default function Layout() {
                 />
                 <meta property="og:url" content={`https://www.tinalin.ca${location.pathname}`} />
                 <meta property="og:type" content="website" />
-            </Helmet> */}
+            </Helmet>
 
             <div className='h-full flex flex-col overflow-hidden lg:overflow-visible relative'>
                 <Navbar id="top" open={open} setOpen={setOpen} currentTime={currentTime} />
@@ -105,16 +123,14 @@ export default function Layout() {
 
                 {/* bottom nav */}
                 <div id="bottom-nav" className='fixed bottom-0 z-20 h-fit max-w-container flex justify-between items-center pb-2'>
-                    {/* <p className='text-accent flex-1 text-2xl leading-[1]'>☻</p> */}
-
                     <div className='flex-1'>
                         <img id='bottom-logo' src={outlineLogo} alt="" width={30} />
                     </div>
                     <div className='hidden md:flex-1 md:flex md:items-center md:justify-center  md:gap-10 uppercase'>
-                        <p className={`font-normal text-sm`}>
+                        <p className={`font-normal text-sm text-nowrap`}>
                             Vancouver, BC, Canada
                         </p>
-                        <p className="font-normal text-sm transition-colors duration-300">
+                        <p className="font-normal text-sm transition-colors duration-300 text-nowrap">
                             {currentTime} PST
                         </p>
                     </div>

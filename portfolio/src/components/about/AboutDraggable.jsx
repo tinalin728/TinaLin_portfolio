@@ -20,8 +20,6 @@ import capybara from "../../../public/assets/about/capybara.jpg"
 import pokemon from "../../../public/assets/about/pokemon.jpg"
 import eggy from "../../../public/assets/about/eggy.jpg"
 
-import logo from '../../../public/assets/outline_logo.svg'
-
 
 export default function AboutDraggable() {
     const [isDesktop, setIsDesktop] = useState(true);
@@ -248,7 +246,7 @@ export default function AboutDraggable() {
                     <div ref={containerRef} className="relative h-full w-full"
 
                     >
-                        <h2 className="font-golften heading italic absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">Pieces about me.</h2>
+                        <h2 className="font-golften heading absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">Pieces about me</h2>
                         <p className='text-gray-400 font-canela italic absolute top-[42%] left-[70%] -translate-x-1/2 -translate-y-1/2 inline-block rotate-14 tracking-wider'>Drag and drop</p>
                         <div className="absolute inset-0 z-20">
                             {aboutMe.map((item, i) => {

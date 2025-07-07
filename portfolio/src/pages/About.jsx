@@ -38,52 +38,6 @@ export default function About() {
         return () => clearTimeout(timer);
     }, []);
 
-    // logo 
-    // useGSAP(() => {
-    //     if (!logoRef.current) return;
-
-    //     const logo = logoRef.current;
-    //     let rotation = 0;
-    //     let scrollSpeed = 0;
-    //     let lastScrollY = window.scrollY;
-
-    //     // Infinite spin with scroll override
-    //     const updateRotation = () => {
-    //         rotation += 0.1 + scrollSpeed;
-    //         logo.style.transform = `rotate(${rotation}deg)`;
-    //     };
-
-    //     // Add to GSAP ticker
-    //     gsap.ticker.add(updateRotation);
-
-    //     // Track scroll direction and speed
-    //     const scrollTrigger = ScrollTrigger.create({
-    //         trigger: "#wrapper",
-    //         start: "top bottom",
-    //         end: "bottom top",
-    //         scrub: true,
-    //         onUpdate: () => {
-    //             const currentScroll = window.scrollY;
-    //             const delta = currentScroll - lastScrollY;
-
-    //             scrollSpeed = delta * 0.1; // tweak multiplier as needed
-    //             lastScrollY = currentScroll;
-    //         },
-    //     });
-
-    //     // Gradually reduce scroll influence
-    //     const fadeScrollSpeed = () => {
-    //         scrollSpeed *= 0.9;
-    //         requestAnimationFrame(fadeScrollSpeed);
-    //     };
-    //     fadeScrollSpeed(); // start fading scroll speed
-
-    //     return () => {
-    //         gsap.ticker.remove(updateRotation);
-    //         scrollTrigger.kill();
-    //     };
-    // }, [loading]);
-
     useGSAP(() => {
         if (loading) return; // Don't run until loading is false
 
@@ -165,8 +119,8 @@ export default function About() {
     return (
         loading ? <div className="h-screen"></div> : (
             <>
-                <section className="wrapper elative z-10 h-full md:pb-20 max-w-container pb-20">
-                    <div className="pt-30 flex gap-10 mb-5 flex-col items-center lg:flex-row lg:gap-10">
+                <section className="wrapper elative z-10 h-full md:pb-20 max-w-container pb-14">
+                    <div className="pt-30 flex gap-14 mb-5 flex-col items-center lg:flex-row lg:gap-10">
                         <div className='basis-[45%] flex flex-col items-center justify-center relative'>
                             <div className="p-4 md:p-6 lg:p-8 border rounded-2xl mx-auto shadow-md relative z-10 bg-white">
                                 <img src={profile} alt="profile" className='mb-2 object-cover object-left-top h-full w-full max-w-[500px] max-h-[450px] rounded-md lg:max-h-[600px] xl:max-w-[650px]' />
@@ -187,11 +141,11 @@ export default function About() {
                                 I didn’t grow up dreaming of pixels, but I’ve always loved making things that bring joy. From preschool teaching to designing and coding today, my path has been anything but linear — and that’s what makes it mine.
                             </p>
 
-                            <p className="fade-item mb-15">
+                            <p className="fade-item mb-10 md:mb-15">
                                 I see design as a bridge — connecting ideas with emotions, and aesthetics with usability. By blending design and development, I aim to create experiences that feel human, warm, and just a bit unexpected. I stay curious, playful, and open to what’s next, including new opportunities to collaborate and grow.
                             </p>
                             <div id="resumecta" className=''>
-                                <PrimaryCta to="/crafts" label="My Resume" icon={CloudDownload} iconSize='20' />
+                                <PrimaryCta to="/resume.pdf" label="My Resume" icon={CloudDownload} iconSize='20' />
                             </div>
                         </div>
 
@@ -199,7 +153,7 @@ export default function About() {
                 </section>
 
                 <section className="max-w-container">
-                    <div className="flex flex-col md:flex-row md:justify-between border-y py-20">
+                    <div className="flex flex-col md:flex-row md:justify-between border-y py-14 md:py-20 md:gap-10">
                         <h2 className='heading text-center mb-10 md:text-left lg:-translate-y-5 font-extralight text-nowrap'>What I do</h2>
 
                         <div className="flex flex-col items-center justify-between">

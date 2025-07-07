@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 
 export default function PrimaryCta({ to, label, icon: Icon = ArrowRight, additionalClass, iconSize = '18' }) {
-    const isInternal = to?.startsWith('/') || to?.startsWith(':'); // react-router
+    const isInternal = (to?.startsWith('/') && !to.endsWith('.pdf')) || to?.startsWith(':');
     const isAnchor = to?.startsWith('#'); // in-page anchor
     const baseClass = `group relative uppercase border-black w-fit rounded-full cursor-pointer flex justify-center items-center border pr-6 py-1.5 pl-1 overflow-hidden ${additionalClass}`;
 
