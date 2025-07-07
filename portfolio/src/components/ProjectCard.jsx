@@ -1,51 +1,35 @@
-import { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 export default function ProjectCard({ project }) {
-    const [scale, setScale] = useState(1);
-
-    const handleMouseMove = () => setScale(1.05);
-    const handleMouseOut = () => setScale(1);
-
-
     return (
-        <div className="rounded-2xl border-2 h-full w-full p-4 transition duration-500 group  md:hover:shadow-card md:hover:-translate-y-1">
-            <Link
-                aria-label={`Go to ${project.id}`}
-                onMouseMove={handleMouseMove}
-                onMouseOut={handleMouseOut}
-                to={`/projects/${project.id}`}>
-                <div className="border border-default/20 relative overflow-hidden w-full rounded-xl">
-                    <div className="h-[300px] w-full md:h-full">
+        <Link to={`/project/${project.id}`} className="md:pb-5 lg:pb-10">
+            <div className="relative z-20 w-full h-full overflow-hidden group">
+                <div className="overflow-hidden md:group-hover:rounded-3xl relative transition-all duration-300">
+                    {/* Base image */}
+                    <img
+                        src={project.cover}
+                        alt={project.title}
+                        className="scale-112 w-full h-full object-cover transition-transform duration-500 ease-in-out md:md:group-hover:scale-100"
+                    />
+
+                    {/* Overlay */}
+                    <div className="absolute inset-0 w-full h-full bg-black/40 backdrop-blur-md transition-opacity duration-500 ease-in-out opacity-0 md:group-hover:opacity-100 z-10" />
+
+                    <div className="z-20 absolute inset-0 rounded-2xl transition-all duration-500 ease-in-out opacity-0 scale-[0.5] md:group-hover:opacity-100 md:group-hover:scale-[0.65]">
                         <img
-                            src={project.cover}
+                            src={project.coverHover}
                             alt={project.title}
-                            className="w-full object-cover h-full rounded-xl transition duration-500 ease-in-out overflow-hidden"
-                            style={{ transform: `scale(${scale})` }}
-                            loading="lazy"
-                            fetchpriority="high"
+                            className=" w-full h-full object-contain"
                         />
-
                     </div>
-                    <div className="bg-default/60 backdrop-blur-md absolute left-0 w-full bottom-[-20%] md:group-hover:bottom-0 transition-all ease-in-out duration-500 md:py-2">
-                        <p className="text-center text-white uppercase"> Read Now</p>
-                    </div>
-
                 </div>
 
-                <div className="">
-                    <div className="flex flex-wrap gap-2 mt-3 md:mt-5">
-                        {project.skills.map((skill, index) => (
-                            <div className="inline-block" key={index}>
-                                <span className="text-base px-3 py-[2px] bg-darker-bg text-brown rounded-lg font-patrick tracking-[1.5px] text-nowrap font-bold normal-case">
-                                    {skill}
-                                </span>
-                            </div>
-                        ))}
-                    </div>
-                    <h3 className="mt-4 mb-6 capitalize text-md md:text-lg font-roundo-medium">{project.title}</h3>
+
+                <div className='mt-3 flex flex-col lg:justify-between lg:items-center lg:flex-row'>
+                    <h5>{project.title}</h5>
+                    <p className='text-sm capitalize tracking-wide font-normal text-gray-500'>{project.category}</p>
                 </div>
-            </Link>
-        </div>
+            </div>
+        </Link>
     );
 }

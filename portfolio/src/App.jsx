@@ -1,35 +1,33 @@
-import React, { useState } from 'react'
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
-import Home from './pages/Home'
-import About from './pages/About'
-import Crafts from './pages/Crafts'
-import Layout from './layouts/Layout'
-import ScrollToTop from './hooks/ScrollToTop'
-import Cursor from './components/Cursor'
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
+
+import Home from "./pages/Home"
+import About from "./pages/About"
+import Project from "./pages/Project"
+import Layout from "./layouts/Layout"
 
 import Tims from "./pages/projects/Tims"
+import Furry from "./pages/projects/Furry"
 import Nomly from "./pages/projects/Nomly"
 import FitMe from "./pages/projects/FitMe"
-import Basics from "./pages/projects/Basics"
-import Furry from './pages/projects/Furry'
+import Solar from "./pages/projects/Solar"
+import ScrollToTop from "./layouts/ScrollToTop"
 
 function App() {
 
   return (
     <Router>
       <ScrollToTop />
-      <Cursor />
       <Routes>
         <Route element={<Layout />}>
-          <Route path='/' element={<Home />} />
-          <Route path='/about' element={<About />} />
-          <Route path='/projects' element={<Crafts />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/crafts" element={<Project />} />
 
-          <Route path="/projects/tim-hortons-redesign" element={<Tims />} />
-          <Route path="/projects/nomly" element={<Nomly />} />
-          <Route path="/projects/fitme" element={<FitMe />} />
-          <Route path="/projects/basics" element={<Basics />} />
-          <Route path="/projects/furry-tales" element={<Furry />} />
+          <Route path="/project/tim-hortons-redesign" element={<Tims />} />
+          <Route path="/project/nomly" element={<Nomly />} />
+          <Route path="/project/solar-system" element={<Solar />} />
+          <Route path="/project/furrytales-pet-redesign" element={<Furry />} />
+          <Route path="/project/fitme" element={<FitMe />} />
         </Route>
       </Routes>
     </Router>

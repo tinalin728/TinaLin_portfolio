@@ -1,484 +1,223 @@
-import React, { useEffect, useRef } from 'react'
-import ProjectBanner from '../../components/ProjectBanner'
+import { useState } from 'react'
 import { projectData } from '../../data/projectData'
-import Sidebar from '../../components/Sidebar';
-import PrototypeCta from '../../components/PrototypeCta';
-import BackToTop from '../../components/BackToTop';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { tomorrow } from 'react-syntax-highlighter/dist/esm/styles/prism';
-import {
-    Accordion,
-    AccordionHeader,
-    AccordionBody,
-} from "@material-tailwind/react";
+import ProjectIntro from '../../components/projects/ProjectIntro';
+import ProjectLayout from '../../components/projects/ProjectLayout';
+import ProjectSectionLayout from '../../components/projects/ProjectSectionLayout';
+import UXDisplayCard from '../../components/projects/UXDisplayCard';
 
-import lightMode from '../../../public/assets/nomly/light-mode.png'
-import darkMode from '../../../public/assets/nomly/dark-mode.png'
-import api from '../../../public/assets/nomly/api.png'
-import data from '../../../public/assets/nomly/data.png'
+import list from '../../../public/assets/icons/list.png'
+import move from '../../../public/assets/icons/move.png'
+import pantry from '../../../public/assets/icons/pantry.png'
+import search from '../../../public/assets/icons/search.png'
+
+import login from '../../../public/assets/nomly/login.png'
+import intro from '../../../public/assets/nomly/intro.png'
+import { Globe } from 'lucide-react';
 
 const project = projectData[1]
 
 
 export default function Nomly() {
-    function Icon({ id, open }) {
-        return (
-            <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={2}
-                stroke="currentColor"
-                className={`${id === open ? "rotate-180" : ""} h-5 w-5 transition-transform`}
-            >
-                <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-            </svg>
-        );
-    }
-
-    const [open, setOpen] = React.useState(0);
-
-    const handleOpen = (value) => setOpen(open === value ? 0 : value);
 
     const sections = [
-        { id: "browse", label: "Recipe Search" },
-        { id: "list", label: "Shopping List" },
-        { id: "storage", label: "Local Storage" },
+        { id: "overview", label: "Overview" },
+        { id: "process", label: "Process" },
         { id: "reflection", label: "Reflection" },
 
     ];
 
+    // tabs
+    const [value, setValue] = useState(0);
+
+    const handleChange = (event, newValue) => {
+        setValue(newValue);
+    };
+
     return (
         <>
-            <BackToTop />
-            <ProjectBanner project={project} />
-            <div className='max-w-container md:flex md:gap-8 lg:gap-14 bg-primary relative z-10'>
-                <Sidebar sections={sections} />
+            <ProjectIntro
+                title={project.intro.title}
+                subtitle={project.intro.subtitle}
+                timeline={project.intro.timeline}
+                role={project.intro.role}
+                process={project.intro.process}
+                src={project.intro.src}
+                buttonLink="https://nomly.tinalin.ca/"
+                button="View Website"
+                icon={Globe}
+                iconSize='20'
+            />
 
-                <div className='overflow-hidden'>
-                    {/* overview */}
-                    <section className='bg-primary'>
-                        <div className=''>
-                            <h2 className='mt-[5rem]'>Overview</h2>
-                            <div className='content-gap flex flex-col-reverse items-start gap-10 lg:flex-row'>
-                                <div className='basis-[60%]'>
-                                    <h4 className='mb-10 font-patrick italic tracking-wider'>
-                                        Cooking Alone Can Be a Challenge.
-                                    </h4>
-                                    <p className='mb-10'>
-                                        Living alone, it’s hard to decide what to cook, keep track of fridge items, and manage grocery lists efficiently. I built Nomly to simplify this process—a web app that helps users discover recipes, manage grocery lists, and track fridge items seamlessly.
-                                    </p>
+            <ProjectLayout sections={sections} currentId={project.id} projectData={projectData} >
 
-                                    <p className='uppercase tracking-wider underline underline-offset-[4px] font-roundo-medium text-orange'>Features</p>
-                                    <ul >
-                                        <li> <span className='text-lg'>⤍</span> Recipe Search & Filters</li>
-                                        <li> <span className='text-lg'>⤍</span> Integrated grocery & fridge lists to prevent waste</li>
-                                        <li> <span className='text-lg'>⤍</span>  Save & Organize Favorites</li>
-                                        <li> <span className='text-lg'>⤍</span>   Dark & Light Mode</li>
-                                    </ul>
+                <ProjectSectionLayout id="overview" title="Overview">
+                    <div className='flex flex-col md:flex-row gap-14 pb-14 lg:pb-20'>
+                        <div className='basis-[60%]'>
+                            <p className='subtitle-sm'> The Challenge </p>
+                            <h3 className='mb-5'>Meal planning shouldn’t feel like a second job. </h3>
 
-                                    <PrototypeCta webLink={{ link: "https://nomly.tinalin.ca/", text: "Visit Website" }} />
-
-                                </div>
-
-                                <div className='basis-[40%] w-full h-full mx-auto xl:-translate-y-10'>
-
-                                    <div className='w-full max-w-[450px] mx-auto'>
-                                        <img
-                                            src={project.overview.media.src}
-                                            alt={project.overview.media.altText}
-                                            loading='lazy'
-                                        />
-                                    </div>
-
-                                </div>
-                            </div>
+                            <p >
+                                I’ve always found recipe apps a bit disconnected: you find something you want to cook, but then you’re on your own figuring out what you need to buy and what you already have.
+                                That friction inspired me to explore ways to bring everything — discovery, pantry tracking, and grocery planning — into one flow.
+                            </p>
                         </div>
-                    </section>
-
-                    {/* recipe search */}
-                    <section id="browse">
-                        <div className='section-gap section-gap border-t-2 border-light-grey border-dashed'>
-                            <h2 className=''>Recipe Search</h2>
-
-                            <div className='content-gap flex flex-col items-center gap-10'>
-                                <div className='h-full p-2 bg-white/40 shadow-md'>
-                                    <img src={api} alt="api"
-                                        loading='lazy'
-                                        className='object-cover h-full w-full' />
-                                </div>
-
-                                <div className=' flex-1'>
-                                    <p>
-                                        I built Nomly to make recipe discovery effortless. The homepage dynamically fetches Recipes of the Day, while users can search by keyword, apply filters, or browse trending categories—all powered by different API endpoints.
-                                    </p>
-                                    <p className='mt-4'>
-                                        To make this work, I used the <a href="https://spoonacular.com/food-api" target='__blank' className='normal-case tracking-normal underline text-orange underline-offset-2'> Spoonacular API </a> to pull in real-time recipe data. Some endpoints didn’t include all the details, like ingredients, so I set up a second fetch request when needed. This way, I kept the data accurate without making unnecessary API calls.
-                                    </p>
-                                </div>
-                            </div>
-
-
-                            <Accordion open={open === 1} icon={<Icon id={1} open={open} />} className='border  px-4 py-1 shadow-md max-w-full rounded-2xl'>
-                                <AccordionHeader onClick={() => handleOpen(1)} className='border-0 font-roundo-medium text-[18px] text-black capitalize tracking-wide'> {`< API fetch >`} </AccordionHeader>
-                                <AccordionBody>
-                                    <div className="w-full overflow-x-auto max-w-full">
-                                        <SyntaxHighlighter
-                                            language="javascript"
-                                            style={tomorrow}
-                                            showLineNumbers
-                                            wrapLongLines
-                                            customStyle={{
-                                                letterSpacing: '.8px',
-                                                borderRadius: '10px',
-                                                width: "100%",
-                                                maxWidth: "100%",
-                                                minWidth: "300px",
-                                                maxHeight: "600px",
-                                                height: '100%',
-                                            }}
-                                        >
-                                            {` import { useState, useEffect } from 'react';
-import { getStoredData, storeData } from '../utils/storage';
-
-const fetchRecipes = (key, query, apiType) => {
-    const [recipes, setRecipes] = useState([]);
-    const [isLoading, setIsLoading] = useState(true);
-    const [error, setError] = useState(null);
-
-    useEffect(() => {
-        const fetchRecipesData = async () => {
-            const today = new Date().toISOString().split("T")[0];
-
-            // Retrieve stored data
-            const storedRecipes = getStoredData(key);
-            const lastFetchDate = localStorage.getItem(\`\${key}_date\`) || "";
-
-            let initialRecipes = [];
-
-            // If stored data is fresh, use it
-            if (storedRecipes && lastFetchDate === today && storedRecipes.length > 0) {
-                setRecipes(storedRecipes);
-                setIsLoading(false);
-                return;
-            }
-
-            let apiUrl;
-            if (apiType === "random") {
-                apiUrl = \`https://api.spoonacular.com/recipes/random?apiKey=\${import.meta.env.VITE_API_KEY}&number=4\`;
-            } else if (apiType === "complexSearch") {
-                apiUrl = \`https://api.spoonacular.com/recipes/complexSearch?apiKey=\${import.meta.env.VITE_API_KEY}&query=\${query}&number=4\`;
-            }
-
-            try {
-                const response = await fetch(apiUrl);
-
-                // error handling
-                if (!response.ok) {
-                    throw new Error(\`API limit exceeded or network issue. Status: \${response.status}\`);
-                }
-                const data = await response.json();
-                initialRecipes = data.results || data.recipes || data.menuItems || [];
-
-                if (initialRecipes.length > 0) {
-                    storeData(key, initialRecipes);
-                    localStorage.setItem(\`\${key}_date\`, today);
-                } else {
-                    console.warn(\`No recipes found for query: \${query}\`);
-                }
-            } catch (err) {
-                setError(err.message);
-                console.error(\`Error fetching \${key}:\`, err);
-                setIsLoading(false);
-                return;
-            }
-
-            // Perform a second fetch if 'extendedIngredients' are missing in the first fetch
-            // All recipe details are fetched in parallel instead of one by one to improve performance.
-            const updatedRecipes = await Promise.all(
-                initialRecipes.map(async (recipe) => {
-                    // Ensure valid recipe
-                    if (!recipe || !recipe.id) return null;
-
-                    try {
-                        const detailResponse = await fetch(
-                            \`https://api.spoonacular.com/recipes/\${recipe.id}/information?apiKey=\${import.meta.env.VITE_API_KEY}&includeNutrition=false\`
-                        );
-                        if (!detailResponse.ok) {
-                            throw new Error(\`Error fetching details for ID \${recipe.id}\`);
-                        }
-                        const detailedData = await detailResponse.json();
-                        return detailedData?.extendedIngredients ? detailedData : null;
-                    } catch (error) {
-                        console.error(\`Error fetching details for recipe ID: \${recipe.id}\`, error);
-                        return null;  // Return null to remove invalid recipes
-                    }
-                })
-            );
-
-            // Remove null values before updating state
-            const validRecipes = updatedRecipes.filter(recipe => recipe !== null);
-
-            setRecipes(validRecipes);
-            storeData(key, validRecipes);
-            setIsLoading(false);
-        };
-
-        fetchRecipesData();
-    }, [key, query, apiType]);
-
-    return { recipes, isLoading, error };
-};
-
-export default fetchRecipes;
-
-`}
-                                        </SyntaxHighlighter>
-                                    </div>
-
-                                </AccordionBody>
-                            </Accordion>
+                        <div className='basis-[40%]'>
+                            <img src={intro} alt="Food" />
                         </div>
-                    </section>
+                    </div>
 
-                    {/* list */}
-                    <section id='list'>
-                        <div className='section-gap section-gap border-t-2 border-light-grey border-dashed'>
-                            <h2 className=''>Shopping List</h2>
+                    <hr className='divider' />
 
-                            <div className='flex flex-col gap-10 content-gap lg:flex-row-reverse'>
-                                <div className='lg:basis-[60%] p-2 bg-white/40 shadow-md '>
-                                    <img src={data} alt="shopping list"
-                                        loading='lazy'
-                                        className='object-cover border border-dark/20' />
-                                </div>
-
-                                <div className='lg:basis-[40%]'>
-                                    <p>
-                                        Users can add ingredients straight from a recipe to their shopping list. The list has two sections— <span className='text-orange'>one for groceries and one for fridge items </span> —to help users keep track of what they already have and reduce food waste.
-                                    </p>
-
-                                    <p className='mt-4'>
-                                        The shopping list is managed centrally, keeping data updated across the app. When users add an ingredient, it instantly appears in the list, ensuring real-time updates for easy and organized grocery planning.
-                                    </p>
-                                </div>
-                            </div>
-
-                            <Accordion open={open === 2} icon={<Icon id={2} open={open} />} className='border  px-4 py-1 mt-10 shadow-md max-w-full rounded-2xl'>
-                                <AccordionHeader onClick={() => handleOpen(2)} className='border-0 font-roundo-medium text-[18px] text-black capitalize tracking-wide'> {`< App . JSX  >`} </AccordionHeader>
-                                <AccordionBody>
-                                    <SyntaxHighlighter
-                                        language="javascript"
-                                        style={tomorrow}
-                                        showLineNumbers
-                                        wrapLongLines
-                                        customStyle={{
-                                            letterSpacing: '.8px',
-                                            borderRadius: '10px',
-                                            width: "100%",
-                                            maxHeight: "600px",
-                                            height: '100%',
-                                        }}
-                                    >
-                                        {`
-function App() {
-  const [savedFavs, setSavedFavs] = useState(() => {
-    const saved = localStorage.getItem('favs');
-    return saved ? JSON.parse(saved) : [];
-  });
-
-  const toggleFav = (recipe) => {
-    let favs = JSON.parse(localStorage.getItem('favs')) || [];
-
-    // Check if the recipe already exists
-    const exists = favs.some(fav => fav.id === recipe.id);
-
-    if (exists) {
-      // Remove the recipe if already in favorites
-      favs = favs.filter(fav => fav.id !== recipe.id);
-    } else {
-      // Add the full recipe object
-      favs.push(recipe);
-    }
-
-    localStorage.setItem('favs', JSON.stringify(favs));
-    setSavedFavs(favs);
-  };
-
-
-  const [groceryList, setGroceryList] = useState(() => {
-    // Load saved list from localStorage
-    const storedList = localStorage.getItem('groceryList');
-    return storedList ? JSON.parse(storedList) : [];
-  });
-
-  // Function to add ingredients to the list (avoiding duplicates)
-  const addIngredients = (ingredients) => {
-    setGroceryList((prevList) => {
-      const uniqueIngredients = [...new Set([...prevList, ...ingredients])];
-      return uniqueIngredients;
-    });
-  };
-
-  // Function to remove an ingredient from the list
-  const removeIngredient = (item) => {
-    setGroceryList((prevList) => prevList.filter((i) => i !== item));
-  };
-
-  // Persist grocery list to local storage
-  useEffect(() => {
-    localStorage.setItem('groceryList', JSON.stringify(groceryList));
-  }, [groceryList]);
-
-
-  return (
-    <Router>
-      <Navbar />
-      <Routes>
-        <Route path='/' element={<Browse savedFavs={savedFavs} toggleFav={toggleFav} />} />
-        <Route path='/list' element={<List groceryList={groceryList} removeIngredient={removeIngredient} />} />
-        <Route path='/favorite' element={<Fav savedFavs={savedFavs} toggleFav={toggleFav} />} />
-        <Route path='/recipe/:id' element={<Detail addIngredients={addIngredients} savedFavs={savedFavs} toggleFav={toggleFav} />} />
-      </Routes>
-    </Router>
-  )
-}
-
-export default App
-`}
-                                    </SyntaxHighlighter>
-                                </AccordionBody>
-                            </Accordion>
+                    <div id="solution" >
+                        <div className='lg:max-w-[66%] mb-10'>
+                            <p className='subtitle-sm'> The Solution</p>
+                            <h3 className='mb-5'>A full-stack solution that connects recipe discovery with grocery and pantry management</h3>
+                            <p> What began as an API practice turned into a full-stack web app where users can search for recipes, save favorites, manage a pantry, and create grocery lists, without the usual friction.</p>
                         </div>
-                    </section>
 
-                    {/* local storage */}
-                    <section id='storage'>
-                        <div className='section-gap section-gap border-t-2 border-light-grey border-dashed'>
-                            <h2 className=''>Local Storage</h2>
-                            <div className='content-gap'>
-                                <div className='flex gap-4 justify-center items-center'>
-                                    <div>
-                                        <img src={lightMode} alt="light-mode"
-                                            loading='lazy'
-                                            className='p-2 bg-white/40 shadow-md max-w-full' />
-                                    </div>
-                                    <div>
-                                        <img src={darkMode} alt="dark-mode"
-                                            loading='lazy'
-                                            className='p-2 bg-white/40 shadow-md  h-auto z-10' />
-                                    </div>
-                                </div>
-                                <div className='mt-10'>
-                                    <p>Since the free Spoonacular API has limits, I had to think of <span>strategies to optimize its use by reducing unnecessary calls</span>. LocalStorage is the key to achieving this by <span className='bg-yellow-light'> storing daily fetched data </span>, such as homepage displays, favorites, filters, and search results. It helps minimize API requests and improve performance by retrieving stored data first. It also helps maintain consistency for users across sessions, storing saved recipes, grocery lists, and even dark/light mode preferences so they don't have to start over every time they visit.
-                                    </p>
-                                </div>
-                            </div>
+                        <UXDisplayCard
+                            useIcon
+                            iconImg={search}
+                            iconSize='w-10  translate-y-1 md:-translate-y-1 md:-translate-x-2'
+                            title={project.overview.final.design1.title}
+                            description={project.overview.final.design1.description}
+                            images={project.overview.final.design1.images}
+                            additionalClasses={'mb-14 lg:mb-20'}
+                            videoClass="border  border-gray-300 rounded-2xl shadow-md"
+                        />
+                        <UXDisplayCard
+                            useIcon
+                            iconImg={move}
+                            iconSize='w-10 translate-y-1 md:-translate-y-1 md:-translate-x-2'
+                            title={project.overview.final.design2.title}
+                            description={project.overview.final.design2.description}
+                            images={project.overview.final.design2.images}
+                            additionalClasses={'mb-14 lg:mb-20'}
+                            imgClass='p-2 rounded-2xl shadow-md border border-gray-300'
+                            reverse
+                        />
 
-                            <Accordion open={open === 4} icon={<Icon id={4} open={open} />} className='border  px-4 py-1 mt-6 shadow-md max-w-full rounded-2xl'>
-                                <AccordionHeader onClick={() => handleOpen(4)} className='border-0 font-roundo-medium text-[18px] text-black tracking-wide'> {`< Storage.js utils >`} </AccordionHeader>
-                                <AccordionBody>
-                                    <SyntaxHighlighter
-                                        language="javascript"
-                                        style={tomorrow}
-                                        showLineNumbers
-                                        wrapLongLines
-                                        customStyle={{
-                                            letterSpacing: '.8px',
-                                            borderRadius: '10px',
-                                            width: "100%",
-                                            maxHeight: '600px',
-                                            height: '100%',
-                                        }}
-                                    >
-                                        {`//function used to retrieve stored data from localStorage and check if it is still valid (i.e., stored today)
-export const getStoredData = (key) => {
-    try {
-        const storedData = localStorage.getItem(key);
-        const lastFetchDate = localStorage.getItem(\`\${key}_date\`);
-        const today = new Date().toISOString().split("T")[0];
+                        <UXDisplayCard
+                            useIcon
+                            iconImg={list}
+                            iconSize='w-10 translate-y-1 md:-translate-y-1 md:-translate-x-2'
+                            title={project.overview.final.design3.title}
+                            description={project.overview.final.design3.description}
+                            images={project.overview.final.design3.images}
+                            additionalClasses={'mb-14 lg:mb-20'}
+                            imgClass='p-2 rounded-2xl shadow-md border border-gray-300'
+                        />
+                        <UXDisplayCard
+                            useIcon
+                            iconImg={pantry}
+                            iconSize='w-10  translate-y-1 md:-translate-y-1 md:-translate-x-2'
+                            title={project.overview.final.design4.title}
+                            description={project.overview.final.design4.description}
+                            images={project.overview.final.design4.images}
+                            imgClass='p-2 rounded-2xl shadow-md border border-gray-300'
+                            reverse
+                        />
+                    </div>
+                </ProjectSectionLayout>
 
-        // Check if there is stored data and it is from today
-        if (storedData && lastFetchDate === today) {
-            return JSON.parse(storedData);
-        } else {
-            // If data is old or not available, remove it to refresh daily
-            localStorage.removeItem(key);
-            localStorage.removeItem(\`\${key}_date\`);
-            return null;
-        }
-    } catch (error) {
-        console.error(\`Error accessing localStorage for key: \${key}\`, error);
-        return null;
-    }
-};
+                <hr />
 
-//function used to store today's data in localStorage
-export const storeData = (key, data) => {
-    try {
-        const today = new Date().toISOString().split("T")[0];
-        localStorage.setItem(key, JSON.stringify(data));
-        localStorage.setItem(\`\${key}_date\`, today);
-    } catch (error) {
-        console.error(\`Error storing data in localStorage for key: \${key}\`, error);
-    }
-};`}
-                                    </SyntaxHighlighter>
-                                </AccordionBody>
-                            </Accordion>
+                <ProjectSectionLayout id="process" title="Process">
 
-                            <Accordion open={open === 3} icon={<Icon id={3} open={open} />} className='border  px-4 py-1 mt-6 shadow-md max-w-full rounded-2xl'>
-                                <AccordionHeader onClick={() => handleOpen(3)} className='border-0 font-roundo-medium text-[18px] text-black capitalize tracking-wide'> {`< Local Storage For Dark / Light Mode >`} </AccordionHeader>
-                                <AccordionBody>
-                                    <SyntaxHighlighter
-                                        language="javascript"
-                                        style={tomorrow}
-                                        showLineNumbers
-                                        wrapLongLines
-                                        customStyle={{
-                                            letterSpacing: '.8px',
-                                            borderRadius: '10px',
-                                            width: "100%",
-                                            maxHeight: "600px",
-                                            height: '100%',
-                                        }}
-                                    >
-                                        {`const [darkMode, setDarkMode] = useState(localStorage.getItem('theme') === 'dark');
+                    <div className='pb-14 lg:pb-20'>
+                        <p className='subtitle-sm'> Front-End </p>
+                        <h3 className='mb-5'> Spoonacular API Integration</h3>
 
-useEffect(() => {
-    if (darkMode) {
-        document.documentElement.setAttribute('data-mode', 'dark');
-        localStorage.setItem('theme', 'dark');
-    } else {
-        document.documentElement.removeAttribute('data-mode');
-        localStorage.setItem('theme', 'light');
-    }
-}, [darkMode]);
-`}
-                                    </SyntaxHighlighter>
-                                </AccordionBody>
-                            </Accordion>
+                        <p className='mb-5'>
+                            This was the starting point of Nomly. I used the Spoonacular API to fetch recipes based on different filters and categories.
+
+                            Some endpoints didn't include all the details (like full ingredient lists), I set up a second fetch to grab that info only when needed. This helped keep the experience fast and accurate, without flooding the app with unnecessary API calls.
+                        </p>
+
+                        <div className="border border-gray-300 shadow-md rounded-xl overflow-x-auto text-white">
+                            <pre class="w-full overflow-auto bg-black p-4">
+                                <code className='!text-sm text-white'>
+                                    {`if (apiType === "random") {
+    apiUrl = \`https://api.spoonacular.com/recipes/random?apiKey=\${import.meta.env.VITE_API_KEY}&number=3\`;
+    } else if (apiType === "complexSearch") {
+    const isFilter = key.startsWith("filtered_");
+    const number = isFilter ? 9 : 3;
+    apiUrl = \`https://api.spoonacular.com/recipes/complexSearch?apiKey=\${import.meta.env.VITE_API_KEY}&\${query}&number=\${number}\`;
+}`}
+                                </code>
+                            </pre>
+
                         </div>
-                    </section>
 
+                    </div>
 
+                    <hr className='divider' />
 
-                    {/* reflection */}
-                    <section id="reflection">
-                        <div className='section-gap section-gap border-t-2 border-light-grey border-dashed'>
-                            <div className=''>
-                                <h1 className=''>Reflection</h1>
-                            </div>
-                            <div className='content-gap'>
-                                <p>
-                                    Working with the API challenged my critical thinking skills as I had to find an efficient way to balance data accuracy with limited API requests. Initially, dealing with incomplete data from different endpoints required implementing a second fetch, which made me rethink my approach to optimize API usage. By leveraging localStorage, refining fetch logic, and strategically planning requests, I was able to reduce unnecessary calls and improve performance. This experience enhanced my problem-solving abilities and strengthened my understanding of state management and performance optimization in real-world applications.
+                    <div>
+                        <p className='subtitle-sm'> Back-End </p>
+                        <h3 className='mb-5'> Database Integration (Express + MySQL)</h3>
+
+                        <div className='flex gap-10 mb-10'>
+                            <div className='flex-1'>
+                                <p className='mb-2'>
+                                    In the early version of Nomly, I stored things like saved recipes and shopping lists in local storage, just enough to make it feel functional. But as the project grew, I wanted users to come back to the app and still see their data.
+
+                                    So I built out a backend using Express.js and connected it to a MySQL database. I created custom RESTful API routes to handle CRUD operations for:
                                 </p>
+                                <ul className='mb-5'>
+                                    <li>User Accounts</li>
+                                    <li>Favorites</li>
+                                    <li>Grocery List</li>
+                                    <li>Pantry List</li>
+                                </ul>
+                                <div>
+                                    <p className='mb-2'>Each user’s data is tied to their account using a unique user_id. I used JWT for authentication, so only logged-in users can access or modify their content. The token is stored in localStorage and sent with every protected request.</p>
+
+                                    <p>
+                                        This shift from local storage to a proper backend made the app feel more like a real product, and taught me a lot about structuring endpoints, handling relational data, and keeping user data secure.
+
+
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div className='flex-1 rounded-3xl overflow-hidden border mx-auto border-gray-300 max-w-[350px] p-2 shadow-md'>
+                                <img src={login} alt="" className='w-full h-full object-cover rounded-2xl' />
                             </div>
                         </div>
-                    </section>
 
-                </div>
-            </div>
+                        <div className="border border-gray-300 shadow-md rounded-xl overflow-x-auto">
+                            <pre class="w-full overflow-auto bg-black p-4">
+                                <code className='!text-sm text-white'>
+                                    {`const userRoutes = require('./routes/userRoutes');
+const groceryRoutes = require('./routes/groceryRoutes');
+const pantryRoutes = require('./routes/pantryRoutes');
+const favRoutes = require('./routes/favRoutes');
+
+app.use('/api/users', userRoutes);
+app.use('/api/grocery', groceryRoutes);
+app.use('/api/pantry', pantryRoutes);
+app.use('/api/favorites', favRoutes);`}
+                                </code>
+                            </pre>
+
+                        </div>
+
+
+                    </div>
+
+                </ProjectSectionLayout>
+
+                <hr />
+
+                <ProjectSectionLayout id="reflection" title="Reflection">
+                    <h3 className='mb-5'>Where I Learned Full-Stack</h3>
+                    <p className='mb-2'> Nomly started as a quick experiment with the Spoonacular API, but it ended up being the project where I truly learned how to connect frontend and backend together. I had experience with React before, but setting up the backend, from designing RESTful routes to managing user data in a database, pushed me to think beyond just the interface.
+                    </p>
+                    <p className='mb-2'> One of the most valuable things I learned was how to structure and connect data across the full stack. Making sure the right information flowed from the database to the frontend (and back) taught me how to think in terms of systems, not just screens.
+                    </p>
+                </ProjectSectionLayout>
+            </ProjectLayout>
 
         </>
     )

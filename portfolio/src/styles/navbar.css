@@ -1,0 +1,72 @@
+.navlink-animated {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Top & Bottom */
+.navlink-animated::before,
+.navlink-animated::after {
+    content: "";
+    position: absolute;
+    height: 1.5px;
+    width: 100%;
+    background-color: black;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+/* Top border: left → right */
+.navlink-animated::before {
+    top: 0;
+    left: 0;
+    transform-origin: left;
+}
+
+/* Bottom border: right → left */
+.navlink-animated::after {
+    bottom: 0;
+    left: 0;
+    transform-origin: right;
+}
+
+/* Left & Right */
+.navlink-animated .side-border::before,
+.navlink-animated .side-border::after {
+    content: "";
+    position: absolute;
+    width: 1.5px;
+    height: 100%;
+    background-color: black;
+    transform: scaleY(0);
+    transition: transform 0.3s ease;
+}
+
+/* Left border: bottom → top */
+.navlink-animated .side-border::before {
+    left: 0;
+    top: 0;
+    transform-origin: bottom;
+}
+
+/* Right border: top → bottom */
+.navlink-animated .side-border::after {
+    right: 0;
+    top: 0;
+    transform-origin: top;
+}
+
+/* Hover: animate all together */
+.navlink-animated:hover::before,
+.navlink-animated:hover::after,
+.navlink-animated:hover .side-border::before,
+.navlink-animated:hover .side-border::after {
+    transform: scaleX(1) scaleY(1);
+}
+
+/* Keep border visible on active state */
+.navlink-animated.active::before,
+.navlink-animated.active::after,
+.navlink-animated.active .side-border::before,
+.navlink-animated.active .side-border::after {
+    transform: scaleX(1) scaleY(1);
+}

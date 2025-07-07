@@ -1,62 +1,27 @@
 import React, { useEffect, useState } from 'react'
-import ProjectBanner from '../../components/ProjectBanner'
 import { projectData } from '../../data/projectData'
-import PrototypeCta from '../../components/PrototypeCta';
-import BackToTop from '../../components/BackToTop';
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
-import Box from '@mui/material/Box';
-import ImageModal from '../../components/ImageModal';
-import Sidebar from '../../components/Sidebar';
+import ProjectIntro from '../../components/projects/ProjectIntro';
+import ProjectLayout from '../../components/projects/ProjectLayout';
+import UXDisplayCard from '../../components/projects/UXDisplayCard';
+import CustomTabs from '../../components/projects/CustomTabs';
 
-const project = projectData[3]
-console.log("Current Project Data:", project);
+import checkMark from '../../../public/assets/icons/checklist.png'
+import { ArrowDown } from 'lucide-react';
 
-// tabs
-function CustomTabPanel({ children, value, index, ...other }) {
-    return (
-        <div
-            role="tabpanel"
-            hidden={value !== index}
-            id={`simple-tabpanel-${index}`}
-            aria-labelledby={`simple-tab-${index}`}
-            {...other}
-        >
-            {value === index && <Box sx={{ p: 3 }}>{children}</Box>}
-        </div>
-    );
-}
-
-function a11yProps(index) {
-    return {
-        id: `simple-tab-${index}`,
-        'aria-controls': `simple-tabpanel-${index}`,
-    };
-}
-
-const CUSTOM_ANIMATION = {
-    mount: { scale: 1 },
-    unmount: { scale: .9 },
-};
+const project = projectData[4]
 
 export default function FitMe() {
 
-
-    const [open, setOpen] = React.useState(1);
-    const handleOpen = (value) => setOpen(open === value ? 0 : value)
-
-    // image modal
-    const [modalData, setModalData] = useState({ isOpen: false, src: '', alt: '' });
-    // const [modalData.isOpen, setModalData.isOpen] = useState(false);
-    // const [modalData, setModalData] = useState({ src: "", alt: "" });
-
-    const handleImgClick = (image) => {
-        setModalData({ isOpen: true, ...image })
-    }
-
-    const closeModal = () => {
-        setModalData({ isOpen: false, src: '', alt: '' })
-    }
+    const sections = [
+        { id: "overview", label: "Overview" },
+        { id: "solutions", label: "Solutions", parentId: "overview" },
+        { id: "discover", label: "Discover" },
+        { id: "problems", label: "Problems", parentId: "research" },
+        { id: "ideation", label: "Ideation" },
+        { id: "design", label: "Design" },
+        { id: "prototype", label: "Prototype" },
+        { id: "reflection", label: "Reflection" },
+    ];
 
     // tabs
     const [value, setValue] = useState(0);
@@ -65,269 +30,266 @@ export default function FitMe() {
         setValue(newValue);
     };
 
-    const sections = [
-        { id: "research", label: "Research" },
-        { id: "problems", label: "Problems" },
-        { id: "ideation", label: "Ideation" },
-        { id: "design", label: "Design" },
-        { id: "iteration", label: "Iteration" },
-        { id: "solution", label: "Solutions" },
-        { id: "reflection", label: "Reflection" },
-    ];
 
     return (
         <>
-            <ProjectBanner project={project} />
-            <BackToTop />
-            <div className='max-w-container md:flex md:gap-10 lg:gap-14 bg-primary relative z-10'>
-                <Sidebar sections={sections} />
+            <ProjectIntro
+                title={project.intro.title}
+                subtitle={project.intro.subtitle}
+                timeline={project.intro.timeline}
+                role={project.intro.role}
+                process={project.intro.process}
+                src={project.intro.banner}
+                buttonLink="#prototype"
+                button="View Prototype"
+                icon={ArrowDown}
+            />
 
-                <div className='overflow-hidden'>
-                    {/* overview */}
-                    <section className='bg-primary'>
+            <ProjectLayout sections={sections} currentId={project.id} projectData={projectData} >
+
+                {/* overview */}
+                <section id='overview' className='mt-20'>
+                    <h2 className='text-center'> Overview </h2>
+
+                    <div className='section-gap'>
+                        <div className='flex gap-10 xl:gap:14 flex-col lg:flex-row pb-14 lg:pb-20'>
+                            <div className='flex-1'>
+                                <p className='subtitle-sm'>A familiar frustration</p>
+
+                                <h3 className='mb-5'>Pants shopping online feels like guesswork </h3>
+                                <p>
+                                    As someone with a petite frame, I’ve spent more time returning clothes than wearing them. With inconsistent size charts and no way to visualize fit, online shopping becomes a cycle of uncertainty and disappointment — even when the options seem endless.
+                                </p>
+                            </div>
+                            <div className='flex-1 rounded-3xl overflow-hidden shadow-lg'>
+                                <img src={project.overview.problem.src} alt="jeans" />
+                            </div>
+                        </div>
+
+                        <hr className='divider' />
+
+                        <div id="solution">
+                            <p className='subtitle-sm'> The Solution</p>
+                            <div className='pb-10 lg:max-w-[75%]'>
+                                <h3 className='mb-5' > Make sizing feel effortless</h3>
+                                <p > Through my research, I found that shoppers often give up when faced with confusing size charts and inconsistent fits. FitMe removes that friction by offering size suggestions tailored to the user’s body, so they can browse confidently without second-guessing every product.</p>
+                            </div>
+
+                            <UXDisplayCard
+                                useIcon
+                                iconImg={checkMark}
+                                iconSize='w-6 mr-2 translate-y-2'
+                                title={project.overview.final.onboarding.title}
+                                description={project.overview.final.onboarding.description}
+                                images={project.overview.final.onboarding.images}
+                                additionalClasses={'pb-14 lg:pb-20'}
+                                videoClass=""
+                            />
+                            <UXDisplayCard
+                                useIcon
+                                iconImg={checkMark}
+                                iconSize='w-6 mr-2 translate-y-2'
+                                title={project.overview.final.design1.title}
+                                description={project.overview.final.design1.description}
+                                images={project.overview.final.design1.images}
+                                additionalClasses={'pb-14 lg:pb-20'}
+                                reverse
+                            />
+
+                            <UXDisplayCard
+                                useIcon
+                                iconImg={checkMark}
+                                iconSize='w-6 mr-2 translate-y-2'
+                                title={project.overview.final.design2.title}
+                                description={project.overview.final.design2.description}
+                                images={project.overview.final.design2.images}
+                                additionalClasses='pb-14 lg:pb-20'
+                                videoClass='scale-[1.01]'
+                            />
+                            <UXDisplayCard
+                                useIcon
+                                iconImg={checkMark}
+                                iconSize='w-6 mr-2 translate-y-2'
+                                title={project.overview.final.design3.title}
+                                description={project.overview.final.design3.description}
+                                images={project.overview.final.design3.images}
+                                reverse
+                            />
+                        </div>
+                    </div>
+
+                </section>
+
+                <hr className='' />
+
+                {/* research */}
+                <section id='discover'>
+                    <div className='pt-14 lg:pt-20'>
+                        <h2 className='text-center'> Discover </h2>
+
                         <div className='section-gap'>
-                            <h2 className=''>Overview</h2>
-                            <div className='content-gap flex flex-col-reverse gap-10 lg:flex-row'>
+                            <div className='flex flex-col md:flex-row gap-8 lg:gap-10 xl:gap:14 pb-10'>
                                 <div className='flex-1'>
-                                    <h4 className='mb-10 text-dark font-patrick italic tracking-wider'>{project.overview.headline} </h4>
-                                    <p className='mb-10' dangerouslySetInnerHTML={{ __html: project.overview.content }} />
-                                    <p className='uppercase tracking-wider underline underline-offset-[4px] font-roundo-medium text-orange'>The Challenge</p>
+                                    <p className='subtitle-sm'>secondary research / user interviews </p>
 
-                                    <p className='mb-10' dangerouslySetInnerHTML={{ __html: project.overview.challenge }} />
-
-                                    <p className='uppercase tracking-wider underline underline-offset-[4px] font-roundo-medium text-orange'> The Solution</p>
-                                    <p>FitMe app that suggests clothing based on body measurements, eliminating the need for size charts and helping users find the best fit across brands with ease.
-                                    </p>
-
-                                    <PrototypeCta inPageLink="View Prototype" scrollToId='prototype' />
-                                </div>
-
-                                <div className='flex-1 w-full h-full mx-auto'>
-                                    <div className='w-full max-w-[350px] lg:w-[600px] mx-auto'>
-                                        <img
-                                            src={project.overview.media.src}
-                                            alt={project.overview.media.altText}
-                                            className=""
-                                            loading='lazy'
-                                        />
-                                        <p className="text-center text-sm mt-2 text-grey font-patrick-hand tracking-wider">
-                                            {project.overview.media.caption}
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-
-                    {/* research */}
-                    <section id='research' className='pb-0'>
-                        <div>
-                            <div className='section-gap border-t-2 border-light-grey border-dashed'>
-                                <h2>Research</h2>
-                                <div className='content-gap'>
-                                    <div className='flex flex-col gap-10 mb-10 mt-2'>
-                                        <div className='flex-1'>
-                                            <h3>{project.research.interview.title}</h3>
-                                            <p className='my-4' dangerouslySetInnerHTML={{ __html: project.research.interview.description }} />
-                                        </div>
-
-                                        <div className='p-2 bg-white/50  shadow-md'>
-                                            <img src={project.research.interview.map.src} alt={project.research.interview.map.altText} className='w-full' loading="lazy" />
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div id="problems" className="mt-4">
-                                    <h3 className=''> <span className=' font-roundo-semibold bg-amber-100'>Common Pain Points</span> in Finding the Right Fit
+                                    <h3 className='mb-5'>
+                                        Diving deep into real users' frustrations
                                     </h3>
-                                    <div className='grid gap-6 lg:grid-cols-2 py-10'>
-                                        {project.research.problems.icons.map((issue, index) => (
-                                            <div key={index} className='bg-white/50 p-2 rounded-2xl shadow-md'>
-                                                <div className='flex flex-col gap-3 border  border-gray-400 bg-white p-4 h-full rounded-xl'>
-                                                    <img
-                                                        src={issue.src}
-                                                        alt={issue.altText}
-                                                        loading="lazy"
-                                                        className='w-[54px] object-contain' />
-                                                    <p className='text-[20px] border-b py-2 border-dashed border-gray-400 text-orange font-roundo-medium'> {issue.header}</p>
-                                                    <p>{issue.caption}</p>
-                                                </div>
-                                            </div>
-                                        ))}
-                                    </div>
-                                    <PrototypeCta inPageLink="Skip to Solutions" scrollToId='solution' />
+                                    <p>
+                                        After stumbling upon countless Reddit threads about the frustrations of online pant sizing, I wanted to dig deeper. I interviewed with 6 users — half frequent online shoppers, half occasional buyers — to understand their sizing pain points and behavior more clearly.
+                                    </p>
+                                </div>
+                                <div className='flex-1 flex flex-col gap-4 items-center'>
+                                    {project.research.reddit.map((img, index) => (
+                                        <div className="rounded-xl overflow-hidden shadow-lg max-w-[360px] w-full">
+                                            <img src={img.src} alt={img.alt} className="w-full" />
+                                        </div>
+                                    ))}
+                                    <p className='caption'>Quotes from reddit </p>
+                                </div>
+
+                            </div>
+
+                            <div id='problems' className='pb-14 lg:pb-20'>
+                                <h4 className='mb-5 font-extralight'>Research highlights</h4>
+
+                                <div className='grid grid-cols-2 md:grid-cols-4 h-full gap-4'>
+                                    {project.research.problems.icons.map((issue, index) => (
+                                        <div key={index} className='flex-1 flex flex-col items-center gap-3 border border-gray-300 bg-white p-6 rounded-xl shadow-lg md:p-8 lg:p-10'>
+                                            <h3 className='text-[#527FF3] font-medium'> {issue.number}</h3>
+
+                                            <p className='caption leading-[1.3]'>{issue.caption}</p>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+
+                            <hr className='divider' />
+
+                            <p className='subtitle-sm'>Competitor Analysis</p>
+                            <h3 className='mb-5'>
+                                Exploring possible solutions
+                            </h3>
+
+                            <p className='w-full lg:w-[65%] mb-10'>
+                                I explored tools already on the market that claim to help users find the right fit, <span className='font-medium'>but most were either too general, too tech-reliant, or didn’t focus on pants at all </span>. By comparing them, I saw a clear opportunity: build a simple, inclusive solution that uses body data and real fit reviews to cut the guesswork.
+                            </p>
+                            <div className='p-4 shadow-lg rounded-3xl border border-gray-300 '>
+                                <img src={project.research.competitor.img.src} alt={project.research.competitor.img.alt} className='w-full h-full' />
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <hr />
+
+                {/* ideation */}
+                <section id='ideation'>
+                    <div className="pt-14 lg:pt-20">
+                        <h2 className='text-center'>Ideate </h2>
+
+                        <div className='section-gap'>
+                            <p className='subtitle-sm'>User personas</p>
+                            <h3 className='mb-5'>Define Target Audience</h3>
+                            <p className=''>
+                                To make sure my design truly solves a real problem, I created two personas based on recurring pain points I noticed during research. These personas helped me stay focused on who I was designing for, and why it matters.
+                            </p>
+                            <div className='relative mt-10 flex flex-col-reverse justify-center gap-4 lg:flex-row-reverse lg:items-center mb-10'>
+                                <div className='basis-[70%] border border-gray-300 rounded-3xl overflow-hidden shadow-lg  lg:-translate-x-8'>
+                                    <img src={project.define.liz.src} alt="persona Liz" />
+                                </div>
+
+                                <p className='basis-[30%] max-w-[500px] h-fit p-5 md:p-8 bg-white border border-blue-500 shadow-lg rounded-3xl lg:translate-x-5 '>
+                                    <span className='subtitle-sm text-blue-500 mb-4 inline-block'> {project.define.liz.sub}</span>
+                                    <br />
+                                    {project.define.liz.content}
+                                </p>
+                            </div>
+
+                            <div className='relative mt-10 flex flex-col-reverse justify-center gap-4 lg:flex-row lg:items-center'>
+                                <div className='basis-[70%] border border-gray-300 rounded-3xl overflow-hidden shadow-lg  lg:translate-x-8'>
+                                    <img src={project.define.jamie.src} alt="persona Jamie" />
+                                </div>
+
+                                <p className='basis-[30%] max-w-[500px] h-fit p-5 md:p-8 bg-white border border-blue-500 shadow-lg rounded-3xl lg:-translate-x-8'>
+                                    <span className='subtitle-sm text-blue-500 mb-4 inline-block'> {project.define.jamie.sub}</span>
+                                    <br />
+                                    {project.define.jamie.content}
+                                </p>
+                            </div>
+
+                            <hr className='divider' />
+                            <div>
+                                <p className='subtitle-sm'>Narrative arc </p>
+                                <h3 className='mb-5'>
+                                    What are their journeys like?
+                                </h3>
+                                <p className='lg:w-[60%] mb-10'>To design the right solution, I mapped out Liz and Jamie’s struggles. Their journey helped me pinpoint where existing tools fail and where FitMe could make the biggest impact.
+                                </p>
+
+                                <div className='overflow-hidden rounded-3xl border border-gray-300 shadow-lg'>
+                                    <img src={project.define.arc.src} alt="narrative arc" />
                                 </div>
                             </div>
                         </div>
-                    </section>
-                    <section id='ideation'>
-                        <div className=''>
-                            <div className='section-gap border-t-2 border-light-grey border-dashed'>
-                                <h2>Ideation</h2>
+                    </div>
+                </section>
 
-                                <div className='content-gap'>
-                                    <div className='flex-1'>
-                                        <h3 className='mb-4'>What If?: Exploring solutions</h3>
-                                        <p>Starting from mind mapping, I quickly jotted down all possible solutions, everything from AI body scans to quiz-based recommendations. Through this process, I narrowed it down to <span className='underline underline-offset-2'>two key solutions</span>  that would have the biggest impact:</p>
-                                        <div className="grid gap-6 mt-10 place-content-center md:grid-cols-2">
-                                            {project.define.insights.solution.map((item, index) => (
-                                                <div key={index} className="flex-1 bg-white/70 p-2  h-fit rounded-2xl shadow-md">
-                                                    <div className='bg-white p-4 border border-gray-400 rounded-xl'>
-                                                        <div className=''>
-                                                            <span className="text-[35px]">{item.icon}</span>
-                                                        </div>
-                                                        <p className="mt-2 text-[20px] font-roundo-medium text-orange border-b border-dashed border-gray-400 pb-2">
-                                                            {item.title}
-                                                        </p>
-                                                        <p className="mt-4">{item.description}</p>
-                                                    </div>
-                                                </div>
-                                            ))}
-                                        </div>
-                                    </div>
-                                </div>
-                                {/* competitor analysis */}
-                                <div className='content-gap'>
-                                    <div className='flex flex-col lg:flex-row gap-10'>
-                                        <div className='flex-1'>
-                                            <h3 className='mb-4'>Market Research</h3>
-                                            <p>
-                                                Most existing tools focus on general clothing but few addresses the challenges of finding the right pants fit. Fit:match has the closest solution to mine, offering product recommendations based on body measurements, but it's <span className='underline underline-offset-3 text-red-600'>NOT</span>  accessible to all users due to its reliance on 3D body scanning and specific iPhone models. Seeing this gap gave me a better idea of how I could tailor my solutions to all audience.
-                                            </p>
-                                        </div>
+                <hr />
 
-                                        <div className='flex-1 p-2  bg-white/60 h-full shadow-md rounded-2xl'>
-                                            <div className='mx-auto overflow-hidden border border-gray-400/50 rounded-xl'>
-                                                <img
-                                                    src={project.research.competitor.img.src}
+                <section id='design'>
+                    <div className="pt-14 lg:pt-20">
+                        <h2 className='text-center'>Design </h2>
 
-                                                    alt={project.research.competitor.img.altText}
+                        <div className='section-gap'>
+                            <div className='pb-14 lg:pb-20'>
+                                <p className='subtitle-sm'>User Flow + Wireframes</p>
+                                <h3 className='mb-5'> From Flow to structure </h3>
 
-                                                    className='h-full object-cover'
-                                                    loading="lazy"
-                                                    onClick={() => handleImgClick({
-                                                        src: project.research.competitor.img.src,
-                                                        alt: project.research.competitor.img.altText
-                                                    })} />
-                                            </div>
-                                            <p className='text-center mt-2 text-dark-grey italic text-sm'>{project.research.competitor.img.caption}</p>
+                                <p className='lg:w-[60%] mb-10'>
+                                    I mapped out the core steps users take from onboarding to purchase, then turned that flow into med-fi wireframes to define layout and logic.
+                                </p>
 
-                                            <ImageModal
-                                                isOpen={modalData.isOpen}
-                                                src={modalData.src}
-                                                alt={modalData.alt}
-                                                onClose={closeModal}
-                                            />
-                                        </div>
-                                    </div>
-                                </div>
-                                {/* persona */}
-                                <div className='content-gap'>
-                                    <h3 className='mb-4'>Define Target Audience</h3>
-                                    <p className='mb-10'> I made 2 personas that represent the target audience along with user story to help guide my design.</p>
+                                <CustomTabs
+                                    value={value}
+                                    handleChange={handleChange}
+                                    tabData={project.design.flow.tabData}
+                                    mainColor="#565656"
+                                    selectedTextColor="#ffffff"
+                                />
 
-                                    <div className='flex gap-12 flex-col lg:flex-row'>
-                                        <div>
-                                            <img src={project.define.liz.src} alt={project.define.liz.altText}
-                                                loading="lazy"
-                                                className=' shadow-md rounded-xl' />
-
-                                            <p className='mt-4'> <span className='font-medium text-orange'>User Story 1:</span> As a frequent online shoppers, I want to quickly find pants that fit me without comparing size charts, so that I can shop with confidence and avoid returns. </p>
-                                        </div>
-                                        <div>
-                                            <img src={project.define.jamie.src} alt={project.define.jamie.altText}
-                                                loading="lazy"
-                                                className=' shadow-md rounded-xl' />
-
-                                            <p className='mt-4'><span className='font-medium text-orange'>User Story 2:</span>  As a working professional with limited time, I want to get accurate size recommendations instantly, so that I can shop efficiently and avoid returns. </p>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                                {/* narrative */}
-                                <div className='content-gap'>
-                                    <h3> Narrative Arc</h3>
-                                    <p className='mt-4'>With these insights, I mapped their journey to understand their struggles and design the best solution.</p>
-                                    <img src={project.define.arc.src} alt={project.define.arc.altText} loading="lazy" />
-                                </div>
                             </div>
-                        </div>
-                    </section>
 
-                    <section id='design'>
-                        <div className='section-gap border-t-2 border-light-grey border-dashed'>
-                            <h2>Design</h2>
+                            <hr className='divider' />
 
-                            <div className='content-gap flex flex-col md:flex-row gap-10'>
+                            <div className='pb-14 lg:pb-20 flex flex-col lg:gap-10'>
                                 <div className='flex-1'>
-                                    <h3>User Flow</h3>
-                                    <p className='mt-4'>User flow was created to visualize the steps my personas would take to complete their goals.</p>
+                                    <h3 className='mb-5'> Initial Testing </h3>
+                                    <p> Before moving to hi-fi, I tested my mid-fi wireframes with 5 users to spot usability gaps.
+                                        Users found the onboarding smooth and intuitive, especially the sliders and step-by-step flow. The progress bar helped maintain focus. Based on feedback, I made a few minor adjustments to improve clarity, including better visibility for size recommendations.</p>
                                 </div>
 
-                                <div className='flex-1 p-2  bg-white/50 h-full shadow-md rounded-2xl'>
-                                    <div className='mx-auto overflow-hidden border border-gray-400/40 rounded-xl'>
-                                        <img src={project.design.flow.image.src}
-                                            alt={project.design.flow.image.altText}
-                                            className='h-full object-cover'
-                                            loading="lazy"
-                                            onClick={() => handleImgClick({
-                                                src: project.design.flow.image.src,
-                                                alt: project.design.flow.image.altText
-                                            })} />
-                                    </div>
-                                    <p className='text-center mt-2 text-dark-grey italic text-sm'>Click to view</p>
-
-                                    <ImageModal
-                                        isOpen={modalData.isOpen}
-                                        src={modalData.src}
-                                        alt={modalData.alt}
-                                        onClose={closeModal}
+                                <div className='flex-1 mx-auto'>
+                                    <img src={project.design.change1.src}
+                                        alt={project.design.change1.alt}
+                                        loading='lazy'
+                                        className='max-w-[550px] w-full'
                                     />
                                 </div>
                             </div>
 
-                            <div className='content-gap'>
-                                <div className='flex-1'>
-                                    <h3>Med-Fi wireframes & Initial User Testing</h3>
+                            <hr className='divider' />
 
-                                    <p className='mt-4'>After completing my mid-fidelity wireframes, I conducted a quick user testing session with 5 participants to gather feedback on usability and clarity. The goal was to identify pain points and opportunities for improvement before moving to high-fidelity designs.</p>
-                                    <p className='mt-6'>Key areas of focus:</p>
-                                    <ul className='flex flex-col gap-2 mt-2'>
-                                        <li> <span className='font-bold'>→ Navigation flow: </span>  Were users able to move through the process smoothly?</li>
-                                        <li><span className='font-bold'>→ Fit profile setup: </span> Did the steps feel intuitive, or were they overwhelming?</li>
-                                        <li><span className='font-bold'>→ Size recommendations: </span> Did users understand how sizing worked in the product catalogue?</li>
-                                    </ul>
-                                </div>
-                                <div className='flex-1 flex flex-col gap-10 md:flex-row mt-10'>
-                                    <div>
-                                        <img src={project.design.change1.src}
-                                            alt={project.design.change1.altText}
-                                            loading='lazy'
-                                        />
-                                    </div>
-                                    <div>
-                                        <img src={project.design.change2.src}
-                                            alt={project.design.change2.altText}
-                                            loading='lazy'
-                                        />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-
-                    <section id='iteration'>
-                        <div className='section-gap border-t-2 border-light-grey border-dashed'>
-                            <h2>Iteration</h2>
-
-                            <div className='content-gap flex gap-10 flex-col lg:flex-row'>
+                            <div className='flex flex-col gap-10 lg:flex-row pb-14 lg:pb-20'>
                                 <div>
-                                    <h3>Design system </h3>
-                                    <p className='mt-4'>I made a simple design system with reuseable components to ensure that the design is consistent.</p>
-                                </div>
+                                    <p className='subtitle-sm'>final design</p>
+                                    <h3 className='mb-5'>Design System</h3>
 
-                                <div className=' overflow-hidden rounded-2xl'>
+                                    <p className=''>
+                                        I made a simple design system with reuseable components to ensure that the design is consistent.
+                                    </p>
+                                </div>
+                                <div className=' overflow-hidden rounded-2xl border border-gray-300 shadow-lg'>
                                     <img src={project.final.system.src}
                                         alt={project.final.system.alt}
                                         className='w-full'
@@ -335,130 +297,53 @@ export default function FitMe() {
                                     />
                                 </div>
                             </div>
-                            <div id='solution' >
-                                <div className='content-gap'>
-                                    <h3> Onboarding Process </h3>
-                                    <p>The onboarding process makes finding the perfect fit effortless by offering:</p>
-                                    <ul className='list-disc ml-4 mt-4 mb-10'>
-                                        <li> <span>Step-by-Step Sizing Guide:</span>  Simply follow the intuitive prompts to enter your body measurements.</li>
-                                        <li> <span>Adjust with Sliders:</span> Move the sliders to match your body shape and see real-time changes. </li>
-                                        <li> <span>Answer Quick Questions:</span> A short questionnaire refines the recommendations for even better accuracy. </li>
-                                    </ul>
-                                    <div>
-                                        <img src={project.final.onboarding.src}
-                                            alt={project.final.onboarding.alt}
-                                            loading='lazy'
-                                        />
-                                    </div>
+
+                            <hr className='divider' />
+
+                            <div className='pb-14 lg:pb-20'>
+                                <h3 className='mb-5'>High-Fidelity Wireframes</h3>
+
+                                <div className='p-6 lg:p-10 border border-gray-300 rounded-3xl shadow-lg'>
+                                    <img src={project.final.all.src} alt="High-Fidelity Wireframes" />
                                 </div>
+                            </div>
 
-                                <div className='content-gap flex gap-10 mx-auto flex-col lg:flex-row'>
-                                    <div className='flex-1'>
-                                        <h3>Browse Products: Eliminating Size Guesswork</h3>
-                                        <p className='mt-4'>Instead of switching between pages to compare sizes, FitMe auto-filters products based on the user’s measurements. The Home screen's Fit Profile provides a general size recommendation, while product listings display the best-matching size per brand. This eliminates size guesswork, making shopping faster, more accurate, and frustration-free.
-                                        </p>
-                                    </div>
+                            <hr className='divider' />
 
-                                    <div className='flex-1 flex gap-5 items-center'>
-                                        <div className='shadow-md'>
-                                            <img src={project.final.home.src}
-                                                alt={project.final.home.alt}
-                                                loading='lazy'
-                                            />
-                                        </div>
-                                        <div className='shadow-md'>
-                                            <img src={project.final.search.src}
-                                                alt={project.final.search.alt}
-                                                loading='lazy'
-                                            />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className='content-gap flex gap-10 mx-auto flex-col lg:flex-row-reverse justify-center'>
-                                    <div className='flex-1'>
-                                        <h3>Product with size recommendation <br /> + Review with similar body types</h3>
-                                        <p className='mt-4'>This page makes shopping easier by combining size recommendations and real user reviews so users can find the right fit without the hassle. Instead of scrolling through endless reviews, the system auto-selects reviews from people with similar body types, making it faster and more accurate to judge how the pants will actually fit.
-                                        </p>
-                                    </div>
+                            <div id='prototype'>
+                                <p className='subtitle-sm'>Prototype</p>
+                                <h3 className='mb-5'>Try it yourself!</h3>
 
-                                    <div className='flex-1 flex gap-5 items-center'>
-                                        <div className='shadow-md'>
-                                            <img src={project.final.detail.src}
-                                                alt={project.final.detail.alt}
-                                                loading='lazy'
-                                            />
-                                        </div>
-                                        <div className='shadow-md'>
-                                            <img src={project.final.review.src}
-                                                alt={project.final.review.alt}
-                                                loading='lazy'
-                                            />
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div className='content-gap flex gap-10 mx-auto flex-col lg:flex-row'>
-                                    <div className='flex-1'>
-                                        <h3>Additional Features: Favorite and Profile Edit</h3>
-                                        <p className='mt-4'>
-                                            Shopping for the right fit is even easier with these added features:
-                                        </p>
-                                        <ul className='list-disc ml-4 mt-4 flex flex-col gap-4'>
-                                            <li> <span className='font-bold'>Favorite:</span> Save products and revisit them anytime without searching again.</li>
-                                            <li> <span className='font-bold'>Edit Fit Profile:</span> Initially focused on pants, I decided to make the Fit Profile more inclusive by allowing users to update both lower and upper body measurements. This gives users flexibility for future fit recommendations beyond just pants. </li>
-                                        </ul>
-                                    </div>
-
-                                    <div className='flex-1 flex gap-5 items-center'>
-                                        <div className='shadow-md'>
-                                            <img src={project.final.fav.src}
-                                                alt={project.final.fav.alt}
-                                                loading='lazy'
-                                            />
-                                        </div>
-                                        <div className='shadow-md'>
-                                            <img src={project.final.edit.src}
-                                                alt={project.final.edit.alt}
-                                                loading='lazy'
-                                            />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div id="prototype" className='content-gap'>
-                                    <h3 className='mb-10'>Try It Yourself!</h3>
+                                <div className='rounded-3xl overflow-hidden border border-gray-300 shadow-lg'>
                                     <iframe
-                                        src="https://embed.figma.com/proto/ZpCd26RV2lSW6tLaogLtTC/pants?page-id=1064%3A7346&node-id=1078-13571&viewport=75%2C-3073%2C0.18&scaling=scale-down&content-scaling=fixed&starting-point-node-id=1066%3A10263&show-proto-sidebar=1&embed-host=share"
-                                        allowfullScreen
-                                        className="w-full h-[800px]"
+                                        src="https://embed.figma.com/proto/ZpCd26RV2lSW6tLaogLtTC/FitMe?page-id=1064%3A7346&node-id=1078-13571&viewport=531%2C-402%2C0.05&scaling=scale-down&content-scaling=fixed&starting-point-node-id=1078%3A13571&embed-host=share"
+                                        allowFullScreen
+                                        className="w-full h-[600px] md:h-[700px] lg:h-[800px]"
                                     ></iframe>
                                 </div>
                             </div>
 
                         </div>
-                    </section>
+                    </div>
+                </section>
 
-                    <section id='reflection'>
-                        <div className='section-gap border-t-2 border-light-grey border-dashed'>
-                            <h2>Reflection</h2>
+                <hr />
+                <section id='reflection' className='reflection'>
+                    <div className='section-gap'>
+                        <h2 className='text-center pb-14 lg:pb-20'> Reflection </h2>
 
-                            <div className='content-gap'>
-                                <h3>What I learned</h3>
+                        <div>
+                            <h4 className='mb-4'>
+                                User and market research sharpened my direction
+                            </h4>
 
-                                <ul className='list-disc ml-4 mt-4 flex flex-col gap-4'>
-                                    <li>
-                                        <span>User & market research shaped my focus</span>: Throughout this project, I started by understanding user frustrations, which helped me uncover key pain points in the shopping experience. From there, I brainstormed various possible solutions, exploring different ways to improve the fit recommendation process. Analyzing market gaps was crucial—it guided me in narrowing down my ideas and focusing on what would truly make a difference. This process reinforced the importance of both user and market research in shaping a clear and effective design direction.
-                                    </li>
-                                    <li>
-                                        <span>Early user testing made a HUGE Difference</span>:  Testing helped me catch small but important issues, like missing visual cues and unclear offer details. Without feedback, I might not have noticed them.
-                                    </li>
-                                </ul>
-
-                            </div>
+                            <p className=' mb-10'>I began by diving into user frustrations, which helped uncover key pain points in the shopping experience. From there, I explored multiple solution paths to improve the fit recommendation process. Market analysis played a crucial role, helping me narrow my ideas and focus on changes that truly mattered. This experience reinforced how essential both user and market insights are in shaping a strong, purposeful design direction.</p>
                         </div>
+                    </div>
+                </section>
 
-                    </section>
-                </div>
-            </div>
+            </ProjectLayout>
+
         </>
     )
 }

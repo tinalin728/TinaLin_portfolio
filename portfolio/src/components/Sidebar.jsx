@@ -12,7 +12,7 @@ const Sidebar = ({ sections }) => {
                 if (element) {
                     const rect = element.getBoundingClientRect();
                     if (rect.top <= 200 && rect.bottom >= 200) {
-                        currentSection = section.id;
+                        currentSection = section.parentId || section.id;
                     }
                 }
             });
@@ -25,39 +25,40 @@ const Sidebar = ({ sections }) => {
     }, [sections]);
 
     return (
-        <div className="hidden md:block md:sticky md:top-10 md:h-fit md:py-24 md:pr-4 md:pb-[25rem] lg:pr-10">
-            <ul className="flex flex-col">
+        <div className="hidden lg:block lg:sticky lg:top-10 lg:w-fit  lg:h-fit lg:py-24 lg:pb-[25rem]">
+            <ul className="flex flex-col gap-[10px]">
                 {sections.map((section) => {
                     const isProblems = section.label.toLowerCase() === "problems";
                     const isSolutions = section.label.toLowerCase() === "solutions";
+                    const isActive = activeSection === (section.parentId || section.id);
+                    const isChild = section.parentId !== undefined;
 
                     return (
-                        <li key={section.id} className="flex items-center gap-[5px] sidebar">
+                        <li key={section.id} className={`flex items-center ${isChild ? "mt-[-10px]" : ""}`}
+                        >
                             {/* Bullet Point */}
                             <span
-                                className={`w-4 h-[3px] transition-all duration-500 ${activeSection === section.id ? "bg-orange ml-2" : "bg-transparent"
+                                className={`w-3 h-[3px] transition-all duration-500 ${activeSection === section.id ? "bg-gray-800 mr-[8px]" : "bg-transparent"
                                     }`}
                             />
 
                             {/* Sidebar Link */}
                             <a
                                 href={`#${section.id}`}
-                                className={`sidebar normal-case text-[16px] tracking-wider text-dark-grey hover:text-black transition-all duration-300 text-nowrap 
-                                ${activeSection === section.id
-                                        ? isProblems
-                                            ? "text-orange font-medium"
-                                            : isSolutions
-                                                ? "text-orange font-medium"
-                                                : "text-orange font-medium"
-                                        : isProblems
-                                            ? "text-tiny text-red-500"
-                                            : isSolutions
-                                                ? "text-green-700"
-                                                : "text-grey"
+                                className={`font-inter transition-all duration-300 text-base hover:text-black text-nowrap 
+                                    ${isProblems
+                                        ? "text-red-500 text-sm"
+                                        : isSolutions
+                                            ? "text-green-700 text-sm"
+                                            : isActive
+                                                ? "text-gray-800 font-medium"
+                                                : "text-gray-500"
                                     }`}
+
                             >
-                                {isProblems ? "Problems*" : isSolutions ? "Solutions*" : section.label}
+                                {isProblems ? "↠ Challenges" : isSolutions ? "↠ Solutions" : section.label}
                             </a>
+
                         </li>
                     );
                 })}

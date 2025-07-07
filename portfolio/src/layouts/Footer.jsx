@@ -1,476 +1,60 @@
-import React, { useState, useEffect, useRef } from 'react'
-import { NavLink } from 'react-router-dom';
-import SocialIcon from '../components/buttons/SocialIcon';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-import coffee from '../../public/assets/icons/coffee-white.png'
-import logoWhite from '../../public/assets/logo-white.svg'
-
-import mail from "../../public/assets/icons/mail.svg"
-import github from "../../public/assets/icons/github.svg"
-import linkedin from "../../public/assets/icons/linkedin.svg"
-import lineWhite from "../../public/assets/icons/line-white.svg"
-
-
-function Footer() {
-
-    const wrapperRef = useRef(null);
-    const canvasRef = useRef(null);
-    const containerRef = useRef(null);
-    const [constraints, setConstraints] = useState(null);
-    const [scene, setScene] = useState(null);
-    const initialDimensions = useRef({ width: 0, height: 0 });
-    const [triggered, setTriggered] = useState(false);
-    const [pillsDropped, setPillsDropped] = useState(false);
-    const scrollTriggerRef = useRef(null);
-
-    // const engineRef = useRef(null); // Store Matter.js engine persistently
-
-
-
-    // useEffect(() => {
-    //     const Engine = Matter.Engine,
-    //         Render = Matter.Render,
-    //         Runner = Matter.Runner,
-    //         MouseConstraint = Matter.MouseConstraint,
-    //         Composite = Matter.Composite,
-    //         Mouse = Matter.Mouse,
-    //         Bodies = Matter.Bodies;
-
-    //     // Create the engine
-    //     const engine = Engine.create();
-    //     // engine.timing.timeScale = 0.9;
-    //     const world = engine.world;
-    //     const runner = Runner.create();
-    //     Runner.run(runner, engine);
-
-
-    //     // Ensure canvas size is set to full screen
-    //     const container = wrapperRef.current;
-    //     const canvas = canvasRef.current;
-
-    //     canvas.style.opacity = "0.7";
-
-    //     const { width, height } = container.getBoundingClientRect();
-
-    //     // set inline style to override canvas' inline style
-    //     canvas.style.width = `${width}px`;
-    //     canvas.style.height = `${height}px`;
-    //     const pixelRatio = window.devicePixelRatio
-    //     canvas.width = width * pixelRatio;
-    //     canvas.height = height * pixelRatio;
-
-
-    //     // Create a renderer
-    //     const render = Render.create({
-    //         canvas: canvas,
-    //         engine: engine,
-    //         options: {
-    //             width: width,
-    //             height: height,
-    //             background: "transparent",
-    //             wireframes: false,
-    //             pixelRatio: 2
-    //         },
-    //     });
-
-    //     setConstraints({ width, height });
-    //     setScene(render);
-
-    //     // Create ground and walls for collisions
-    //     const ground = Bodies.rectangle((width / 2) + 160, height - 5, width + 320, 160, {
-    //         isStatic: true,
-    //         render: {
-    //             fillStyle: "transparent",
-    //         }
-    //     });
-    //     const wallLeft = Bodies.rectangle(-80, height / 2, 60, height, { isStatic: true });
-    //     const wallRight = Bodies.rectangle(width + 80, height / 2, 160, height, { isStatic: true });
-    //     const roof = Bodies.rectangle((width / 2) + 160, -80, width + 320, 160, { isStatic: true })
-
-    //     Composite.add(world, [ground, wallLeft, wallRight, roof])
-
-
-    //     const textures = [
-    //         { texture: "/assets/pills/cup.svg", baseWidth: 200, baseHeight: 220, scale: 1.3 },
-    //         // { texture: "/assets/pills/tele.svg", baseWidth: 220, baseHeight: 160, scale: 1.1 },
-    //         { texture: "/assets/pills/croissant.svg", baseWidth: 120, baseHeight: 120, scale: 1 },
-    //         { texture: "/assets/pills/paintbrush.svg", baseWidth: 100, baseHeight: 100, scale: 1 },
-    //         { texture: "/assets/pills/react2.svg", baseWidth: 100, baseHeight: 100, scale: 1 },
-    //         { texture: "/assets/pills/world.svg", baseWidth: 200, baseHeight: 180, scale: 1.4 }
-    //     ];
-
-
-    //     const texturePaths = Object.keys(textures); // Extract file paths
-    //     // console.log("Extracted Texture Paths:", texturePaths);
-
-    //     const preloadImages = (textures, callback) => {
-    //         let loadedCount = 0;
-    //         const total = textures.length;
-    //         const loadedTextures = [];
-
-    //         if (!Array.isArray(textures) || total === 0) {
-    //             console.error("No textures to preload.");
-    //             callback([]);
-    //             return;
-    //         }
-
-    //         // console.log("🔄 Preloading Images:", textures.map(t => t.texture)); // Debugging
-
-    //         textures.forEach((textureObj) => {
-    //             const img = new Image();
-    //             img.src = textureObj.texture;
-
-    //             img.onload = () => {
-    //                 // console.log(" Loaded Image:", textureObj.texture, "Size:", img.naturalWidth, img.naturalHeight);
-    //                 loadedTextures.push({
-    //                     ...textureObj, // Keep all original properties
-
-    //                 });
-
-    //                 loadedCount++;
-    //                 if (loadedCount === total) {
-    //                     // console.log("All images preloaded:", loadedTextures);
-    //                     callback(loadedTextures);
-    //                 }
-    //             };
-
-    //             img.onerror = (error) => {
-    //                 console.error(` Failed to load image: ${textureObj.texture}`, error);
-    //                 loadedCount++;
-    //                 if (loadedCount === total) {
-    //                     callback(loadedTextures);
-    //                 }
-    //             };
-    //         });
-    //     };
-
-    //     // let startPositions = [];
-
-    //     const createPills = (textures, canvasWidth) => {
-    //         const screenWidth = window.innerWidth;
-    //         const startX = 10;
-    //         const spread = 100;
-    //         const canvasHeight = containerRef.current.getBoundingClientRect().height;
-    //         const centerY = canvasHeight / 2;
-
-    //         // Custom starting positions (relative to screen size)
-    //         const startPositions = [
-    //             { x: canvasWidth * 0.1, y: centerY }, // Coffee
-    //             { x: canvasWidth * 0.4, y: centerY + 20 }, // Phone
-    //             { x: canvasWidth * 0.20, y: centerY - 10 }, // Croissant
-    //             { x: canvasWidth * 0.7, y: centerY }, // Paintbrush
-    //             { x: canvasWidth * 0.9, y: centerY - 30 }, // Atom
-    //             { x: canvasWidth * 0.8, y: centerY - 20 }, // Earth
-    //         ];
-
-    //         return textures.map((textureObj, index) => {
-    //             // console.log("textureObj", textureObj)
-    //             const { texture, baseWidth, baseHeight, scale } = textureObj;
-
-    //             let adjustedScale;
-    //             if (screenWidth > 1560) {
-    //                 adjustedScale = scale * 1.1;
-    //             } else if (screenWidth > 1320) {
-    //                 adjustedScale = scale;
-    //             } else if (screenWidth > 1024) {
-    //                 adjustedScale = scale * 0.80;
-    //             } else if (screenWidth > 768) {
-    //                 adjustedScale = scale * 0.7;
-    //             } else if (screenWidth > 440) {
-    //                 adjustedScale = scale * 0.5;
-    //             } else {
-    //                 adjustedScale = scale * 0.45;
-    //             }
-
-    //             let adjustedBaseWidth, adjustedBaseHeight;
-    //             if (screenWidth > 1560) {
-    //                 adjustedBaseWidth = baseWidth * 1.1;
-    //                 adjustedBaseHeight = baseHeight * 1.1;
-    //             } else if (screenWidth > 1320) {
-    //                 adjustedBaseWidth = baseWidth;
-    //                 adjustedBaseHeight = baseHeight;
-    //             } else if (screenWidth > 1024) {
-    //                 adjustedBaseWidth = baseWidth * 0.9;
-    //                 adjustedBaseHeight = baseHeight * 0.9;
-    //             } else if (screenWidth > 768) {
-    //                 adjustedBaseWidth = baseWidth * 0.75;
-    //                 adjustedBaseHeight = baseHeight * 0.75;
-    //             } else if (screenWidth > 440) {
-    //                 adjustedBaseWidth = baseWidth * 0.5;
-    //                 adjustedBaseHeight = baseHeight * 0.5;
-    //             } else {
-    //                 adjustedBaseWidth = baseWidth * 0.3;
-    //                 adjustedBaseHeight = baseHeight * 0.4;
-    //             }
-
-    //             // let x = startPositions[index]?.x || startX + index * spread + Math.random() * 150 - 10;
-    //             let x = startPositions[index]?.x || startX + index * spread;
-
-    //             let y = startPositions[index]?.y || centerY;
-
-    //             return Bodies.rectangle(x, y, adjustedBaseWidth, adjustedBaseHeight, {
-    //                 restitution: 0.8,
-    //                 friction: 0.5,
-    //                 label: "illustration",
-    //                 isStatic: false,
-    //                 render: {
-    //                     sprite: {
-    //                         texture: texture,
-    //                         xScale: adjustedScale, // Use EXACT scale you set
-    //                         yScale: adjustedScale, // No adjustments needed
-    //                     },
-    //                 },
-    //             });
-    //         });
-    //     };
-
-
-    //     //Create pills using all textures
-    //     const handlePillsDrop = () => {
-    //         const clearDynamicBodies = (world) => {
-    //             Composite.allBodies(world).forEach((body) => {
-    //                 if (!body.isStatic) {
-    //                     Composite.remove(world, body);
-    //                 }
-    //             });
-    //             //console.log("Cleared dynamic bodies");
-    //         };
-    //         clearDynamicBodies(world);
-
-    //         if (!pillsDropped) {
-    //             if (!Array.isArray(textures) || textures.length === 0) {
-    //                 // console.error("Textures are not valid or ready:", textures);
-    //                 return;
-    //             }
-    //             const pillBodies = createPills(textures, width);
-    //             pillBodies.forEach((pill) => Composite.add(world, pill));
-    //             setPillsDropped(true);
-    //             // console.log("Pills dropped successfully");
-    //         } else {
-    //             console.log("Pills already dropped, skipping");
-    //         }
-    //     };
-    //     canvas.style.opacity = "1";
-
-    //     let timeoutId;
-    //     scrollTriggerRef.current = ScrollTrigger.create({
-    //         trigger: containerRef.current,
-    //         start: "top 50%",
-    //         end: "bottom top",
-    //         scrub: 1,
-    //         onEnter: () => {
-    //             if (!pillsDropped) {
-    //                 timeoutId = setTimeout(() => {
-    //                     handlePillsDrop();
-    //                     setPillsDropped(true);
-    //                 }, 300);
-    //             }
-    //         },
-    //         onLeaveBack: () => {
-    //             setTimeout(() => {
-    //                 setPillsDropped(false);
-    //             }, 300);
-    //         },
-    //     });
-
-    //     // console.log("Scroll Trigger Activated: ", pillsDropped);
-
-
-
-    //     // add mouse control
-    //     const mouse = Mouse.create(render.canvas);
-    //     const mouseConstraint = MouseConstraint.create(engine, {
-    //         mouse: mouse,
-    //         constraint: {
-    //             stiffness: .2,
-    //             render: {
-    //                 visible: false
-    //             }
-    //         }
-    //     });
-    //     Composite.add(world, mouseConstraint)
-
-
-    //     render.mouse = mouse
-
-    //     //allows mouse to scroll while being on canvas
-    //     const handleWheel = (event) => {
-    //         event.preventDefault();
-    //         if (!mouseConstraint.body) {
-    //             window.scrollBy(0, event.deltaY);
-    //         }
-    //     };
-
-    //     const touchStartRef = { current: 0 };
-    //     const handleTouchStart = (event) => {
-    //         touchStartRef.current = event.touches[0].clientY;
-    //     };
-
-    //     // Handle touch move for mobile scrolling
-    //     const handleTouchMove = (event) => {
-    //         if (!mouseConstraint.body) {
-    //             const touch = event.touches[0];
-    //             const deltaY = touch.clientY - touchStartRef.current;
-    //             window.scrollBy(0, -deltaY); // Adjust scroll position
-    //             touchStartRef.current = touch.clientY; // Update reference
-    //         }
-    //     };
-
-    //     // handle resize
-    //     const handleResize = () => {
-    //         if (!containerRef.current) return;
-    //         const { width, height } = container.getBoundingClientRect();
-    //         if (!canvasRef.current) return;
-
-    //         // adjust canvas size
-    //         canvas.width = width * render.options.pixelRatio;
-    //         canvas.height = height * render.options.pixelRatio;
-    //         Render.setSize(render, width, height);
-
-    //         // Remove non-static bodies (e.g., pills)
-    //         Composite.allBodies(world).forEach((body) => {
-    //             if (!body.isStatic) {
-    //                 Composite.remove(world, body);
-    //             }
-    //         });
-
-    //         // Recreate dynamic bodies 
-    //         preloadImages(textures, (loadedTextures) => {
-    //             //console.log("Preload complete. Recreating pills...");
-
-    //             const pillBodies = createPills(loadedTextures, width);
-    //             pillBodies.forEach((pill) => Composite.add(world, pill));
-    //         });
-
-    //         // Update walls and ground
-    //         Matter.Body.setPosition(ground, { x: width / 2, y: height - 5 });
-    //         Matter.Body.setVertices(ground, [
-    //             { x: 0, y: height - 30 },
-    //             { x: width, y: height - 30 },
-    //             { x: width, y: height },
-    //             { x: 0, y: height },
-    //         ]);
-
-    //         Matter.Body.setPosition(wallLeft, { x: -28, y: height / 2 });
-    //         Matter.Body.setPosition(wallRight, { x: width + 82, y: height / 2 });
-    //         Matter.Body.setPosition(roof, { x: width / 2, y: -80 });
-    //         //console.log("Right Wall:", wallRight.position, wallRight.vertices);
-    //     };
-
-    //     window.addEventListener("resize", handleResize);
-    //     handleResize();
-
-
-    //     canvas.addEventListener("wheel", handleWheel); // For desktop
-    //     canvas.addEventListener("touchstart", handleTouchStart);
-    //     canvas.addEventListener("touchmove", handleTouchMove);
-
-    //     // Engine.run(engine);
-    //     Render.run(render);
-
-    //     // Cleanup on unmount
-    //     return () => {
-    //         Matter.Render.stop(render);
-    //         Matter.Engine.clear(engine);
-    //         //Composite.remove(world, body);
-    //         canvas.removeEventListener("wheel", handleWheel);
-    //         canvas.removeEventListener("touchstart", handleTouchStart);
-    //         canvas.removeEventListener("touchmove", handleTouchMove);
-    //         if (scrollTriggerRef.current) {
-    //             scrollTriggerRef.current.kill();
-    //         }
-    //     };
-
-
-    // }, [triggered]);
-
+import React from 'react'
+import { Link, NavLink } from 'react-router-dom'
+import whiteLogo from '../../public/assets/white-logo.svg'
+
+export default function Footer() {
     return (
-        <footer id='footer' ref={containerRef} className='relative h-full overflow-hidden border-t-2 bg-charcoal'>
-            <div ref={wrapperRef} className='max-w-container relative w-full  overflow-hidden'>
-                {/* <div className="absolute top-0 left-0 w-full h-full z-10">
-                    <canvas ref={canvasRef} className="w-full h-full" />
-                </div> */}
+        <footer className=' h-[70vh] sticky bottom-0 bg-black z-0 '>
+            <div className='relative max-w-container pb-10  h-full overflow-hidden flex flex-col justify-center items-center'>
 
-                <div className='py-20 flex flex-col gap-14 justify-between items-start md:flex-row'>
-                    <img src={logoWhite} alt="logo" width={45} />
+                <div className='relative'>
+                    <img src={whiteLogo} alt="logo" className='w-[40px] md:w-[55px] absolute top-0 -left-7' />
+                    <h2 className='text-white heading text-center mb-5'>Don't Be Shy</h2>
+                </div>
 
-                    <div>
-                        <p className='text-orange font-patrick uppercase tracking-widest mb-2'>Explore</p>
+                <div className='flex gap-4 items-center justify-center flex-col md:flex-row md:gap-2'>
+                    <a href="" className='font-inter font-medium text-white lowercase tracking-widest px-10 py-4 border rounded-full gap-10 text-base hover:bg-white hover:text-black transition-all duration-500'>contact@tinalin.ca</a>
 
-                        <div className='flex flex-col gap-2'>
-                            <NavLink to="/"
-                                aria-label="Go to Home page"
-                                className="text-white tracking-wider hover:scale-95 transition duration-300">Home
-                            </NavLink>
-                            <NavLink to="/projects"
-                                aria-label="Go to projects page"
-                                className="text-white tracking-wider hover:scale-95 transition duration-300">Crafts
-                            </NavLink>
-                            <NavLink to="/about"
-                                aria-label="Go to About page"
-                                className="text-white tracking-wider hover:scale-95 transition duration-300">About
-                            </NavLink>
+                    <div className='flex gap-2 items-center justify-center'>
+                        <div className="w-14 h-14 flex items-center justify-center border border-white rounded-2xl hover:bg-white group transition-all duration-500 cursor-pointer">
+                            <a href="#" >
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    className="w-5 h-5 stroke-white group-hover:stroke-black transition-all duration-300"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    strokeWidth="2"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round" >
+                                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                                    <rect width="4" height="12" x="2" y="9" />
+                                    <circle cx="4" cy="4" r="2" />
+                                </svg>
+                            </a>
                         </div>
-                    </div>
-
-                    <div>
-                        <p className='text-orange font-patrick uppercase tracking-widest mb-2'>Find Me</p>
-
-                        <div className='flex flex-col gap-2'>
-                            <a href='mailto:contact@tinalin.ca'
-                                aria-label="Go to email"
-                                rel="noopener noreferrer"
-                                className="text-white tracking-wider transition-all ease-in-out duration-300 group flex items-center">
-                                Mail
-                                <span className="text-xl ml-1 scale-[.9] group-hover:scale-100 group-hover:-rotate-[10deg] group-hover:-translate-y-1 transition-all duration-200 ease-in-out -translate-y-[2px] text-primary">⟿</span>
+                        <div className="w-14 h-14 flex items-center justify-center border border-white rounded-2xl hover:bg-white group transition-all duration-500 cursor-pointer ">
+                            <a href="#">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    className="w-6 h-6 stroke-white group-hover:stroke-black transition-all duration-300"
+                                    width="24"
+                                    height="24"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    strokeWidth="2"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                >
+                                    <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
+                                    <path d="M9 18c-4.51 2-5-2-7-2" />
+                                </svg>
                             </a>
-
-                            <a href="https://www.linkedin.com/in/tina-lin-000613b5/"
-                                target="_blank"
-                                aria-label="Go to Linkedin"
-                                rel="noopener noreferrer"
-                                className="text-white tracking-wider transition-all ease-in-out duration-300 group flex items-center">
-                                LinkedIn
-                                <span className="inline-block text-xl ml-1 scale-[.9] group-hover:scale-100 group-hover:-rotate-[10deg] group-hover:-translate-y-1 transition-all duration-200 ease-in-out -translate-y-[2px] text-primary">
-                                    ⟿
-                                </span>
-                            </a>
-
-
-                            <a href='https://github.com/tinalin728'
-                                target='_blank'
-                                aria-label="Go to github"
-                                rel="noopener noreferrer"
-                                className="text-white tracking-wider transition-all ease-in-out duration-300 group flex items-center">
-                                Github
-                                <span className="text-xl ml-1 scale-[.9] group-hover:scale-100 group-hover:-rotate-[10deg] group-hover:-translate-y-1 transition-all duration-200 ease-in-out -translate-y-[2px] text-primary">⟿</span>
-                            </a>
-
                         </div>
 
-                    </div>
-
-                    <div>
-                        <div>
-                            <img src={coffee} alt="coffee" className='w-[35px] mb-2' loading='lazy' />
-                        </div>
-                        <p className='text-primary tracking-widest font-patrick leading-normal uppercase'>Designed & Developed by Tina Lin. </p>
-                        <p className='text-base tracking-widest text-primary/80  font-patrick leading-normal mt-2'> Made with shots of espresso.</p>
 
                     </div>
                 </div>
-
             </div>
-
-            <div className='border-t border-primary'>
-                <div className='max-w-container'>
-                    <p className='text-primary/70 text-center text-[14px] tracking-widest uppercase py-3'> &copy; 2025 All Rights Reserved</p>
-                </div>
-            </div>
-        </footer >
+        </footer>
     )
 }
-
-export default Footer
