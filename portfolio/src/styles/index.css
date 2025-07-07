@@ -73,14 +73,10 @@
   }
 
   .biggest-header {
-    font-size: clamp(5.625rem, 1.6808rem + 16.8285vw, 21.875rem);
+    font-size: clamp(5.625rem, 1.6422rem + 16.3399vw, 21.25rem);
     @apply font-light font-golften leading-[1]
   }
 
-  .hero-sm-text {
-    font-size: clamp(3.75rem, -0.3936rem + 17.6796vw, 13.75rem);
-    @apply font-oliver leading-[.9]
-  }
 
   h1, .heading {
     @apply font-golften text-4xl md:text-5xl lg:text-[90px] leading-[1.25] font-light

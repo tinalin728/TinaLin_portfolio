@@ -51,9 +51,9 @@ export default function Home() {
 
             gsap.fromTo(
                 el,
-                { xPercent: 75 },
+                { xPercent: 70 },
                 {
-                    xPercent: -80,
+                    xPercent: -70,
                     ease: 'none',
                     scrollTrigger: {
                         trigger: '#wrapper',
@@ -144,7 +144,7 @@ export default function Home() {
 
                             <div className='flex items-center'>
                                 <hr className='flex-1 w-full' />
-                                <h1 className='flex-1 font-extralight text-center leading-[1] pb-5 font-golften'>Selected <br /> Crafts</h1>
+                                <h1 className='flex-1 w-fit font-extralight text-center leading-[1] pb-5 font-golften'>Selected <br /> Crafts</h1>
                                 <hr className='flex-1 w-full' />
                             </div>
 
