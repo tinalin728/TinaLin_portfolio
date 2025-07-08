@@ -158,7 +158,7 @@ export default function Layout() {
                         onClick={() => {
                             document.getElementById('top')?.scrollIntoView({ behavior: 'smooth' });
                         }}
-                        className="font-medium text-end flex-1 leading-[1.75] uppercase text-sm font-inter underline underline-offset-4 cursor-pointer"
+                        className="font-normal text-end flex-1 leading-[1.75] uppercase text-sm font-inter underline underline-offset-4 cursor-pointer"
                     >
                         Back to top
                     </button>
