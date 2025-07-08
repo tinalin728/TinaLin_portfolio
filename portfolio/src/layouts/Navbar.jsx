@@ -80,7 +80,7 @@ export default function Navbar({ open, setOpen, currentTime }) {
             <div className='flex w-full items-center justify-between max-w-[120rem] mx-auto relative'>
                 <NavLink
                     to="/"
-                    className='cursor-pointer tracking-wider font-inter font-normal px-[20px] md:px-[2rem] lg:px-[2.5rem] transition-all duration-500 ease-in-out uppercase text-base flex items-center gap-2'
+                    className='cursor-pointer tracking-wider text-base font-inter 3xl:text-md 4xl:text-lg font-normal px-[20px] md:px-[2rem] lg:px-[2.5rem] transition-all duration-500 ease-in-out uppercase flex items-center gap-2'
                 >
                     Tina Lin
                 </NavLink>
@@ -96,24 +96,24 @@ export default function Navbar({ open, setOpen, currentTime }) {
                                 key={i}
                                 href={item.to}
                                 onClick={() => window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })}
-                                className={`navlink-animated group border-l px-8 font-inter font-normal flex items-center justify-center gap-2 transition-all duration-500 ease-in-out cursor-pointer ${scrolled ? 'py-2' : 'py-3'}`}
+                                className={`navlink-animated group border-l px-8 3xl:px-10  flex items-center justify-center gap-2 3xl:gap-4 transition-all duration-500 ease-in-out cursor-pointer ${scrolled ? 'py-2 3xl:py-3 ' : 'py-4 3xl:py-5'}`}
                             >
-                                <span className="text-sm leading-[1.75] uppercase">
+                                <span className="leading-[1.75] uppercase text-sm 3xl:text-base 4xl:text-md font-inter font-normal">
                                     {item.label}
                                 </span>
-                                <img src={outlineLogo} alt="logo" className='w-[18px] -translate-y-[1px]' />
+                                <img src={outlineLogo} alt="logo" className='w-[18px] -translate-y-[1px] 3xl:w-[24px]' />
                                 <div className="side-border absolute inset-0 pointer-events-none"></div>
                             </a>
                         ) : (
                             <NavLink
                                 key={i}
                                 to={item.to}
-                                className={`navlink-animated group border-l px-8 font-inter font-normal flex items-center justify-center gap-2 transition-all duration-500 ease-in-out cursor-pointer ${scrolled ? 'py-2' : 'py-3'}`}
+                                className={`navlink-animated group border-l px-8 3xl:px-10 font-inter font-normal flex items-center justify-center gap-2 3xl:gap-4  transition-all duration-500 ease-in-out cursor-pointer ${scrolled ? 'py-2 3xl:py-3' : 'py-4 3xl:py-5'}`}
                             >
-                                <span className="text-sm leading-[1.75] uppercase">
+                                <span className="leading-[1.75] uppercase text-sm 3xl:text-base 4xl:text-md font-inter font-normal">
                                     {item.label}
                                 </span>
-                                <ArrowRight size={15} className="-translate-y-[1px]" />
+                                <ArrowRight className="-translate-y-[1px] w-[15px] xl:w-[18px] 3xl:w-[20px]" />
                                 <div className="side-border absolute inset-0 pointer-events-none"></div>
                             </NavLink>
                         )

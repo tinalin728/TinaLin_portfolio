@@ -78,7 +78,7 @@ export default function Nomly() {
                         <UXDisplayCard
                             useIcon
                             iconImg={search}
-                            iconSize='w-10  translate-y-1 md:-translate-y-1 md:-translate-x-2'
+                            iconSize='w-8 -translate-x-1'
                             title={project.overview.final.design1.title}
                             description={project.overview.final.design1.description}
                             images={project.overview.final.design1.images}
@@ -88,7 +88,7 @@ export default function Nomly() {
                         <UXDisplayCard
                             useIcon
                             iconImg={move}
-                            iconSize='w-10 translate-y-1 md:-translate-y-1 md:-translate-x-2'
+                            iconSize='w-8 -translate-x-1'
                             title={project.overview.final.design2.title}
                             description={project.overview.final.design2.description}
                             images={project.overview.final.design2.images}
@@ -100,7 +100,7 @@ export default function Nomly() {
                         <UXDisplayCard
                             useIcon
                             iconImg={list}
-                            iconSize='w-10 translate-y-1 md:-translate-y-1 md:-translate-x-2'
+                            iconSize='w-8 -translate-x-1'
                             title={project.overview.final.design3.title}
                             description={project.overview.final.design3.description}
                             images={project.overview.final.design3.images}
@@ -110,7 +110,7 @@ export default function Nomly() {
                         <UXDisplayCard
                             useIcon
                             iconImg={pantry}
-                            iconSize='w-10  translate-y-1 md:-translate-y-1 md:-translate-x-2'
+                            iconSize='w-8 -translate-x-1'
                             title={project.overview.final.design4.title}
                             description={project.overview.final.design4.description}
                             images={project.overview.final.design4.images}
@@ -134,9 +134,9 @@ export default function Nomly() {
                             Some endpoints didn't include all the details (like full ingredient lists), I set up a second fetch to grab that info only when needed. This helped keep the experience fast and accurate, without flooding the app with unnecessary API calls.
                         </p>
 
-                        <div className="border border-gray-300 shadow-md rounded-xl overflow-x-auto text-white">
-                            <pre class="w-full overflow-auto bg-black p-4">
-                                <code className='!text-sm text-white'>
+                        <div className="w-full overflow-x-auto rounded-xl border border-gray-300 shadow-md bg-black text-white max-w-3xl xl:max-w-full">
+                            <pre className="min-w-max p-4 text-sm">
+                                <code className="whitespace-pre text-white ">
                                     {`if (apiType === "random") {
     apiUrl = \`https://api.spoonacular.com/recipes/random?apiKey=\${import.meta.env.VITE_API_KEY}&number=3\`;
     } else if (apiType === "complexSearch") {
@@ -157,7 +157,7 @@ export default function Nomly() {
                         <p className='subtitle-sm'> Back-End </p>
                         <h3 className='mb-5'> Database Integration (Express + MySQL)</h3>
 
-                        <div className='flex gap-10 mb-10'>
+                        <div className='flex gap-10 mb-10 flex-col lg:flex-row'>
                             <div className='flex-1'>
                                 <p className='mb-2'>
                                     In the early version of Nomly, I stored things like saved recipes and shopping lists in local storage, just enough to make it feel functional. But as the project grew, I wanted users to come back to the app and still see their data.
@@ -186,9 +186,9 @@ export default function Nomly() {
                             </div>
                         </div>
 
-                        <div className="border border-gray-300 shadow-md rounded-xl overflow-x-auto">
-                            <pre class="w-full overflow-auto bg-black p-4">
-                                <code className='!text-sm text-white'>
+                        <div className="w-full overflow-x-auto rounded-xl border border-gray-300 shadow-md bg-black text-white max-w-3xl xl:max-w-full">
+                            <pre className="min-w-max p-4 text-sm">
+                                <code className="whitespace-pre text-white ">
                                     {`const userRoutes = require('./routes/userRoutes');
 const groceryRoutes = require('./routes/groceryRoutes');
 const pantryRoutes = require('./routes/pantryRoutes');

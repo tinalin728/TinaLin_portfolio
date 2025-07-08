@@ -26,12 +26,19 @@ export default function Home() {
     useGSAP(() => {
         if (loading) return;
         // Entry animation for hero text
-        gsap.from("#textItem", {
+        gsap.from("#scroll-from-right", {
             y: 60,
             opacity: 0,
             duration: 1,
             ease: "power3.out",
             delay: 0.3,
+        });
+        gsap.from("#scroll-from-left", {
+            y: 60,
+            opacity: 0,
+            duration: 1,
+            ease: "power3.out",
+            delay: 0.5,
         });
 
         // Entry animation for description + character
@@ -45,22 +52,33 @@ export default function Home() {
 
         const mm = gsap.matchMedia();
 
-        mm.add('(min-width: 768px)', () => {
-            const el = document.getElementById('textItem');
-            if (!el) return;
+        mm.add('(min-width: 1024px)', () => {
+            gsap.fromTo(
+                "#scroll-from-right",
+                { xPercent: -20 },
+                {
+                    xPercent: 20,
+                    ease: "none",
+                    scrollTrigger: {
+                        trigger: "#wrapper",
+                        start: "top bottom",
+                        end: "bottom top",
+                        scrub: true,
+                    },
+                }
+            );
 
             gsap.fromTo(
-                el,
-                { xPercent: 70 },
+                "#scroll-from-left",
+                { xPercent: 20 },
                 {
-                    xPercent: -70,
-                    ease: 'none',
+                    xPercent: -20,
+                    ease: "none",
                     scrollTrigger: {
-                        trigger: '#wrapper',
-                        start: 'top bottom',
-                        end: 'bottom top',
+                        trigger: "#wrapper",
+                        start: "top bottom",
+                        end: "bottom top",
                         scrub: true,
-                        // markers: true
                     },
                 }
             );
@@ -68,6 +86,7 @@ export default function Home() {
 
         return () => mm.revert();
     }, [loading]);
+
 
 
     useGSAP(() => {
@@ -116,24 +135,34 @@ export default function Home() {
     }, [loading]);
 
 
-
     return (
         loading ? <div className="h-screen bg-white"></div> : (
             <>
                 <div className='relative z-10 pb-20 bg-white'>
                     <section id='wrapper' className='relative z-20 overflow-hidden max-w-container'>
-                        <div className="pt-20 md:pt-15 md: w-full flex flex-col h-screen justify-between">
-                            <p id='textItem' className="biggest-header md:text-nowrap md:whitespace-nowrap inline-block h-full" >
+                        <div className="pt-25 md:pt-20 md:w-full flex flex-col justify-between h-screen">
+                            {/* <p id='textItem' className="biggest-header md:text-nowrap md:whitespace-nowrap inline-block h-full" >
                                 Design to Develop
-                            </p>
+                            </p> */}
+                            <div className=''>
+                                <p id='scroll-from-right' className='biggest-header'>Design to</p>
 
-                            <div id="heroContent" className='flex flex-col-reverse pb-14 md:flex-row md:justify-between md:items-end lg:pb-20'>
-                                <p className='font-normal md:w-[60%] lg:w-[45%]'>
+                                <p id='scroll-from-left' className='hidden md:block biggest-header md:text-end'>Development</p>
+
+
+
+                                <p className='biggest-header  text-end md:hidden '>Develop</p>
+                                <p className='biggest-header  text-end md:hidden '>–ment</p>
+                            </div>
+
+
+                            <div id="heroContent" className='flex flex-col-reverse pb-18  md:flex-row md:justify-between items-end lg:pb-20 3xl:pb-30'>
+                                <p className='font-medium md:w-[60%] lg:w-[45%]'>
                                     Hello there! I’m Tina — a digital designer with a soft spot for playful code and thoughtful design.
                                     Whether it’s bold or minimal, quirky or clean, I love uncovering the meaning behind ideas and turning them into intuitive, human-centered experiences — always with a touch of warmth and curiosity.
                                 </p>
-                                <div className='flex justify-end mb-2 md:block md:mb-0 md:translate-y-5'>
-                                    <img ref={logoRef} src={logo} alt="logo" className='spin-infinite inline-block w-[70px] md:w-[150px] lg:w-[200px]' />
+                                <div className='flex justify-end mb-2 md:block lg:mb-0 md:translate-y-5'>
+                                    <img ref={logoRef} src={logo} alt="logo" className='spin-infinite inline-block w-[70px] md:w-[150px] xl:w-[180px] 2xl:w-[200px] 3xl:w-[250px]' />
                                 </div>
                             </div>
                         </div>

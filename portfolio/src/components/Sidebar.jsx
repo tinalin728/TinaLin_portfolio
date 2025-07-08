@@ -45,11 +45,11 @@ const Sidebar = ({ sections }) => {
                             {/* Sidebar Link */}
                             <a
                                 href={`#${section.id}`}
-                                className={`font-inter transition-all duration-300 text-base hover:text-black text-nowrap 
+                                className={`font-inter transition-all duration-300 hover:text-black text-nowrap text-sm 2xl:text-base
                                     ${isProblems
-                                        ? "text-red-500 text-sm"
+                                        ? "text-red-500 "
                                         : isSolutions
-                                            ? "text-green-700 text-sm"
+                                            ? "text-green-700 "
                                             : isActive
                                                 ? "text-gray-800 font-medium"
                                                 : "text-gray-500"

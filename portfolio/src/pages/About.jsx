@@ -124,7 +124,7 @@ export default function About() {
                         <div className='basis-[45%] flex flex-col items-center justify-center relative'>
                             <div className="p-4 md:p-6 lg:p-8 border rounded-2xl mx-auto shadow-md relative z-10 bg-white">
                                 <img src={profile} alt="profile" className='mb-2 object-cover object-left-top h-full w-full max-w-[500px] max-h-[450px] rounded-md lg:max-h-[600px] xl:max-w-[650px]' />
-                                <p className="text-sm font-normal text-center">( I tried not to look awkward )</p>
+                                <p className="text-sm font-normal text-center 2xl:text-base">( I tried not to look awkward )</p>
                             </div>
                         </div>
 
@@ -134,7 +134,7 @@ export default function About() {
                             </div>
                             <div id="aboutTitle">
                                 <p className="subtitle-sm">Short Story</p>
-                                <h2 className="-mt-2 mb-5 font-extralight">A <span className="project-title font-golften italic heading">creative</span>  digital designer based in Vancouver, specialized in UXUI and Web development.</h2>
+                                <h2 className="-mt-2 mb-5 font-extralight">A <span className="project-title font-golften italic heading">creative</span>  digital designer based in Vancouver, specialized in UX/UI and web development.</h2>
                             </div>
 
                             <p className="mb-5 fade-item">

@@ -17,8 +17,8 @@ export default function UXDisplayCard({
 }) {
     return (
         <>
-            <div className={`flex flex-col-reverse items-center justify-center gap-10 md:gap-14 lg:gap-16 ${reverse ? 'md:flex-row-reverse' : 'md:flex-row'} ${additionalClasses}`}>
-                <div className="basis-[55%] flex gap-8">
+            <div className={`flex flex-col-reverse justify-center gap-8 md:gap-14 md:items-center lg:gap-16 ${reverse ? 'md:flex-row-reverse' : 'md:flex-row'} ${additionalClasses}`}>
+                <div className="basis-[55%] flex gap-4 md:gap-6 lg:gap-8">
                     {images.map((media, index) => (
                         <div key={index} className='w-full h-full mx-auto'>
                             {media.type === "video" ? (
@@ -43,7 +43,7 @@ export default function UXDisplayCard({
                 </div>
 
                 <div className="basis-[45%]">
-                    <div className="relative flex pb-2">
+                    <div className="relative flex items-center">
                         {useIcon ? (
                             <div className="mb-1">
                                 <img src={iconImg} alt="check mark icon" className={`${iconSize}`} />

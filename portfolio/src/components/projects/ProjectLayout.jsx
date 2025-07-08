@@ -31,7 +31,7 @@ export default function ProjectLayout({ sections, children, currentId, projectDa
                         <hr className='flex-1 w-full' />
                     </div>
 
-                    <div className="grid md: grid-cols-2 gap-8 flex-wrap">
+                    <div className="grid md:grid-cols-2 gap-8 flex-wrap">
                         {prev && <ProjectCard project={prev} />}
                         {next && <ProjectCard project={next} />}
                     </div>

@@ -13,14 +13,14 @@ export default function Footer() {
                 </div>
 
                 <div className='flex gap-4 items-center justify-center flex-col md:flex-row md:gap-2'>
-                    <a href="" className='font-inter font-medium text-white lowercase tracking-widest px-10 py-4 border rounded-full gap-10 text-base hover:bg-white hover:text-black transition-all duration-500'>contact@tinalin.ca</a>
+                    <a href="mailto:contact@tinalin.ca" className='font-inter font-medium text-white lowercase tracking-widest px-10 py-4 border rounded-full gap-10 text-base hover:bg-white hover:text-black transition-all duration-500'>contact@tinalin.ca</a>
 
                     <div className='flex gap-2 items-center justify-center'>
                         <div className="w-14 h-14 flex items-center justify-center border border-white rounded-2xl hover:bg-white group transition-all duration-500 cursor-pointer">
-                            <a href="#" >
+                            <a href="https://www.linkedin.com/in/tina-lin-000613b5/" target="_blank" rel="noopener noreferrer" >
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
-                                    className="w-5 h-5 stroke-white group-hover:stroke-black transition-all duration-300"
+                                    className="w-5 h-5 2xl:w-6 2xl:h-6 stroke-white group-hover:stroke-black transition-all duration-300"
                                     viewBox="0 0 24 24"
                                     fill="none"
                                     strokeWidth="2"
@@ -33,10 +33,10 @@ export default function Footer() {
                             </a>
                         </div>
                         <div className="w-14 h-14 flex items-center justify-center border border-white rounded-2xl hover:bg-white group transition-all duration-500 cursor-pointer ">
-                            <a href="#">
+                            <a href="https://github.com/tinalin728" target="_blank" rel="noopener noreferrer">
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
-                                    className="w-6 h-6 stroke-white group-hover:stroke-black transition-all duration-300"
+                                    className="w-6 h-6 3xl:w-7 3xl:h-7 stroke-white group-hover:stroke-black transition-all duration-300"
                                     width="24"
                                     height="24"
                                     viewBox="0 0 24 24"

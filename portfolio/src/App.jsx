@@ -16,7 +16,7 @@ function App() {
 
   return (
     <Router>
-      <ScrollToTop />
+      {/* <ScrollToTop /> */}
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<Home />} />

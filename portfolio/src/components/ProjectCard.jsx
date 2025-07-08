@@ -27,7 +27,7 @@ export default function ProjectCard({ project }) {
 
                 <div className='mt-3 flex flex-col lg:justify-between lg:items-center lg:flex-row'>
                     <h5>{project.title}</h5>
-                    <p className='text-sm capitalize tracking-wide font-normal text-gray-500'>{project.category}</p>
+                    <p className='text-sm capitalize tracking-wide font-normal text-gray-500 xl:text-base 2xl:text-md'>{project.category}</p>
                 </div>
             </div>
         </Link>

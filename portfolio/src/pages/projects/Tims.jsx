@@ -78,7 +78,7 @@ export default function Tims() {
                             <UXDisplayCard
                                 useIcon
                                 iconImg={checkMark}
-                                iconSize='w-6 mr-2 translate-y-2'
+                                iconSize='w-5 md:w-6 lg:w-7 mr-2'
                                 title={project.overview.final.design1.title}
                                 description={project.overview.final.design1.description}
                                 images={project.overview.final.design1.images}
@@ -88,7 +88,7 @@ export default function Tims() {
                             <UXDisplayCard
                                 useIcon
                                 iconImg={checkMark}
-                                iconSize='w-6 mr-2 translate-y-2'
+                                iconSize='w-5 md:w-6 lg:w-7 mr-2'
                                 title={project.overview.final.design2.title}
                                 description={project.overview.final.design2.description}
                                 images={project.overview.final.design2.images}
@@ -99,7 +99,7 @@ export default function Tims() {
                             <UXDisplayCard
                                 useIcon
                                 iconImg={checkMark}
-                                iconSize='w-6 mr-2 translate-y-2'
+                                iconSize='w-5 md:w-6 lg:w-7 mr-2'
                                 title={project.overview.final.design3.title}
                                 description={project.overview.final.design3.description}
                                 images={project.overview.final.design3.images}
@@ -154,7 +154,7 @@ export default function Tims() {
                             </div>
 
                             <div id="problems">
-                                <div className='border p-4 md:p-6 lg:p-10 bg-white border-gray-300 rounded-3xl shadow-lg mb-10 lg:mb-20 lg:sticky lg:top-15'>
+                                <div className='border p-6 lg:p-10 bg-white border-gray-300 rounded-3xl shadow-lg mb-10 lg:mb-20 lg:sticky lg:top-15'>
                                     <UXDisplayCard
                                         number={1}
                                         numberClass="text-[#C8102E]! pr-2"
@@ -164,7 +164,7 @@ export default function Tims() {
                                     />
                                 </div>
 
-                                <div className='border p-4 md:p-6 lg:p-10 bg-white border-gray-300 rounded-3xl shadow-lg mb-10 lg:sticky lg:top-25'>
+                                <div className='border p-6 lg:p-10 bg-white border-gray-300 rounded-3xl shadow-lg mb-10 lg:sticky lg:top-25'>
                                     <UXDisplayCard
                                         number={2}
                                         numberClass="text-[#C8102E]! pr-2"
@@ -173,7 +173,7 @@ export default function Tims() {
                                         images={project.research.problems.issue2.images}
                                     />
                                 </div>
-                                <div className='border p-4 md:p-6 lg:p-10 bg-white border-gray-300 rounded-3xl shadow-lg mb-0 relative z-10'>
+                                <div className='border p-6 lg:p-10 bg-white border-gray-300 rounded-3xl shadow-lg mb-0 relative z-10'>
                                     <UXDisplayCard
                                         number={3}
                                         numberClass="text-[#C8102E]! pr-2"
