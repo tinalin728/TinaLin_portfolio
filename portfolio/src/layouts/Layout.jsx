@@ -23,7 +23,7 @@ export default function Layout() {
 
     useEffect(() => {
         const footerTrigger = document.getElementById("footer-trigger");
-        const textEls = document.querySelectorAll('#bottom-nav p, #bottom-nav a');
+        const textEls = document.querySelectorAll('#bottom-nav p, #bottom-nav a, #bottom-nav button');
         const logoImg = document.getElementById("bottom-logo");
 
         const handleScroll = () => {
@@ -124,7 +124,7 @@ export default function Layout() {
             </Helmet>
 
 
-            <div className='h-full flex flex-col overflow-hidden lg:overflow-visible relative'>
+            <div id='top' className='h-full flex flex-col overflow-hidden lg:overflow-visible relative'>
                 <Navbar id="top" open={open} setOpen={setOpen} currentTime={currentTime} />
 
                 <div
@@ -153,7 +153,16 @@ export default function Layout() {
                         </p>
                     </div>
 
-                    <a href="#top" className='text-end flex-1 scroll-smooth leading-[1.75] uppercase text-sm 3xl:text-base 4xl:text-md font-inter font-normal underline underline-offset-4'>Back to top</a>
+                    <button
+                        id='scrollToTop'
+                        onClick={() => {
+                            document.getElementById('top')?.scrollIntoView({ behavior: 'smooth' });
+                        }}
+                        className="font-medium text-end flex-1 leading-[1.75] uppercase text-sm font-inter underline underline-offset-4 cursor-pointer"
+                    >
+                        Back to top
+                    </button>
+
                 </div>
             </div>
         </>

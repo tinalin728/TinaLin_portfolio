@@ -34,7 +34,17 @@ export default function PrimaryCta({ to, label, icon: Icon = ArrowRight, additio
             <a
                 href={to}
                 className={baseClass}
-                {...(isAnchor ? {} : { target: '_blank', rel: 'noopener noreferrer' })}
+                onClick={(e) => {
+                    if (isAnchor) {
+                        e.preventDefault();
+                        const targetId = to.slice(1);
+                        const targetEl = document.getElementById(targetId);
+                        if (targetEl) {
+                            targetEl.scrollIntoView({ behavior: 'smooth' });
+                        }
+                    }
+                }}
+                {...(!isAnchor ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
             >
                 {Content}
             </a>

@@ -97,7 +97,7 @@
   }
 
   h5 {
-    @apply text-md 2xl:text-lg font-canela leading-[1.25]
+    @apply text-md xl:text-lg font-canela leading-[1.25]
   }
 
   a {
