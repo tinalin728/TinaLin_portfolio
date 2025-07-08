@@ -111,7 +111,7 @@ export const projectData = [
                 },
 
                 issue3: {
-                    title: 'Difficult to track and edit offers in the cart',
+                    title: 'Editing offers in cart is difficult',
                     description:
                         "Users couldn’t change or remove offer items once added. <span class='font-medium'>There was no edit option. </span> When using both rewards and offers, labels like “Reward” appeared without context, making it unclear what was applied, how much was saved, or whether one replaced the other.",
                     images: [

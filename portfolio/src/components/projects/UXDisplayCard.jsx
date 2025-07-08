@@ -49,7 +49,7 @@ export default function UXDisplayCard({
                                 <img src={iconImg} alt="check mark icon" className={`${iconSize}`} />
                             </div>
                         ) : (
-                            <span className={`${numberClass} font-oliver text-lg inline-block`}>
+                            <span className={`${numberClass} font-oliver text-lg inline-block xl:text-xl`}>
                                 {number < 10 ? `0${number}.` : `${number}.`}
                             </span>
                         )}
