@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 import checkmark from "../../../public/assets/icons/checklist.png"
 
 export default function UXDisplayCard({
@@ -15,31 +15,35 @@ export default function UXDisplayCard({
     iconImg,
     iconSize
 }) {
-    useEffect(() => {
-        const observer = new IntersectionObserver(([entry]) => {
-            if (entry.isIntersecting) {
-                videoRef.current.src = media.src;
-                observer.disconnect();
-            }
-        });
+    // const videoRef = useRef(null)
+    // useEffect(() => {
+    //     const observer = new IntersectionObserver(([entry]) => {
+    //         if (entry.isIntersecting) {
+    //             videoRef.current.src = media.src;
+    //             observer.disconnect();
+    //         }
+    //     });
 
-        if (videoRef.current) {
-            observer.observe(videoRef.current);
-        }
+    //     if (videoRef.current) {
+    //         observer.observe(videoRef.current);
+    //     }
 
-        return () => observer.disconnect();
-    }, []);
+    //     return () => observer.disconnect();
+    // }, []);
 
 
     return (
         <>
+
             <div className={`flex flex-col-reverse justify-center gap-8 md:gap-14 md:items-center lg:gap-16 ${reverse ? 'md:flex-row-reverse' : 'md:flex-row'} ${additionalClasses}`}>
+
                 <div className="basis-[55%] flex gap-4 md:gap-6 lg:gap-8">
                     {images.map((media, index) => (
                         <div key={index} className='w-full h-full mx-auto'>
                             {media.type === "video" ? (
                                 <video
-                                    src={media.src}
+                                    ref={videoRef}
+                                    data-src={media.src}
                                     autoPlay
                                     loop
                                     muted
