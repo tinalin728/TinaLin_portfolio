@@ -3,7 +3,7 @@ import { projectData } from '../../data/projectData'
 import ProjectIntro from '../../components/projects/ProjectIntro';
 import ProjectLayout from '../../components/projects/ProjectLayout';
 import ProjectSectionLayout from '../../components/projects/ProjectSectionLayout';
-
+import ProjectPageLoading from '../../components/projects/ProjectPageLoading';
 import experience from '../../../public/assets/solar/experience.mp4'
 import { Globe } from 'lucide-react';
 

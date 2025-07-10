@@ -54,7 +54,7 @@ export default function Furry() {
                             <h3 className='mb-5'>Buying natural treats shouldn't feel unnatural online. </h3>
 
                             <p>
-                                As part of the Flui Hackathon, my team (3 other members) and I were challenged to redesign the website for  <a href="https://www.furrytalespet.ca/" className='text-md font-medium underline underline-offset-2  text-[#754b37] hover:text-[#A99076] transition duration-300'>Furrytales Pet</a>, a small business known for its handcrafted, natural pet treats. While their products were full of heart, the original site didn’t reflect that same warmth or care. In just 72 hours, we set out to create a fresh, user-friendly experience that felt as personal and thoughtful as the brand itself.
+                                As part of the Flui Hackathon, my team (3 other members) and I were challenged to redesign the website for  <a href="https://www.furrytalespet.ca/" className='font-normal text-base 3xl:text-md 4xl:text-lg underline underline-offset-2  text-[#754b37] hover:text-[#A99076] transition duration-300'>Furrytales Pet</a>, a small business known for its handcrafted, natural pet treats. While their products were full of heart, the original site didn’t reflect that same warmth or care. In just 72 hours, we set out to create a fresh, user-friendly experience that felt as personal and thoughtful as the brand itself.
 
                             </p>
                         </div>

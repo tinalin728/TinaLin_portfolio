@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import checkmark from "../../../public/assets/icons/checklist.png"
 
 export default function UXDisplayCard({
@@ -15,6 +15,22 @@ export default function UXDisplayCard({
     iconImg,
     iconSize
 }) {
+    useEffect(() => {
+        const observer = new IntersectionObserver(([entry]) => {
+            if (entry.isIntersecting) {
+                videoRef.current.src = media.src;
+                observer.disconnect();
+            }
+        });
+
+        if (videoRef.current) {
+            observer.observe(videoRef.current);
+        }
+
+        return () => observer.disconnect();
+    }, []);
+
+
     return (
         <>
             <div className={`flex flex-col-reverse justify-center gap-8 md:gap-14 md:items-center lg:gap-16 ${reverse ? 'md:flex-row-reverse' : 'md:flex-row'} ${additionalClasses}`}>
@@ -29,12 +45,14 @@ export default function UXDisplayCard({
                                     muted
                                     playsInline
                                     className={`w-full h-full ${videoClass}`}
+                                    poster={media.poster}
                                 />
                             ) : (
                                 <img
                                     src={media.src}
                                     alt={media.alt || `Screen ${index + 1}`}
                                     className={`w-full h-full object-cover ${imgClass}`}
+                                    loading='lazy-loading'
                                 />
                             )}
                         </div>

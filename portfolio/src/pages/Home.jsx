@@ -41,13 +41,35 @@ export default function Home() {
             delay: 0.5,
         });
 
-        // Entry animation for description + character
         gsap.from("#heroContent", {
             y: 60,
             opacity: 0,
             duration: 1,
             ease: "power3.out",
             delay: 0.7,
+        });
+
+        gsap.from("#craftTitle", {
+            y: 100,
+            opacity: 0,
+            duration: 1.5,
+            ease: "power3.out",
+            scrollTrigger: {
+                trigger: "#craftTitle",
+                start: "top 40%",
+            },
+        });
+
+        gsap.from("#craftContent", {
+            y: 100,
+            opacity: 0,
+            duration: 1.5,
+            ease: "power3.out",
+            scrollTrigger: {
+                trigger: "#craftContent",
+                start: "top 50%",
+            },
+            delay: 0.2,
         });
 
         const mm = gsap.matchMedia();
@@ -141,9 +163,6 @@ export default function Home() {
                 <div className='relative z-10 pb-20 bg-white'>
                     <section id='wrapper' className='relative z-20 overflow-hidden max-w-container'>
                         <div className="pt-18 md:pt-20 md:w-full flex flex-col justify-between h-screen">
-                            {/* <p id='textItem' className="biggest-header md:text-nowrap md:whitespace-nowrap inline-block h-full" >
-                                Design to Develop
-                            </p> */}
                             <div className=''>
                                 <p id='scroll-from-right' className='biggest-header'>Design to</p>
 
@@ -169,15 +188,13 @@ export default function Home() {
                         </div>
                     </section>
 
-                    <section className='relative z-10 max-w-container h-full '>
-                        <div className=''>
-
-                            <div className='flex items-center'>
-                                <hr className='flex-1 w-full' />
-                                <h1 className='flex-1 w-fit font-extralight text-center leading-[1] pb-5 font-golften'>Selected <br /> Crafts</h1>
-                                <hr className='flex-1 w-full' />
-                            </div>
-
+                    <section id='craft' className='relative z-10 max-w-container h-full '>
+                        <div id='craftTitle' className='flex items-center'>
+                            <hr className='flex-1 w-full' />
+                            <h1 className='flex-1 w-fit font-extralight text-center leading-[1] pb-5 font-golften'>Selected <br /> Crafts</h1>
+                            <hr className='flex-1 w-full' />
+                        </div>
+                        <div id='craftContent'>
                             <div className='pt-5 pb-10 md:py-10 grid gap-8 md:grid-cols-2 md:gap-6'>
                                 {projectData.slice(0, 4).map((project) => (
                                     <ProjectCard key={project.id} project={project} />
