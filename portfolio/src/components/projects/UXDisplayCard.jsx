@@ -42,7 +42,7 @@ export default function UXDisplayCard({
                         <div key={index} className='w-full h-full mx-auto'>
                             {media.type === "video" ? (
                                 <video
-                                    ref={videoRef}
+                                    // ref={videoRef}
                                     data-src={media.src}
                                     autoPlay
                                     loop
