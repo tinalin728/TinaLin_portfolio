@@ -203,7 +203,6 @@ const skillCategories = {
         "TypeScript",
         "React.js",
         "Tailwind CSS",
-        "WordPress",
     ],
     "Others": [
         "Jira",
