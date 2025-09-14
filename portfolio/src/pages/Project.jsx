@@ -45,7 +45,7 @@ export default function Project() {
                         <span>(5)</span>
                     </div>
                     <div id="project-grid" className='grid gap-6 md:grid-cols-2'>
-                        {projectData.map((project) => (
+                        {projectData.slice(0, 4).map((project) => (
                             <ProjectCard key={project.id} project={project} />
                         ))}
                     </div>
