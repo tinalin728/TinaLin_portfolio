@@ -89,9 +89,9 @@ export default function Layout() {
     }, [location.pathname]);
 
     const pageTitles = {
-        '/': "Tina Lin | Digital Designer & Web Developer",
-        '/about': "About | Tina Lin, digital Designer & web Developer",
-        '/crafts': "Crafts | Tina Lin, digital Designer & web Developer",
+        '/': "Tina Lin | Designer & Web Developer",
+        '/about': "About | Tina Lin, Designer & Web Developer",
+        '/crafts': "Crafts | Tina Lin, Designer & Web Developer",
     };
 
     const defaultTitle = "Tina Lin | Portfolio";
