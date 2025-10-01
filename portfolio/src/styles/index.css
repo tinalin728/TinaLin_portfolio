@@ -43,7 +43,7 @@
 
 @layer components {
   .max-w-container {
-    max-width: 120rem;
+    max-width: 110rem;
     width: 100%;
     margin: 0 auto;
     padding: 0 2.5rem;

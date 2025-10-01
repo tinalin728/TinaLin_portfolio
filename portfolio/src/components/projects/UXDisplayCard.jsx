@@ -43,7 +43,7 @@ export default function UXDisplayCard({
                             {media.type === "video" ? (
                                 <video
                                     // ref={videoRef}
-                                    data-src={media.src}
+                                    src={media.src}
                                     autoPlay
                                     loop
                                     muted

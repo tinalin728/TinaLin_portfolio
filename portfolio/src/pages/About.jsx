@@ -6,6 +6,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import AboutDraggable from "../components/about/AboutDraggable";
 import TinderCard from "../components/about/TinderCard";
 import profile from "../../public/assets/about/profile.jpg"
+import iceland from "../../public/assets/about/iceland.png"
 import logo from "../../public/assets/logo.svg"
 import PrimaryCta from "../components/PrimaryCta";
 
@@ -119,21 +120,32 @@ export default function About() {
     return (
         loading ? <div className="h-screen"></div> : (
             <>
-                <section className="wrapper elative z-10 h-full md:pb-20 max-w-container pb-14">
-                    <div className="pt-30 flex gap-14 mb-5 flex-col items-center lg:flex-row lg:gap-10">
-                        <div className='basis-[45%] flex flex-col items-center justify-center relative'>
-                            <div className="p-4 md:p-6 lg:p-8 border rounded-2xl mx-auto shadow-md relative z-10 bg-white">
-                                <img src={profile} alt="profile" className='mb-2 object-cover object-left-top h-full w-full max-w-[500px] max-h-[450px] rounded-md lg:max-h-[600px] xl:max-w-[650px]' />
-                                <p className="text-sm font-normal text-center 2xl:text-base">( I tried not to look awkward )</p>
+                <section className="wrapper relative z-10 h-full md:pb-20 max-w-container pb-14">
+                    <div className="pt-30 flex gap-14 mb-5 flex-col items-center lg:flex-row lg:gap-10 xl:justify-around">
+                        <div className='flex-1 flex items-center relative justify-center'>
+                            <div className="p-2 border rounded-2xl shadow-md relative z-10 bg-white  w-[300px] h-[380px] translate-x-10 -rotate-4">
+                                <img
+                                    src={profile}
+                                    alt="profile"
+                                    className="object-cover object-left-top h-full w-full rounded-md"
+                                />
                             </div>
+
+                            <div className="relative w-[280px] h-[310px] border rounded-xl shadow-md z-10 bg-white -translate-x-1 rotate-8">
+                                <img
+                                    src={iceland}
+                                    alt="profile"
+                                    className="absolute inset-0 p-2 rounded-2xl w-full h-full object-cover object-left-bottom "
+                                />
+                                <div className='absolute -right-8 -top-5 z-10'>
+                                    <img ref={logoRef} src={logo} alt="logo" className='spin-infinite inline-block w-[60px] md:w-[70px]' />
+                                </div>
+                            </div>
+
                         </div>
 
-                        <div className="basis-[55%] relative">
-                            <div className='absolute right-4 -top-4'>
-                                <img ref={logoRef} src={logo} alt="logo" className='spin-infinite inline-block w-[60px] md:w-[70px]' />
-                            </div>
+                        <div className="flex-1 relative">
                             <div id="aboutTitle">
-                                <p className="subtitle-sm">Short Story</p>
                                 <h2 className="-mt-2 mb-5 font-extralight">A <span className="project-title font-golften italic heading">creative</span>  digital designer based in Vancouver, specialized in UX/UI and web development.</h2>
                             </div>
 
@@ -150,7 +162,7 @@ export default function About() {
                         </div>
 
                     </div>
-                </section>
+                </section >
 
                 <section className="max-w-container">
                     <div className="flex flex-col md:flex-row md:justify-between border-y py-14 md:py-20 md:gap-10">
